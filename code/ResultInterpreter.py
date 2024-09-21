@@ -10,13 +10,41 @@ import pandas as pd
 import os
 
 class ResultInterpreter:
+    """
+    A class for interpreting clustering results from a dataset.
+
+    Attributes:
+        __path_to_folder (str): Path to the folder where the dataset will be saved.
+        __encoded_dataset (pd.DataFrame): The dataset with encoded categorical features.
+        __target_column (pd.Series): The target column containing cluster labels.
+    """
+    
     def __init__(self, dataset: pd.DataFrame, result_dataset_name: str,
                  main_folder: str, dataset_folder: str):
+        """
+        Initializes the ResultInterpreter object and saves the dataset to a file.
+        Also preprocesses the dataset for interpretation by encoding categorical features.
+
+        Args:
+            dataset (pd.DataFrame): The dataset to interpret.
+            result_dataset_name (str): The name of the file to save the dataset.
+            main_folder (str): The main folder path.
+            dataset_folder (str): The folder path where the dataset will be saved.
+        """
         self.__path_to_folder = os.path.join(main_folder, dataset_folder)
         self.__save_dataset_to_file(dataset, result_dataset_name)
         self.__encoded_dataset, self.__target_column = self.__preprocess_for_interpretation(dataset)
 
-    def __preprocess_for_interpretation(self, dataset: pd.DataFrame):
+    def __preprocess_for_interpretation(self, dataset: pd.DataFrame) -> tuple[pd.DataFrame, pd.Series]:
+        """
+        Preprocesses the dataset by encoding categorical variables and separating features from the target.
+
+        Args:
+            dataset (pd.DataFrame): The dataset to preprocess.
+
+        Returns:
+            Tuple[pd.DataFrame, pd.Series]: Encoded feature matrix and target column.
+        """
         label_encoders = {}
         X = dataset.drop(columns=['Cluster'])
         y = dataset['Cluster']
@@ -27,15 +55,34 @@ class ResultInterpreter:
             label_encoders[column] = le
         return X, y
     
-    def __save_dataset_to_file(self, dataset: pd.DataFrame, result_dataset_name: str):
+    def __save_dataset_to_file(self, dataset: pd.DataFrame, result_dataset_name: str) -> None:
+        """
+        Saves the dataset to a specified folder as a CSV file.
+
+        Args:
+            dataset (pd.DataFrame): The dataset to save.
+            result_dataset_name (str): The name of the CSV file.
+        """
         os.makedirs(self.__path_to_folder, exist_ok=True)
         dataset.to_csv(os.path.join(self.__path_to_folder, result_dataset_name))
 
-    def get_correlation_matrix(self):
+    def get_correlation_matrix(self) -> pd.DataFrame:
+        """
+        Computes and returns the correlation matrix of the encoded dataset.
+
+        Returns:
+            pd.DataFrame: Correlation matrix of the encoded dataset.
+        """
         corr_matrix = self.__encoded_dataset.corr()
         return corr_matrix
 
-    def chi_squared_feature_selection(self):
+    def chi_squared_feature_selection(self) -> pd.DataFrame:
+        """
+        Performs Chi-Squared test for feature selection and returns the results in a sorted DataFrame.
+
+        Returns:
+            pd.DataFrame: DataFrame containing features, Chi-Squared values, and p-values, sorted by Chi-Squared values.
+        """
         X = self.__encoded_dataset
         y = self.__target_column
         chi2_results = []
@@ -52,7 +99,16 @@ class ResultInterpreter:
         results_df = pd.DataFrame(chi2_results).sort_values(by='Chi-Squared', ascending=False)        
         return results_df
 
-    def mutual_info_feature_selection(self, number_of_features: int):
+    def mutual_info_feature_selection(self, number_of_features: int) -> pd.DataFrame:
+        """
+        Selects features based on mutual information and returns the results in a sorted DataFrame.
+
+        Args:
+            number_of_features (int): The number of top features to select.
+
+        Returns:
+            pd.DataFrame: DataFrame containing features and their mutual information scores, sorted by score.
+        """
         X = self.__encoded_dataset
         y = self.__target_column
         selector = SelectKBest(score_func=mutual_info_classif, k=number_of_features)
@@ -66,7 +122,17 @@ class ResultInterpreter:
         mutual_info_result = mutual_info_result.sort_values(by='Score', ascending=False)
         return mutual_info_result
 
-    def random_forest_feature_selection(self, with_permutations: bool):
+    def random_forest_feature_selection(self, with_permutations: bool) -> pd.DataFrame:
+        """
+        Selects features using a Random Forest classifier. Optionally uses permutation importance.
+        Returns the feature importances in a sorted DataFrame.
+
+        Args:
+            with_permutations (bool): Whether to use permutation importance for feature selection.
+
+        Returns:
+            pd.DataFrame: DataFrame containing features and their importance scores, sorted by importance.
+        """
         X = self.__encoded_dataset
         y = self.__target_column
 

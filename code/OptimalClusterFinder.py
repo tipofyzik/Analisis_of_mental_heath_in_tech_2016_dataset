@@ -11,12 +11,36 @@ import pandas as pd
 import os
 
 class OptimalClusterFinder:
+    """
+    A class for determining the optimal number of clusters in a dataset using various methods.
+
+    Attributes:
+        __kmeans_init (str): Initialization method for KMeans.
+        __random_state (int): Random state for reproducibility.
+    """
+    
     def __init__(self, kmeans_init: str, random_state: int):
+        """
+        Initializes the OptimalClusterFinder object with KMeans initialization method and random state.
+
+        Args:
+            kmeans_init (str): Initialization method for KMeans.
+            random_state (int): Random state for reproducibility.
+        """
         self.__kmeans_init = kmeans_init
         self.__random_state = random_state
 
     def k_elbow_method(self, dataset: pd.DataFrame, folder_path: str, k_elbow_path: str, 
-                       file_name: str):
+                       file_name: str) -> None:
+        """
+        Applies the Elbow method to find the optimal number of clusters and saves the plot.
+
+        Args:
+            dataset (pd.DataFrame): The dataset for clustering.
+            folder_path (str): The path to save the elbow method plot.
+            k_elbow_path (str): Subdirectory for the elbow method plot.
+            file_name (str): Name of the file to save the plot.
+        """
         full_path = os.path.join(folder_path, k_elbow_path)
         os.makedirs(full_path, exist_ok=True)
 
@@ -42,7 +66,16 @@ class OptimalClusterFinder:
         plt.close()
 
     def silhouette_score_method(self, dataset: pd.DataFrame, folder_path: str, 
-                                silhouette_score_path: str, file_name: str):
+                                silhouette_score_path: str, file_name: str) -> None:
+        """
+        Computes and plots silhouette scores for a range of cluster numbers and saves the plots.
+
+        Args:
+            dataset (pd.DataFrame): The dataset for clustering.
+            folder_path (str): The path to save the silhouette score plots.
+            silhouette_score_path (str): Subdirectory for the silhouette score plots.
+            file_name (str): Name of the files to save the plots.
+        """
         full_path = os.path.join(folder_path, silhouette_score_path)
         os.makedirs(full_path, exist_ok=True)
 
@@ -86,8 +119,17 @@ class OptimalClusterFinder:
             plt.close()
 
     def dendrogram_method(self, dataset: pd.DataFrame, folder_path: str, 
-                                dendrogram_path: str, file_name: str,
-                                threshold: int):
+                          dendrogram_path: str, file_name: str, threshold: int) -> None:
+        """
+        Creates a dendrogram to visualize hierarchical clustering and saves the plot.
+
+        Args:
+            dataset (pd.DataFrame): The dataset for clustering.
+            folder_path (str): The path to save the dendrogram plot.
+            dendrogram_path (str): Subdirectory for the dendrogram plot.
+            file_name (str): Name of the file to save the plot.
+            threshold (int): The threshold value to indicate clusters.
+        """
         full_path = os.path.join(folder_path, dendrogram_path)
         os.makedirs(full_path, exist_ok=True)
         

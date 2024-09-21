@@ -4,13 +4,52 @@ import pandas as pd
 import spacy
 
 class TextFeatureExtractor:
+    """
+    A class for extracting text features from a dataset.
+
+    Attributes:
+        dataset_for_feature_extraction (pd.DataFrame): The dataset used for feature extraction.
+        nlp (spacy.language.Language): The NLP model for text processing.
+        dataset_features (dict): A dictionary to store extracted features for each column.
+    """
+    
     def __init__(self, dataset: pd.DataFrame):
+        """
+        Initializes the TextFeatureExtractor object with a dataset and an NLP model.
+
+        Args:
+            dataset (pd.DataFrame): The dataset used for feature extraction.
+        """
         self.dataset_for_feature_extraction = dataset
         self.nlp = spacy.load('en_core_web_sm')
         self.dataset_features = {}
 
-    def __filter_redundant_ngrams(self, ngrams, word_importance, additional_condition = False, sort = False):
-        def __is_redundant(ngram, longer_ngram, importance = word_importance):
+    def __filter_redundant_ngrams(self, ngrams: list[str], word_importance: pd.Series, 
+                                  additional_condition: bool = False, sort: bool = False) -> list[str]:
+        """
+        Filters redundant n-grams based on overlap and importance.
+
+        Args:
+            ngrams (list[str]): List of n-grams to filter.
+            word_importance (pd.Series): Series containing the importance scores of n-grams.
+            additional_condition (bool, optional): Additional condition to filter by importance.
+            sort (bool, optional): If true, sorts n-grams by length before filtering.
+
+        Returns:
+            list[str]: A list of unique n-grams after filtering redundancies.
+        """
+        def __is_redundant(ngram: str, longer_ngram: str, importance: pd.Series = word_importance) -> bool:
+            """
+            Determines if a n-gram is redundant compared to a longer n-gram.
+
+            Args:
+                ngram (str): The n-gram to check.
+                longer_ngram (str): The longer n-gram to compare against.
+                importance (pd.Series, optional): Importance scores of n-grams.
+
+            Returns:
+                bool: True if the n-gram is redundant, otherwise False.
+            """
             # Преобразование n-gram'ов в множества слов
             ngram_words = set(ngram.split())
             longer_ngram_words = set(longer_ngram.split())
@@ -34,17 +73,46 @@ class TextFeatureExtractor:
                 unique_ngrams.append(ngram)
         return unique_ngrams
 
-    def __preprocess_text(self, text):
+    def __preprocess_text(self, text: str) -> str:
+        """
+        Preprocesses a text by lemmatizing and removing stop words and punctuation.
+
+        Args:
+            text (str): The text to preprocess.
+
+        Returns:
+            str: Preprocessed text with lemmatization.
+        """
         doc = self.nlp(text.lower())
         tokens = [token.lemma_ for token in doc if not token.is_stop and not token.is_punct]
         return ' '.join(tokens)
 
-    def __check_ngrams_in_text(self, text, ngrams, word_importance):
+    def __check_ngrams_in_text(self, text: str, ngrams: list[str], word_importance: pd.Series) -> str:
+        """
+        Checks which n-grams are present in the text and returns the most important one.
+
+        Args:
+            text (str): The text in which to check for n-grams.
+            ngrams (list[str]): List of n-grams to check.
+            word_importance (pd.Series): Series containing the importance scores of n-grams.
+
+        Returns:
+            str: The most important n-gram present in the text.
+        """
         # Препроцессинг текста для получения лемм
         tokens = self.__preprocess_text(text)
         token_set = tokens.split()
 
-        def ngram_in_tokens(ngram):
+        def ngram_in_tokens(ngram: str) -> bool:
+            """
+            Checks if an n-gram is present in the tokenized text.
+
+            Args:
+                ngram (str): The n-gram to check.
+
+            Returns:
+                bool: True if the n-gram is present, otherwise False.
+            """
             ngram_tokens = ngram.split()  # Разбиваем n-грамму на отдельные слова
             # Проверяем, содержится ли каждая часть n-граммы в токенах текста
             return all(token in token_set for token in ngram_tokens)
@@ -59,7 +127,15 @@ class TextFeatureExtractor:
         most_important_ngram = max(matching_ngrams, key=lambda ngram: word_importance[ngram])
         return most_important_ngram
     
-    def __define_frequent_words_in_column(self, dataset: pd.DataFrame, column: str):
+    def __define_frequent_words_in_column(self, dataset: pd.DataFrame, column: str) -> None:
+        """
+        Identifies frequent n-grams in a column of the dataset, filtering redundant n-grams,
+        and replaces the column's content with the most important n-grams.
+
+        Args:
+            dataset (pd.DataFrame): The dataset containing the column.
+            column (str): The column in which to define frequent words.
+        """
         diagnose_and_work_columns = ["If yes, what condition(s) have you been diagnosed with?",
                     "If so, what condition(s) were you diagnosed with?",
                     "Which of the following best describes your work position?"]
@@ -95,6 +171,9 @@ class TextFeatureExtractor:
             apply(lambda x: self.__check_ngrams_in_text(x, ngrams, word_importance))
 
 
-    def extract_features(self):
+    def extract_features(self) -> None:
+        """
+        Extracts features from the dataset by processing each column to identify and filter frequent n-grams.
+        """
         for ith_column in self.dataset_for_feature_extraction.columns:
             self.__define_frequent_words_in_column(self.dataset_for_feature_extraction, ith_column)
