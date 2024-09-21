@@ -67,7 +67,6 @@ class DatasetAnalyzer:
         for ith_column in self.__analyzed_dataset:
             if self.__analyzed_dataset[ith_column].dtype == 'object' or self.__analyzed_dataset[ith_column].dtype == 'string':
                 self.__analyzed_dataset[ith_column] = self.__analyzed_dataset[ith_column].str.lower()
-                # self.__analyzed_dataset[ith_column] = self.__analyzed_dataset[ith_column].str.strip(" ")
         
         # Replace similar gender names with only one.  
         self.__analyzed_dataset["What is your gender?"] = self.__analyzed_dataset["What is your gender?"].replace({
