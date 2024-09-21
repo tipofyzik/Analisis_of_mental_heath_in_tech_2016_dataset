@@ -129,7 +129,7 @@ if __name__ == "__main__":
                               gauss_random_state = gauss_random_state)
 
     gaussian_labels = clusterer.gaussian_mixture_clusterization(norm_pca_2d_result)
-    kmeans_cluster_labels = clusterer.kmeans_clusterizaiton(norm_tsne_2d_result)
+    kmeans_cluster_labels = clusterer.kmeans_clusterization(norm_tsne_2d_result)
     agglomerative_cluster_labels = clusterer.agglomerative_clusterization(norm_tsne_2d_result)
 
     gaussian_dataset = dataset.copy()
