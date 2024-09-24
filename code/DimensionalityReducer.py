@@ -27,6 +27,7 @@ class DimensionalityReducer:
 
         Args:
             random_state (int): Seed for random number generator.
+            # tsne_perplexity (float): The perplexity parameter is related to the number of nearest neighbors.
         """
         self.__pca_2d = PCA(n_components = 2)
         self.__pca_3d = PCA(n_components = 3)
@@ -34,7 +35,6 @@ class DimensionalityReducer:
         self.__kpca_3d = KernelPCA(n_components=3, kernel='rbf')
         self.__tsne_2d = TSNE(n_components=2, random_state=random_state)
         self.__tsne_3d = TSNE(n_components=3, random_state=random_state)
-
 
     def __pca_variance(self, saved_info_ratio: float, normalized_dataset: pd.DataFrame) -> None:
         """
@@ -47,11 +47,11 @@ class DimensionalityReducer:
         self.__pca = PCA(n_components = saved_info_ratio)
         self.__pca_result = self.__pca.fit_transform(normalized_dataset)
 
-        # Проверка объясненной дисперсии
+        # Cheching explaing variance
         explained_variance_ratio = self.__pca.explained_variance_ratio_
         cumulative_variance = np.cumsum(explained_variance_ratio)
 
-        # Вывод результатов
+        # Output of results
         print(f"Explained variance ratio of each component: {explained_variance_ratio}")
         print(f"Cumulative explained variance: {cumulative_variance}")
         print(np.sum(self.__pca.explained_variance_ratio_))

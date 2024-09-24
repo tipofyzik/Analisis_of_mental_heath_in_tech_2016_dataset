@@ -1,5 +1,5 @@
-from sklearn.feature_selection import SelectKBest, mutual_info_classif
-from sklearn.metrics import accuracy_score, classification_report
+from sklearn.feature_selection import mutual_info_classif
+from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
 from sklearn.inspection import permutation_importance
 from sklearn.ensemble import RandomForestClassifier
@@ -111,14 +111,8 @@ class ResultInterpreter:
         """
         X = self.__encoded_dataset
         y = self.__target_column
-        selector = SelectKBest(score_func=mutual_info_classif, k=number_of_features)
-        X_selected = selector.fit_transform(X, y)
-        
-        selected_features = X.columns[selector.get_support()]
-        scores = selector.scores_
-
-        # Создание DataFrame для отображения результатов
-        mutual_info_result = pd.DataFrame({'Feature': X.columns, 'Score': scores})
+        mutual_info_scores = mutual_info_classif(X, y)
+        mutual_info_result = pd.DataFrame({'Feature': X.columns, 'Score': mutual_info_scores})
         mutual_info_result = mutual_info_result.sort_values(by='Score', ascending=False)
         return mutual_info_result
 
@@ -136,12 +130,11 @@ class ResultInterpreter:
         X = self.__encoded_dataset
         y = self.__target_column
 
-        # Training before feature selection
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=0)
         rf = RandomForestClassifier(n_estimators=100, random_state=0)
         rf.fit(X_train, y_train)
         y_pred = rf.predict(X_test)
-        # Оценка точности модели
+
         accuracy = accuracy_score(y_test, y_pred)
         print(f"Random Forest Accuracy: {accuracy:.2f}")
         
@@ -149,14 +142,13 @@ class ResultInterpreter:
             permutation_result = permutation_importance(rf, X_test, y_test, n_repeats=30, random_state=0)
             feature_importances = pd.DataFrame({
                 'Feature': X.columns,
-                'Importance': permutation_result.importances_mean,  # Используем важность из permutation
-                'Std': permutation_result.importances_std  # Стандартное отклонение
+                'Importance': permutation_result.importances_mean,
+                'Std': permutation_result.importances_std
             }).sort_values(by='Importance', ascending=False)
         else:
-            #Feature selection
             importances = rf.feature_importances_
             feature_names = X.columns
-            # Создание DataFrame для визуализации
+
             feature_importances = pd.DataFrame({
                 'Feature': feature_names,
                 'Importance': importances

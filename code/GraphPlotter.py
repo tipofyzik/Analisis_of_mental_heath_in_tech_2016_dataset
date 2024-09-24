@@ -12,9 +12,10 @@ class GraphPlotter:
         __n_columns (int): Number of columns in the grid for plotting.
         __n_rows (int): Number of rows in the grid for plotting.
         __max_feature_number (int): Maximum number of features to display in a plot.
+        __dpi (int): Parameter for saving well-quality graphs.
     """
     
-    def __init__(self, n_columns: int, n_rows: int, max_feature_number: int):
+    def __init__(self, n_columns: int, n_rows: int, max_feature_number: int, dpi: int):
         """
         Initializes the GraphPlotter object with the number of columns, rows, and max features.
 
@@ -22,10 +23,12 @@ class GraphPlotter:
             n_columns (int): Number of columns in the grid for plotting.
             n_rows (int): Number of rows in the grid for plotting.
             max_feature_number (int): Maximum number of features to display in a plot.
+            dpi (int): Parameter for saving well-quality graphs.
         """
         self.__n_columns = n_columns
         self.__n_rows = n_rows
         self.__max_feature_number = max_feature_number
+        self.__dpi = dpi
 
     def __display_data_per_question(self, dataset: pd.DataFrame, column_index: int, ax) -> None:
         """
@@ -36,12 +39,10 @@ class GraphPlotter:
             column_index (int): Index of the column to plot.
             ax (Any): Axes object to plot on.
         """
-        column = dataset.columns[column_index]  # Получаем название столбца по индексу
+        column = dataset.columns[column_index]
         top_20_answers = dataset[column].value_counts().nlargest(self.__max_feature_number).index
-        # Создаем график только для первых 20 значений
         sns.countplot(y=column, data=dataset[dataset[column].isin(top_20_answers)], ax=ax, order=top_20_answers, palette='magma')
     
-        # sns.countplot(y=column, data=dataset, ax=ax, order=dataset[column].value_counts().index, palette='magma')
         ax.set_xlabel('Count', fontsize=9)
         ax.set_ylabel('Answers', fontsize=9)
         ax.tick_params(axis='x', labelsize=7)
@@ -66,16 +67,15 @@ class GraphPlotter:
         n_plots = n_columns * n_rows
 
         # Create a new figure for each batch
-        fig, axes = plt.subplots(n_rows, n_columns, figsize=(25, 10))  # Adjust size as needed
-        axes = axes.flatten()  # Flatten the axes array for easy iteration
+        fig, axes = plt.subplots(n_rows, n_columns, figsize=(25, 10))
+        axes = axes.flatten()
         for i in range(start_idx, min(end_idx, start_idx + n_plots)):
             function(dataset, i, axes[i - start_idx])
-        # Hide unused subplots if the number of plots is less than n_plots
         for j in range(end_idx - start_idx, n_plots):
             axes[j].axis('off')
 
         plt.tight_layout()
-        plt.savefig(filename, dpi=300)  # Save the plot as an image file
+        plt.savefig(filename, dpi = self.__dpi)
         plt.close(fig)  # Close the figure to free up memory
 
     def save_plots(self, path_to_save: str, dataset: pd.DataFrame) -> None:
@@ -117,7 +117,7 @@ class GraphPlotter:
         plt.xlabel(f"{reducing_method} Component 1")
         plt.ylabel(f"{reducing_method} Component 2")
         plt.colorbar(label="Cluster Label")
-        plt.savefig(full_path, dpi = 300)
+        plt.savefig(full_path, dpi = self.__dpi)
         plt.close()
 
     def save_3d_reduced_data_plotes(self, path_to_save: str, file_name: str, 
@@ -147,7 +147,54 @@ class GraphPlotter:
         ax.set_zlabel(f"{reducing_method} Component 3")
         ax.view_init(elev=elev, azim=azim)
         plt.title(f"{reducing_method} Visualization")
-        plt.savefig(full_path, dpi = 300)
+        plt.savefig(full_path, dpi = self.__dpi)
+        plt.close()
+
+    def save_3d_reduced_data_plot_with_range(self, path_to_save: str, file_name: str, 
+                                         reducing_method: str, reduced_data: np.ndarray, 
+                                         component_range: tuple[float, float] = (0, 10), component: int = 0, 
+                                         elev: int = 30, azim: int = -90) -> None:
+        """
+        Saves a 3D scatter plot of reduced data, filtered by a specific range of values for a component.
+
+        Args:
+            path_to_save (str): Path to save the plot.
+            file_name (str): Name of the file to save the plot.
+            reducing_method (str): The method used for dimensionality reduction.
+            reduced_data (np.ndarray): The reduced data to plot.
+            component_range (tuple[float, float]): Range of values for filtering the component.
+            component (int, optional): The component index (0, 1, or 2) to filter the data by. Default is 0.
+            elev (int, optional): Elevation angle for the 3D plot. Default is 30.
+            azim (int, optional): Azimuth angle for the 3D plot. Default is 0.
+        """
+        os.makedirs(path_to_save, exist_ok=True)
+        full_path = os.path.join(path_to_save, file_name)
+
+        # Save the axis limits from the full dataset
+        x_limits = (np.min(reduced_data[:, 0]), np.max(reduced_data[:, 0]))
+        y_limits = (np.min(reduced_data[:, 1]), np.max(reduced_data[:, 1]))
+        z_limits = (np.min(reduced_data[:, 2]), np.max(reduced_data[:, 2]))
+
+        # Filter data based on the given component range
+        mask = (reduced_data[:, component] >= component_range[0]) & (reduced_data[:, component] <= component_range[1])
+        filtered_data = reduced_data[mask]
+
+        fig = plt.figure(figsize=(8, 8))
+        ax = fig.add_subplot(111, projection='3d')
+        # Scatter plot with filtered data
+        ax.scatter(filtered_data[:, 0], filtered_data[:, 1], filtered_data[:, 2], c="blue")
+        ax.set_xlabel(f"{reducing_method} Component 1")
+        ax.set_ylabel(f"{reducing_method} Component 2")
+        ax.set_zlabel(f"{reducing_method} Component 3")
+        # Set original axis limits (from the full data)
+        ax.set_xlim(x_limits)
+        ax.set_ylim(y_limits)
+        ax.set_zlim(z_limits)
+        # Set view angle
+        ax.view_init(elev=elev, azim=azim)
+
+        plt.title(f"{reducing_method} Visualization (Filtered by Component {component + 1})")
+        plt.savefig(full_path, dpi=self.__dpi)
         plt.close()
 
     def save_clustering_plots(self, path_to_save: str, file_name: str, type_of_clustering: str, 
@@ -173,10 +220,49 @@ class GraphPlotter:
         plt.xlabel(f"{reducing_method} Component 1")
         plt.ylabel(f"{reducing_method} Component 2")
         plt.colorbar(label="Cluster Label")
-        plt.savefig(full_path, dpi = 300)
+        plt.savefig(full_path, dpi = self.__dpi)
         plt.close()
 
-    
+    def save_clustering_3d_plots(self, path_to_save: str, file_name: str, type_of_clustering: str, 
+                              reducing_method: str, reduced_data: np.ndarray, 
+                              cluster_labels: np.ndarray, elev: int = 30, azim: int = -90) -> None:
+        """
+        Saves a scatter plot for clustering results.
+
+        Args:
+            path_to_save (str): Path to save the plot.
+            file_name (str): Name of the file to save the plot.
+            type_of_clustering (str): Type of clustering performed.
+            reducing_method (str): The method used for dimensionality reduction.
+            reduced_data (np.ndarray): The reduced data to plot.
+            cluster_labels (np.ndarray): Cluster labels for the data points.
+        """
+        os.makedirs(path_to_save, exist_ok=True)
+        full_path = os.path.join(path_to_save, file_name)
+
+        x_limits = (np.min(reduced_data[:, 0]), np.max(reduced_data[:, 0]))
+        y_limits = (np.min(reduced_data[:, 1]), np.max(reduced_data[:, 1]))
+        z_limits = (np.min(reduced_data[:, 2]), np.max(reduced_data[:, 2]))
+        mask = (cluster_labels == 0)
+        reduced_data = reduced_data[mask]
+        cluster_labels = cluster_labels[mask]
+
+        fig = plt.figure(figsize=(10, 8))
+        ax = fig.add_subplot(111, projection='3d')
+        scatter = ax.scatter(reduced_data[:, 0], reduced_data[:, 1], reduced_data[:, 2], 
+                             c=cluster_labels, cmap='tab10', s=50, alpha=0.7)
+        ax.set_title(f"{type_of_clustering} 3D Visualization")
+        ax.set_xlabel(f"{reducing_method} Component 1")
+        ax.set_ylabel(f"{reducing_method} Component 2")
+        ax.set_zlabel(f"{reducing_method} Component 3")
+        ax.set_xlim(x_limits)
+        ax.set_ylim(y_limits)
+        ax.set_zlim(z_limits)
+        ax.view_init(elev=elev, azim=azim)
+
+        fig.colorbar(scatter, ax=ax, label="Cluster Label")
+        plt.savefig(full_path, dpi=self.__dpi)
+        plt.close()
 
     def plot_correlation_matrix(self, correlation_matrix: pd.DataFrame, 
                                  main_folder: str, dataset_folder: str) -> None:
@@ -196,7 +282,7 @@ class GraphPlotter:
         sns.heatmap(correlation_matrix, annot=False, cmap='coolwarm', linewidths=0.5)
         plt.title('Correlation Matrix')
         plt.tight_layout()
-        plt.savefig(full_path, dpi = 300)
+        plt.savefig(full_path, dpi = self.__dpi)
 
     def save_chi_squared_plot(self, chi2_result: pd.DataFrame, 
                                main_folder: str, dataset_folder: str) -> None:
@@ -214,13 +300,13 @@ class GraphPlotter:
 
         # Plot Chi-Squared values
         plt.figure(figsize=(24, 8))
-        sns.barplot(x='Chi-Squared', y='Feature', data=chi2_result.head(20), palette='viridis')
+        sns.barplot(x='Chi-Squared', y='Feature', data=chi2_result, palette='viridis')
         plt.title('Top 20 Features by Chi-Squared Statistic')
         plt.xlabel('Chi-Squared Value')
         plt.ylabel('Feature')
         
         plt.tight_layout()
-        plt.savefig(full_path, dpi = 300)
+        plt.savefig(full_path, dpi = self.__dpi)
 
     def save_mutual_info_plot(self, mutual_info_result: pd.DataFrame, 
                                main_folder: str, dataset_folder: str) -> None:
@@ -244,7 +330,7 @@ class GraphPlotter:
         plt.ylabel('Features')
         plt.gca().invert_yaxis()
         plt.tight_layout()
-        plt.savefig(full_path, dpi = 300)
+        plt.savefig(full_path, dpi = self.__dpi)
 
     def save_random_forest_plot(self, random_forest_result: pd.DataFrame, 
                                  main_folder: str, dataset_folder: str) -> None:
@@ -268,7 +354,7 @@ class GraphPlotter:
         plt.title('Feature Importances from Random Forest')
         plt.gca().invert_yaxis()
         plt.tight_layout()
-        plt.savefig(full_path, dpi = 300)
+        plt.savefig(full_path, dpi = self.__dpi)
 
 
 
@@ -283,9 +369,9 @@ class GraphPlotter:
             clusters (np.ndarray): Array of cluster labels.
             filename (str): Filename to save the plot.
         """
-        n_cols = self.__n_columns  # Количество столбцов на графике
-        n_rows = self.__n_rows  # Количество строк на графике
-        n_plots = n_cols * n_rows  # Всего 4 графика на картинке
+        n_cols = self.__n_columns
+        n_rows = self.__n_rows
+        n_plots = n_cols * n_rows
 
         fig, axes = plt.subplots(n_rows, n_cols, figsize=(20, 10))
         axes = axes.flatten()
@@ -295,18 +381,18 @@ class GraphPlotter:
             top_categories = cluster_data[column].value_counts().index[:20]
 
             sns.countplot(y=cluster_data[column], ax=axes[i], order=top_categories, palette='magma')
-            axes[i].set_title(f"Cluster {cluster}")
+            axes[i].set_title(f"Cluster {cluster + 1}")
             axes[i].set_xlabel('Count')
             axes[i].set_ylabel('Answers')
             axes[i].text(0.95, 0.05, column, horizontalalignment='right', verticalalignment='bottom', 
                         transform=axes[i].transAxes, fontsize=8, color='black', style='normal')
 
-            # Отключаем пустые субплоты, если кластеры закончились
+        # Turn off empty subplots if clusters are over
         for j in range(len(clusters), n_plots):
             axes[j].axis('off')
 
         plt.tight_layout()
-        plt.savefig(filename, dpi=300)
+        plt.savefig(filename, dpi = self.__dpi)
         plt.close()
 
     def plot_important_features(self, dataset: pd.DataFrame, columns_to_plot: list[str], 
@@ -332,14 +418,12 @@ class GraphPlotter:
             column_dir = os.path.join(path_to_folder, f"top_feature_{i}")
             os.makedirs(column_dir, exist_ok=True)
 
-            # Разбиваем кластеры на группы по 4 для построения на одной картинке
             batch_size = 4
             for start_idx in range(0, len(clusters), batch_size):
                 end_idx = min(start_idx + batch_size, len(clusters))
                 clusters_to_plot = clusters[start_idx:end_idx]
 
-                # Имя файла для каждого столбца и группы кластеров
                 filename = os.path.join(column_dir, f"{i}_feature_clusters_{start_idx + 1}_to_{end_idx}.png")
-                # Строим графики для текущего столбца по выбранным кластерам
                 self.__plot_clusters_for_column(dataset, column, clusters_to_plot, filename)
+                plt.close()
             i+=1

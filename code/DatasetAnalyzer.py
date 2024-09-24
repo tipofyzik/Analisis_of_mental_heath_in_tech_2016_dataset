@@ -11,7 +11,6 @@ class DatasetAnalyzer:
         __categorical_dataset: DataFrame to hold categorical columns.
         __text_dataset: DataFrame to hold text columns.
     """
-    
 
     def __init__(self, dataset: pd.DataFrame):
         """

@@ -37,6 +37,7 @@ class DataEncoder:
             text_columns (list[str]): A list of text column names.
         """
         self.__labeled_columns.extend(text_columns)
+        self.__text_columns = text_columns
 
     def __define_binary_columns(self, dataset: pd.DataFrame) -> None:
         """
@@ -61,13 +62,16 @@ class DataEncoder:
         self.__labeled_columns.extend(self.__binary_columns)
         self.__labeled_columns.extend(self.__specific_columns)
 
-    def encode_data(self, dataset: pd.DataFrame) -> None:
+    def encode_data(self, dataset: pd.DataFrame, with_text_columns: bool = True) -> None:
         """
-        Encodes the dataset by applying label encoding to specified columns and 
-        one-hot encoding to other categorical columns.
+        Encodes the dataset by applying label encoding to binary and specific 
+        columns, and one-hot encoding to other categorical columns.
 
         Args:
             dataset (pd.DataFrame): The dataset to be encoded.
+            with_text_columns (bool): Whether to retain the text columns in the 
+            encoded dataset. If False, text columns are dropped. By default, all 
+        columns, including text columns, are retained in the encoded dataset.
         """
         self.__define_columns_to_label(dataset)
 
@@ -81,6 +85,8 @@ class DataEncoder:
         #One-hot encoding for other columns
         one_hot_dataset = pd.get_dummies(dataset.drop(columns = self.__labeled_columns), dtype=np.uint8)
         self.__encoded_dataset = pd.concat([one_hot_dataset, labeled_dataset], axis=1)
+        if not with_text_columns:
+            self.__encoded_dataset = self.__encoded_dataset.drop(columns = self.__text_columns)
 
     def normalize_data(self) -> None:
         """

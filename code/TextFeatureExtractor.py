@@ -50,25 +50,24 @@ class TextFeatureExtractor:
             Returns:
                 bool: True if the n-gram is redundant, otherwise False.
             """
-            # Преобразование n-gram'ов в множества слов
+            # Transforming n-grams to word sets
             ngram_words = set(ngram.split())
             longer_ngram_words = set(longer_ngram.split())
 
-            # Проверка на пересечение множеств слов более чем на половину
+            # Computing the intersection between sets
             intersection = ngram_words.intersection(longer_ngram_words)
             if len(intersection) / len(longer_ngram_words) > 0.5:
-                # For job and conditions
                 if importance[ngram] <= importance[longer_ngram] and additional_condition:
                     return True
                 return True
             return False
         
-        # For 'why or why not'
+        # For questions "why or why not?"
         if sort:
             ngrams = sorted(ngrams, key = lambda x: len(x.split()), reverse=True)
         unique_ngrams = []
         for ngram in ngrams:
-            # Проверяем, не является ли текущий n-gram дубликатом или подмножеством более длинного n-gram
+            # Checking whether the current n-gram is duplicate or subset of the longer one
             if not any(__is_redundant(ngram, longer_ngram) for longer_ngram in unique_ngrams):
                 unique_ngrams.append(ngram)
         return unique_ngrams
@@ -99,7 +98,7 @@ class TextFeatureExtractor:
         Returns:
             str: The most important n-gram present in the text.
         """
-        # Препроцессинг текста для получения лемм
+        # Preprocessing to get lemms
         tokens = self.__preprocess_text(text)
         token_set = tokens.split()
 
@@ -113,11 +112,10 @@ class TextFeatureExtractor:
             Returns:
                 bool: True if the n-gram is present, otherwise False.
             """
-            ngram_tokens = ngram.split()  # Разбиваем n-грамму на отдельные слова
-            # Проверяем, содержится ли каждая часть n-граммы в токенах текста
+            ngram_tokens = ngram.split()
             return all(token in token_set for token in ngram_tokens)
 
-        # Отбираем только те n-граммы, которые присутствуют в тексте
+        # n-grams that are in text (text is a cell in the text column) 
         matching_ngrams = [ngram for ngram in ngrams if ngram_in_tokens(ngram)]
 
         if not matching_ngrams or len(token_set) < 2:
@@ -163,13 +161,10 @@ class TextFeatureExtractor:
 
         word_importance = word_importance.loc[filtered_word_importance]
         word_importance = word_importance.sort_values(ascending=False)
-        # top_n_words = word_importance.head(20)
 
-        # TODO
         ngrams = word_importance.index.tolist()
         dataset[column] = dataset[column].\
             apply(lambda x: self.__check_ngrams_in_text(x, ngrams, word_importance))
-
 
     def extract_features(self) -> None:
         """
