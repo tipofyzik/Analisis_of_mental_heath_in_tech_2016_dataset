@@ -78,7 +78,7 @@ if __name__ == "__main__":
     dataset_info.print_dataset_info()
     # dataset_info.print_each_column_types()
     analyzer.check_missing_values(percent_threshold=missing_information_max_percent)
-    # plotter.save_plots(path_to_original_graphs, original_dataset)
+    plotter.save_plots(path_to_original_graphs, original_dataset)
     print("Analysis complete!")
 
     # Analyzing and preparing data for future working
@@ -90,7 +90,7 @@ if __name__ == "__main__":
     print("Data preparation complete!")
 
     preprocessed_dataset = pd.concat([categorical_dataset, text_dataset], axis = 1)
-    # plotter.save_plots(path_to_processed_graphs, preprocessed_dataset)
+    plotter.save_plots(path_to_processed_graphs, preprocessed_dataset)
     print("Graphs with prepared data saved!")
 
     # Encoding data for machine learning algorithms to work
