@@ -4,6 +4,7 @@
 To be brief, there is a high-dimensional, complex survey, which conducted amongst technology-oriented employees. Dataset has missing values and non-standardized textual inputs. The goal is to categorize participants based on their survey responses and create visualizations that would simplify the data complexity. Key characteristics should be preserved and each result cluster should be described, in the context of its main traits.
 
 Dataset can be accessed via this link: https://www.kaggle.com/datasets/osmi/mental-health-in-tech-2016  
+In case this dataset would be changed, I uploaded it on this github page (folder "code" -> folder "dataset").  
 ## 2. Programm installation
 
 ### Requirements 
