@@ -139,7 +139,7 @@ class ResultInterpreter:
 
         accuracy = accuracy_score(y_test, y_pred)
         print(f"Random Forest train accuracy: {rf.score(X_train, y_train):.2f}")
-        print(f"Random Forest test accuracy: {accuracy:.2f}")
+        print(f"Random Forest test accuracy: {accuracy:.2f}\n")
         
         if with_permutations:
             permutation_result = permutation_importance(rf, X_test, y_test, n_repeats=10, random_state=0)
