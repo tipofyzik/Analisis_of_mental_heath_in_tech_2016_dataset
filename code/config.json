@@ -31,12 +31,12 @@
         "tsne_random_state": 0
     },
     "ResultInterpreter": {
+        "permutations_for_random_forest": 1,
         "path_to_pca_gauss_result": "pca_gauss_interpretation",
         "path_to_tsne_gauss_result": "tsne_gauss_interpretation",
         "path_to_pca_kmeans_result": "pca_kmeans_interpretation",
         "path_to_tsne_kmeans_result": "tsne_kmeans_interpretation",
         "path_to_pca_agglomerative_result": "pca_agglomerative_interpretation",
-        "path_to_tsne_agglomerative_result": "tsne_agglomerative_interpretation",
-        "permutations_for_random_forest": 1
+        "path_to_tsne_agglomerative_result": "tsne_agglomerative_interpretation"
     }
 }
