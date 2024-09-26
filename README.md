@@ -21,7 +21,7 @@ You can find explanation of each config parameter in the section "4.2. Config an
 Best setup solutions for this task you can find in the section "5. Results of the work".  
 
 ## 4. Implementation
-This implementation has 9 classes, 1 launch file, and 1 config file to tune desirable settings.
+This implementation has 9 classes, 1 config file to tune desirable settings, and 1 launch file, .
 ### 4.1. Classes
 Each class is documented, so the reader can read for himself what each function does. Here the main purpose of each class is briefly described. Furthermore, 
 
