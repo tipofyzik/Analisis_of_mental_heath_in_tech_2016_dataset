@@ -99,12 +99,9 @@ class ResultInterpreter:
         results_df = pd.DataFrame(chi2_results).sort_values(by='Chi-Squared', ascending=False)        
         return results_df
 
-    def mutual_info_feature_selection(self, number_of_features: int) -> pd.DataFrame:
+    def mutual_info_feature_selection(self) -> pd.DataFrame:
         """
         Selects features based on mutual information and returns the results in a sorted DataFrame.
-
-        Args:
-            number_of_features (int): The number of top features to select.
 
         Returns:
             pd.DataFrame: DataFrame containing features and their mutual information scores, sorted by score.
@@ -116,16 +113,19 @@ class ResultInterpreter:
         mutual_info_result = mutual_info_result.sort_values(by='Score', ascending=False)
         return mutual_info_result
 
-    def random_forest_feature_selection(self, with_permutations: bool) -> pd.DataFrame:
+    def random_forest_feature_selection(self, with_permutations: bool, permutation_repeats: int,
+                                        permutation_random_state: int) -> pd.DataFrame:
         """
-        Selects features using a Random Forest classifier. Optionally uses permutation importance.
+        Selects features using a Random Forest classifier. Optionally, permutation importance can be used.
         Returns the feature importances in a sorted DataFrame.
 
         Args:
             with_permutations (bool): Whether to use permutation importance for feature selection.
+            permutation_repeats (int): Number of permutation repeats to calculate feature importance.
+            permutation_random_state (int): Random state for reproducibility in permutation importance.
 
         Returns:
-            pd.DataFrame: DataFrame containing features and their importance scores, sorted by importance.
+            pd.DataFrame: A DataFrame containing features and their importance scores, sorted by importance.
         """
         X = self.__encoded_dataset
         y = self.__target_column
@@ -142,7 +142,9 @@ class ResultInterpreter:
         print(f"Random Forest test accuracy: {accuracy:.2f}\n")
         
         if with_permutations:
-            permutation_result = permutation_importance(rf, X_test, y_test, n_repeats=10, random_state=0)
+            permutation_result = permutation_importance(rf, X_test, y_test, 
+                                                        n_repeats=permutation_repeats, 
+                                                        random_state=permutation_random_state)
             feature_importances = pd.DataFrame({
                 'Feature': X.columns,
                 'Importance': permutation_result.importances_mean,

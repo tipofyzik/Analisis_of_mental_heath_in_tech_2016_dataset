@@ -52,8 +52,10 @@ kmeans_init = config["Clusterization"]["kmeans_init"]
 kmeans_random_state = config["Clusterization"]["kmeans_random_state"]
 gauss_random_state = config["Clusterization"]["gauss_random_state"]
 
-# Setting to turn on/off permutation feature importance for random forest algorithm
-permutations_for_random_forest = bool(config["ResultInterpreter"]["permutations_for_random_forest"])
+# Settings for tuning permutation feature importance for random forest algorithm
+random_forest_with_permutations = bool(config["ResultInterpreter"]["random_forest_with_permutations"])
+random_forest_permutation_repeats = config["ResultInterpreter"]["random_forest_permutation_repeats"]
+permutation_random_state = config["ResultInterpreter"]["permutation_random_state"]
 
 # Paths to save cluster interpreting results
 path_to_interpretations = config['GraphPlotter']['path_to_interpretations']
@@ -288,14 +290,16 @@ if __name__ == "__main__":
                                         main_folder = path_to_interpretations, dataset_folder = dataset_folder,
                                         test_name = "chi_squared_selected_features")
         #Mutual information
-        mutual_info_result = interpreter.mutual_info_feature_selection(number_of_features=20)
+        mutual_info_result = interpreter.mutual_info_feature_selection()
         plotter.save_mutual_info_plot(mutual_info_result = mutual_info_result[:max_feature_number], 
                                       main_folder = path_to_interpretations, dataset_folder = dataset_folder)
         plotter.plot_important_features(dataset = dataset_to_interpret, columns_to_plot = mutual_info_result["Feature"][:max_feature_number],
                                         main_folder = path_to_interpretations, dataset_folder = dataset_folder,
                                         test_name = "mutual_information_selected_features")
         #Random Forest
-        random_forest_result = interpreter.random_forest_feature_selection(with_permutations = permutations_for_random_forest)
+        random_forest_result = interpreter.random_forest_feature_selection(with_permutations = random_forest_with_permutations,
+                                                                           permutation_repeats = random_forest_permutation_repeats,
+                                                                           permutation_random_state = permutation_random_state)
         plotter.save_random_forest_plot(random_forest_result = random_forest_result[:max_feature_number], 
                                         main_folder = path_to_interpretations, dataset_folder = dataset_folder)
         plotter.plot_important_features(dataset = dataset_to_interpret, columns_to_plot = random_forest_result["Feature"][:max_feature_number],

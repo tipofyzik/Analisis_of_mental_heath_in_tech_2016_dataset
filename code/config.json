@@ -31,7 +31,9 @@
         "tsne_random_state": 0
     },
     "ResultInterpreter": {
-        "permutations_for_random_forest": 1,
+        "random_forest_with_permutations": 1,
+        "random_forest_permutation_repeats": 10,
+        "permutation_random_state": 0,
         "path_to_pca_gauss_result": "pca_gauss_interpretation",
         "path_to_tsne_gauss_result": "tsne_gauss_interpretation",
         "path_to_pca_kmeans_result": "pca_kmeans_interpretation",

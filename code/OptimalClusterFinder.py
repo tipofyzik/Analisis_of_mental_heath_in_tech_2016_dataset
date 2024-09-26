@@ -122,7 +122,7 @@ class OptimalClusterFinder:
         full_path = os.path.join(folder_path, dendrogram_path)
         os.makedirs(full_path, exist_ok=True)
         
-        dendrogram = sch.dendrogram(sch.linkage(dataset, method='ward'))
+        sch.dendrogram(sch.linkage(dataset, method='ward'))
         plt.axhline(y=threshold, color='black', linestyle='--')
         plt.xlabel('Sample Index')
         plt.ylabel('Distance')
