@@ -13,7 +13,7 @@ You need to intall Python with the version 3.11.3 and higher. All required modul
 ### How to install
 1. Download Python from the [official site](https://www.python.org/downloads/) and install it.  
 2. Install required modules from "requirements.txt"
-3. Download the folder "code". It contains **"app.py"** file that runs the analysis application.
+3. Download the folder "code" that contains the code to process dataset and the dataset itself. Keep the file location the same. Run the **"app.py"** to process dataset and get results.
 
 ## 3. How to use
 
