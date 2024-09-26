@@ -56,7 +56,7 @@ class DimensionalityReducer:
         print(f"Cumulative explained variance: {cumulative_variance}")
         print(np.sum(self.__pca.explained_variance_ratio_))
 
-    def get_95_percent_pca_result(self, saved_info_ratio: float, normalized_dataset: pd.DataFrame) -> pd.DataFrame:
+    def get_n_percent_pca_result(self, saved_info_ratio: float, normalized_dataset: pd.DataFrame) -> pd.DataFrame:
         """
         Gets the PCA result preserving the specified explained variance ratio.
 

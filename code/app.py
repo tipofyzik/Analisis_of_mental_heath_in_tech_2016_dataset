@@ -139,8 +139,8 @@ if __name__ == "__main__":
                                                     file_name = f"{type_of_dataset}_bic_aic",
                                                     gauss_random_state = gauss_random_state)
 
-    # Reducing dimensionality to save 95% of information
-    pca_95_result = dimension_reducer.get_95_percent_pca_result(saved_info_ratio = 0.95, normalized_dataset = normalized_dataset)
+    # Reducing dimensionality to save n% of information
+    pca_95_result = dimension_reducer.get_n_percent_pca_result(saved_info_ratio = save_info_ratio, normalized_dataset = normalized_dataset)
 
     find_optimal_k(dataset = encoded_dataset.values, type_of_dataset = "encoded", dendrogram_threshold = 60)
     find_optimal_k(dataset = normalized_dataset, type_of_dataset = "normalized", dendrogram_threshold = 62)
@@ -167,34 +167,38 @@ if __name__ == "__main__":
     # Save reduced data visualizations
     # Linear pca in 2d and 3d
     plotter.save_2d_reduced_data_plotes(path_to_save = path_to_reduced_components_visualization, file_name = "linear_pca_2d.png",
-                                  reducing_method="Linear_PCA_2D", reduced_data = norm_pca_2d_result)
+                                        reducing_method="Linear_PCA_2D", reduced_data = norm_pca_2d_result)
     plotter.save_3d_reduced_data_plotes(path_to_save = path_to_reduced_components_visualization, file_name = "linear_pca_3d.png",
-                                  reducing_method="Linear_PCA_3D", reduced_data = norm_pca_3d_result)
+                                        reducing_method="Linear_PCA_3D", reduced_data = norm_pca_3d_result)
     # Kernel pca in 2d and 3d on normalized and pca-reduced data
     plotter.save_2d_reduced_data_plotes(path_to_save = path_to_reduced_components_visualization, file_name = "norm_kernel_pca_2d.png",
-                                  reducing_method="Kernel_PCA_2D", reduced_data = norm_kernel_pca_2d_result)
+                                        reducing_method="Kernel_PCA_2D", reduced_data = norm_kernel_pca_2d_result)
     plotter.save_3d_reduced_data_plotes(path_to_save = path_to_reduced_components_visualization, file_name = "norm_kernel_pca_3d.png",
-                                  reducing_method="Kernel_PCA_3D", reduced_data = norm_kernel_pca_3d_result)
+                                        reducing_method="Kernel_PCA_3D", reduced_data = norm_kernel_pca_3d_result)
     plotter.save_2d_reduced_data_plotes(path_to_save = path_to_reduced_components_visualization, file_name = "pca_kernel_pca_2d.png",
-                                  reducing_method="Kernel_PCA_2D", reduced_data = pca_kernel_pca_2d_result)
+                                        reducing_method="Kernel_PCA_2D", reduced_data = pca_kernel_pca_2d_result)
     plotter.save_3d_reduced_data_plotes(path_to_save = path_to_reduced_components_visualization, file_name = "pca_kernel_pca_3d.png",
-                                  reducing_method="Kernel_PCA_3D", reduced_data = pca_kernel_pca_3d_result)
+                                        reducing_method="Kernel_PCA_3D", reduced_data = pca_kernel_pca_3d_result)
     # t-SNE in 2d and 3d on normalized and pca-reduced data
     plotter.save_2d_reduced_data_plotes(path_to_save = path_to_reduced_components_visualization, file_name = "norm_tsne_2d.png",
-                                  reducing_method="tSNE_2D", reduced_data = norm_tsne_2d_result)
+                                        reducing_method="tSNE_2D", reduced_data = norm_tsne_2d_result)
     plotter.save_3d_reduced_data_plotes(path_to_save = path_to_reduced_components_visualization, file_name = "norm_tsne_3d.png",
-                                  reducing_method="tSNE_3D", reduced_data = norm_tsne_3d_result)
+                                        reducing_method="tSNE_3D", reduced_data = norm_tsne_3d_result)
     plotter.save_2d_reduced_data_plotes(path_to_save = path_to_reduced_components_visualization, file_name = "pca_tsne_2d.png",
-                                  reducing_method="tSNE_2D", reduced_data = pca_tsne_2d_result)
+                                        reducing_method="tSNE_2D", reduced_data = pca_tsne_2d_result)
     plotter.save_3d_reduced_data_plotes(path_to_save = path_to_reduced_components_visualization, file_name = "pca_tsne_3d.png",
-                                  reducing_method="tSNE_3D", reduced_data = pca_tsne_3d_result)
+                                        reducing_method="tSNE_3D", reduced_data = pca_tsne_3d_result)
     # Showing the aproximate form of a t-SNE group 
-    plotter.save_3d_reduced_data_plot_with_range(path_to_save = path_to_reduced_components_visualization, file_name = "norm_tsne_3d_range_0_90.png",
-                                  reducing_method="tSNE_3D", reduced_data = norm_tsne_3d_result, elev = 0, azim = 90)
-    plotter.save_3d_reduced_data_plot_with_range(path_to_save = path_to_reduced_components_visualization, file_name = "norm_tsne_3d_range_0_45.png",
-                                  reducing_method="tSNE_3D", reduced_data = norm_tsne_3d_result, elev = 0, azim = 45)
-    plotter.save_3d_reduced_data_plot_with_range(path_to_save = path_to_reduced_components_visualization, file_name = "norm_tsne_3d_range_0_0.png",
-                                  reducing_method="tSNE_3D", reduced_data = norm_tsne_3d_result, elev = 0, azim = 0)
+    component_range = (10, 20)
+    plotter.save_3d_reduced_data_plot_with_range(path_to_save = path_to_reduced_components_visualization, 
+                                                 file_name = "norm_tsne_3d_range_0_90.png", component_range = component_range,
+                                                 reducing_method="tSNE_3D", reduced_data = norm_tsne_3d_result, elev = 0, azim = 90)
+    plotter.save_3d_reduced_data_plot_with_range(path_to_save = path_to_reduced_components_visualization, 
+                                                 file_name = "norm_tsne_3d_range_0_45.png", component_range = component_range,
+                                                 reducing_method="tSNE_3D", reduced_data = norm_tsne_3d_result, elev = 0, azim = 45)
+    plotter.save_3d_reduced_data_plot_with_range(path_to_save = path_to_reduced_components_visualization, 
+                                                 file_name = "norm_tsne_3d_range_0_0.png", component_range = component_range,
+                                                 reducing_method="tSNE_3D", reduced_data = norm_tsne_3d_result, elev = 0, azim = 0)
     print("Dimensionality reduction complete!\n")
 
 
