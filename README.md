@@ -19,7 +19,7 @@ You need to intall Python with the version 3.11.3 and higher. All required modul
 There are two important files to run the programme: **"app.py"** and **"config.json"**. The first file runs the program, which includes preprocessing, encoding, clustering, and interpreting of the dataset. **"config.json"** allows to set up parameters for the program, e.g., number of clusters, random states for different algorithms, paths to save folders, etc.  
 
 You can find explanation of each parameter in the section "4. Implementation".  
-Best setups for the task you can find in the section "5. Results of the work".  
+Best setup solutions for this task you can find in the section "5. Results of the work".  
 
 ## 4. Implementation
 
