@@ -140,11 +140,11 @@ if __name__ == "__main__":
                                                     gauss_random_state = gauss_random_state)
 
     # Reducing dimensionality to save n% of information
-    pca_95_result = dimension_reducer.get_n_percent_pca_result(saved_info_ratio = save_info_ratio, normalized_dataset = normalized_dataset)
+    pca_n_result = dimension_reducer.get_n_percent_pca_result(saved_info_ratio = save_info_ratio, normalized_dataset = normalized_dataset)
 
     find_optimal_k(dataset = encoded_dataset.values, type_of_dataset = "encoded", dendrogram_threshold = 60)
     find_optimal_k(dataset = normalized_dataset, type_of_dataset = "normalized", dendrogram_threshold = 62)
-    find_optimal_k(dataset = pca_95_result, type_of_dataset = "pca", dendrogram_threshold = 65)
+    find_optimal_k(dataset = pca_n_result, type_of_dataset = "pca", dendrogram_threshold = 65)
     print("Cluster number evaluation complete!\n")
 
 
@@ -160,9 +160,9 @@ if __name__ == "__main__":
         get_kernel_pca_result(normalized_or_pca_dataset = normalized_dataset)
     # Kernel PCA and t-SNE for data reduced by linear PCA with 95% information saved
     pca_tsne_2d_result, pca_tsne_3d_result = dimension_reducer.\
-        get_tsne_result(normalized_or_pca_dataset = pca_95_result)
+        get_tsne_result(normalized_or_pca_dataset = pca_n_result)
     pca_kernel_pca_2d_result, pca_kernel_pca_3d_result = dimension_reducer.\
-        get_kernel_pca_result(normalized_or_pca_dataset = pca_95_result)
+        get_kernel_pca_result(normalized_or_pca_dataset = pca_n_result)
 
     # Save reduced data visualizations
     # Linear pca in 2d and 3d
