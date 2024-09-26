@@ -11,7 +11,7 @@ class DataEncoder:
     Attributes:
         __label_encoders: A dictionary to store the label encoders for each column.
         __labeled_columns: A list of columns to be label encoded.
-        __binary_columns: A list of columns identified as binary.
+        __binary_columns: A list of columns that has only 2 responses.
         __specific_columns: A predefined list of specific columns to be included in label encoding.
     """
     
