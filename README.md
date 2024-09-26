@@ -11,6 +11,9 @@ In case this dataset would be changed, I uploaded it on this github page (**fold
 You need to intall Python with the version 3.11.3 and higher. All required modules to install you can find in the **"requirements.txt"** file.
 
 ### How to install
+1. Download Python from the [official site](https://www.python.org/downloads/) and install it.  
+2. Install required modules from "requirements.txt"
+3. Download the folder "code". It contains **"app.py"** file that runs the analysis application.
 
 ## 3. How to use
 
