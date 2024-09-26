@@ -14,6 +14,8 @@ You need to intall Python with the version 3.11.3 and higher. All required modul
 
 ## 3. How to use
 
-## 4. Results of the work
+## 4. Implementation
 
-## 5. Possible improvements
+## 5. Results of the work
+
+## 6. Possible improvements
