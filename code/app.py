@@ -245,23 +245,23 @@ if __name__ == "__main__":
     # Gaussian Mixture Model
     pca_gaussian_dataset, pca_gaussian_labels = classify_dataset(reduced_dataset = norm_pca_2d_result,
                                                                 method_of_clustering = clusterer.gaussian_mixture_clusterization)
-    kernel_pca_gaussian_dataset, kernel_pca_gaussian_labels = classify_dataset(reduced_dataset = norm_kernel_pca_2d_result,
-                                                                method_of_clustering = clusterer.gaussian_mixture_clusterization)
     tsne_gaussian_dataset, tsne_gaussian_labels = classify_dataset(reduced_dataset = norm_tsne_2d_result,
+                                                                method_of_clustering = clusterer.gaussian_mixture_clusterization)
+    kernel_pca_gaussian_dataset, kernel_pca_gaussian_labels = classify_dataset(reduced_dataset = norm_kernel_pca_2d_result,
                                                                 method_of_clustering = clusterer.gaussian_mixture_clusterization)
     # K-Means
     pca_kmeans_dataset, pca_kmeans_cluster_labels = classify_dataset(reduced_dataset = pca_tsne_2d_result,
                                                                 method_of_clustering = clusterer.kmeans_clusterization)
-    kernel_pca_kmeans_dataset, kernel_pca_kmeans_labels = classify_dataset(reduced_dataset = norm_kernel_pca_2d_result,
-                                                                method_of_clustering = clusterer.kmeans_clusterization)
     tsne_kmeans_dataset, tsne_kmeans_cluster_labels = classify_dataset(reduced_dataset = norm_tsne_2d_result,
+                                                                method_of_clustering = clusterer.kmeans_clusterization)
+    kernel_pca_kmeans_dataset, kernel_pca_kmeans_labels = classify_dataset(reduced_dataset = norm_kernel_pca_2d_result,
                                                                 method_of_clustering = clusterer.kmeans_clusterization)
     # Agglomerative clustering
     pca_agglomerative_dataset, pca_agglomerative_cluster_labels = classify_dataset(reduced_dataset = pca_tsne_2d_result,
                                                                 method_of_clustering = clusterer.agglomerative_clusterization)
-    kernel_pca_agglomerative_dataset, kernel_pca_agglomerative_labels = classify_dataset(reduced_dataset = norm_kernel_pca_2d_result,
-                                                                method_of_clustering = clusterer.agglomerative_clusterization)
     tsne_agglomerative_dataset, tsne_agglomerative_cluster_labels = classify_dataset(reduced_dataset = norm_tsne_2d_result,
+                                                                method_of_clustering = clusterer.agglomerative_clusterization)
+    kernel_pca_agglomerative_dataset, kernel_pca_agglomerative_labels = classify_dataset(reduced_dataset = norm_kernel_pca_2d_result,
                                                                 method_of_clustering = clusterer.agglomerative_clusterization)
 
     # Save clustering results
@@ -333,22 +333,24 @@ if __name__ == "__main__":
     # Gaussian
     interpret_clusterisation(dataset_to_interpret = pca_gaussian_dataset, result_dataset_name = "pca_gaussian_dataset.csv",
                              dataset_folder = path_to_pca_gauss_result)
-    # interpret_clusterisation(dataset_to_interpret = kernel_pca_gaussian_dataset, result_dataset_name = "kernel_pca_gaussian_dataset.csv",
-    #                          dataset_folder = path_to_kernel_pca_gauss_result)
     interpret_clusterisation(dataset_to_interpret = tsne_gaussian_dataset, result_dataset_name = "tsne_gaussian_dataset.csv",
                              dataset_folder = path_to_tsne_gauss_result)
+    # interpret_clusterisation(dataset_to_interpret = kernel_pca_gaussian_dataset, result_dataset_name = "kernel_pca_gaussian_dataset.csv",
+    #                          dataset_folder = path_to_kernel_pca_gauss_result)
+
     # K-Means
     interpret_clusterisation(dataset_to_interpret = pca_kmeans_dataset, result_dataset_name = "pca_kmeans_dataset.csv",
                              dataset_folder = path_to_pca_kmeans_result)
-    # interpret_clusterisation(dataset_to_interpret = kernel_pca_kmeans_dataset, result_dataset_name = "kernel_pca_kmeans_dataset.csv",
-    #                          dataset_folder = path_to_kernel_pca_kmeans_result)
     interpret_clusterisation(dataset_to_interpret = tsne_kmeans_dataset, result_dataset_name = "tsne_kmeans_dataset.csv",
                              dataset_folder = path_to_tsne_kmeans_result)
+    # interpret_clusterisation(dataset_to_interpret = kernel_pca_kmeans_dataset, result_dataset_name = "kernel_pca_kmeans_dataset.csv",
+    #                          dataset_folder = path_to_kernel_pca_kmeans_result)
+
     # Agglomerative clustering
     interpret_clusterisation(dataset_to_interpret = pca_agglomerative_dataset, result_dataset_name = "pca_agglomerative_dataset.csv",
                              dataset_folder = path_to_pca_agglomerative_result)
-    # interpret_clusterisation(dataset_to_interpret = kernel_pca_agglomerative_dataset, result_dataset_name = "kernel_pca_agglomerative_dataset.csv",
-    #                          dataset_folder = path_to_kernel_pca_agglomerative_result)
     interpret_clusterisation(dataset_to_interpret = tsne_agglomerative_dataset, result_dataset_name = "tsne_agglomerative_dataset.csv",
                              dataset_folder = path_to_tsne_agglomerative_result)    
+    # interpret_clusterisation(dataset_to_interpret = kernel_pca_agglomerative_dataset, result_dataset_name = "kernel_pca_agglomerative_dataset.csv",
+    #                          dataset_folder = path_to_kernel_pca_agglomerative_result)
     print("Interpretation complete!") 

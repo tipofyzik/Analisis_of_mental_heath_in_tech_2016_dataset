@@ -40,8 +40,8 @@ class GraphPlotter:
             ax (Any): Axes object to plot on.
         """
         column = dataset.columns[column_index]
-        top_20_answers = dataset[column].value_counts().nlargest(self.__max_feature_number).index
-        sns.countplot(y=column, data=dataset[dataset[column].isin(top_20_answers)], ax=ax, order=top_20_answers, palette='magma')
+        top_n_answers = dataset[column].value_counts().nlargest(self.__max_feature_number).index
+        sns.countplot(y=column, data=dataset[dataset[column].isin(top_n_answers)], ax=ax, order=top_n_answers, palette='magma')
     
         ax.set_xlabel('Count', fontsize=9)
         ax.set_ylabel('Answers', fontsize=9)
@@ -96,7 +96,7 @@ class GraphPlotter:
             end_idx = min(start_idx + batch_size, total_columns)
             filename = f"{relative_path}/{start_idx + 1}_{end_idx}_questions_from_text_data.png"
             self.__plot_columns_in_batches(dataset, start_idx, end_idx, filename, self.__display_data_per_question)
-  
+
     def save_2d_reduced_data_plotes(self, path_to_save: str, file_name: str, 
                                      reducing_method: str, reduced_data: np.ndarray) -> None:
         """
