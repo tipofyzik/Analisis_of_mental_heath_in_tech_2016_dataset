@@ -23,17 +23,17 @@ Best setup solutions for this task you can find in the section "5. Results of th
 ## 4. Implementation
 This implementation has 9 classes, 1 launch file, and 1 config file to tune desirable settings.
 ### 4.1. Classes
-Each each class is documented, so the reader can read for himself what each function does. Here the main purpose of each class is briefly described.
+Each class is documented, so the reader can read for himself what each function does. Here the main purpose of each class is briefly described. Furthermore, 
 
-**· *GraphPlotter*:**  
-**· *WorkingDatasetInfo*:**  
-**· *DatasetAnalyzer*:**  
-**· *TextFeatureExtractor*:**  
-**· *DataEncoder*:**  
-**· *OptimalClusterFinder*:**  
-**· *DimensionalityReducer*:**  
-**· *DataClusterer*:**  
-**· *ResultInterpreter*:**  
+**· *GraphPlotter class*** has functions to plot and save images for different cases.  
+**· *WorkingDatasetInfo class*:**  
+**· *DatasetAnalyzer class*:**  
+**· *TextFeatureExtractor class*:**  
+**· *DataEncoder class*:**  
+**· *OptimalClusterFinder class*:**  
+**· *DimensionalityReducer class*:**  
+**· *DataClusterer class*:**  
+**· *ResultInterpreter class*:**  
 
 ### 4.2. Config and launch files
 
