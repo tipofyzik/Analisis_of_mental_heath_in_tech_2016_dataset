@@ -21,6 +21,11 @@ You can find explanation of each parameter in the section "4. Implementation".
 Best setup solutions for this task you can find in the section "5. Results of the work".  
 
 ## 4. Implementation
+This work consists of 9 classes, 1 file to run the app, and 1 config file to tune desirable settings.
+### 4.1. Classes
+
+### 4.2. Config and launch files
+
 
 ## 5. Results of the work
 
