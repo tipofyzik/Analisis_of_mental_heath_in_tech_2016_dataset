@@ -10,7 +10,7 @@
         "dpi": 200,
         "max_feature_number_to_plot": 20,
         "path_to_original_graphs": "./results/original_data_graphs",
-        "path_to_processed_graphs": "./results/prepared_for_processing_data_graphs",
+        "path_to_processed_graphs": "./results/preprocessed_data_graphs",
         "path_to_cluster_choice_graphs": "./results/cluster_choice_graphs",
         "path_to_k_elbow": "k_elbow_graphs",
         "path_to_silhouette_score": "silhouette_score_graphs",
@@ -35,10 +35,13 @@
         "random_forest_permutation_repeats": 10,
         "permutation_random_state": 0,
         "path_to_pca_gauss_result": "pca_gauss_interpretation",
+        "path_to_kernel_pca_gauss_result": "kernel_pca_gauss_interpretation",
         "path_to_tsne_gauss_result": "tsne_gauss_interpretation",
         "path_to_pca_kmeans_result": "pca_kmeans_interpretation",
+        "path_to_kernel_pca_kmeans_result": "kernel_pca_kmeans_interpretation",
         "path_to_tsne_kmeans_result": "tsne_kmeans_interpretation",
         "path_to_pca_agglomerative_result": "pca_agglomerative_interpretation",
+        "path_to_kernel_pca_agglomerative_result": "kernel_pca_agglomerative_interpretation",
         "path_to_tsne_agglomerative_result": "tsne_agglomerative_interpretation"
     }
 }

@@ -59,11 +59,17 @@ permutation_random_state = config["ResultInterpreter"]["permutation_random_state
 
 # Paths to save cluster interpreting results
 path_to_interpretations = config['GraphPlotter']['path_to_interpretations']
+
 path_to_pca_gauss_result = config["ResultInterpreter"]["path_to_pca_gauss_result"]
+path_to_kernel_pca_gauss_result = config["ResultInterpreter"]["path_to_kernel_pca_gauss_result"]
 path_to_tsne_gauss_result = config["ResultInterpreter"]["path_to_tsne_gauss_result"]
+
 path_to_pca_kmeans_result = config["ResultInterpreter"]["path_to_pca_kmeans_result"]
+path_to_kernel_pca_kmeans_result = config["ResultInterpreter"]["path_to_kernel_pca_kmeans_result"]
 path_to_tsne_kmeans_result = config["ResultInterpreter"]["path_to_tsne_kmeans_result"]
+
 path_to_pca_agglomerative_result = config["ResultInterpreter"]["path_to_pca_agglomerative_result"]
+path_to_kernel_pca_agglomerative_result = config["ResultInterpreter"]["path_to_kernel_pca_agglomerative_result"]
 path_to_tsne_agglomerative_result = config["ResultInterpreter"]["path_to_tsne_agglomerative_result"]
 
 
@@ -189,13 +195,13 @@ if __name__ == "__main__":
     plotter.save_3d_reduced_data_plotes(path_to_save = path_to_reduced_components_visualization, file_name = "pca_tsne_3d.png",
                                         reducing_method="tSNE_3D", reduced_data = pca_tsne_3d_result)
     # Showing the aproximate form of a t-SNE group 
-    component_range = (10, 20)
+    component_range = (0, 10)
     plotter.save_3d_reduced_data_plot_with_range(path_to_save = path_to_reduced_components_visualization, 
                                                  file_name = "norm_tsne_3d_range_0_90.png", component_range = component_range,
-                                                 reducing_method="tSNE_3D", reduced_data = norm_tsne_3d_result, elev = 0, azim = 90)
+                                                 reducing_method="tSNE_3D", reduced_data = norm_tsne_3d_result, elev = 0, azim = -90)
     plotter.save_3d_reduced_data_plot_with_range(path_to_save = path_to_reduced_components_visualization, 
                                                  file_name = "norm_tsne_3d_range_0_45.png", component_range = component_range,
-                                                 reducing_method="tSNE_3D", reduced_data = norm_tsne_3d_result, elev = 0, azim = 45)
+                                                 reducing_method="tSNE_3D", reduced_data = norm_tsne_3d_result, elev = 0, azim = -45)
     plotter.save_3d_reduced_data_plot_with_range(path_to_save = path_to_reduced_components_visualization, 
                                                  file_name = "norm_tsne_3d_range_0_0.png", component_range = component_range,
                                                  reducing_method="tSNE_3D", reduced_data = norm_tsne_3d_result, elev = 0, azim = 0)
@@ -238,25 +244,34 @@ if __name__ == "__main__":
 
     # Gaussian Mixture Model
     pca_gaussian_dataset, pca_gaussian_labels = classify_dataset(reduced_dataset = norm_pca_2d_result,
-                                                                 method_of_clustering = clusterer.gaussian_mixture_clusterization)
+                                                                method_of_clustering = clusterer.gaussian_mixture_clusterization)
+    kernel_pca_gaussian_dataset, kernel_pca_gaussian_labels = classify_dataset(reduced_dataset = norm_kernel_pca_2d_result,
+                                                                method_of_clustering = clusterer.gaussian_mixture_clusterization)
     tsne_gaussian_dataset, tsne_gaussian_labels = classify_dataset(reduced_dataset = norm_tsne_2d_result,
-                                                                 method_of_clustering = clusterer.gaussian_mixture_clusterization)
+                                                                method_of_clustering = clusterer.gaussian_mixture_clusterization)
     # K-Means
     pca_kmeans_dataset, pca_kmeans_cluster_labels = classify_dataset(reduced_dataset = pca_tsne_2d_result,
-                                                                     method_of_clustering = clusterer.kmeans_clusterization)
+                                                                method_of_clustering = clusterer.kmeans_clusterization)
+    kernel_pca_kmeans_dataset, kernel_pca_kmeans_labels = classify_dataset(reduced_dataset = norm_kernel_pca_2d_result,
+                                                                method_of_clustering = clusterer.kmeans_clusterization)
     tsne_kmeans_dataset, tsne_kmeans_cluster_labels = classify_dataset(reduced_dataset = norm_tsne_2d_result,
-                                                                     method_of_clustering = clusterer.kmeans_clusterization)
+                                                                method_of_clustering = clusterer.kmeans_clusterization)
     # Agglomerative clustering
     pca_agglomerative_dataset, pca_agglomerative_cluster_labels = classify_dataset(reduced_dataset = pca_tsne_2d_result,
-                                                                     method_of_clustering = clusterer.agglomerative_clusterization)
+                                                                method_of_clustering = clusterer.agglomerative_clusterization)
+    kernel_pca_agglomerative_dataset, kernel_pca_agglomerative_labels = classify_dataset(reduced_dataset = norm_kernel_pca_2d_result,
+                                                                method_of_clustering = clusterer.agglomerative_clusterization)
     tsne_agglomerative_dataset, tsne_agglomerative_cluster_labels = classify_dataset(reduced_dataset = norm_tsne_2d_result,
-                                                                     method_of_clustering = clusterer.agglomerative_clusterization)
+                                                                method_of_clustering = clusterer.agglomerative_clusterization)
 
     # Save clustering results
     # Gaussian Mixture Model
     plotter.save_clustering_plots(path_to_save = path_to_cluster_results, file_name = "gaussian_on_norm_pca_2d.png", 
                                   type_of_clustering = "Gaussian", reducing_method="PCA", 
                                   reduced_data = norm_pca_2d_result, cluster_labels = pca_gaussian_labels)
+    plotter.save_clustering_plots(path_to_save = path_to_cluster_results, file_name = "gaussian_on_norm_kernel_pca_2d.png", 
+                                  type_of_clustering = "Gaussian", reducing_method="Kernel PCA", 
+                                  reduced_data = norm_kernel_pca_2d_result, cluster_labels = kernel_pca_gaussian_labels)
     plotter.save_clustering_plots(path_to_save = path_to_cluster_results, file_name = "gaussian_on_norm_tsne_2d.png", 
                                   type_of_clustering = "Gaussian", reducing_method="t-SNE", 
                                   reduced_data = norm_tsne_2d_result, cluster_labels = tsne_gaussian_labels)
@@ -264,6 +279,9 @@ if __name__ == "__main__":
     plotter.save_clustering_plots(path_to_save = path_to_cluster_results, file_name = "kmeans_on_pca_tsne_2d.png", 
                                   type_of_clustering = "KMeans", reducing_method="t-SNE", 
                                   reduced_data = pca_tsne_2d_result, cluster_labels = pca_kmeans_cluster_labels)
+    plotter.save_clustering_plots(path_to_save = path_to_cluster_results, file_name = "kmeans_on_norm_kernel_pca_2d.png", 
+                                  type_of_clustering = "KMeans", reducing_method="Kernel PCA", 
+                                  reduced_data = norm_kernel_pca_2d_result, cluster_labels = kernel_pca_kmeans_labels)
     plotter.save_clustering_plots(path_to_save = path_to_cluster_results, file_name = "kmeans_on_norm_tsne_2d.png", 
                                   type_of_clustering = "KMeans", reducing_method="t-SNE", 
                                   reduced_data = norm_tsne_2d_result, cluster_labels = tsne_kmeans_cluster_labels)
@@ -271,6 +289,9 @@ if __name__ == "__main__":
     plotter.save_clustering_plots(path_to_save = path_to_cluster_results, file_name = "agglomerative_on_pca_tsne_2d.png", 
                                   type_of_clustering = "Agglomerative", reducing_method="t-SNE", 
                                   reduced_data = pca_tsne_2d_result, cluster_labels = pca_agglomerative_cluster_labels)
+    plotter.save_clustering_plots(path_to_save = path_to_cluster_results, file_name = "agglomerative_on_norm_kernel_pca_2d.png", 
+                                  type_of_clustering = "Gaussian", reducing_method="Kernel PCA", 
+                                  reduced_data = norm_kernel_pca_2d_result, cluster_labels = kernel_pca_agglomerative_labels)
     plotter.save_clustering_plots(path_to_save = path_to_cluster_results, file_name = "agglomerative_on_norm_tsne_2d.png", 
                                   type_of_clustering = "Agglomerative", reducing_method="t-SNE", 
                                   reduced_data = norm_tsne_2d_result, cluster_labels = tsne_agglomerative_cluster_labels)    
@@ -309,19 +330,25 @@ if __name__ == "__main__":
         plotter.plot_important_features(dataset = dataset_to_interpret, columns_to_plot = random_forest_result["Feature"][:max_feature_number],
                                         main_folder = path_to_interpretations, dataset_folder = dataset_folder,
                                         test_name = "random_forest_selected_features")
-
+    # Gaussian
     interpret_clusterisation(dataset_to_interpret = pca_gaussian_dataset, result_dataset_name = "pca_gaussian_dataset.csv",
                              dataset_folder = path_to_pca_gauss_result)
+    # interpret_clusterisation(dataset_to_interpret = kernel_pca_gaussian_dataset, result_dataset_name = "kernel_pca_gaussian_dataset.csv",
+    #                          dataset_folder = path_to_kernel_pca_gauss_result)
     interpret_clusterisation(dataset_to_interpret = tsne_gaussian_dataset, result_dataset_name = "tsne_gaussian_dataset.csv",
                              dataset_folder = path_to_tsne_gauss_result)
-
+    # K-Means
     interpret_clusterisation(dataset_to_interpret = pca_kmeans_dataset, result_dataset_name = "pca_kmeans_dataset.csv",
                              dataset_folder = path_to_pca_kmeans_result)
+    # interpret_clusterisation(dataset_to_interpret = kernel_pca_kmeans_dataset, result_dataset_name = "kernel_pca_kmeans_dataset.csv",
+    #                          dataset_folder = path_to_kernel_pca_kmeans_result)
     interpret_clusterisation(dataset_to_interpret = tsne_kmeans_dataset, result_dataset_name = "tsne_kmeans_dataset.csv",
                              dataset_folder = path_to_tsne_kmeans_result)
-
+    # Agglomerative clustering
     interpret_clusterisation(dataset_to_interpret = pca_agglomerative_dataset, result_dataset_name = "pca_agglomerative_dataset.csv",
                              dataset_folder = path_to_pca_agglomerative_result)
+    # interpret_clusterisation(dataset_to_interpret = kernel_pca_agglomerative_dataset, result_dataset_name = "kernel_pca_agglomerative_dataset.csv",
+    #                          dataset_folder = path_to_kernel_pca_agglomerative_result)
     interpret_clusterisation(dataset_to_interpret = tsne_agglomerative_dataset, result_dataset_name = "tsne_agglomerative_dataset.csv",
                              dataset_folder = path_to_tsne_agglomerative_result)    
     print("Interpretation complete!") 
