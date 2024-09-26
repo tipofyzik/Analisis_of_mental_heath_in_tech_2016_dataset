@@ -6,13 +6,12 @@ To be brief, there is a high-dimensional, complex survey, which was conducted am
 Dataset can be accessed via this link: https://www.kaggle.com/datasets/osmi/mental-health-in-tech-2016  
 In case this dataset would be changed, I uploaded it on this github page (**folder "code" -> folder "dataset"**).  
 ## 2. Programm installation
-
 ### Requirements 
 You need to intall Python with the version 3.11.3 and higher. All required modules to install you can find in the **"requirements.txt"** file.
 
 ### How to install
 1. Download Python from the [official site](https://www.python.org/downloads/) and install it.  
-2. Install required libraries from "requirements.txt"  
+2. Install required libraries from "requirements.txt".  
 3. Download the folder "code" that contains the code to process dataset and the dataset itself. Run the **"app.py"** to process dataset and get results.  
 
 ## 3. How to use
