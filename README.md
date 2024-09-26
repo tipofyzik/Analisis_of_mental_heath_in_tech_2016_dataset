@@ -23,7 +23,15 @@ Best setup solutions for this task you can find in the section "5. Results of th
 ## 4. Implementation
 This implementation has 9 classes, 1 launch file, and 1 config file to tune desirable settings.
 ### 4.1. Classes
-
+**· *GraphPlotter***:  
+**· *WorkingDatasetInfo***:  
+**· *DatasetAnalyzer***:  
+**· *TextFeatureExtractor***:  
+**· *DataEncoder***:  
+**· *OptimalClusterFinder***:  
+**· *DimensionalityReducer***:  
+**· *DataClusterer***:  
+**· *ResultInterpreter***:  
 ### 4.2. Config and launch files
 
 
