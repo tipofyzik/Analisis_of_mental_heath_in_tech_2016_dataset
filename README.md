@@ -38,9 +38,10 @@ Each class is located in its own file, which is documented so that the reader ca
 ### 4.2. Config and launch files
 **Config file** contains settings for different stages of data analysis and clustering. You can set up parameters for matplotlib grid, image quality, number of clusters, random states for different algorithms, save paths, etc. There are 8 parameter categories in this .json file:  
 **· _DataPreprocessingParameters_:**  
-&emsp;&emsp; _path_to_dataset_:
-&emsp;&emsp; _missing_information_max_percent_:
+&emsp;&emsp; — _path_to_dataset_:  
+&emsp;&emsp; — _missing_information_max_percent_:  
 **· _GraphPlotterGridParameters_:**  
+&emsp;&emsp; — __:  
 **· _GraphPlotterSavePaths_:**  
 **· _AdditionalParamters_:**  
 **· _ClusteringParameters_:**  
