@@ -49,38 +49,38 @@ Each class is located in its own file, which is documented so that the reader ca
 **· _GraphPlotterSavePaths_:**  
 &emsp;&emsp; — _path_to_original_graphs_: Here, graphs with original dataset information are saved. Graphs shows response distribution per each question.   
 &emsp;&emsp; — _path_to_processed_graphs_: Here, graphs with prepared for encoding dataset information (missed values are filled, text features extracted, and sparse columns are removed) are saved. Graphs shows response distribution per each retained question.  
-&emsp;&emsp; — _path_to_cluster_choice_graphs_: Here, graphs with different metrics for choosing the number of clusters are saved. Contains folders from the following parameters: _path_to_k_elbow_, _path_to_silhouette_score_, _path_to_dendrogram_, _path_to_bic_aic_.  
-&emsp;&emsp; — _path_to_k_elbow_: This folder is within the   
-&emsp;&emsp; — _path_to_silhouette_score_:  
-&emsp;&emsp; — _path_to_dendrogram_:  
-&emsp;&emsp; — _path_to_bic_aic_:  
-&emsp;&emsp; — _path_to_reduced_components_visualization_:  
-&emsp;&emsp; — _path_to_cluster_results_:  
-&emsp;&emsp; — _path_to_interpretations_:  
+&emsp;&emsp; — _path_to_cluster_choice_graphs_: Here, graphs with different metrics for choosing the number of clusters are saved. Contains folders from the following parameters: path_to_k_elbow, path_to_silhouette_score, path_to_dendrogram, path_to_bic_aic.  
+&emsp;&emsp; — _path_to_k_elbow_: Here, the results of the K-Elbow algorithm's work are saved.  
+&emsp;&emsp; — _path_to_silhouette_score_: Here, the results of the Silhouette score algorithm's work are saved.  
+&emsp;&emsp; — _path_to_dendrogram_: Here, the the dendrograms are saved.  
+&emsp;&emsp; — _path_to_bic_aic_: Here, graphs for the Bayesian Information Criterion (BIC) and Akaike Information Criterion (AIC) are saved.  
+&emsp;&emsp; — _path_to_reduced_components_visualization_: Here, the results of various dimensionality reduction methods are saved. The results are presented in both 2D and 3D space.  
+&emsp;&emsp; — _path_to_cluster_results_: Here, the results of diverse clustering methods are saved.  
+&emsp;&emsp; — _path_to_interpretations_: Here, the results of the interpretation of the obtained clusters are saved. There are graphs showing the participants' responses for each top feature across the different clusters.  
 **· _AdditionalParamters_:**  
-&emsp;&emsp; — _with_text_columns_:  
+&emsp;&emsp; — _with_text_columns_: This parameter is responsible for including columns with textual information in encoding and clustering process. If this parameter is set to 0 these columns won't be included. Otherwise, they will be encoded as others and will affect clustering results.   
 **· _ClusteringParameters_:**  
-&emsp;&emsp; — _cluster_number_:  
-&emsp;&emsp; — _kmeans_init_:  
-&emsp;&emsp; — _kmeans_random_state_:  
-&emsp;&emsp; — _gauss_random_state_:  
+&emsp;&emsp; — _cluster_number_: Contains the number of cluster into which the data should be divided.  
+&emsp;&emsp; — _kmeans_init_: Contains the method of initialization for K-Means algorithm.  
+&emsp;&emsp; — _kmeans_random_state_: Contains the random state parameter for K-Means clustering algorithm. Serves to ensure reproducibility of results.  
+&emsp;&emsp; — _gauss_random_state_:  Contains the random state parameter for Gaussian Mixture clustering algorithm. Serves to ensure reproducibility of results.  
 **· _DimensionalityReducerParameters_:**  
-&emsp;&emsp; — _save_info_ratio_:  
-&emsp;&emsp; — _tsne_random_state_:  
+&emsp;&emsp; — _save_info_ratio_: Contains the ratio for the Linear PCA method. You can specify either a fractional number representing the percentage of information retained or an integer indicating the number of features to keep.  
+&emsp;&emsp; — _tsne_random_state_: Contains the random state parameter for t-SNE algorithm. Serves to ensure reproducibility of results.  
 **· _ResultInterpreterParameters_:**  
-&emsp;&emsp; — _random_forest_with_permutations_:  
-&emsp;&emsp; — _random_forest_permutation_repeats_:  
-&emsp;&emsp; — _permutation_random_state_:  
+&emsp;&emsp; — _random_forest_with_permutations_:  This parameter controls the application of the permutation feature importance algorithm during Random Forest clustering. If this parameter is set to 0, the algorithm won't be applied; otherwise, it will be.  
+&emsp;&emsp; — _random_forest_permutation_repeats_: Contains the number of repeats for permutation feature importance algorithm.  
+&emsp;&emsp; — _permutation_random_state_: Contains the random state parameter for permutation feature importance algorithm. Serves to ensure reproducibility of results.  
 **· _ResultInterpreterSavePaths_:**  
-&emsp;&emsp; — _path_to_pca_gauss_result_:  
-&emsp;&emsp; — _path_to_kernel_pca_gauss_result_:  
-&emsp;&emsp; — _path_to_tsne_gauss_result_:  
-&emsp;&emsp; — _path_to_pca_kmeans_result_:  
-&emsp;&emsp; — _path_to_kernel_pca_kmeans_result_:  
-&emsp;&emsp; — _path_to_tsne_kmeans_result_:  
-&emsp;&emsp; — _path_to_pca_agglomerative_result_:  
-&emsp;&emsp; — _path_to_kernel_pca_agglomerative_result_:  
-&emsp;&emsp; — _path_to_tsne_agglomerative_result_:  
+&emsp;&emsp; — _path_to_pca_gauss_result_: Here, the results of Gaussian Mixture clustering applied to data reduced by Linear PCA are saved.  
+&emsp;&emsp; — _path_to_kernel_pca_gauss_result_: Here, the results of Gaussian Mixture clustering applied to data reduced by Kernel PCA are saved.  
+&emsp;&emsp; — _path_to_tsne_gauss_result_: Here, the results of Gaussian Mixture clustering applied to data reduced by t-SNE are saved.  
+&emsp;&emsp; — _path_to_pca_kmeans_result_: Here, the results of K-Means clustering applied to data reduced by Linear PCA are saved.  
+&emsp;&emsp; — _path_to_kernel_pca_kmeans_result_: Here, the results of K-Means clustering applied to data reduced by Kernel PCA are saved.  
+&emsp;&emsp; — _path_to_tsne_kmeans_result_: Here, the results of K-Means clustering applied to data reduced by t-SNE are saved.  
+&emsp;&emsp; — _path_to_pca_agglomerative_result_: Here, the results of Agglomerative clustering applied to data reduced by Linear PCA are saved.  
+&emsp;&emsp; — _path_to_kernel_pca_agglomerative_result_: Here, the results of Agglomerative clustering applied to data reduced by Kernel PCA are saved.  
+&emsp;&emsp; — _path_to_tsne_agglomerative_result_: Here, the results of Agglomerative clustering applied to data reduced by t-SNE are saved.  
 
 ### 4.3. Launch file
 After feature selection, **GraphPlotter class** displays and saves the response distribution among different classes for each top feature algorithms detected. Now, it can be 
