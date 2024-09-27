@@ -44,6 +44,33 @@ class WorkingDatasetInfo:
         for ith_column in self.__dataset:
             print(f"Type of the column \'{ith_column}\':\n{self.__dataset[ith_column].dtypes}")
 
+    def save_unique_values_with_counts_to_dataset(self) -> None:
+        """
+        Creates a table with unique values and their frequencies for each column in the dataset,
+        where column names are listed vertically under the 'questions' header, and the count of unique values 
+        is displayed in the 'unique_count' header, followed by unique values with counts. 
+        NaN values are explicitly shown as 'NaN'. Saves the table to a specified file.
+        """
+        result_data = []
+        header_row = ['Questions', 'Number of unique values']
+        for column in self.__dataset.columns:
+            unique_values_with_counts = self.__dataset[column].value_counts(dropna=False)
+            unique_values_with_counts.index = unique_values_with_counts.index.fillna('NaN')
+            unique_count = unique_values_with_counts.size
+
+            row = [column, unique_count] + [f"{value}: {count}" for value, count in unique_values_with_counts.items()]
+            result_data.append(row)
+
+        max_length = max(len(row) for row in result_data)
+        for row in result_data:
+            row.extend([""] * (max_length - len(row)))
+        header_row.extend([f'Unique value {i}' for i in range(1, max_length - 1)])
+        result_data.insert(0, header_row)
+        result_df = pd.DataFrame(result_data)
+
+        file_name = ".\\analysis_result.csv"
+        result_df.to_csv(file_name, index=False, header=False)
+
     def get_dataset_columns(self) -> pd.Index:
         """
         Returns the columns of the dataset.

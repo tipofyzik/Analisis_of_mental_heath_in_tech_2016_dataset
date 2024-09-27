@@ -85,6 +85,8 @@ if __name__ == "__main__":
     # Getting dataset basic info
     dataset_info.print_dataset_info()
     # dataset_info.print_each_column_types()
+    dataset_info.save_unique_values_with_counts_to_dataset()
+
     analyzer.check_missing_values(percent_threshold=missing_information_max_percent)
     plotter.save_plots(path_to_original_graphs, original_dataset)
     print("Analysis complete!")
@@ -98,6 +100,7 @@ if __name__ == "__main__":
     print("Data preparation complete!")
 
     preprocessed_dataset = pd.concat([categorical_dataset, text_dataset], axis = 1)
+    preprocessed_dataset.to_csv(".\\preprocessed_dataset.csv", index=False)
     plotter.save_plots(path_to_processed_graphs, preprocessed_dataset)
     print("Graphs with prepared data saved!")
 
