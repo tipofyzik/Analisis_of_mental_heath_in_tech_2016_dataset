@@ -83,9 +83,20 @@ Each class is located in its own file, which is documented so that the reader ca
 &emsp;&emsp; — _path_to_tsne_agglomerative_result_: Here, the results of Agglomerative clustering applied to data reduced by t-SNE are saved.  
 
 ### 4.3. Launch file
-After feature selection, **GraphPlotter class** displays and saves the response distribution among different classes for each top feature algorithms detected. Now, it can be 
+All processes, from reading the dataset to clustering it, take place in the **"app.py"** file. Let's go through a step-by-step explanation of what happens there. The program:  
+1. Imports all the custom classes and reads parameters from **"config.json"**.  
+2. Reads the original dataset and outputs basic information about it to the console. Furthermore, for each dataset column, a graph showing the distribution of responses is plotted.  
+3. Removes columns where the percentage of missing values exceeds the predefined threshold. Then, fills in missing values for retained columns.  
+4. Extracts features for columns with textual data and replaces each complex textual responce in a cell with most important phrase that this text includes. For more information on textual feature extraction, see the "4.4. Special tricks" section. Now, our dataset is almost ready for machine learning algorithms.  
+5. Plots and saves graphs of each column of the preprocessed dataset, similar to how it was done in step 2 for the original one.  
+6. Encodes and normalizes prepared dataset.  
+7. Applies algorithms to determine the optimal number of clusters and saves the results for each algorithm.  
+8. Applies dimensionality reduction algorithms to visualize the given high-dimensional dataset in both 2D and 3D space. Saves plots with these visualizations.  
+9. Performs clustering of the dataset using various clustering algorithms. Saves plots with clusterization results.  
+10. Interprets the results of each clustering algorithm: selects important features and generates and saves plots for them. The plots for each top feature illustrate the distribution of participants' responses across the different clusters.  
 
 ### 4.4. Special tricks
+
 There are 2 such columns: age and gender. Originally age column has answers distributed by year but certain age can be replaced with age range. 
 
 ## 5. Results of the work
