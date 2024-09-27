@@ -39,18 +39,18 @@ Each class is located in its own file, which is documented so that the reader ca
 **Config file** contains settings for different stages of data analysis and clustering. You can set up parameters for matplotlib grid, image quality, number of clusters, random states for different algorithms, save paths, etc. There are 8 parameter categories in this .json file:  
 
 **· _DataPreprocessingParameters_:**  
-&emsp;&emsp; — _path_to_dataset_: contains path to the original dataset that should be analyzed  
-&emsp;&emsp; — _missing_information_max_percent_: contains the threshold that defines the maximum percentage of missing information allowed. Columns in which the percentage of empty cells exceeds this threshold will be removed  
+&emsp;&emsp; — _path_to_dataset_: Contains path to the original dataset that should be analyzed.  
+&emsp;&emsp; — _missing_information_max_percent_: Contains the threshold that defines the maximum percentage of missing information allowed. Columns in which the percentage of empty cells exceeds this threshold will be removed (I refer to such columns as "**sparse columns**").  
 **· _GraphPlotterGridParameters_:**  
-&emsp;&emsp; — _n_columns_: contains the number of columns that will be displayed on a matplotlib graph. This parameter is crucial for matplotlib subplot function. Each saved plot contains n\_columns*n\_rows graphs. 
-&emsp;&emsp; — _n_rows_: contains the number of rows that will be displayed on a matplotlib graph. This parameter is crucial for matplotlib subplot function. Each saved plot contains n\_columns*n\_rows graphs. 
-&emsp;&emsp; — _dpi_:  
-&emsp;&emsp; — _max_feature_number_to_plot_:  
+&emsp;&emsp; — _n_columns_: Contains the number of columns that will be displayed on a matplotlib graph. This parameter is crucial for matplotlib subplot function. Each saved plot contains n_columns\*n_rows graphs.  
+&emsp;&emsp; — _n_rows_: Contains the number of rows that will be displayed on a matplotlib graph. This parameter is crucial for matplotlib subplot function. Each saved plot contains n_columns\*n_rows graphs.  
+&emsp;&emsp; — _dpi_: Contains dpi number to save images with a certain quality.   
+&emsp;&emsp; — _max_feature_number_to_plot_: Contains the maximum feature (response) number that will be displayed on graphs.   
 **· _GraphPlotterSavePaths_:**  
-&emsp;&emsp; — _path_to_original_graphs_:  
-&emsp;&emsp; — _path_to_processed_graphs_:  
-&emsp;&emsp; — _path_to_cluster_choice_graphs_:  
-&emsp;&emsp; — _path_to_k_elbow_:  
+&emsp;&emsp; — _path_to_original_graphs_: Here, graphs with original dataset information are saved. Graphs shows response distribution per each question.   
+&emsp;&emsp; — _path_to_processed_graphs_: Here, graphs with prepared for encoding dataset information (missed values are filled, text features extracted, and sparse columns are removed) are saved. Graphs shows response distribution per each retained question.  
+&emsp;&emsp; — _path_to_cluster_choice_graphs_: Here, graphs with different metrics for choosing the number of clusters are saved. Contains folders from the following parameters: _path_to_k_elbow_, _path_to_silhouette_score_, _path_to_dendrogram_, _path_to_bic_aic_.  
+&emsp;&emsp; — _path_to_k_elbow_: This folder is within the   
 &emsp;&emsp; — _path_to_silhouette_score_:  
 &emsp;&emsp; — _path_to_dendrogram_:  
 &emsp;&emsp; — _path_to_bic_aic_:  
