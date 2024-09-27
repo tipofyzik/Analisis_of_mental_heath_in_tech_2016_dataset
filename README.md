@@ -40,10 +40,10 @@ Each class is located in its own file, which is documented so that the reader ca
 
 **· _DataPreprocessingParameters_:**  
 &emsp;&emsp; — _path_to_dataset_: contains path to the original dataset that should be analyzed  
-&emsp;&emsp; — _missing_information_max_percent_: contains the threshold which defines what percentage of information can be missed. Columns, which percentage of empty cells exceeds this threshold will be removed  
+&emsp;&emsp; — _missing_information_max_percent_: contains the threshold that defines the maximum percentage of missing information allowed. Columns in which the percentage of empty cells exceeds this threshold will be removed  
 **· _GraphPlotterGridParameters_:**  
-&emsp;&emsp; — _n_columns_:  
-&emsp;&emsp; — _n_rows_:  
+&emsp;&emsp; — _n_columns_: contains the number of columns that will be displayed on a matplotlib graph. This parameter is crucial for matplotlib subplot function. Each saved plot contains n\_columns*n\_rows graphs. 
+&emsp;&emsp; — _n_rows_: contains the number of rows that will be displayed on a matplotlib graph. This parameter is crucial for matplotlib subplot function. Each saved plot contains n\_columns*n\_rows graphs. 
 &emsp;&emsp; — _dpi_:  
 &emsp;&emsp; — _max_feature_number_to_plot_:  
 **· _GraphPlotterSavePaths_:**  
