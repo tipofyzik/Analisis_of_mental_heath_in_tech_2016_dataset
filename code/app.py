@@ -18,59 +18,59 @@ with open('config.json', 'r') as f:
     config = json.load(f)
 
 # For preprocessing data
-path_to_dataset = config['WorkingDataset']['path_to_dataset']
-missing_information_max_percent = config['WorkingDataset']['missing_information_max_percent']
+path_to_dataset = config['DataPreprocessing']['path_to_dataset']
+missing_information_max_percent = config['DataPreprocessing']['missing_information_max_percent']
 
 # Settings for depiction results (form, the number of features and the quality of an image)
-n_columns = config['GraphPlotter']['n_columns']
-n_rows = config['GraphPlotter']['n_rows']
-max_feature_number = config['GraphPlotter']['max_feature_number_to_plot']
-graph_dpi = config['GraphPlotter']['dpi']
+n_columns = config['GraphPlotterGridParameters']['n_columns']
+n_rows = config['GraphPlotterGridParameters']['n_rows']
+max_feature_number = config['GraphPlotterGridParameters']['max_feature_number_to_plot']
+graph_dpi = config['GraphPlotterGridParameters']['dpi']
 
 # Paths to save all results before interpreting
-path_to_original_graphs = config['GraphPlotter']['path_to_original_graphs']
-path_to_processed_graphs = config['GraphPlotter']['path_to_processed_graphs']
-path_to_cluster_choice_graphs = config['GraphPlotter']['path_to_cluster_choice_graphs']
-path_to_k_elbow = config['GraphPlotter']['path_to_k_elbow']
-path_to_silhouette_score = config['GraphPlotter']['path_to_silhouette_score']
-path_to_dendrogram = config['GraphPlotter']['path_to_dendrogram']
-path_to_bic_aic = config['GraphPlotter']['path_to_bic_aic']
+path_to_original_graphs = config['GraphPlotterSavePaths']['path_to_original_graphs']
+path_to_processed_graphs = config['GraphPlotterSavePaths']['path_to_processed_graphs']
+path_to_cluster_choice_graphs = config['GraphPlotterSavePaths']['path_to_cluster_choice_graphs']
+path_to_k_elbow = config['GraphPlotterSavePaths']['path_to_k_elbow']
+path_to_silhouette_score = config['GraphPlotterSavePaths']['path_to_silhouette_score']
+path_to_dendrogram = config['GraphPlotterSavePaths']['path_to_dendrogram']
+path_to_bic_aic = config['GraphPlotterSavePaths']['path_to_bic_aic']
 
-path_to_reduced_components_visualization = config['GraphPlotter']['path_to_reduced_components_visualization']
-path_to_cluster_results = config['GraphPlotter']['path_to_cluster_results']
+path_to_reduced_components_visualization = config['GraphPlotterSavePaths']['path_to_reduced_components_visualization']
+path_to_cluster_results = config['GraphPlotterSavePaths']['path_to_cluster_results']
 
 # Setting determines whether text columns are considered during encoding and clustering 
-with_text_columns = bool(config['WorkingDataset']['with_text_columns'])
+with_text_columns = bool(config['AdditionalParamters']['with_text_columns'])
 
 # Settings for dimensionality reduction
-save_info_ratio = config["DimensionalityReducer"]["save_info_ratio"]
-tsne_random_state = config["DimensionalityReducer"]["tsne_random_state"]
+save_info_ratio = config["DimensionalityReducerParameters"]["save_info_ratio"]
+tsne_random_state = config["DimensionalityReducerParameters"]["tsne_random_state"]
 
 # Settings for clustering
-cluster_number = config["Clusterization"]["cluster_number"]
-kmeans_init = config["Clusterization"]["kmeans_init"]
-kmeans_random_state = config["Clusterization"]["kmeans_random_state"]
-gauss_random_state = config["Clusterization"]["gauss_random_state"]
+cluster_number = config["ClusteringParameters"]["cluster_number"]
+kmeans_init = config["ClusteringParameters"]["kmeans_init"]
+kmeans_random_state = config["ClusteringParameters"]["kmeans_random_state"]
+gauss_random_state = config["ClusteringParameters"]["gauss_random_state"]
 
 # Settings for tuning permutation feature importance for random forest algorithm
-random_forest_with_permutations = bool(config["ResultInterpreter"]["random_forest_with_permutations"])
-random_forest_permutation_repeats = config["ResultInterpreter"]["random_forest_permutation_repeats"]
-permutation_random_state = config["ResultInterpreter"]["permutation_random_state"]
+random_forest_with_permutations = bool(config["ResultInterpreterParameters"]["random_forest_with_permutations"])
+random_forest_permutation_repeats = config["ResultInterpreterParameters"]["random_forest_permutation_repeats"]
+permutation_random_state = config["ResultInterpreterParameters"]["permutation_random_state"]
 
 # Paths to save cluster interpreting results
-path_to_interpretations = config['GraphPlotter']['path_to_interpretations']
+path_to_interpretations = config['GraphPlotterSavePaths']['path_to_interpretations']
 
-path_to_pca_gauss_result = config["ResultInterpreter"]["path_to_pca_gauss_result"]
-path_to_kernel_pca_gauss_result = config["ResultInterpreter"]["path_to_kernel_pca_gauss_result"]
-path_to_tsne_gauss_result = config["ResultInterpreter"]["path_to_tsne_gauss_result"]
+path_to_pca_gauss_result = config["ResultInterpreterSavePaths"]["path_to_pca_gauss_result"]
+path_to_kernel_pca_gauss_result = config["ResultInterpreterSavePaths"]["path_to_kernel_pca_gauss_result"]
+path_to_tsne_gauss_result = config["ResultInterpreterSavePaths"]["path_to_tsne_gauss_result"]
 
-path_to_pca_kmeans_result = config["ResultInterpreter"]["path_to_pca_kmeans_result"]
-path_to_kernel_pca_kmeans_result = config["ResultInterpreter"]["path_to_kernel_pca_kmeans_result"]
-path_to_tsne_kmeans_result = config["ResultInterpreter"]["path_to_tsne_kmeans_result"]
+path_to_pca_kmeans_result = config["ResultInterpreterSavePaths"]["path_to_pca_kmeans_result"]
+path_to_kernel_pca_kmeans_result = config["ResultInterpreterSavePaths"]["path_to_kernel_pca_kmeans_result"]
+path_to_tsne_kmeans_result = config["ResultInterpreterSavePaths"]["path_to_tsne_kmeans_result"]
 
-path_to_pca_agglomerative_result = config["ResultInterpreter"]["path_to_pca_agglomerative_result"]
-path_to_kernel_pca_agglomerative_result = config["ResultInterpreter"]["path_to_kernel_pca_agglomerative_result"]
-path_to_tsne_agglomerative_result = config["ResultInterpreter"]["path_to_tsne_agglomerative_result"]
+path_to_pca_agglomerative_result = config["ResultInterpreterSavePaths"]["path_to_pca_agglomerative_result"]
+path_to_kernel_pca_agglomerative_result = config["ResultInterpreterSavePaths"]["path_to_kernel_pca_agglomerative_result"]
+path_to_tsne_agglomerative_result = config["ResultInterpreterSavePaths"]["path_to_tsne_agglomerative_result"]
 
 
 

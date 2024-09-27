@@ -1,14 +1,15 @@
 {
-    "WorkingDataset": {
+    "DataPreprocessing": {
         "path_to_dataset": "./dataset/mental-heath-in-tech-2016_20161114.csv",
-        "missing_information_max_percent": 75,
-        "with_text_columns": 1
+        "missing_information_max_percent": 75
     },
-    "GraphPlotter": {
+    "GraphPlotterGridParameters": {
         "n_columns": 2,
         "n_rows": 2,
         "dpi": 200,
-        "max_feature_number_to_plot": 20,
+        "max_feature_number_to_plot": 20
+    },
+    "GraphPlotterSavePaths": {
         "path_to_original_graphs": "./results/original_data_graphs",
         "path_to_processed_graphs": "./results/preprocessed_data_graphs",
         "path_to_cluster_choice_graphs": "./results/cluster_choice_graphs",
@@ -20,20 +21,25 @@
         "path_to_cluster_results": "./results/clusterization_graphs",
         "path_to_interpretations": "./results/interpretation_graphs"
     },
-    "Clusterization": {
+    "AdditionalParamters": {
+        "with_text_columns": 1
+    },
+    "ClusteringParameters": {
         "cluster_number": 2,
         "kmeans_init": "k-means++",
         "kmeans_random_state": 0,
         "gauss_random_state": 0
     },
-    "DimensionalityReducer": {
+    "DimensionalityReducerParameters": {
         "save_info_ratio": 0.95,
         "tsne_random_state": 0
     },
-    "ResultInterpreter": {
+    "ResultInterpreterParameters": {
         "random_forest_with_permutations": 1,
         "random_forest_permutation_repeats": 10,
-        "permutation_random_state": 0,
+        "permutation_random_state": 0
+    },
+    "ResultInterpreterSavePaths": {
         "path_to_pca_gauss_result": "pca_gauss_interpretation",
         "path_to_kernel_pca_gauss_result": "kernel_pca_gauss_interpretation",
         "path_to_tsne_gauss_result": "tsne_gauss_interpretation",
