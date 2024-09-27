@@ -23,7 +23,7 @@ Best setup solutions for this task you can find in the section "5. Results of th
 ## 4. Implementation
 This implementation has 9 classes, 1 config file to tune desirable settings, and 1 launch file, .
 ### 4.1. Classes
-Each class is documented, so the reader can read for himself what each function does. Here the main purpose of each class is briefly described. Furthermore, 
+Each class is located in its own file, which is documented so that the reader can understand the purpose of each function. Here, the main purpose of each class is briefly described.
 
 **· *GraphPlotter class*** has functions to plot and save images for different cases. There are functions to plot and save graphs in batches (the number of columns multiplied by the number of rows), 2d and 3d representation of the dataset obtained via t-SNE, Kernel PCA and PCA algorithms, etc.  
 **· *WorkingDatasetInfo class*** gives the basic information about the original dataset. This is important for understanding the type of data and how to process the dataset.  
@@ -36,6 +36,7 @@ Each class is documented, so the reader can read for himself what each function 
 **· *ResultInterpreter class*** takes the results of clustering and interprets them by selecting the most important features it can detect. The following algorithms are used for feature selection: chi squared test, mutual information score, and random forest algorithm mixed with permutation feature importance algorithm.  
 
 ### 4.2. Config and launch files
+
 
 ### 4.3. Special tricks
 There are 2 such columns: age and gender. Originally age column has answers distributed by year but certain age can be replaced with age range. 
