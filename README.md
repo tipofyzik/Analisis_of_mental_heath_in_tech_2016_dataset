@@ -101,10 +101,9 @@ All processes, from reading the dataset to clustering it, take place in the **"a
 The same applies to the column regarding gender identity, which originally had 71 unique values. Transgender individuals form a small group, and separating their individual responses makes their representation even smaller. To make this group more representative and suitable for processing, all unique values for transgenders were replaced with the term 'transgender'. Additionally, most distinct values with significant counts for males and females were replaced with 'male' and 'female', respectively.
 ![image](https://github.com/user-attachments/assets/7f6b1816-23a6-4c3c-a515-1e6cbef82f13)  
 
-3. **Encoding process** performed using different encoding techniques. Two encoding techniques were used: label encoding and one-hot encoding. Empirically, columns with textual data, columns containing information about US states and territories, and columns with only two possible responses are found to be better suited for label encoding than for one-hot encoding. If encode these columns via one-hot encoding technique it will worsen the quality of subsequent steps that can be seen already on cluster number choice step: the silhouette score will dicrease.  
+3. **Encoding process** was performed using two encoding technique: label encoding and one-hot encoding. Empirically, columns with textual data, information about US states and territories, and binary columns (those containing only two possible responses) are better suited for label encoding than for one-hot encoding. Using one-hot encoding for these columns can degrade the quality of subsequent steps that can be seen on cluster number choice step: the silhouette score dicreases.
 
-
-There are 2 such columns: age and gender. Originally age column has answers distributed by year but certain age can be replaced with age range. 
+It is important to note that this effect primarily arises from columns containing textual and territorial information. Binary columns can be encoded using either method, but it is advisable to use label encoding for other types of columns. If both binary and textual or territorial columns are encoded with one-hot encoding, the results can change dramatically.
 
 ## 5. Results of the work
 
