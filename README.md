@@ -35,25 +35,57 @@ Each class is located in its own file, which is documented so that the reader ca
 **· _DataClusterer class_** clusters reduced in dimensionality data. There are 3 clustering algorithms: K-Means, Gaussian Mixture, and Agglomerative clustering.  
 **· _ResultInterpreter class_** takes the results of clustering and interprets them by selecting the most important features it can detect. The following algorithms are used for feature selection: chi squared test, mutual information score, and random forest algorithm mixed with permutation feature importance algorithm.  
 
-### 4.2. Config and launch files
+### 4.2. Config file
 **Config file** contains settings for different stages of data analysis and clustering. You can set up parameters for matplotlib grid, image quality, number of clusters, random states for different algorithms, save paths, etc. There are 8 parameter categories in this .json file:  
 **· _DataPreprocessingParameters_:**  
 &emsp;&emsp; — _path_to_dataset_:  
 &emsp;&emsp; — _missing_information_max_percent_:  
 **· _GraphPlotterGridParameters_:**  
-&emsp;&emsp; — __:  
+&emsp;&emsp; — _n_columns_:  
+&emsp;&emsp; — _n_rows_:  
+&emsp;&emsp; — _dpi_:  
+&emsp;&emsp; — _max_feature_number_to_plot_:  
 **· _GraphPlotterSavePaths_:**  
+&emsp;&emsp; — _path_to_original_graphs_:  
+&emsp;&emsp; — _path_to_processed_graphs_:  
+&emsp;&emsp; — _path_to_cluster_choice_graphs_:  
+&emsp;&emsp; — _path_to_k_elbow_:  
+&emsp;&emsp; — _path_to_silhouette_score_:  
+&emsp;&emsp; — _path_to_dendrogram_:  
+&emsp;&emsp; — _path_to_bic_aic_:  
+&emsp;&emsp; — _path_to_reduced_components_visualization_:  
+&emsp;&emsp; — _path_to_cluster_results_:  
+&emsp;&emsp; — _path_to_interpretations_:  
 **· _AdditionalParamters_:**  
+&emsp;&emsp; — _with_text_columns_:  
 **· _ClusteringParameters_:**  
+&emsp;&emsp; — _cluster_number_:  
+&emsp;&emsp; — _kmeans_init_:  
+&emsp;&emsp; — _kmeans_random_state_:  
+&emsp;&emsp; — _gauss_random_state_:  
 **· _DimensionalityReducerParameters_:**  
+&emsp;&emsp; — _save_info_ratio_:  
+&emsp;&emsp; — _tsne_random_state_:  
 **· _ResultInterpreterParameters_:**  
+&emsp;&emsp; — _random_forest_with_permutations_:  
+&emsp;&emsp; — _random_forest_permutation_repeats_:  
+&emsp;&emsp; — _permutation_random_state_:  
 **· _ResultInterpreterSavePaths_:**  
+&emsp;&emsp; — _path_to_pca_gauss_result_:  
+&emsp;&emsp; — _path_to_kernel_pca_gauss_result_:  
+&emsp;&emsp; — _path_to_tsne_gauss_result_:  
+&emsp;&emsp; — _path_to_pca_kmeans_result_:  
+&emsp;&emsp; — _path_to_kernel_pca_kmeans_result_:  
+&emsp;&emsp; — _path_to_tsne_kmeans_result_:  
+&emsp;&emsp; — _path_to_pca_agglomerative_result_:  
+&emsp;&emsp; — _path_to_kernel_pca_agglomerative_result_:  
+&emsp;&emsp; — _path_to_tsne_agglomerative_result_:  
 
-### 4.3. Special tricks
-There are 2 such columns: age and gender. Originally age column has answers distributed by year but certain age can be replaced with age range. 
-
-### 4.4. How it works
+### 4.3. Launch file
 After feature selection, **GraphPlotter class** displays and saves the response distribution among different classes for each top feature algorithms detected. Now, it can be 
+
+### 4.4. Special tricks
+There are 2 such columns: age and gender. Originally age column has answers distributed by year but certain age can be replaced with age range. 
 
 ## 5. Results of the work
 
