@@ -37,6 +37,7 @@ Each class is located in its own file, which is documented so that the reader ca
 
 ### 4.2. Config file
 **Config file** contains settings for different stages of data analysis and clustering. You can set up parameters for matplotlib grid, image quality, number of clusters, random states for different algorithms, save paths, etc. There are 8 parameter categories in this .json file:  
+
 **· _DataPreprocessingParameters_:**  
 &emsp;&emsp; — **_path_to_dataset_**: contains path to the original dataset that should be analyzed  
 &emsp;&emsp; — **_missing_information_max_percent_**: contains the threshold which defines what percentage of information can be missed. Columns, which percentage of empty cells exceeds this threshold will be removed  
