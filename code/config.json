@@ -1,5 +1,5 @@
 {
-    "DataPreprocessing": {
+    "DataPreprocessingParameters": {
         "path_to_dataset": "./dataset/mental-heath-in-tech-2016_20161114.csv",
         "missing_information_max_percent": 75
     },

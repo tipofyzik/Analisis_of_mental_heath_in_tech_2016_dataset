@@ -18,8 +18,8 @@ with open('config.json', 'r') as f:
     config = json.load(f)
 
 # For preprocessing data
-path_to_dataset = config['DataPreprocessing']['path_to_dataset']
-missing_information_max_percent = config['DataPreprocessing']['missing_information_max_percent']
+path_to_dataset = config['DataPreprocessingParameters']['path_to_dataset']
+missing_information_max_percent = config['DataPreprocessingParameters']['missing_information_max_percent']
 
 # Settings for depiction results (form, the number of features and the quality of an image)
 n_columns = config['GraphPlotterGridParameters']['n_columns']
