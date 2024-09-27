@@ -17,7 +17,7 @@ You need to intall Python with the version 3.11.3 and higher. All required modul
 ## 3. How to use
 There are two important files to run the programme: **"app.py"** and **"config.json"**. The first file runs the program, which includes preprocessing, encoding, clustering, and interpreting of the dataset. **"config.json"** allows to set up parameters for the program, e.g., number of clusters, random states for different algorithms, paths to save folders, etc.  
 
-You can find explanation of each config parameter in the section "4.2. Config and launch files".  
+You can find explanation of each config parameter in the section "4.2. Config file".  
 Best setup solutions for this task you can find in the section "5. Results of the work".  
 
 ## 4. Implementation
@@ -87,7 +87,7 @@ All processes, from reading the dataset to clustering it, take place in the **"a
 1. Imports all the custom classes and reads parameters from **"config.json"**.  
 2. Reads the original dataset and outputs basic information about it to the console. Furthermore, for each dataset column, a graph showing the distribution of responses is plotted.  
 3. Removes columns where the percentage of missing values exceeds the predefined threshold. Then, fills in missing values for retained columns.  
-4. Extracts features for columns with textual data and replaces each complex textual responce in a cell with most important phrase that this text includes. For more information on textual feature extraction, see the "4.4. Specific tricks" section. Now, our dataset is almost ready for machine learning algorithms.  
+4. Extracts features for columns with textual data and replaces each complex textual responce in a cell with most important phrase that this text includes. For more information on textual feature extraction, see the "4.4. Specific techniques" section. Now, our dataset is almost ready for machine learning algorithms.  
 5. Plots and saves graphs of each column of the preprocessed dataset, similar to how it was done in step 2 for the original one.  
 6. Encodes and normalizes prepared dataset.  
 7. Applies algorithms to determine the optimal number of clusters and saves the results for each algorithm.  
@@ -95,7 +95,14 @@ All processes, from reading the dataset to clustering it, take place in the **"a
 9. Performs clustering of the dataset using various clustering algorithms. Saves plots with clusterization results.  
 10. Interprets the results of each clustering algorithm: selects important features and generates and saves plots for them. The plots for each top feature illustrate the distribution of participants' responses across the different clusters.  
 
-### 4.4. Specific techniques
+### 4.4. Implementation specifics
+1. During the **data preparation** two columns were changed so that they become more suitable for analysis. There are two such columns: age and gender. In the age column, each cell contained individual response but have been replaced with age ranges. On the figure below you can clearly see the distribution before the transformation and after it. The original distribution has 53 unique responses, while the preprocessed one has only 5.  
+![image](https://github.com/user-attachments/assets/56e7809c-6c1a-4404-8942-dfc19cc324bb)  
+The same applies to the column regarding gender identity, which originally had 71 unique values. Transgender individuals form a small group, and separating their individual responses makes their representation even smaller. To make this group more representative and suitable for processing, all unique values for transgenders were replaced with the term 'transgender'. Additionally, most distinct values with significant counts for males and females were replaced with 'male' and 'female', respectively.
+![image](https://github.com/user-attachments/assets/7f6b1816-23a6-4c3c-a515-1e6cbef82f13)  
+
+3. **Encoding process** performed using different encoding techniques. Two encoding techniques were used: label encoding and one-hot encoding. Empirically, columns with textual data, columns containing information about US states and territories, and columns with only two possible responses are found to be better suited for label encoding than for one-hot encoding. If encode these columns via one-hot encoding technique it will worsen the quality of subsequent steps that can be seen already on cluster number choice step: the silhouette score will dicrease.  
+
 
 There are 2 such columns: age and gender. Originally age column has answers distributed by year but certain age can be replaced with age range. 
 
