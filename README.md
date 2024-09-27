@@ -87,7 +87,7 @@ All processes, from reading the dataset to clustering it, take place in the **"a
 1. Imports all the custom classes and reads parameters from **"config.json"**.  
 2. Reads the original dataset and outputs basic information about it to the console. Furthermore, for each dataset column, a graph showing the distribution of responses is plotted.  
 3. Removes columns where the percentage of missing values exceeds the predefined threshold. Then, fills in missing values for retained columns.  
-4. Extracts features for columns with textual data and replaces each complex textual responce in a cell with most important phrase that this text includes. For more information on textual feature extraction, see the "4.4. Special tricks" section. Now, our dataset is almost ready for machine learning algorithms.  
+4. Extracts features for columns with textual data and replaces each complex textual responce in a cell with most important phrase that this text includes. For more information on textual feature extraction, see the "4.4. Specific tricks" section. Now, our dataset is almost ready for machine learning algorithms.  
 5. Plots and saves graphs of each column of the preprocessed dataset, similar to how it was done in step 2 for the original one.  
 6. Encodes and normalizes prepared dataset.  
 7. Applies algorithms to determine the optimal number of clusters and saves the results for each algorithm.  
@@ -95,7 +95,7 @@ All processes, from reading the dataset to clustering it, take place in the **"a
 9. Performs clustering of the dataset using various clustering algorithms. Saves plots with clusterization results.  
 10. Interprets the results of each clustering algorithm: selects important features and generates and saves plots for them. The plots for each top feature illustrate the distribution of participants' responses across the different clusters.  
 
-### 4.4. Special tricks
+### 4.4. Specific techniques
 
 There are 2 such columns: age and gender. Originally age column has answers distributed by year but certain age can be replaced with age range. 
 
