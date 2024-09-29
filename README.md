@@ -117,9 +117,13 @@ Let's start the discussion with the **nature of data** obtained via dimeansional
 
 
 
+Now, we should define the parameters that give us the best results. Firstly, look at the result of choosing cluster number algorithms:  
+Cluster choice when textual columns are considered:  
+![cluster choice, with text](https://github.com/user-attachments/assets/1802129d-34ab-4d09-bc21-e29326c5ad42)  
+Cluster choice when textual columns aren't considered:  
+![cluster choice, without text](https://github.com/user-attachments/assets/271d4e00-6723-4859-886c-94eced3414de)  
 
 
-Now, we should define the parameters that give us the best results. After analyzing plots for choosing cluster number with and without considering text columns I chose the following solutions:  
 1. We take into account columns with textual responses and split the data into 2 clasters:  
    ```json
     "AdditionalParamters": {
