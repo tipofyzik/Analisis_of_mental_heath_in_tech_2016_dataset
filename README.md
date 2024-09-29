@@ -107,9 +107,18 @@ These processing decisions were derived imperically by launching the program and
 It is important to note that this effect primarily arises from columns containing textual and territorial information. Binary columns can be encoded using either method, but it is advisable to use label encoding for other types of columns. If both binary and textual or territorial columns are encoded with one-hot encoding, the results can change dramatically.
 
 ## 5. Results of the work
+The results of the work are located here:   
 
-With text, with permitations, 2 clusters:  
-```json
+Let's start the discussion with the **nature of data** obtained via dimeansionality reduction. We got data visualization in both 2D and 3D space. Furthermore, we have "slices" of dataset in 3D space to look at them from different angles. We have 3 reduction methods: Linear PCA, Kernel PCA, and t-SNE:  
+![linear_pca_slice](https://github.com/user-attachments/assets/cd4ad4cf-5052-4520-bb02-acf1c7908a08)  
+![kernel_pca_slice](https://github.com/user-attachments/assets/f81587a9-867b-4ef8-805a-6a76a73da2fc)  
+![tsne_slice](https://github.com/user-attachments/assets/e083c4bd-3fd5-4e79-a138-a8b4c53d314c)  
+
+
+
+Now, we should define the parameters that give us the best results. After analyzing plots for choosing cluster number with and without considering text columns I chose the following solutions:  
+1. We take into account columns with textual responses and split the data into 2 clasters:  
+   ```json
     "AdditionalParamters": {
         "with_text_columns": 1
     },
@@ -120,8 +129,7 @@ With text, with permitations, 2 clusters:
         "gauss_random_state": 0
     },
 ```
-
-Without text, with permitations, 3 clusters:  
+2. We omit textual columns and choose either 2 or 3 clusters (3 clusters below):  
 ```json
     "AdditionalParamters": {
         "with_text_columns": 0
@@ -133,4 +141,5 @@ Without text, with permitations, 3 clusters:
         "gauss_random_state": 0
     },
 ```
+
 ## 6. Possible improvements
