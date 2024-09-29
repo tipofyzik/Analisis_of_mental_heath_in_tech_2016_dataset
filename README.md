@@ -110,6 +110,7 @@ It is important to note that this effect primarily arises from columns containin
 
 With text, with permitations, 2 clusters:  
 ```json
+    ...
     "AdditionalParamters": {
         "with_text_columns": 1
     },
@@ -128,6 +129,7 @@ With text, with permitations, 2 clusters:
         "random_forest_permutation_repeats": 10,
         "permutation_random_state": 0
     },
+    ...
 ```
 
 ## 6. Possible improvements
