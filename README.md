@@ -130,7 +130,7 @@ With text, with permitations, 2 clusters:
     },
 ```
 
-Withщге text, with permitations, 3 clusters:  
+Without text, with permitations, 3 clusters:  
 ```json
     "AdditionalParamters": {
         "with_text_columns": 0
