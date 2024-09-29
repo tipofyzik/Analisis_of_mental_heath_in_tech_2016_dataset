@@ -119,9 +119,12 @@ Let's start the discussion with the **nature of data** obtained via dimeansional
 
 Now, we should define the parameters that give us the best results. Firstly, look at the result of choosing cluster number algorithms:  
 Cluster choice when textual columns are considered:  
-![cluster choice, with text](https://github.com/user-attachments/assets/1802129d-34ab-4d09-bc21-e29326c5ad42)  
+![cluster choice, with text graphs](https://github.com/user-attachments/assets/9c0947e6-16c2-4b11-bd45-e325513c0a89)  
+![cluster choice, with text](https://github.com/user-attachments/assets/05464f94-5c57-438f-adb9-441189be172a)  
+
 Cluster choice when textual columns aren't considered:  
-![cluster choice, without text](https://github.com/user-attachments/assets/271d4e00-6723-4859-886c-94eced3414de)  
+![cluster choice, without text graphs](https://github.com/user-attachments/assets/31730e36-8a35-44e3-8f9a-b95956057fe5)  
+![cluster choice, without text](https://github.com/user-attachments/assets/a75a5f74-028a-49d1-972c-e0a57285fa1a)  
 
 
 1. We take into account columns with textual responses and split the data into 2 clasters:  
