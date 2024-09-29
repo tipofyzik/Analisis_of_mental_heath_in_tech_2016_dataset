@@ -119,15 +119,6 @@ With text, with permitations, 2 clusters:
         "kmeans_random_state": 0,
         "gauss_random_state": 0
     },
-    "DimensionalityReducerParameters": {
-        "save_info_ratio": 0.95,
-        "tsne_random_state": 0
-    },
-    "ResultInterpreterParameters": {
-        "random_forest_with_permutations": 1,
-        "random_forest_permutation_repeats": 10,
-        "permutation_random_state": 0
-    },
 ```
 
 Without text, with permitations, 3 clusters:  
@@ -140,15 +131,6 @@ Without text, with permitations, 3 clusters:
         "kmeans_init": "k-means++",
         "kmeans_random_state": 0,
         "gauss_random_state": 0
-    },
-    "DimensionalityReducerParameters": {
-        "save_info_ratio": 0.95,
-        "tsne_random_state": 0
-    },
-    "ResultInterpreterParameters": {
-        "random_forest_with_permutations": 1,
-        "random_forest_permutation_repeats": 10,
-        "permutation_random_state": 0
     },
 ```
 ## 6. Possible improvements
