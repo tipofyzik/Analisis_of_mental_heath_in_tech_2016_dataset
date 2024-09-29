@@ -108,4 +108,26 @@ It is important to note that this effect primarily arises from columns containin
 
 ## 5. Results of the work
 
+With text, with permitations, 2 clusters:  
+```json
+    "AdditionalParamters": {
+        "with_text_columns": 1
+    },
+    "ClusteringParameters": {
+        "cluster_number": 2,
+        "kmeans_init": "k-means++",
+        "kmeans_random_state": 0,
+        "gauss_random_state": 0
+    },
+    "DimensionalityReducerParameters": {
+        "save_info_ratio": 0.95,
+        "tsne_random_state": 0
+    },
+    "ResultInterpreterParameters": {
+        "random_forest_with_permutations": 1,
+        "random_forest_permutation_repeats": 10,
+        "permutation_random_state": 0
+    },
+```
+
 ## 6. Possible improvements
