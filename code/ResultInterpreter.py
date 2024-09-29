@@ -7,6 +7,7 @@ from scipy.stats import chi2_contingency
 
 from sklearn.preprocessing import LabelEncoder
 import pandas as pd
+import numpy as np
 import os
 
 class ResultInterpreter:
@@ -75,6 +76,7 @@ class ResultInterpreter:
         """
         corr_matrix = self.__encoded_dataset.corr()
         return corr_matrix
+
 
     def chi_squared_feature_selection(self) -> pd.DataFrame:
         """

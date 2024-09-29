@@ -283,6 +283,7 @@ class GraphPlotter:
         plt.title('Correlation Matrix')
         plt.tight_layout()
         plt.savefig(full_path, dpi = self.__dpi)
+        plt.close()
 
     def save_chi_squared_plot(self, chi2_result: pd.DataFrame, 
                                main_folder: str, dataset_folder: str) -> None:
@@ -296,7 +297,7 @@ class GraphPlotter:
         """
         path_to_folder = os.path.join(main_folder, dataset_folder)
         os.makedirs(path_to_folder, exist_ok=True)
-        full_path = os.path.join(path_to_folder, "chi_squared__feature_selection.png")
+        full_path = os.path.join(path_to_folder, "chi_squared_feature_selection.png")
 
         # Plot Chi-Squared values
         plt.figure(figsize=(24, 8))
@@ -307,6 +308,7 @@ class GraphPlotter:
         
         plt.tight_layout()
         plt.savefig(full_path, dpi = self.__dpi)
+        plt.close()
 
     def save_mutual_info_plot(self, mutual_info_result: pd.DataFrame, 
                                main_folder: str, dataset_folder: str) -> None:
@@ -329,8 +331,10 @@ class GraphPlotter:
         plt.xlabel('Mutual Information Score')
         plt.ylabel('Features')
         plt.gca().invert_yaxis()
+
         plt.tight_layout()
         plt.savefig(full_path, dpi = self.__dpi)
+        plt.close()
 
     def save_random_forest_plot(self, random_forest_result: pd.DataFrame, 
                                  main_folder: str, dataset_folder: str) -> None:
@@ -353,8 +357,10 @@ class GraphPlotter:
         plt.ylabel('Feature')
         plt.title('Feature Importances from Random Forest')
         plt.gca().invert_yaxis()
+
         plt.tight_layout()
         plt.savefig(full_path, dpi = self.__dpi)
+        plt.close()
 
 
 

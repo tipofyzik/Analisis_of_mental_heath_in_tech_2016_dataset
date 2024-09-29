@@ -32,7 +32,8 @@
     },
     "DimensionalityReducerParameters": {
         "save_info_ratio": 0.95,
-        "tsne_random_state": 0
+        "tsne_random_state": 0,
+        "mds_random_state": 0
     },
     "ResultInterpreterParameters": {
         "random_forest_with_permutations": 1,
@@ -40,14 +41,14 @@
         "permutation_random_state": 0
     },
     "ResultInterpreterSavePaths": {
-        "path_to_pca_gauss_result": "pca_gauss_interpretation",
-        "path_to_kernel_pca_gauss_result": "kernel_pca_gauss_interpretation",
-        "path_to_tsne_gauss_result": "tsne_gauss_interpretation",
-        "path_to_pca_kmeans_result": "pca_kmeans_interpretation",
-        "path_to_kernel_pca_kmeans_result": "kernel_pca_kmeans_interpretation",
-        "path_to_tsne_kmeans_result": "tsne_kmeans_interpretation",
-        "path_to_pca_agglomerative_result": "pca_agglomerative_interpretation",
-        "path_to_kernel_pca_agglomerative_result": "kernel_pca_agglomerative_interpretation",
-        "path_to_tsne_agglomerative_result": "tsne_agglomerative_interpretation"
+        "path_to_pca_2d_gauss_result": "pca_2d_gauss_interpretation",
+        "path_to_kernel_pca_2d_gauss_result": "kernel_pca_2d_gauss_interpretation",
+        "path_to_tsne_2d_gauss_result": "tsne_2d_gauss_interpretation",
+        "path_to_pca_2d_kmeans_result": "pca_2d_kmeans_interpretation",
+        "path_to_kernel_pca_2d_kmeans_result": "kernel_2d_pca_kmeans_interpretation",
+        "path_to_tsne_2d_kmeans_result": "tsne_2d_kmeans_interpretation",
+        "path_to_pca_2d_agglomerative_result": "pca_2d_agglomerative_interpretation",
+        "path_to_kernel_pca_2d_agglomerative_result": "kernel_2d_pca_agglomerative_interpretation",
+        "path_to_tsne_2d_agglomerative_result": "tsne_2d_agglomerative_interpretation"
     }
 }

@@ -7,7 +7,6 @@ from sklearn.mixture import GaussianMixture
 from sklearn.cluster import KMeans
 
 import matplotlib.pyplot as plt
-import numpy as np
 import pandas as pd
 import os
 
@@ -86,6 +85,7 @@ class OptimalClusterFinder:
         range_n_clusters = range(2, 15)
         for _, n_clusters in enumerate(range_n_clusters):
             clusterer = KMeans(n_clusters=n_clusters, init=self.__kmeans_init, random_state=self.__random_state)
+
             cluster_labels = clusterer.fit_predict(dataset)
             silhouette_avg = silhouette_score(dataset, cluster_labels)
             silhouette_scores.append(silhouette_avg)

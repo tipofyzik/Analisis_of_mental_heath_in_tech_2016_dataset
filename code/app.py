@@ -12,8 +12,6 @@ import pandas as pd
 import numpy as np
 import json
 
-
-
 with open('config.json', 'r') as f:
     config = json.load(f)
 
@@ -45,6 +43,7 @@ with_text_columns = bool(config['AdditionalParamters']['with_text_columns'])
 # Settings for dimensionality reduction
 save_info_ratio = config["DimensionalityReducerParameters"]["save_info_ratio"]
 tsne_random_state = config["DimensionalityReducerParameters"]["tsne_random_state"]
+mds_random_state = config["DimensionalityReducerParameters"]["mds_random_state"]
 
 # Settings for clustering
 cluster_number = config["ClusteringParameters"]["cluster_number"]
@@ -60,17 +59,17 @@ permutation_random_state = config["ResultInterpreterParameters"]["permutation_ra
 # Paths to save cluster interpreting results
 path_to_interpretations = config['GraphPlotterSavePaths']['path_to_interpretations']
 
-path_to_pca_gauss_result = config["ResultInterpreterSavePaths"]["path_to_pca_gauss_result"]
-path_to_kernel_pca_gauss_result = config["ResultInterpreterSavePaths"]["path_to_kernel_pca_gauss_result"]
-path_to_tsne_gauss_result = config["ResultInterpreterSavePaths"]["path_to_tsne_gauss_result"]
+path_to_pca_2d_gauss_result = config["ResultInterpreterSavePaths"]["path_to_pca_2d_gauss_result"]
+path_to_kernel_pca_2d_gauss_result = config["ResultInterpreterSavePaths"]["path_to_kernel_pca_2d_gauss_result"]
+path_to_tsne_2d_gauss_result = config["ResultInterpreterSavePaths"]["path_to_tsne_2d_gauss_result"]
 
-path_to_pca_kmeans_result = config["ResultInterpreterSavePaths"]["path_to_pca_kmeans_result"]
-path_to_kernel_pca_kmeans_result = config["ResultInterpreterSavePaths"]["path_to_kernel_pca_kmeans_result"]
-path_to_tsne_kmeans_result = config["ResultInterpreterSavePaths"]["path_to_tsne_kmeans_result"]
+path_to_pca_2d_kmeans_result = config["ResultInterpreterSavePaths"]["path_to_pca_2d_kmeans_result"]
+path_to_kernel_pca_2d_kmeans_result = config["ResultInterpreterSavePaths"]["path_to_kernel_pca_2d_kmeans_result"]
+path_to_tsne_2d_kmeans_result = config["ResultInterpreterSavePaths"]["path_to_tsne_2d_kmeans_result"]
 
-path_to_pca_agglomerative_result = config["ResultInterpreterSavePaths"]["path_to_pca_agglomerative_result"]
-path_to_kernel_pca_agglomerative_result = config["ResultInterpreterSavePaths"]["path_to_kernel_pca_agglomerative_result"]
-path_to_tsne_agglomerative_result = config["ResultInterpreterSavePaths"]["path_to_tsne_agglomerative_result"]
+path_to_pca_2d_agglomerative_result = config["ResultInterpreterSavePaths"]["path_to_pca_2d_agglomerative_result"]
+path_to_kernel_pca_2d_agglomerative_result = config["ResultInterpreterSavePaths"]["path_to_kernel_pca_2d_agglomerative_result"]
+path_to_tsne_2d_agglomerative_result = config["ResultInterpreterSavePaths"]["path_to_tsne_2d_agglomerative_result"]
 
 
 
@@ -80,7 +79,7 @@ if __name__ == "__main__":
     analyzer = DatasetAnalyzer(original_dataset)
     plotter = GraphPlotter(n_columns, n_rows, max_feature_number, graph_dpi)
     cluster_finder = OptimalClusterFinder(kmeans_init, kmeans_random_state, graph_dpi)
-    dimension_reducer = DimensionalityReducer(tsne_random_state)
+    dimension_reducer = DimensionalityReducer(tsne_random_state, mds_random_state)
 
     # Getting dataset basic info
     dataset_info.print_dataset_info()
@@ -88,7 +87,7 @@ if __name__ == "__main__":
     dataset_info.save_unique_values_with_counts_to_dataset()
 
     analyzer.check_missing_values(percent_threshold=missing_information_max_percent)
-    plotter.save_plots(path_to_original_graphs, original_dataset)
+    # plotter.save_plots(path_to_original_graphs, original_dataset)
     print("Analysis complete!")
 
     # Analyzing and preparing data for future working
@@ -101,7 +100,7 @@ if __name__ == "__main__":
 
     preprocessed_dataset = pd.concat([categorical_dataset, text_dataset], axis = 1)
     preprocessed_dataset.to_csv(".\\preprocessed_dataset.csv", index=False)
-    plotter.save_plots(path_to_processed_graphs, preprocessed_dataset)
+    # plotter.save_plots(path_to_processed_graphs, preprocessed_dataset)
     print("Graphs with prepared data saved!")
 
     # Encoding data for machine learning algorithms to work
@@ -167,11 +166,15 @@ if __name__ == "__main__":
         get_tsne_result(normalized_or_pca_dataset = normalized_dataset)
     norm_kernel_pca_2d_result, norm_kernel_pca_3d_result = dimension_reducer.\
         get_kernel_pca_result(normalized_or_pca_dataset = normalized_dataset)
+    # MDS for encoded data
+    mds_2d_result, mds_3d_result = dimension_reducer.\
+        get_mds_result(encoded_dataset = encoded_dataset)
     # Kernel PCA and t-SNE for data reduced by linear PCA with 95% information saved
     pca_tsne_2d_result, pca_tsne_3d_result = dimension_reducer.\
         get_tsne_result(normalized_or_pca_dataset = pca_n_result)
     pca_kernel_pca_2d_result, pca_kernel_pca_3d_result = dimension_reducer.\
         get_kernel_pca_result(normalized_or_pca_dataset = pca_n_result)
+
 
     # Save reduced data visualizations
     # Linear pca in 2d and 3d
@@ -197,17 +200,32 @@ if __name__ == "__main__":
                                         reducing_method="tSNE_2D", reduced_data = pca_tsne_2d_result)
     plotter.save_3d_reduced_data_plotes(path_to_save = path_to_reduced_components_visualization, file_name = "pca_tsne_3d.png",
                                         reducing_method="tSNE_3D", reduced_data = pca_tsne_3d_result)
+    # MDS in 2d nad 3d on encoded data
+    plotter.save_2d_reduced_data_plotes(path_to_save = path_to_reduced_components_visualization, file_name = "mds_2d.png",
+                                        reducing_method="Multidimensional Scaling", reduced_data = mds_2d_result)
+    plotter.save_3d_reduced_data_plotes(path_to_save = path_to_reduced_components_visualization, file_name = "mds_3d.png",
+                                        reducing_method="Multidimensional Scaling", reduced_data = mds_3d_result)
+
     # Showing the aproximate form of a t-SNE group 
-    component_range = (0, 10)
-    plotter.save_3d_reduced_data_plot_with_range(path_to_save = path_to_reduced_components_visualization, 
-                                                 file_name = "norm_tsne_3d_range_0_90.png", component_range = component_range,
-                                                 reducing_method="tSNE_3D", reduced_data = norm_tsne_3d_result, elev = 0, azim = -90)
-    plotter.save_3d_reduced_data_plot_with_range(path_to_save = path_to_reduced_components_visualization, 
-                                                 file_name = "norm_tsne_3d_range_0_45.png", component_range = component_range,
-                                                 reducing_method="tSNE_3D", reduced_data = norm_tsne_3d_result, elev = 0, azim = -45)
-    plotter.save_3d_reduced_data_plot_with_range(path_to_save = path_to_reduced_components_visualization, 
-                                                 file_name = "norm_tsne_3d_range_0_0.png", component_range = component_range,
-                                                 reducing_method="tSNE_3D", reduced_data = norm_tsne_3d_result, elev = 0, azim = 0)
+    def plot_3d_data_slices(path_to_save: str, reducing_method: str, reduced_data: np.ndarray, component_range: tuple):
+        plotter.save_3d_reduced_data_plot_with_range(path_to_save = path_to_save, file_name = f"norm_{reducing_method}_range_0_90.png", 
+                                                    component_range = component_range, reducing_method=reducing_method, 
+                                                    reduced_data = reduced_data, elev = 0, azim = -90)
+        plotter.save_3d_reduced_data_plot_with_range(path_to_save = path_to_save, file_name = f"norm_{reducing_method}_range_0_45.png", 
+                                                    component_range = component_range, reducing_method=reducing_method, 
+                                                    reduced_data = reduced_data, elev = 0, azim = -45)
+        plotter.save_3d_reduced_data_plot_with_range(path_to_save = path_to_save, file_name = f"norm_{reducing_method}_range_0_0.png", 
+                                                    component_range = component_range, reducing_method=reducing_method, 
+                                                    reduced_data = reduced_data, elev = 0, azim = 0)
+    
+    plot_3d_data_slices(path_to_save = path_to_reduced_components_visualization, reducing_method="tSNE_3D", 
+                        reduced_data = norm_tsne_3d_result, component_range = (0, 10))
+    plot_3d_data_slices(path_to_save = path_to_reduced_components_visualization, reducing_method="LinearPCA_3D", 
+                        reduced_data = norm_pca_3d_result, component_range = (0, 2))
+    plot_3d_data_slices(path_to_save = path_to_reduced_components_visualization, reducing_method="KernelPCA_3D", 
+                        reduced_data = norm_kernel_pca_3d_result, component_range = (0, 0.1))
+    plot_3d_data_slices(path_to_save = path_to_reduced_components_visualization, reducing_method="MDS_3D", 
+                        reduced_data = mds_3d_result, component_range = (0, 0.1))
     print("Dimensionality reduction complete!\n")
 
 
@@ -314,46 +332,62 @@ if __name__ == "__main__":
         chi2_result = interpreter.chi_squared_feature_selection()
         plotter.save_chi_squared_plot(chi2_result = chi2_result[:max_feature_number], main_folder = path_to_interpretations, 
                                       dataset_folder = dataset_folder)
-        plotter.plot_important_features(dataset = dataset_to_interpret, columns_to_plot = chi2_result["Feature"][:max_feature_number],
-                                        main_folder = path_to_interpretations, dataset_folder = dataset_folder,
-                                        test_name = "chi_squared_selected_features")
+        # plotter.plot_important_features(dataset = dataset_to_interpret, columns_to_plot = chi2_result["Feature"][:max_feature_number],
+        #                                 main_folder = path_to_interpretations, dataset_folder = dataset_folder,
+                                        # test_name = "chi_squared_selected_features")
         #Mutual information
         mutual_info_result = interpreter.mutual_info_feature_selection()
         plotter.save_mutual_info_plot(mutual_info_result = mutual_info_result[:max_feature_number], 
                                       main_folder = path_to_interpretations, dataset_folder = dataset_folder)
-        plotter.plot_important_features(dataset = dataset_to_interpret, columns_to_plot = mutual_info_result["Feature"][:max_feature_number],
-                                        main_folder = path_to_interpretations, dataset_folder = dataset_folder,
-                                        test_name = "mutual_information_selected_features")
+        # plotter.plot_important_features(dataset = dataset_to_interpret, columns_to_plot = mutual_info_result["Feature"][:max_feature_number],
+        #                                 main_folder = path_to_interpretations, dataset_folder = dataset_folder,
+        #                                 test_name = "mutual_information_selected_features")
         #Random Forest
         random_forest_result = interpreter.random_forest_feature_selection(with_permutations = random_forest_with_permutations,
                                                                            permutation_repeats = random_forest_permutation_repeats,
                                                                            permutation_random_state = permutation_random_state)
         plotter.save_random_forest_plot(random_forest_result = random_forest_result[:max_feature_number], 
                                         main_folder = path_to_interpretations, dataset_folder = dataset_folder)
-        plotter.plot_important_features(dataset = dataset_to_interpret, columns_to_plot = random_forest_result["Feature"][:max_feature_number],
+        # plotter.plot_important_features(dataset = dataset_to_interpret, columns_to_plot = random_forest_result["Feature"][:max_feature_number],
+        #                                 main_folder = path_to_interpretations, dataset_folder = dataset_folder,
+        #                                 test_name = "random_forest_selected_features")
+        
+        chi2_top = chi2_result['Feature'][:max_feature_number]
+        mutual_info_top = mutual_info_result['Feature'][:max_feature_number]
+        random_forest_top = random_forest_result['Feature'][:max_feature_number]
+
+        features = list(set(chi2_top + mutual_info_top + random_forest_top))  # Собираем все уникальные фичи
+        ranks = pd.DataFrame(index=features)
+        ranks['chi_squared'] = [chi2_top.index(f) + 1 if f in chi2_top else len(chi2_top) + 1 for f in features]
+        ranks['mutual_info'] = [mutual_info_top.index(f) + 1 if f in mutual_info_top else len(mutual_info_top) + 1 for f in features]
+        ranks['random_forest'] = [random_forest_top.index(f) + 1 if f in random_forest_top else len(random_forest_top) + 1 for f in features]
+        ranks['mean_rank'] = ranks.mean(axis=1)
+        top_10_features = ranks.sort_values(by='mean_rank').head(10)
+        plotter.plot_important_features(dataset = dataset_to_interpret, columns_to_plot = top_10_features,
                                         main_folder = path_to_interpretations, dataset_folder = dataset_folder,
-                                        test_name = "random_forest_selected_features")
+                                        test_name = "common_top_10_features")
+
     # Gaussian
     interpret_clusterisation(dataset_to_interpret = pca_gaussian_dataset, result_dataset_name = "pca_gaussian_dataset.csv",
-                             dataset_folder = path_to_pca_gauss_result)
+                             dataset_folder = path_to_pca_2d_gauss_result)
     interpret_clusterisation(dataset_to_interpret = tsne_gaussian_dataset, result_dataset_name = "tsne_gaussian_dataset.csv",
-                             dataset_folder = path_to_tsne_gauss_result)
+                             dataset_folder = path_to_tsne_2d_gauss_result)
     # interpret_clusterisation(dataset_to_interpret = kernel_pca_gaussian_dataset, result_dataset_name = "kernel_pca_gaussian_dataset.csv",
-    #                          dataset_folder = path_to_kernel_pca_gauss_result)
+    #                          dataset_folder = path_to_kernel_pca_2d_gauss_result)
 
     # K-Means
     interpret_clusterisation(dataset_to_interpret = pca_kmeans_dataset, result_dataset_name = "pca_kmeans_dataset.csv",
-                             dataset_folder = path_to_pca_kmeans_result)
+                             dataset_folder = path_to_pca_2d_kmeans_result)
     interpret_clusterisation(dataset_to_interpret = tsne_kmeans_dataset, result_dataset_name = "tsne_kmeans_dataset.csv",
-                             dataset_folder = path_to_tsne_kmeans_result)
+                             dataset_folder = path_to_tsne_2d_kmeans_result)
     # interpret_clusterisation(dataset_to_interpret = kernel_pca_kmeans_dataset, result_dataset_name = "kernel_pca_kmeans_dataset.csv",
-    #                          dataset_folder = path_to_kernel_pca_kmeans_result)
+    #                          dataset_folder = path_to_kernel_pca_2d_kmeans_result)
 
     # Agglomerative clustering
     interpret_clusterisation(dataset_to_interpret = pca_agglomerative_dataset, result_dataset_name = "pca_agglomerative_dataset.csv",
-                             dataset_folder = path_to_pca_agglomerative_result)
+                             dataset_folder = path_to_pca_2d_agglomerative_result)
     interpret_clusterisation(dataset_to_interpret = tsne_agglomerative_dataset, result_dataset_name = "tsne_agglomerative_dataset.csv",
-                             dataset_folder = path_to_tsne_agglomerative_result)    
+                             dataset_folder = path_to_tsne_2d_agglomerative_result)    
     # interpret_clusterisation(dataset_to_interpret = kernel_pca_agglomerative_dataset, result_dataset_name = "kernel_pca_agglomerative_dataset.csv",
-    #                          dataset_folder = path_to_kernel_pca_agglomerative_result)
+    #                          dataset_folder = path_to_kernel_pca_2d_agglomerative_result)
     print("Interpretation complete!") 

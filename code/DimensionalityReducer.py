@@ -3,7 +3,8 @@ from sklearn.decomposition import PCA
 
 # Non-linear dimensionality reduction
 from sklearn.decomposition import KernelPCA
-from sklearn.manifold import TSNE
+from sklearn.manifold import TSNE, MDS
+from sklearn.metrics import pairwise_distances
 
 import pandas as pd
 import numpy as np
@@ -19,22 +20,26 @@ class DimensionalityReducer:
         __kpca_3d: KernelPCA object for 3D dimensionality reduction using RBF kernel.
         __tsne_2d: TSNE object for 2D dimensionality reduction.
         __tsne_3d: TSNE object for 3D dimensionality reduction.
+        __mds_2d: MDS object for 2D dimensionality reduction.
+        __mds_3d: MDS object for 3D dimensionality reduction.
     """
     
-    def __init__(self, random_state: int) -> None:
+    def __init__(self, tsne_random_state: int, mds_random_state: int) -> None:
         """
         Initializes the DimensionalityReducer with specified random state.
 
         Args:
-            random_state (int): Seed for random number generator.
-            # tsne_perplexity (float): The perplexity parameter is related to the number of nearest neighbors.
+            tsne_random_state (int): Seed for random number generator for t-SNE algorithm.
+            mds_random_state (int): Seed for random number generator for MDS algorithm.
         """
         self.__pca_2d = PCA(n_components = 2)
         self.__pca_3d = PCA(n_components = 3)
         self.__kpca_2d = KernelPCA(n_components=2, kernel='rbf')
         self.__kpca_3d = KernelPCA(n_components=3, kernel='rbf')
-        self.__tsne_2d = TSNE(n_components=2, random_state=random_state)
-        self.__tsne_3d = TSNE(n_components=3, random_state=random_state)
+        self.__tsne_2d = TSNE(n_components=2, random_state=tsne_random_state)
+        self.__tsne_3d = TSNE(n_components=3, random_state=tsne_random_state)
+        self.__mds_2d = MDS(n_components=2, random_state=mds_random_state, dissimilarity='precomputed')
+        self.__mds_3d = MDS(n_components=3, random_state=mds_random_state, dissimilarity='precomputed')
 
     def __pca_variance(self, saved_info_ratio: float, normalized_dataset: pd.DataFrame) -> None:
         """
@@ -125,6 +130,29 @@ class DimensionalityReducer:
         """
         self.__tsne_3d_result = self.__tsne_3d.fit_transform(normalized_or_pca_dataset)
 
+    def __mds_2d_reducer(self, encoded_dataset: pd.DataFrame) -> None:
+        """
+        Reduces the dimensionality of the dataset to 2D using MDS.
+
+        Args:
+            encoded_dataset (pd.DataFrame): The dataset for MDS, typically 
+            consisting of categorical data that has been one-hot encoded or 
+            otherwise transformed into a suitable format.
+        """
+        distance_matrix = pairwise_distances(encoded_dataset, metric='hamming')
+        self.__mds_2d_result = self.__mds_2d.fit_transform(distance_matrix)
+
+    def __mds_3d_reducer(self, encoded_dataset: pd.DataFrame) -> None:
+        """
+        Reduces the dimensionality of the dataset to 3D using MDS.
+
+        Args:
+            encoded_dataset (pd.DataFrame): The dataset for MDS, typically 
+            consisting of categorical data that has been one-hot encoded or 
+            otherwise transformed into a suitable format.
+        """        
+        distance_matrix = pairwise_distances(encoded_dataset, metric='hamming')
+        self.__mds_3d_result = self.__mds_3d.fit_transform(distance_matrix)
 
     def get_linear_pca_result(self, normalized_dataset: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
         """
@@ -169,3 +197,7 @@ class DimensionalityReducer:
         self.__tsne_3d_reducer(normalized_or_pca_dataset)
         return self.__tsne_2d_result, self.__tsne_3d_result
     
+    def get_mds_result(self, encoded_dataset: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
+        self.__mds_2d_reducer(encoded_dataset)
+        self.__mds_3d_reducer(encoded_dataset)
+        return self.__mds_2d_result, self.__mds_3d_result 
