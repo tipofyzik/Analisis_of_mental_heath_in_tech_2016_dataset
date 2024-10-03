@@ -3,14 +3,15 @@ from sklearn.feature_extraction.text import CountVectorizer
 import pandas as pd
 import spacy
 
+
+
 class TextFeatureExtractor:
     """
     A class for extracting text features from a dataset.
 
     Attributes:
-        dataset_for_feature_extraction (pd.DataFrame): The dataset used for feature extraction.
-        nlp (spacy.language.Language): The NLP model for text processing.
-        dataset_features (dict): A dictionary to store extracted features for each column.
+        __dataset_for_feature_extraction (pd.DataFrame): The dataset used for feature extraction.
+        __nlp (spacy.language.Language): The NLP model for text processing.
     """
     
     def __init__(self, dataset: pd.DataFrame):
@@ -20,9 +21,8 @@ class TextFeatureExtractor:
         Args:
             dataset (pd.DataFrame): The dataset used for feature extraction.
         """
-        self.dataset_for_feature_extraction = dataset
-        self.nlp = spacy.load('en_core_web_sm')
-        self.dataset_features = {}
+        self.__dataset_for_feature_extraction = dataset
+        self.__nlp = spacy.load('en_core_web_sm')
 
     def __filter_redundant_ngrams(self, ngrams: list[str], word_importance: pd.Series, 
                                   additional_condition: bool = False, sort: bool = False) -> list[str]:
@@ -82,13 +82,14 @@ class TextFeatureExtractor:
         Returns:
             str: Preprocessed text with lemmatization.
         """
-        doc = self.nlp(text.lower())
+        doc = self.__nlp(text.lower())
         tokens = [token.lemma_ for token in doc if not token.is_stop and not token.is_punct]
         return ' '.join(tokens)
 
     def __check_ngrams_in_text(self, text: str, ngrams: list[str], word_importance: pd.Series) -> str:
         """
-        Checks which n-grams are present in the text and returns the most important one.
+        Checks which n-grams are present in the preprocessed text and returns the most important one based on the 
+        word importance.
 
         Args:
             text (str): The text in which to check for n-grams.
@@ -96,7 +97,8 @@ class TextFeatureExtractor:
             word_importance (pd.Series): Series containing the importance scores of n-grams.
 
         Returns:
-            str: The most important n-gram present in the text.
+            str: The most important n-gram present in the text. If no matching n-grams are found, 
+            returns the most important n-gram from the input list.
         """
         # Preprocessing to get lemms
         tokens = self.__preprocess_text(text)
@@ -138,17 +140,20 @@ class TextFeatureExtractor:
                     "If so, what condition(s) were you diagnosed with?",
                     "Which of the following best describes your work position?"]
         if column in diagnose_and_work_columns:
-            count_vectorizer = CountVectorizer(stop_words='english', ngram_range=(2, 3), binary=False, token_pattern = r'\b\w[\w\'-]*\b')
+            count_vectorizer = CountVectorizer(stop_words='english', ngram_range=(2, 3), 
+                                               binary=False, token_pattern = r'\b\w[\w\'-]*\b')
 
             x_counts = count_vectorizer.fit_transform(dataset[column])
             feature_names = count_vectorizer.get_feature_names_out()
 
             ngram_features = pd.DataFrame(x_counts.toarray(), columns=feature_names)
             word_importance = ngram_features.sum().sort_values(ascending=False)
-            filtered_word_importance = self.__filter_redundant_ngrams(word_importance.index, word_importance, additional_condition=True)
+            filtered_word_importance = self.__filter_redundant_ngrams(word_importance.index, 
+                                                                      word_importance, additional_condition=True)
         else:
             dataset[column] = dataset[column].apply(self.__preprocess_text)
-            count_vectorizer = TfidfVectorizer(stop_words='english', ngram_range=(2, 3), binary=False, token_pattern = r'\b\w[\w\'-]*\b')
+            count_vectorizer = TfidfVectorizer(stop_words='english', ngram_range=(2, 3), 
+                                               binary=False, token_pattern = r'\b\w[\w\'-]*\b')
 
             x_counts = count_vectorizer.fit_transform(dataset[column])
             feature_names = count_vectorizer.get_feature_names_out()
@@ -157,7 +162,8 @@ class TextFeatureExtractor:
 
             tfidf_features = pd.DataFrame(x_tfidf.toarray(), columns=feature_names)
             word_importance = tfidf_features.sum().sort_values(ascending=False)
-            filtered_word_importance = self.__filter_redundant_ngrams(word_importance.index, word_importance, sort = True)
+            filtered_word_importance = self.__filter_redundant_ngrams(word_importance.index, 
+                                                                      word_importance, sort = True)
 
         word_importance = word_importance.loc[filtered_word_importance]
         word_importance = word_importance.sort_values(ascending=False)
@@ -168,7 +174,7 @@ class TextFeatureExtractor:
 
     def extract_features(self) -> None:
         """
-        Extracts features from the dataset by processing each column to identify and filter frequent n-grams.
+        Extracts the most important n-grams from each column in the dataset and replaces the original content with them.
         """
-        for ith_column in self.dataset_for_feature_extraction.columns:
-            self.__define_frequent_words_in_column(self.dataset_for_feature_extraction, ith_column)
+        for ith_column in self.__dataset_for_feature_extraction.columns:
+            self.__define_frequent_words_in_column(self.__dataset_for_feature_extraction, ith_column)

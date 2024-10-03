@@ -3,6 +3,8 @@ from sklearn.preprocessing import StandardScaler
 import pandas as pd
 import numpy as np
 
+
+
 class DataEncoder:
     """
     A class to handle the encoding of categorical and textual data within a dataset,
@@ -31,12 +33,11 @@ class DataEncoder:
         
     def pass_text_columns(self, text_columns: list[str]) -> None:
         """
-        Accepts a list of text columns to be included for label encoding.
+        Accepts and stores a list of column names that contain textual data for future processing.
 
         Args:
-            text_columns (list[str]): A list of text column names.
+            text_columns (list[str]): A list of column names containing textual data.
         """
-        self.__labeled_columns.extend(text_columns)
         self.__text_columns = text_columns
 
     def __define_binary_columns(self, dataset: pd.DataFrame) -> None:
@@ -53,7 +54,7 @@ class DataEncoder:
 
     def __define_columns_to_label(self, dataset: pd.DataFrame) -> None:
         """
-        Defines which columns should be label encoded by combining binary and specific columns.
+        Defines which columns should be label encoded by combining binary, textual, and specific columns.
 
         Args:
             dataset (pd.DataFrame): The dataset from which to define columns for label encoding.
@@ -61,11 +62,12 @@ class DataEncoder:
         self.__define_binary_columns(dataset)
         self.__labeled_columns.extend(self.__binary_columns)
         self.__labeled_columns.extend(self.__specific_columns)
+        self.__labeled_columns.extend(self.__text_columns)
 
     def encode_data(self, dataset: pd.DataFrame, with_text_columns: bool = True) -> None:
         """
-        Encodes the dataset by applying label encoding to binary and specific 
-        columns, and one-hot encoding to other categorical columns.
+        Encodes the dataset by applying label encoding to columns whose names are stored in labeled_columns list, 
+        and one-hot encoding to other categorical columns.
 
         Args:
             dataset (pd.DataFrame): The dataset to be encoded.
@@ -75,7 +77,7 @@ class DataEncoder:
         """
         self.__define_columns_to_label(dataset)
 
-        #Label encoding for binary and specific columns
+        #Label encoding for binary, text, and specific columns
         labeled_dataset = dataset[self.__labeled_columns].copy()
         for column in labeled_dataset.select_dtypes(include=['object']).columns:
             le = LabelEncoder()
@@ -98,10 +100,10 @@ class DataEncoder:
     def get_encoded_dataset(self) -> tuple[pd.DataFrame, np.ndarray]:
         """
         Returns the encoded dataset and the normalized data, while also printing 
-        the size of the encoded dataset.
+        the size of the encoded (and normalized) dataset.
 
         Returns:
             tuple[pd.DataFrame, np.ndarray]: A tuple containing the encoded dataset and the normalized data.
         """
-        print(f"\nSize of encoded dataset: {self.__normalized_data.shape}\n")
+        print(f"\nSize of encoded and normalized datasets: {self.__encoded_dataset.shape}\n")
         return self.__encoded_dataset, self.__normalized_data

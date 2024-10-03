@@ -10,27 +10,32 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import os
 
+
+
 class OptimalClusterFinder:
     """
     A class for determining the optimal number of clusters in a dataset using various methods.
 
     Attributes:
-        __kmeans_init (str): Initialization method for KMeans.
-        __random_state (int): Random state for reproducibility.
-        __dpi (int): Parameter for saving well-quality graphs.
+        __kmeans_init (str): Initialization method for KMeans clustering algorithm.
+        __kmeans_random_state (int): Random state for reproducibility in KMeans.
+        __gauss_random_state (int): Random state for reproducibility in Gaussian Mixture Model.
+        __dpi (int): Dots per inch for saving high-quality graphs.
     """
     
-    def __init__(self, kmeans_init: str, random_state: int, dpi: int):
+    def __init__(self, kmeans_init: str, kmeans_random_state: int, gauss_random_state: int, dpi: int):
         """
         Initializes the OptimalClusterFinder object with KMeans initialization method and random state.
 
         Args:
-            kmeans_init (str): Initialization method for KMeans.
-            random_state (int): Random state for reproducibility.
-            dpi (int): Parameter for saving well-quality graphs.
+            kmeans_init (str): Initialization method for KMeans clustering algorithm (e.g., 'k-means++', 'random').
+            kmeans_random_state (int): Random state for reproducibility of KMeans results.
+            gauss_random_state (int): Random state for reproducibility of Gaussian Mixture Model results.
+            dpi (int): Dots per inch setting for saving high-quality graphs.
         """
         self.__kmeans_init = kmeans_init
-        self.__random_state = random_state
+        self.__kmeans_random_state = kmeans_random_state
+        self.__gauss_random_state = gauss_random_state
         self.__dpi = dpi
 
     def k_elbow_method(self, dataset: pd.DataFrame, folder_path: str, k_elbow_path: str, 
@@ -47,7 +52,7 @@ class OptimalClusterFinder:
         full_path = os.path.join(folder_path, k_elbow_path)
         os.makedirs(full_path, exist_ok=True)
 
-        model = KMeans(init=self.__kmeans_init, random_state=self.__random_state)
+        model = KMeans(init=self.__kmeans_init, random_state=self.__kmeans_random_state)
         visualizer = KElbowVisualizer(model, k=(1,25), timings=False)
         visualizer.fit(dataset)
         optimal_k = visualizer.elbow_value_
@@ -84,7 +89,7 @@ class OptimalClusterFinder:
         silhouette_scores = []
         range_n_clusters = range(2, 15)
         for _, n_clusters in enumerate(range_n_clusters):
-            clusterer = KMeans(n_clusters=n_clusters, init=self.__kmeans_init, random_state=self.__random_state)
+            clusterer = KMeans(n_clusters=n_clusters, init=self.__kmeans_init, random_state=self.__kmeans_random_state)
 
             cluster_labels = clusterer.fit_predict(dataset)
             silhouette_avg = silhouette_score(dataset, cluster_labels)
@@ -95,7 +100,7 @@ class OptimalClusterFinder:
             visualizer.finalize()
 
             path = f"{full_path}/{file_name}_{n_clusters}_clusters.png"
-            visualizer.show(outpath=path, dpi=self.__dpi)
+            visualizer.show(outpath=path, dpi = self.__dpi)
             plt.close()
 
         plt.figure(figsize=(8, 6))
@@ -133,7 +138,16 @@ class OptimalClusterFinder:
         plt.close()
 
     def bic_aic_for_gaussian_method(self, dataset: pd.DataFrame, folder_path: str, 
-                                bic_aic_path: str, file_name: str, gauss_random_state: int):
+                                bic_aic_path: str, file_name: str) -> None:
+        """
+        Computes and plots BIC and AIC scores for different numbers of components in a Gaussian Mixture Model.
+
+        Args:
+            dataset (pd.DataFrame): The dataset for clustering.
+            folder_path (str): The path to save the BIC and AIC plots.
+            bic_aic_path (str): Subdirectory for the BIC and AIC plots.
+            file_name (str): Name of the file to save the plots.
+        """
         full_path = os.path.join(folder_path, bic_aic_path)
         os.makedirs(full_path, exist_ok=True)
 
@@ -142,7 +156,7 @@ class OptimalClusterFinder:
         aic_scores = []
 
         for n_components in n_components_range:
-            gmm = GaussianMixture(n_components=n_components, covariance_type='full', random_state=gauss_random_state)
+            gmm = GaussianMixture(n_components=n_components, covariance_type='full', random_state=self.__gauss_random_state)
             gmm.fit(dataset)            
             bic_scores.append(gmm.bic(dataset))
             aic_scores.append(gmm.aic(dataset))

@@ -4,6 +4,8 @@ import pandas as pd
 import numpy as np
 import os
 
+
+
 class GraphPlotter:
     """
     A class for creating various types of plots for data visualization. 
@@ -12,7 +14,7 @@ class GraphPlotter:
         __n_columns (int): Number of columns in the grid for plotting.
         __n_rows (int): Number of rows in the grid for plotting.
         __max_feature_number (int): Maximum number of features to display in a plot.
-        __dpi (int): Parameter for saving well-quality graphs.
+        __dpi (int): Dots per inch setting for saving high-quality graphs.
     """
     
     def __init__(self, n_columns: int, n_rows: int, max_feature_number: int, dpi: int):
@@ -23,7 +25,7 @@ class GraphPlotter:
             n_columns (int): Number of columns in the grid for plotting.
             n_rows (int): Number of rows in the grid for plotting.
             max_feature_number (int): Maximum number of features to display in a plot.
-            dpi (int): Parameter for saving well-quality graphs.
+            dpi (int): Dots per inch setting for saving high-quality graphs.
         """
         self.__n_columns = n_columns
         self.__n_rows = n_rows
@@ -41,7 +43,8 @@ class GraphPlotter:
         """
         column = dataset.columns[column_index]
         top_n_answers = dataset[column].value_counts().nlargest(self.__max_feature_number).index
-        sns.countplot(y=column, data=dataset[dataset[column].isin(top_n_answers)], ax=ax, order=top_n_answers, palette='magma')
+        sns.countplot(y=column, data=dataset[dataset[column].isin(top_n_answers)], 
+                      ax=ax, order=top_n_answers, palette='magma')
     
         ax.set_xlabel('Count', fontsize=9)
         ax.set_ylabel('Answers', fontsize=9)
@@ -100,7 +103,7 @@ class GraphPlotter:
     def save_2d_reduced_data_plotes(self, path_to_save: str, file_name: str, 
                                      reducing_method: str, reduced_data: np.ndarray) -> None:
         """
-        Saves a 2D scatter plot of reduced data.
+        Saves a 2D scatter plot of dimensionality-reduced data.
 
         Args:
             path_to_save (str): Path to save the plot.
@@ -117,6 +120,8 @@ class GraphPlotter:
         plt.xlabel(f"{reducing_method} Component 1")
         plt.ylabel(f"{reducing_method} Component 2")
         plt.colorbar(label="Cluster Label")
+
+        plt.tight_layout()
         plt.savefig(full_path, dpi = self.__dpi)
         plt.close()
 
@@ -124,7 +129,7 @@ class GraphPlotter:
                                      reducing_method: str, reduced_data: np.ndarray,
                                      elev: int = 30, azim: int = -90) -> None:
         """
-        Saves a 3D scatter plot of reduced data.
+        Saves a 3D scatter plot of dimensionality-reduced data.
 
         Args:
             path_to_save (str): Path to save the plot.
@@ -147,25 +152,28 @@ class GraphPlotter:
         ax.set_zlabel(f"{reducing_method} Component 3")
         ax.view_init(elev=elev, azim=azim)
         plt.title(f"{reducing_method} Visualization")
+
+        plt.tight_layout()
         plt.savefig(full_path, dpi = self.__dpi)
         plt.close()
 
-    def save_3d_reduced_data_plot_with_range(self, path_to_save: str, file_name: str, 
-                                         reducing_method: str, reduced_data: np.ndarray, 
-                                         component_range: tuple[float, float] = (0, 10), component: int = 0, 
-                                         elev: int = 30, azim: int = -90) -> None:
+    def save_3d_reduced_data_slice(self, path_to_save: str, file_name: str, 
+                                            reducing_method: str, reduced_data: np.ndarray, 
+                                            component_range: tuple[float, float] = (0, 10), component: int = 0, 
+                                            angles: list[tuple[int, int]] = [(0, -90), (0, -45), (0, 0)]) -> None:
         """
-        Saves a 3D scatter plot of reduced data, filtered by a specific range of values for a component.
+        Saves a single image containing three 3D scatter plots of dimensionality-reduced data, 
+        filtered by a specific range of values for a component, each plotted with different view angles.
 
         Args:
             path_to_save (str): Path to save the plot.
             file_name (str): Name of the file to save the plot.
             reducing_method (str): The method used for dimensionality reduction.
-            reduced_data (np.ndarray): The reduced data to plot.
+            reduced_data (np.ndarray): The dimensionality-reduced data to plot.
             component_range (tuple[float, float]): Range of values for filtering the component.
             component (int, optional): The component index (0, 1, or 2) to filter the data by. Default is 0.
-            elev (int, optional): Elevation angle for the 3D plot. Default is 30.
-            azim (int, optional): Azimuth angle for the 3D plot. Default is 0.
+            angles (list[tuple[int, int]], optional): List of tuples representing elevation and azimuth angles. 
+                                                    Default is [(30, -90), (60, 30), (45, 120)].
         """
         os.makedirs(path_to_save, exist_ok=True)
         full_path = os.path.join(path_to_save, file_name)
@@ -179,21 +187,24 @@ class GraphPlotter:
         mask = (reduced_data[:, component] >= component_range[0]) & (reduced_data[:, component] <= component_range[1])
         filtered_data = reduced_data[mask]
 
-        fig = plt.figure(figsize=(8, 8))
-        ax = fig.add_subplot(111, projection='3d')
-        # Scatter plot with filtered data
-        ax.scatter(filtered_data[:, 0], filtered_data[:, 1], filtered_data[:, 2], c="blue")
-        ax.set_xlabel(f"{reducing_method} Component 1")
-        ax.set_ylabel(f"{reducing_method} Component 2")
-        ax.set_zlabel(f"{reducing_method} Component 3")
-        # Set original axis limits (from the full data)
-        ax.set_xlim(x_limits)
-        ax.set_ylim(y_limits)
-        ax.set_zlim(z_limits)
-        # Set view angle
-        ax.view_init(elev=elev, azim=azim)
+        _, axes = plt.subplots(1, 3, figsize=(18, 9), subplot_kw={'projection': '3d'})
 
-        plt.title(f"{reducing_method} Visualization (Filtered by Component {component + 1})")
+        for i, (elev, azim) in enumerate(angles):
+            ax = axes[i]
+            ax.scatter(filtered_data[:, 0], filtered_data[:, 1], filtered_data[:, 2], c="blue")
+            fontsize = 12
+            ax.set_xlabel(f"{reducing_method} Component 1", fontsize = fontsize)
+            ax.set_ylabel(f"{reducing_method} Component 2", fontsize = fontsize)
+            ax.set_zlabel(f"{reducing_method} Component 3", fontsize = fontsize)
+            ax.set_xlim(x_limits)
+            ax.set_ylim(y_limits)
+            ax.set_zlim(z_limits)
+            ax.view_init(elev=elev, azim=azim)
+            ax.set_title(f"View {i + 1}: Elev={elev}, Azim={azim}")
+
+        # Save the figure with all three subplots
+        plt.suptitle(f"{reducing_method} Visualization (Filtered by Component {component + 1})")
+        plt.tight_layout()
         plt.savefig(full_path, dpi=self.__dpi)
         plt.close()
 
@@ -208,7 +219,7 @@ class GraphPlotter:
             file_name (str): Name of the file to save the plot.
             type_of_clustering (str): Type of clustering performed.
             reducing_method (str): The method used for dimensionality reduction.
-            reduced_data (np.ndarray): The reduced data to plot.
+            reduced_data (np.ndarray): The dimensionality-reduced data to plot.
             cluster_labels (np.ndarray): Cluster labels for the data points.
         """
         os.makedirs(path_to_save, exist_ok=True)
@@ -220,6 +231,8 @@ class GraphPlotter:
         plt.xlabel(f"{reducing_method} Component 1")
         plt.ylabel(f"{reducing_method} Component 2")
         plt.colorbar(label="Cluster Label")
+
+        plt.tight_layout()
         plt.savefig(full_path, dpi = self.__dpi)
         plt.close()
 
@@ -230,13 +243,15 @@ class GraphPlotter:
         Saves a scatter plot for clustering results.
 
         Args:
-            path_to_save (str): Path to save the plot.
-            file_name (str): Name of the file to save the plot.
-            type_of_clustering (str): Type of clustering performed.
-            reducing_method (str): The method used for dimensionality reduction.
-            reduced_data (np.ndarray): The reduced data to plot.
-            cluster_labels (np.ndarray): Cluster labels for the data points.
-        """
+            path_to_save (str): Path to the directory where the plot will be saved.
+            file_name (str): Name of the file to save the plot, including the file extension (e.g., '.png').
+            type_of_clustering (str): The type of clustering performed (e.g., K-means, DBSCAN).
+            reducing_method (str): The method used for dimensionality reduction (e.g., PCA, t-SNE).
+            reduced_data (np.ndarray): The reduced data to plot, expected to have three dimensions.
+            cluster_labels (np.ndarray): Cluster labels for the data points, used for coloring.
+            elev (int, optional): Elevation angle for the 3D plot. Default is 30.
+            azim (int, optional): Azimuthal angle for the 3D plot. Default is -90.    
+            """
         os.makedirs(path_to_save, exist_ok=True)
         full_path = os.path.join(path_to_save, file_name)
 
@@ -259,8 +274,9 @@ class GraphPlotter:
         ax.set_ylim(y_limits)
         ax.set_zlim(z_limits)
         ax.view_init(elev=elev, azim=azim)
-
         fig.colorbar(scatter, ax=ax, label="Cluster Label")
+
+        plt.tight_layout()
         plt.savefig(full_path, dpi=self.__dpi)
         plt.close()
 
@@ -271,8 +287,8 @@ class GraphPlotter:
 
         Args:
             correlation_matrix (pd.DataFrame): The correlation matrix to plot.
-            main_folder (str): Main folder to save the plot.
-            dataset_folder (str): Subfolder to save the plot.
+            main_folder (str): The main folder where the plot will be saved.
+            dataset_folder (str): The subfolder within the main folder to save the plot.
         """
         path_to_folder = os.path.join(main_folder, dataset_folder)
         os.makedirs(path_to_folder, exist_ok=True)
@@ -281,6 +297,7 @@ class GraphPlotter:
         plt.figure(figsize=(24, 24))
         sns.heatmap(correlation_matrix, annot=False, cmap='coolwarm', linewidths=0.5)
         plt.title('Correlation Matrix')
+
         plt.tight_layout()
         plt.savefig(full_path, dpi = self.__dpi)
         plt.close()
@@ -292,8 +309,8 @@ class GraphPlotter:
 
         Args:
             chi2_result (pd.DataFrame): The Chi-Squared results to plot.
-            main_folder (str): Main folder to save the plot.
-            dataset_folder (str): Subfolder to save the plot.
+            main_folder (str): The main folder where the plot will be saved.
+            dataset_folder (str): The subfolder within the main folder to save the plot.
         """
         path_to_folder = os.path.join(main_folder, dataset_folder)
         os.makedirs(path_to_folder, exist_ok=True)
@@ -317,8 +334,8 @@ class GraphPlotter:
 
         Args:
             mutual_info_result (pd.DataFrame): The mutual information results to plot.
-            main_folder (str): Main folder to save the plot.
-            dataset_folder (str): Subfolder to save the plot.
+            main_folder (str): The main folder where the plot will be saved.
+            dataset_folder (str): The subfolder within the main folder to save the plot.
         """
         path_to_folder = os.path.join(main_folder, dataset_folder)
         os.makedirs(path_to_folder, exist_ok=True)
@@ -343,8 +360,8 @@ class GraphPlotter:
 
         Args:
             random_forest_result (pd.DataFrame): The random forest results to plot.
-            main_folder (str): Main folder to save the plot.
-            dataset_folder (str): Subfolder to save the plot.
+            main_folder (str): The main folder where the plot will be saved.
+            dataset_folder (str): The subfolder within the main folder to save the plot.
         """
         path_to_folder = os.path.join(main_folder, dataset_folder)
         os.makedirs(path_to_folder, exist_ok=True)
@@ -367,19 +384,21 @@ class GraphPlotter:
     def __plot_clusters_for_column(self, dataset: pd.DataFrame, column: str, 
                                     clusters: np.ndarray, filename: str) -> None:
         """
-        Plots clusters for a specific column in the dataset.
+        Generates count plots for the specified column, visualizing the distribution of 
+        responses for each cluster in the dataset. It saves the resulting plots to the specified filename.
 
         Args:
-            dataset (pd.DataFrame): The dataset to plot.
-            column (str): The column to plot clusters for.
-            clusters (np.ndarray): Array of cluster labels.
-            filename (str): Filename to save the plot.
+            dataset (pd.DataFrame): The dataset containing the data to plot.
+            column (str): The column for which clusters will be plotted.
+            clusters (np.ndarray): Array of cluster labels representing different clusters in the dataset.
+            filename (str): Filename for saving the plot, including the file extension (e.g., '.png').
+
         """
         n_cols = self.__n_columns
         n_rows = self.__n_rows
         n_plots = n_cols * n_rows
 
-        fig, axes = plt.subplots(n_rows, n_cols, figsize=(20, 10))
+        _, axes = plt.subplots(n_rows, n_cols, figsize=(20, 10))
         axes = axes.flatten()
 
         for i, cluster in enumerate(clusters):
@@ -401,16 +420,47 @@ class GraphPlotter:
         plt.savefig(filename, dpi = self.__dpi)
         plt.close()
 
+    def plot_important_features_table(self, top_n_ranked_features: pd.DataFrame, 
+                                  main_folder: str, dataset_folder: str) -> None:
+        """
+        Creates a table visualization of the most important features, ranked by their importance. 
+
+        Args:
+            top_n_ranked_features (pd.DataFrame): DataFrame containing feature names and their ranks, 
+            where lower ranks signify higher importance.
+            main_folder (str): The main folder where the table image will be saved.
+            dataset_folder (str): The subfolder within the main folder to save the table image.
+        """
+        top_n_ranked_features = top_n_ranked_features.reset_index()
+        top_n_ranked_features = top_n_ranked_features.rename(columns={'index': 'Feature'})
+
+        _, ax = plt.subplots(figsize=(8, 4))
+        ax.axis('tight')
+        ax.axis('off')
+        table = ax.table(cellText=top_n_ranked_features.values, colLabels=top_n_ranked_features.columns, 
+                         cellLoc='center', loc='center')
+        for i in range(len(top_n_ranked_features)):
+            table[(i + 1, 0)].set_text_props(ha='left')
+        table.auto_set_column_width(range(len(top_n_ranked_features.columns)))
+        table.auto_set_font_size(False)
+        table.set_fontsize(7)        
+        table.scale(2, 1.5)
+
+        plt.tight_layout()
+        plt.savefig(f"{main_folder}\{dataset_folder}\\table_image.png", bbox_inches='tight', dpi = self.__dpi)
+        plt.close()
+    
+
     def plot_important_features(self, dataset: pd.DataFrame, columns_to_plot: list[str], 
                                 main_folder: str, dataset_folder: str, test_name: str) -> None:
         """
-        Plots important features for each cluster in the dataset.
+        Plots important features for each cluster in the dataset and saves the resulting plots.
 
         Args:
-            dataset (pd.DataFrame): The dataset to plot.
-            columns_to_plot (List[str]): List of column names to plot.
-            main_folder (str): Main folder to save the plots.
-            dataset_folder (str): Subfolder to save the plots.
+            dataset (pd.DataFrame): The dataset containing clusters and features to plot.
+            columns_to_plot (list[str]): List of dataset column names to plot.
+            main_folder (str): The main folder where the plots will be saved.
+            dataset_folder (str): The subfolder within the main folder to save the plots.
             test_name (str): Name for the test used in the plots' folder structure.
         """
         path_to_folder = os.path.join(main_folder, dataset_folder, test_name)

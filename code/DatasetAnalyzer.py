@@ -1,6 +1,8 @@
 import pandas as pd
 import re
 
+
+
 class DatasetAnalyzer:
     """
     A class to analyze and preprocess a dataset, focusing on handling missing values, 
@@ -32,8 +34,10 @@ class DatasetAnalyzer:
             percent_threshold (int): The threshold percentage for missing values.
         """
         missing_val = round((self.__analyzed_dataset.isnull().sum())/(len(self.__analyzed_dataset))*100, 2)
-        self.__missing_data_more_treshhold = pd.DataFrame(missing_val[missing_val.values>=percent_threshold],columns=['Missing percent'])
-        self.__missing_data_less_treshhold = pd.DataFrame(missing_val[missing_val.values<percent_threshold],columns=['Missing percent'])
+        self.__missing_data_more_treshhold = pd.DataFrame(missing_val[missing_val.values>=percent_threshold], 
+                                                          columns=['Missing percent'])
+        self.__missing_data_less_treshhold = pd.DataFrame(missing_val[missing_val.values<percent_threshold], 
+                                                          columns=['Missing percent'])
 
         print(f"Columns with more than {percent_threshold}% missed data: \n{self.__missing_data_more_treshhold}")
         print("\n")
@@ -142,8 +146,6 @@ class DatasetAnalyzer:
             mode_value = self.__categorical_dataset[ith_column].mode()[0]
             self.__categorical_dataset.loc[self.__categorical_dataset[ith_column].isna(), ith_column] = mode_value    
 
-
-
     def __print_additional_info(self) -> None:
         """
         Prints additional information about the prepared dataset, including the 
@@ -153,6 +155,8 @@ class DatasetAnalyzer:
         print(f"Size of dataset that consists of categorical columns: {self.__categorical_dataset.shape}")
         print(f"Size of dataset that consists of text columns: {self.__text_dataset.shape}")
         print(f"Number of NaN values after filling: {self.__categorical_dataset.isnull().sum().sum() + self.__text_dataset.isnull().sum().sum()}\n")
+
+
 
     def return_divided_datasets(self) -> list[pd.DataFrame]:
         """

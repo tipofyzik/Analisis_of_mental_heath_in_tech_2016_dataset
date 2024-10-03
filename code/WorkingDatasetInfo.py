@@ -1,5 +1,7 @@
 import pandas as pd
 
+
+
 class WorkingDatasetInfo:
     """
     A class for providing information about a working dataset.
@@ -46,10 +48,14 @@ class WorkingDatasetInfo:
 
     def save_unique_values_with_counts_to_dataset(self) -> None:
         """
-        Creates a table with unique values and their frequencies for each column in the dataset,
-        where column names are listed vertically under the 'questions' header, and the count of unique values 
-        is displayed in the 'unique_count' header, followed by unique values with counts. 
-        NaN values are explicitly shown as 'NaN'. Saves the table to a specified file.
+        Creates and saves a table with unique values and their counts for each column in the dataset.
+        
+        The table consists of:
+        - A 'Questions' column listing the dataset's column names.
+        - A 'Number of unique values' column showing the count of unique values per column.
+        - Additional columns showing unique values and their respective frequencies, with NaN values represented as 'NaN'.
+        
+        The resulting table is saved as 'analysis_result.csv' in the current working directory.
         """
         result_data = []
         header_row = ['Questions', 'Number of unique values']

@@ -24,31 +24,54 @@
     "AdditionalParamters": {
         "with_text_columns": 1
     },
+    "DimensionalityReducerParameters": {
+        "save_info_ratio": 0.95,
+        "pca_random_state": 0,
+        "kernel_pca_random_state": 0,
+        "tsne_random_state": 0,
+        "mds_random_state": 0,
+        "tsne_slice_range": [
+            0,
+            10
+        ],
+        "linear_pca_slice_range": [
+            0,
+            2
+        ],
+        "kernel_pca_slice_range": [
+            0,
+            0.1
+        ],
+        "mds_slice_range": [
+            0,
+            0.1
+        ]
+    },
     "ClusteringParameters": {
         "cluster_number": 2,
         "kmeans_init": "k-means++",
         "kmeans_random_state": 0,
         "gauss_random_state": 0
     },
-    "DimensionalityReducerParameters": {
-        "save_info_ratio": 0.95,
-        "tsne_random_state": 0,
-        "mds_random_state": 0
-    },
     "ResultInterpreterParameters": {
         "random_forest_with_permutations": 1,
         "random_forest_permutation_repeats": 10,
-        "permutation_random_state": 0
+        "permutation_random_state": 0,
+        "mutual_information_random_state": 0,
+        "most_important_features_max_number": 15,
+        "interpret_tsne_reduced_data": 1,
+        "interpret_pca_reduced_data": 0,
+        "interpret_kernel_pca_reduced_data": 0
     },
     "ResultInterpreterSavePaths": {
         "path_to_pca_2d_gauss_result": "pca_2d_gauss_interpretation",
         "path_to_kernel_pca_2d_gauss_result": "kernel_pca_2d_gauss_interpretation",
         "path_to_tsne_2d_gauss_result": "tsne_2d_gauss_interpretation",
         "path_to_pca_2d_kmeans_result": "pca_2d_kmeans_interpretation",
-        "path_to_kernel_pca_2d_kmeans_result": "kernel_2d_pca_kmeans_interpretation",
+        "path_to_kernel_pca_2d_kmeans_result": "kernel_pca_2d_kmeans_interpretation",
         "path_to_tsne_2d_kmeans_result": "tsne_2d_kmeans_interpretation",
         "path_to_pca_2d_agglomerative_result": "pca_2d_agglomerative_interpretation",
-        "path_to_kernel_pca_2d_agglomerative_result": "kernel_2d_pca_agglomerative_interpretation",
+        "path_to_kernel_pca_2d_agglomerative_result": "kernel_pca_2d_agglomerative_interpretation",
         "path_to_tsne_2d_agglomerative_result": "tsne_2d_agglomerative_interpretation"
     }
 }

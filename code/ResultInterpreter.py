@@ -7,15 +7,16 @@ from scipy.stats import chi2_contingency
 
 from sklearn.preprocessing import LabelEncoder
 import pandas as pd
-import numpy as np
 import os
+
+
 
 class ResultInterpreter:
     """
     A class for interpreting clustering results from a dataset.
 
     Attributes:
-        __path_to_folder (str): Path to the folder where the dataset will be saved.
+        __path_to_folder (str): Path to the folder where the interpretation results will be saved.
         __encoded_dataset (pd.DataFrame): The dataset with encoded categorical features.
         __target_column (pd.Series): The target column containing cluster labels.
     """
@@ -28,9 +29,9 @@ class ResultInterpreter:
 
         Args:
             dataset (pd.DataFrame): The dataset to interpret.
-            result_dataset_name (str): The name of the file to save the dataset.
-            main_folder (str): The main folder path.
-            dataset_folder (str): The folder path where the dataset will be saved.
+            result_dataset_name (str): The name of the file to save the encoded dataset.
+            main_folder (str): The main folder path where results will be stored.
+            dataset_folder (str): The subfolder path within the main folder where the dataset will be saved.
         """
         self.__path_to_folder = os.path.join(main_folder, dataset_folder)
         self.__save_dataset_to_file(dataset, result_dataset_name)
@@ -101,16 +102,19 @@ class ResultInterpreter:
         results_df = pd.DataFrame(chi2_results).sort_values(by='Chi-Squared', ascending=False)        
         return results_df
 
-    def mutual_info_feature_selection(self) -> pd.DataFrame:
+    def mutual_info_feature_selection(self, mi_random_state: int) -> pd.DataFrame:
         """
         Selects features based on mutual information and returns the results in a sorted DataFrame.
 
+        Args:
+            mi_random_state (int): Random state for reproducibility in mutual information calculation.
+
         Returns:
-            pd.DataFrame: DataFrame containing features and their mutual information scores, sorted by score.
+            pd.DataFrame: A DataFrame containing features and their mutual information scores, sorted by score.
         """
         X = self.__encoded_dataset
         y = self.__target_column
-        mutual_info_scores = mutual_info_classif(X, y)
+        mutual_info_scores = mutual_info_classif(X, y, random_state = mi_random_state)
         mutual_info_result = pd.DataFrame({'Feature': X.columns, 'Score': mutual_info_scores})
         mutual_info_result = mutual_info_result.sort_values(by='Score', ascending=False)
         return mutual_info_result
@@ -161,3 +165,30 @@ class ResultInterpreter:
                 'Importance': importances
             }).sort_values(by='Importance', ascending=False)
         return feature_importances
+    
+    def get_mean_ranks_for_interpretation_results(self, sorted_chi2_result: pd.DataFrame,
+                                                  sorted_mutual_info_result: pd.DataFrame, 
+                                                  sorted_random_forest_result: pd.DataFrame) -> pd.DataFrame:
+        """
+        Computes and returns the mean rank of features based on their ranking from Chi-Squared,
+        Mutual Information, and Random Forest feature selection methods.
+
+        Args:
+            sorted_chi2_result (pd.DataFrame): DataFrame containing features ranked by Chi-Squared values.
+            sorted_mutual_info_result (pd.DataFrame): DataFrame containing features ranked by Mutual Information scores.
+            sorted_random_forest_result (pd.DataFrame): DataFrame containing features ranked by Random Forest importance.
+
+        Returns:
+            pd.DataFrame: A DataFrame with features and their ranks from each method, along with the mean rank.
+        """
+        sorted_chi2_features = sorted_chi2_result["Feature"].tolist()
+        sorted_mutual_info_features = sorted_mutual_info_result["Feature"].tolist()
+        sorted_random_forest_features = sorted_random_forest_result["Feature"].tolist()
+        
+        features = self.__encoded_dataset.columns
+        ranks = pd.DataFrame(index=features)
+        ranks['chi_squared_rank'] = [sorted_chi2_features.index(feature) + 1 for feature in features]
+        ranks['mutual_info_rank'] = [sorted_mutual_info_features.index(feature) + 1 for feature in features]
+        ranks['random_forest_rank'] = [sorted_random_forest_features.index(feature) + 1 for feature in features]
+        ranks['mean_rank'] = ranks.mean(axis=1)
+        return ranks

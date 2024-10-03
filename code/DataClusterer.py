@@ -4,6 +4,8 @@ from sklearn.cluster import KMeans
 
 import numpy as np
 
+
+
 class DataClusterer:
     """
     A class to perform various clustering algorithms on a reduced dataset,
@@ -33,7 +35,7 @@ class DataClusterer:
 
     def gaussian_mixture_clusterization(self, reduced_dataset: np.ndarray) -> np.ndarray:
         """
-        Applies Gaussian Mixture clustering on the reduced dataset.
+        Applies Gaussian Mixture clustering to the dataset with reduced dimensionality.
 
         Args:
             reduced_dataset (np.ndarray): The dataset to cluster.
@@ -47,7 +49,7 @@ class DataClusterer:
 
     def kmeans_clusterization(self, reduced_dataset: np.ndarray) -> np.ndarray:
         """
-        Applies KMeans clustering on the reduced dataset.
+        Applies KMeans clustering to the dataset with reduced dimensionality.
 
         Args:
             reduced_dataset (np.ndarray): The dataset to cluster.
@@ -61,7 +63,7 @@ class DataClusterer:
 
     def agglomerative_clusterization(self, reduced_dataset: np.ndarray) -> np.ndarray:
         """
-        Applies Agglomerative Clustering on the reduced dataset.
+        Applies Agglomerative Clustering to the dataset with reduced dimensionality.
 
         Args:
             reduced_dataset (np.ndarray): The dataset to cluster.
@@ -72,4 +74,3 @@ class DataClusterer:
         clustering = AgglomerativeClustering(n_clusters=self.__cluster_number, metric='euclidean', linkage='ward')
         agglomerative_cluster_labels = clustering.fit_predict(reduced_dataset)
         return agglomerative_cluster_labels
-    
