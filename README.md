@@ -1,7 +1,7 @@
 # Analisis of "Mental heath in tech 2016" dataset from kaggle
 
 ## 1. Task formulation
-To be brief, there is a high-dimensional, complex survey, which was conducted amongst technology-oriented employees. Dataset has missing values and non-standardized textual inputs. The goal is to categorize participants based on their survey responses and create visualizations that would simplify the data complexity. Key characteristics should be preserved and each result cluster should be described, in the context of its main traits.
+To be brief, there is a high-dimensional, complex survey, which was conducted amongst technology-oriented employees. Dataset has missing values and non-standardized textual inputs. The goal is to categorize participants based on their survey responses and create visualizations that would simplify the data complexity. Key characteristics should be preserved and main traits of each result cluster should be described.
 
 Dataset can be accessed via this link: https://www.kaggle.com/datasets/osmi/mental-health-in-tech-2016  
 In case this dataset would be changed, I uploaded it on this github page (**folder "code" -> folder "dataset"**).  
@@ -25,7 +25,7 @@ This implementation has 9 classes, 1 config file to tune desirable settings, and
 ### 4.1. Classes
 Each class is located in its own file, which is documented so that the reader can understand the purpose of each function. Here, the main purpose of each class is briefly described.
 
-**· _GraphPlotter class_** has functions to plot and save images for different cases. There are functions to plot and save graphs in batches (the number of columns multiplied by the number of rows), 2d and 3d representation of the dataset obtained via t-SNE, Kernel PCA and PCA algorithms, etc.  
+**· _GraphPlotter class_** has functions to plot and save images for different cases. There are functions to plot and save graphs in batches (the number of columns multiplied by the number of rows), 2d and 3d representation of the dataset obtained via t-SNE, MDS, Kernel PCA, and PCA algorithms, etc.  
 **· _WorkingDatasetInfo class_** gives the basic information about the original dataset. This is important for understanding the type of data and how to process the dataset.  
 **· _DatasetAnalyzer class_** is responsible for analyzing and preprocessing dataset. It counts missing values for categorical columns and removes those that exceed the threshold for missing values. It also prepares columns that originally have a lot of answer but can be transformed so that they become more appropriate for the task.  
 **· _TextFeatureExtractor class_** processes columns with textual responses. It extracts all the most important phrases in a column and replaces the text in each cell with the most important phrase found in it.  
@@ -59,41 +59,53 @@ Each class is located in its own file, which is documented so that the reader ca
 &emsp;&emsp; — _path_to_interpretations_: Here, the results of the interpretation of the obtained clusters are saved. There are graphs showing the participants' responses for each top feature across the different clusters.  
 **· _AdditionalParamters_:**  
 &emsp;&emsp; — _with_text_columns_: This parameter is responsible for including columns with textual information in encoding and clustering process. If this parameter is set to 0 these columns won't be included. Otherwise, they will be encoded as others and will affect clustering results.   
+**· _DimensionalityReducerParameters_:**  
+&emsp;&emsp; — _save_info_ratio_: Contains the ratio for the Linear PCA method. You can specify either a fractional number representing the percentage of information retained or an integer indicating the number of features to keep.  
+&emsp;&emsp; — _pca_random_state_: Contains the random state parameter for PCA algorithm. Serves to ensure reproducibility of results.  
+&emsp;&emsp; — _kernel_pca_random_state_: Contains the random state parameter for Kernel PCA algorithm. Serves to ensure reproducibility of results.  
+&emsp;&emsp; — _tsne_random_state_: Contains the random state parameter for t-SNE algorithm. Serves to ensure reproducibility of results.  
+&emsp;&emsp; — _mds_random_state_: Contains the random state parameter for MDS algorithm. Serves to ensure reproducibility of results.  
+&emsp;&emsp; — _tsne_slice_range_:  
+&emsp;&emsp; — _linear_pca_slice_range_:  
+&emsp;&emsp; — _kernel_pca_slice_range_:  
+&emsp;&emsp; — _mds_slice_range_:  
 **· _ClusteringParameters_:**  
 &emsp;&emsp; — _cluster_number_: Contains the number of cluster into which the data should be divided.  
 &emsp;&emsp; — _kmeans_init_: Contains the method of initialization for K-Means algorithm.  
 &emsp;&emsp; — _kmeans_random_state_: Contains the random state parameter for K-Means clustering algorithm. Serves to ensure reproducibility of results.  
 &emsp;&emsp; — _gauss_random_state_:  Contains the random state parameter for Gaussian Mixture clustering algorithm. Serves to ensure reproducibility of results.  
-**· _DimensionalityReducerParameters_:**  
-&emsp;&emsp; — _save_info_ratio_: Contains the ratio for the Linear PCA method. You can specify either a fractional number representing the percentage of information retained or an integer indicating the number of features to keep.  
-&emsp;&emsp; — _tsne_random_state_: Contains the random state parameter for t-SNE algorithm. Serves to ensure reproducibility of results.  
 **· _ResultInterpreterParameters_:**  
 &emsp;&emsp; — _random_forest_with_permutations_:  This parameter controls the application of the permutation feature importance algorithm during Random Forest clustering. If this parameter is set to 0, the algorithm won't be applied; otherwise, it will be.  
 &emsp;&emsp; — _random_forest_permutation_repeats_: Contains the number of repeats for permutation feature importance algorithm.  
 &emsp;&emsp; — _permutation_random_state_: Contains the random state parameter for permutation feature importance algorithm. Serves to ensure reproducibility of results.  
+&emsp;&emsp; — _mutual_information_random_state_:  
+&emsp;&emsp; — _most_important_features_max_number_:  
+&emsp;&emsp; — _interpret_tsne_reduced_data_:  
+&emsp;&emsp; — _interpret_pca_reduced_data_:  
+&emsp;&emsp; — _interpret_kernel_pca_reduced_data_:  
 **· _ResultInterpreterSavePaths_:**  
-&emsp;&emsp; — _path_to_pca_gauss_result_: Here, the results of Gaussian Mixture clustering applied to data reduced by Linear PCA are saved.  
-&emsp;&emsp; — _path_to_kernel_pca_gauss_result_: Here, the results of Gaussian Mixture clustering applied to data reduced by Kernel PCA are saved.  
-&emsp;&emsp; — _path_to_tsne_gauss_result_: Here, the results of Gaussian Mixture clustering applied to data reduced by t-SNE are saved.  
-&emsp;&emsp; — _path_to_pca_kmeans_result_: Here, the results of K-Means clustering applied to data reduced by Linear PCA are saved.  
-&emsp;&emsp; — _path_to_kernel_pca_kmeans_result_: Here, the results of K-Means clustering applied to data reduced by Kernel PCA are saved.  
-&emsp;&emsp; — _path_to_tsne_kmeans_result_: Here, the results of K-Means clustering applied to data reduced by t-SNE are saved.  
-&emsp;&emsp; — _path_to_pca_agglomerative_result_: Here, the results of Agglomerative clustering applied to data reduced by Linear PCA are saved.  
-&emsp;&emsp; — _path_to_kernel_pca_agglomerative_result_: Here, the results of Agglomerative clustering applied to data reduced by Kernel PCA are saved.  
-&emsp;&emsp; — _path_to_tsne_agglomerative_result_: Here, the results of Agglomerative clustering applied to data reduced by t-SNE are saved.  
+&emsp;&emsp; — _path_to_pca_2d_gauss_result_: Here, the output of the Gaussian Mixture clustering, performed on data after 2D reduction using Linear PCA, is saved.  
+&emsp;&emsp; — _path_to_kernel_pca_2d_gauss_result_: Here, the output of the Gaussian Mixture clustering, performed on data after 2D reduction using Kernel PCA, is saved.  
+&emsp;&emsp; — _path_to_tsne_2d_gauss_result_: Here, the output of the Gaussian Mixture clustering, performed on data after 2D reduction using t-SNE, is saved.  
+&emsp;&emsp; — _path_to_pca_2d_kmeans_result_: Here, the output of the K-Means clustering, performed on data after 2D reduction using Linear PCA, is saved.  
+&emsp;&emsp; — _path_to_kernel_pca_2d_kmeans_result_: Here, the output of the K-Means clustering, performed on data after 2D reduction using Kernel PCA, is saved.  
+&emsp;&emsp; — _path_to_tsne_2d_kmeans_result_: Here, the output of the K-Means clustering, performed on data after 2D reduction using t-SNE, is saved.  
+&emsp;&emsp; — _path_to_pca_2d_agglomerative_result_: Here, the output of the Agglomerative clustering, performed on data after 2D reduction using Linear PCA, is saved.  
+&emsp;&emsp; — _path_to_kernel_pca_2d_agglomerative_result_: Here, the output of the Agglomerative clustering, performed on data after 2D reduction using Kernel PCA, is saved.  
+&emsp;&emsp; — _path_to_tsne_2d_agglomerative_result_: Here, the output of the Agglomerative clustering, performed on data after 2D reduction using t-SNE, is saved.  
 
 ### 4.3. Launch file
 All processes, from reading the dataset to clustering it, take place in the **"app.py"** file. Let's go through a step-by-step explanation of what happens there. The program:  
 1. Imports all the custom classes and reads parameters from **"config.json"**.  
 2. Reads the original dataset and outputs basic information about it to the console. Furthermore, for each dataset column, a graph showing the distribution of responses is plotted.  
 3. Removes columns where the percentage of missing values exceeds the predefined threshold. Then, fills in missing values for retained columns.  
-4. Extracts features for columns with textual data and replaces each complex textual responce in a cell with most important phrase that this text includes. For more information on textual feature extraction, see the "4.4. Specific techniques" section. Now, our dataset is almost ready for machine learning algorithms.  
+4. Extracts features for columns with textual data and replaces each complex textual responce in a cell with most important phrase that this text includes. For more information on textual feature extraction, see the "4.4. Implementation specifics" section. Now, our dataset is almost ready for machine learning algorithms.  
 5. Plots and saves graphs of each column of the preprocessed dataset, similar to how it was done in step 2 for the original one.  
 6. Encodes and normalizes prepared dataset.  
 7. Applies algorithms to determine the optimal number of clusters and saves the results for each algorithm.  
 8. Applies dimensionality reduction algorithms to visualize the given high-dimensional dataset in both 2D and 3D space. Saves plots with these visualizations.  
 9. Performs clustering of the dataset using various clustering algorithms. Saves plots with clusterization results.  
-10. Interprets the results of each clustering algorithm: selects important features and generates and saves plots for them. The plots for each top feature illustrate the distribution of participants' responses across the different clusters.  
+10. Interprets the results of multiple clustering algorithms by selecting key features using various methods, ranking the top features for each method, calculating the average rank for each top feature across all methods, and ultimately visualizing the distribution of responses for each top feature across clusters.  
 
 ### 4.4. Implementation specifics
 1. During the **data preparation** two columns were changed so that they become more suitable for analysis. There are two such columns: age and gender. In the age column, each cell contained individual response but have been replaced with age ranges. On the figure below you can clearly see the distribution before the transformation and after it. The original distribution has 53 unique responses, while the preprocessed one has only 5.  
