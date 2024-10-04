@@ -431,6 +431,10 @@ class GraphPlotter:
             main_folder (str): The main folder where the table image will be saved.
             dataset_folder (str): The subfolder within the main folder to save the table image.
         """
+        path_to_folder = os.path.join(main_folder, dataset_folder)
+        os.makedirs(path_to_folder, exist_ok=True)
+        full_path = os.path.join(path_to_folder, "table_image.png")
+
         top_n_ranked_features = top_n_ranked_features.reset_index()
         top_n_ranked_features = top_n_ranked_features.rename(columns={'index': 'Feature'})
 
@@ -447,7 +451,7 @@ class GraphPlotter:
         table.scale(2, 1.5)
 
         plt.tight_layout()
-        plt.savefig(f"{main_folder}\{dataset_folder}\\table_image.png", bbox_inches='tight', dpi = self.__dpi)
+        plt.savefig(full_path, bbox_inches='tight', dpi = self.__dpi)
         plt.close()
     
 
