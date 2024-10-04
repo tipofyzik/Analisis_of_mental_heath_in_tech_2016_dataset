@@ -65,7 +65,7 @@ Each class is located in its own file, which is documented so that the reader ca
 &emsp;&emsp; — _kernel_pca_random_state_: Contains the random state parameter for Kernel PCA algorithm. Serves to ensure reproducibility of results.  
 &emsp;&emsp; — _tsne_random_state_: Contains the random state parameter for t-SNE algorithm. Serves to ensure reproducibility of results.  
 &emsp;&emsp; — _mds_random_state_: Contains the random state parameter for MDS algorithm. Serves to ensure reproducibility of results.  
-&emsp;&emsp; — _tsne_slice_range_: 
+&emsp;&emsp; — _tsne_slice_range_:  
 &emsp;&emsp; — _linear_pca_slice_range_:   
 &emsp;&emsp; — _kernel_pca_slice_range_:   
 &emsp;&emsp; — _mds_slice_range_:   
