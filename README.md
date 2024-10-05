@@ -65,10 +65,10 @@ Each class is located in its own file, which is documented so that the reader ca
 &emsp;&emsp; — _kernel_pca_random_state_: Contains the random state parameter for Kernel PCA algorithm. Serves to ensure reproducibility of results.  
 &emsp;&emsp; — _tsne_random_state_: Contains the random state parameter for t-SNE algorithm. Serves to ensure reproducibility of results.  
 &emsp;&emsp; — _mds_random_state_: Contains the random state parameter for MDS algorithm. Serves to ensure reproducibility of results.  
-&emsp;&emsp; — _tsne_slice_range_:  
-&emsp;&emsp; — _linear_pca_slice_range_:   
-&emsp;&emsp; — _kernel_pca_slice_range_:   
-&emsp;&emsp; — _mds_slice_range_:   
+&emsp;&emsp; — _tsne_slice_range_: The range of values for a specific component used to filter the data displayed in the 3D scatter plot for t-SNE visualization. Required to view data in a cross-section.  
+&emsp;&emsp; — _linear_pca_slice_range_: The range of values for a specific component used to filter the data displayed in the 3D scatter plot for (Linear) PCA visualization. Required to view data in a cross-section.  
+&emsp;&emsp; — _kernel_pca_slice_range_: The range of values for a specific component used to filter the data displayed in the 3D scatter plot for Kernel PCA visualization. Required to view data in a cross-section.  
+&emsp;&emsp; — _mds_slice_range_: The range of values for a specific component used to filter the data displayed in the 3D scatter plot for MDS visualization. Required to view data in a cross-section.  
 **· _ClusteringParameters_:**  
 &emsp;&emsp; — _cluster_number_: Contains the number of cluster into which the data should be divided.  
 &emsp;&emsp; — _kmeans_init_: Contains the method of initialization for K-Means algorithm.  
@@ -78,11 +78,11 @@ Each class is located in its own file, which is documented so that the reader ca
 &emsp;&emsp; — _random_forest_with_permutations_:  This parameter controls the application of the permutation feature importance algorithm during Random Forest clustering. If this parameter is set to 0, the algorithm won't be applied; otherwise, it will be.  
 &emsp;&emsp; — _random_forest_permutation_repeats_: Contains the number of repeats for permutation feature importance algorithm.  
 &emsp;&emsp; — _permutation_random_state_: Contains the random state parameter for permutation feature importance algorithm. Serves to ensure reproducibility of results.  
-&emsp;&emsp; — _mutual_information_random_state_:   
-&emsp;&emsp; — _most_important_features_max_number_:   
-&emsp;&emsp; — _interpret_tsne_reduced_data_:   
-&emsp;&emsp; — _interpret_pca_reduced_data_:   
-&emsp;&emsp; — _interpret_kernel_pca_reduced_data_:   
+&emsp;&emsp; — _mutual_information_random_state_: Contains the random state parameter for mutual information algorithm. Serves to ensure reproducibility of results.  
+&emsp;&emsp; — _most_important_features_max_number_: Specifies the maximum number of most important features to display.  
+&emsp;&emsp; — _interpret_tsne_reduced_data_: This parameter determines whether the interpretation of clustering results for data reduced using the t-SNE algorithm is performed. If set to 0, no interpretation will be performed. If set to a non-zero value, the interpretation will be saved.  
+&emsp;&emsp; — _interpret_pca_reduced_data_: This parameter determines whether the interpretation of clustering results for data reduced using the PCA algorithm is performed. If set to 0, no interpretation will be performed. If set to a non-zero value, the interpretation will be saved.  
+&emsp;&emsp; — _interpret_kernel_pca_reduced_data_: This parameter determines whether the interpretation of clustering results for data reduced using the Kernel PCA algorithm is performed. If set to 0, no interpretation will be performed. If set to a non-zero value, the interpretation will be saved.  
 **· _ResultInterpreterSavePaths_:**  
 &emsp;&emsp; — _path_to_pca_2d_gauss_result_: Here, the output of the Gaussian Mixture clustering, performed on data after 2D reduction using Linear PCA, is saved.  
 &emsp;&emsp; — _path_to_kernel_pca_2d_gauss_result_: Here, the output of the Gaussian Mixture clustering, performed on data after 2D reduction using Kernel PCA, is saved.  
