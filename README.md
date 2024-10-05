@@ -140,28 +140,28 @@ Cluster choice when **textual columns aren't considered**:
 
 
 1. We take into account columns with textual responses and split the data into 2 clasters:  
-   ```json
+```json
+ "AdditionalParamters": {
+     "with_text_columns": 1
+ },
+ "ClusteringParameters": {
+     "cluster_number": 2,
+     "kmeans_init": "k-means++",
+     "kmeans_random_state": 0,
+     "gauss_random_state": 0
+ },
+```
+2. We omit textual columns and choose either 2 or 3 clusters (3 clusters below):  
+```json
     "AdditionalParamters": {
-        "with_text_columns": 1
+        "with_text_columns": 0
     },
     "ClusteringParameters": {
-        "cluster_number": 2,
+        "cluster_number": 3,
         "kmeans_init": "k-means++",
         "kmeans_random_state": 0,
         "gauss_random_state": 0
     },
-   ```
-2. We omit textual columns and choose either 2 or 3 clusters (3 clusters below):  
-   ```json
-       "AdditionalParamters": {
-           "with_text_columns": 0
-       },
-       "ClusteringParameters": {
-           "cluster_number": 3,
-           "kmeans_init": "k-means++",
-           "kmeans_random_state": 0,
-           "gauss_random_state": 0
-       },
 ```
 
 ## 6. Possible improvements
