@@ -144,7 +144,7 @@ Let's start the discussion with the **nature of data** obtained via dimeansional
 **t-SNE 2D and 3D visualizations and 3D slice:**  
 <table>
   <tr>
-    <td><img src="https://github.com/user-attachments/assets/a76ddd57-a257-4805-82fd-1cce31fe34cc" style="max-width:100%; height:auto;" /></td>
+    <td><img src="https://github.com/user-attachments/assets/e1c905dd-10e5-4a2c-81be-bb9a52fc4ed3" style="max-width:100%; height:auto;" /></td>
     <td><img src="https://github.com/user-attachments/assets/59ca08cd-5cf5-44d6-a1f1-47148db19c05" style="max-width:100%; height:auto;" /></td>
   </tr>
 </table> 
