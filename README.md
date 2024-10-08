@@ -125,16 +125,12 @@ Let's start the discussion with the **nature of data** obtained via dimeansional
 
 **PCA 2D and 3D visualizations and 3D slice:**  
 | ![Linear PCA 2D](https://github.com/user-attachments/assets/ee43bcc5-b720-4d38-8ecd-570c306beeb4) | ![Linear PCA](https://github.com/user-attachments/assets/c219f493-8a7e-4c16-be8a-4dc132e22da1) |
-|---|---|  
 **Kernel PCA 2D and 3D visualizations and 3D slice:**  
 | ![Kernel PCA 2D](https://github.com/user-attachments/assets/d2a5e52a-f472-489f-b4c4-c847f9efa717) | ![Kernel PCA](https://github.com/user-attachments/assets/0e90cb7b-c814-4002-b3e0-9f759d580208) |
-|---|---|  
 **t-SNE 2D and 3D visualizations and 3D slice:**  
 | ![t-SNE 2D](https://github.com/user-attachments/assets/a76ddd57-a257-4805-82fd-1cce31fe34cc) | ![t-SNE](https://github.com/user-attachments/assets/59ca08cd-5cf5-44d6-a1f1-47148db19c05) |
-|---|---|  
 **MDS 2D and 3D visualizations and 3D slice:**  
 | ![MDS 2D](https://github.com/user-attachments/assets/593bc4b6-5180-4840-9e94-db33324c35fe) | ![MDS](https://github.com/user-attachments/assets/8c08a163-2384-4c1a-951b-c0913c9b551d) |
-|---|---|
 
 
 Now, we should define the parameters that give us the best results. Firstly, look at the result of choosing cluster number algorithms:  
