@@ -122,6 +122,7 @@ It is important to note that this effect primarily arises from columns containin
 The results of the work are located here:   
 
 Let's start the discussion with the **nature of data** obtained via dimeansionality reduction. We got data visualization in both 2D and 3D space. Furthermore, we have "slices" of dataset in 3D space to look at them from different angles. We have 4 reduction methods: Linear PCA, Kernel PCA, t-SNE, and Multidimensional Scaling (MDS):  
+
 **PCA 2D and 3D visualizations and 3D slice:**  
 ![Linear PCA 2D](https://github.com/user-attachments/assets/ee43bcc5-b720-4d38-8ecd-570c306beeb4)  
 ![Linear PCA](https://github.com/user-attachments/assets/c219f493-8a7e-4c16-be8a-4dc132e22da1)  
