@@ -206,6 +206,7 @@ Let's go through each algorithm for choosing the number of clusters:
 
 ### 5.3 Final clusters and their interpretation
 
+
 ## 6. Possible improvements
 
 ## 7. Literature  
