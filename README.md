@@ -161,9 +161,10 @@ PCA is desighned for linearly structured data, while other algorithms are better
 
 From obtained two- and three-dimensional representations, we can conclude that the data has non-linear structure. Moreover, data structure keeps the same for both cases: when columns with textual features are included and when they're not. Duscussing t-SNE, MDS, and PCA results, we can see that all visualizations in two-dimensional space don't have any distinguishable clusters of data points, indicating that the data is dustributed approximately evenly. This statement is supported by "slices" of data obtained in three-dimensional space. We see small deviations in the results of PCA and MDS algorithms, but there are no serious differences comparing to t-SNE and Kernel PCA. We can note the following things:  
 1. In 2D space, Linear PCA produces results similar to those obtained by t-SNE and MDS algorithms: the output distribution resembles an ellipse, with fuzzy boundaries for PCA and more clearly defined contours for t-SNE and MDS. Furthermore, there are no distinguishable groups of points or one cluster highly consentrated in some area (the result distribution looks even). Thus, the data don't have distinct clusters, but probably contain some features (columns) that cause the data to be spread.  
-2. Kernel PCA result highly depend on the kernel function we choose. On the presented gifs you see Kernel PCA representations obtained using Gaussian radius basis function (RBF) kernel. However, if we choose, for example, polynomial or sigmoid kernel we obtain noisy but at the same time more familiar results to those obtained by t-SNE and MDS:  
+2. Kernel PCA result highly depend on the kernel function we choose. On the presented gifs you see Kernel PCA representations obtained using Gaussian radius basis function (RBF) kernel. However, if we choose sigmoid kernel we obtain noisy but at the same time more familiar result to those obtained by t-SNE and MDS:  
+![norm_kernel_pca_2d_sigmoid](https://github.com/user-attachments/assets/780d2230-a335-4b64-a797-cc404b322fa8)  
 
-It seems that t-SNE and MDS demostrates the nature of the given data better than linear and non-linear PCA algorithms.
+So, t-SNE, MDS, and Kernel PCA with sigmoid kernel give us almost the same result: an approximately evenly distributed data in the form of ellipse in 2D space. In 3D space, PCA and Kernel PCA show mirrored distributions (reflected along the vertical axis), with a subset of the points deviating from the main cluster. Representations don't have distinguishable clusters and high-density spots. Therefore, density-based clustering algorithms aren't suitable here. Furthermore, due to the uniformity of the data, we will only obtain a few clusters at best.  
 
 ### 5.2 Number of clusters
 Now, we should define the parameters that give us the best results. Firstly, look at the result of choosing cluster number algorithms:  
@@ -177,32 +178,30 @@ Cluster choice when **textual columns aren't considered**:
 ![cluster choice, without text](https://github.com/user-attachments/assets/a75a5f74-028a-49d1-972c-e0a57285fa1a)  
 
 Let's go through each algorithm for choosing the number of clusters:  
-1. K-Elbow method is one of the most prominent and simplest methods for evaluating cluster. However, 
-
+1. K-Elbow method is one of the most prominent and simplest methods for evaluating cluster for K-Means clustering. However,   
+2. Silhouette score is also used to evaluate the number of clusters for K-Means algorithm.
+3. Dendrograms were built to evaluate the number of clusters for agglomerative clustering.
+4. Finally, BIC/AIC scores were used for choosing cluster for Gaussian Mixture clustering algorithm.  
 
 1. We take into account columns with textual responses and split the data into 2 clasters:  
 ```json
- "AdditionalParamters": {
-     "with_text_columns": 1
- },
- "ClusteringParameters": {
-     "cluster_number": 2,
-     "kmeans_init": "k-means++",
-     "kmeans_random_state": 0,
-     "gauss_random_state": 0
- },
+"AdditionalParamters": {
+   "with_text_columns": 1
+},
+"ClusteringParameters": {
+   "cluster_number": 2,
+    # Other parameters
+},
 ```
 2. We omit textual columns and choose either 2 or 3 clusters (3 clusters below):  
 ```json
-    "AdditionalParamters": {
-        "with_text_columns": 0
-    },
-    "ClusteringParameters": {
-        "cluster_number": 3,
-        "kmeans_init": "k-means++",
-        "kmeans_random_state": 0,
-        "gauss_random_state": 0
-    },
+"AdditionalParamters": {
+    "with_text_columns": 0
+},
+"ClusteringParameters": {
+    "cluster_number": 3,
+    # Other parameters
+},
 ```
 
 ### 5.3 Final clusters and their interpretation
