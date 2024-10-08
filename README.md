@@ -64,6 +64,7 @@ Each class is located in its own file, which is documented so that the reader ca
 &emsp;&emsp; — _pca_random_state_: Contains the random state parameter for PCA algorithm. Serves to ensure reproducibility of results.  
 &emsp;&emsp; — _kpca_kernel_: Contains the name of kernel function for Kernel PCA algorithm.  
 &emsp;&emsp; — _kernel_pca_random_state_: Contains the random state parameter for Kernel PCA algorithm. Serves to ensure reproducibility of results.  
+&emsp;&emsp; — _tsne_perplexity_: Contains the perplexity parameter for t-SNE algorithms.  
 &emsp;&emsp; — _tsne_random_state_: Contains the random state parameter for t-SNE algorithm. Serves to ensure reproducibility of results.  
 &emsp;&emsp; — _mds_random_state_: Contains the random state parameter for MDS algorithm. Serves to ensure reproducibility of results.  
 &emsp;&emsp; — _tsne_slice_range_: The range of values for a specific component used to filter the data displayed in the 3D scatter plot for t-SNE visualization. Required to view data in a cross-section.  
@@ -156,7 +157,12 @@ Let's start the discussion with the **nature of data** obtained via dimeansional
   </tr>
 </table> 
 
-PCA is desighned for linearly structured data, while other algorithms are better suited for non-linearly distributed types of data. From all these two- and three-dimensional representations we can conclude that the data has non-linear structure. Furthermore, 
+PCA is desighned for linearly structured data, while other algorithms are better suited for non-linearly distributed types of data. Furthermore, PCA and Kernel PCA algorithms preserve global structure, whereas t-SNE and MDS strive to save local structure of data. The results depend on the parameters we choose, e.g., t-SNE can better save global or local structure depending on the perplexity parameter[1]. However, the main point in using various algorithms, which were desighned for different purposes, is to better understand the nature of the given data.  
+
+From obtained two- and three-dimensional representations, we can conclude that the data has non-linear structure. Moreover, data structure keeps the same for both cases: when columns with textual features are included and when they're not. Duscussing t-SNE, MDS, and PCA results, we can see that all visualizations in two-dimensional space don't have any distinguishable clusters of data points, indicating that the data is dustributed approximately evenly. This statement is supported by "slices" of data obtained in three-dimensional space. We see small deviations in the results of PCA and MDS algorithms, but there are no serious differences comparing to t-SNE and Kernel PCA. Therefore, we can conclude the following things.  
+1. In 2D space, Linear PCA has the result similar to t-SNE and MDS algorithm results: this is . Consequently, global and local structures are quite similar. 
+2. we can say that the data has primary linear structure but with some non-linear dependencies since results aren't the same.
+3. 
 
 ### 5.2 Number of clusters
 Now, we should define the parameters that give us the best results. Firstly, look at the result of choosing cluster number algorithms:  
@@ -200,3 +206,6 @@ Cluster choice when **textual columns aren't considered**:
 ### 5.3 Final clusters and their interpretation
 
 ## 6. Possible improvements
+
+## 7. Literature
+[1] https://opentsne.readthedocs.io/en/latest/examples/03_preserving_global_structure/03_preserving_global_structure.html
