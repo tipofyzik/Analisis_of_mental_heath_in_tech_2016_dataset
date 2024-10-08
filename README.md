@@ -167,7 +167,13 @@ From obtained two- and three-dimensional representations, we can conclude that t
 So, t-SNE, MDS, and Kernel PCA with sigmoid kernel give us almost the same result: an approximately evenly distributed data in the form of ellipse in 2D space. In 3D space, PCA and Kernel PCA show mirrored distributions (reflected along the vertical axis), with a subset of the points deviating from the main cluster. Representations don't have distinguishable clusters and high-density spots. Therefore, density-based clustering algorithms aren't suitable here. Furthermore, due to the uniformity of the data, we will only obtain a few clusters at best.  
 
 ### 5.2 Number of clusters
-Now, we should define the parameters that give us the best results. Firstly, look at the result of choosing cluster number algorithms:  
+Now, we should define the parameters that give us the best results. Let's go through each algorithm for choosing the number of clusters:  
+1. K-Elbow method is one of the most prominent and simplest methods for evaluating cluster for K-Means clustering. However,   
+2. Silhouette score is also used to evaluate the number of clusters for K-Means algorithm. 
+3. Dendrograms were built to evaluate the number of clusters for agglomerative clustering.
+4. Finally, BIC/AIC scores were used for choosing cluster for Gaussian Mixture clustering algorithm.  
+
+The results of cluster choosing algorithms:  
 
 Cluster choice when **textual columns are considered**:  
 ![cluster choice, with text graphs](https://github.com/user-attachments/assets/9c0947e6-16c2-4b11-bd45-e325513c0a89)  
@@ -175,13 +181,7 @@ Cluster choice when **textual columns are considered**:
 
 Cluster choice when **textual columns aren't considered**:  
 ![cluster choice, without text graphs](https://github.com/user-attachments/assets/31730e36-8a35-44e3-8f9a-b95956057fe5)  
-![cluster choice, without text](https://github.com/user-attachments/assets/a75a5f74-028a-49d1-972c-e0a57285fa1a)  
-
-Let's go through each algorithm for choosing the number of clusters:  
-1. K-Elbow method is one of the most prominent and simplest methods for evaluating cluster for K-Means clustering. However,   
-2. Silhouette score is also used to evaluate the number of clusters for K-Means algorithm.
-3. Dendrograms were built to evaluate the number of clusters for agglomerative clustering.
-4. Finally, BIC/AIC scores were used for choosing cluster for Gaussian Mixture clustering algorithm.  
+![cluster choice, without text](https://github.com/user-attachments/assets/a75a5f74-028a-49d1-972c-e0a57285fa1a) 
 
 1. We take into account columns with textual responses and split the data into 2 clasters:  
 ```json
