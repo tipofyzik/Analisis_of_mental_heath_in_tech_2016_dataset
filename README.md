@@ -191,6 +191,6 @@ Cluster choice when **textual columns aren't considered**:
     },
 ```
 
-### Final clusters and their interpretation
+### 5.3 Final clusters and their interpretation
 
 ## 6. Possible improvements
