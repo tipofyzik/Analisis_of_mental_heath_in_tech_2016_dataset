@@ -1,4 +1,4 @@
-![Kernel PCA 2D](https://github.com/user-attachments/assets/df36f443-4311-417f-b5fc-683dff765036)# Analisis of "Mental heath in tech 2016" dataset from kaggle
+# Analisis of "Mental heath in tech 2016" dataset from kaggle
 
 ## 1. Task formulation
 To be brief, there is a high-dimensional, complex survey, which was conducted amongst technology-oriented employees. Dataset has missing values and non-standardized textual inputs. The goal is to categorize participants based on their survey responses and create visualizations that would simplify the data complexity. Key characteristics should be preserved and main traits of each result cluster should be described.
@@ -124,12 +124,8 @@ The results of the work are located here:
 Let's start the discussion with the **nature of data** obtained via dimeansionality reduction. We got data visualization in both 2D and 3D space. Furthermore, we have "slices" of dataset in 3D space to look at them from different angles. We have 4 reduction methods: Linear PCA, Kernel PCA, t-SNE, and Multidimensional Scaling (MDS):  
 
 **PCA 2D and 3D visualizations and 3D slice:**  
-<div style="display: inline-block;">
-    <img src="https://github.com/user-attachments/assets/ee43bcc5-b720-4d38-8ecd-570c306beeb4" width="200" />
-</div>
-<div style="display: inline-block;">
-    <img src="https://github.com/user-attachments/assets/c219f493-8a7e-4c16-be8a-4dc132e22da1" width="200" />
-</div>
+| ![Linear PCA 2D](https://github.com/user-attachments/assets/ee43bcc5-b720-4d38-8ecd-570c306beeb4) | ![Linear PCA](https://github.com/user-attachments/assets/c219f493-8a7e-4c16-be8a-4dc132e22da1) |
+|--------------------------------------------|--------------------------------------------|
 
 
 ![Linear PCA 2D](https://github.com/user-attachments/assets/ee43bcc5-b720-4d38-8ecd-570c306beeb4)  
