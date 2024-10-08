@@ -207,5 +207,6 @@ Cluster choice when **textual columns aren't considered**:
 
 ## 6. Possible improvements
 
-## 7. Literature
-[1] https://opentsne.readthedocs.io/en/latest/examples/03_preserving_global_structure/03_preserving_global_structure.html
+## 7. Literature  
+[1] https://opentsne.readthedocs.io/en/latest/examples/03_preserving_global_structure/03_preserving_global_structure.html  
+[2] https://scikit-learn.org/stable/auto_examples/manifold/plot_t_sne_perplexity.html  
