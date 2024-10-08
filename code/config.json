@@ -27,9 +27,9 @@
     "DimensionalityReducerParameters": {
         "save_info_ratio": 0.95,
         "pca_random_state": 0,
-        "kpca_kernel": "rbf",
+        "kpca_kernel": "sigmoid",
         "kernel_pca_random_state": 0,
-        "tsne_perplexity": 30,
+        "tsne_perplexity": 30.0,
         "tsne_random_state": 0,
         "mds_random_state": 0,
         "tsne_slice_range": [
