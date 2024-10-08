@@ -231,19 +231,19 @@ if __name__ == "__main__":
 
     # "Slices" of data reduced by various methods
     plotter.save_3d_reduced_data_slice(path_to_save = path_to_reduced_components_visualization, 
-                                       file_name = "norm_tsne_3d_range_0_90.png", 
+                                       file_name = "norm_tsne_3d_slice.png", 
                                        component_range = tsne_slice_range, reducing_method = "tsne_3d", 
                                        reduced_data = norm_tsne_3d_result)
     plotter.save_3d_reduced_data_slice(path_to_save = path_to_reduced_components_visualization, 
-                                       file_name = "norm_linear_pca_3d_range_0_90.png", 
+                                       file_name = "norm_linear_pca_3d_slice.png", 
                                        component_range = linear_pca_slice_range, reducing_method = "linear_pca_3d", 
                                        reduced_data = norm_pca_3d_result)
     plotter.save_3d_reduced_data_slice(path_to_save = path_to_reduced_components_visualization, 
-                                       file_name = "norm_kernel_pca_3d_range_0_90.png", 
+                                       file_name = "norm_kernel_pca_3d_slice.png", 
                                        component_range = kernel_pca_slice_range, reducing_method = "kernel_pca_3d", 
                                        reduced_data = norm_kernel_pca_3d_result)
     plotter.save_3d_reduced_data_slice(path_to_save = path_to_reduced_components_visualization, 
-                                       file_name = "norm_mds_3d_range_0_90.png", 
+                                       file_name = "norm_mds_3d_slice.png", 
                                        component_range = mds_slice_range, reducing_method = "mds_3d", 
                                        reduced_data = mds_3d_result)
     print("Dimensionality reduction complete!\n")

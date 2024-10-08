@@ -65,6 +65,7 @@ class TextFeatureExtractor:
         # For questions "why or why not?"
         if sort:
             ngrams = sorted(ngrams, key = lambda x: len(x.split()), reverse=True)
+            
         unique_ngrams = []
         for ngram in ngrams:
             # Checking whether the current n-gram is duplicate or subset of the longer one
@@ -140,6 +141,7 @@ class TextFeatureExtractor:
                     "If so, what condition(s) were you diagnosed with?",
                     "Which of the following best describes your work position?"]
         if column in diagnose_and_work_columns:
+            dataset[column] = dataset[column].apply(self.__preprocess_text)
             count_vectorizer = CountVectorizer(stop_words='english', ngram_range=(2, 3), 
                                                binary=False, token_pattern = r'\b\w[\w\'-]*\b')
 
