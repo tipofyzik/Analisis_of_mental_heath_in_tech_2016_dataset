@@ -119,10 +119,8 @@ These processing decisions were derived imperically by launching the program and
 It is important to note that this effect primarily arises from columns containing textual and territorial information. Binary columns can be encoded using either method, but it is advisable to use label encoding for other types of columns. If both binary and textual or territorial columns are encoded with one-hot encoding, the results can change dramatically.  
 
 ## 5. Results of the work
-The results of the work are located here:   
-
-Let's start the discussion with the **nature of data** obtained via dimeansionality reduction. We got data visualization in both 2D and 3D space. Furthermore, we have "slices" of dataset in 3D space to look at them from different angles. We have 4 reduction methods: Linear PCA, Kernel PCA, t-SNE, and Multidimensional Scaling (MDS):  
-
+### 5.1 Nature of data
+Let's start the discussion with the **nature of data** obtained via dimeansionality reduction. We have data visualizations in both 2D and 3D space. Furthermore, we have "slices" of dataset in 3D space to look at them from different angles. We have 4 reduction methods: Linear PCA, Kernel PCA, t-SNE, and Multidimensional Scaling (MDS):  
 
 **PCA 2D and 3D visualizations and 3D slice:**
 <table>
@@ -157,6 +155,7 @@ Let's start the discussion with the **nature of data** obtained via dimeansional
 </table> 
 
 
+### 5.2 Number of clusters
 Now, we should define the parameters that give us the best results. Firstly, look at the result of choosing cluster number algorithms:  
 Cluster choice when **textual columns are considered**:  
 ![cluster choice, with text graphs](https://github.com/user-attachments/assets/9c0947e6-16c2-4b11-bd45-e325513c0a89)  
@@ -191,5 +190,7 @@ Cluster choice when **textual columns aren't considered**:
         "gauss_random_state": 0
     },
 ```
+
+### Final clusters and their interpretation
 
 ## 6. Possible improvements
