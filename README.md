@@ -174,7 +174,6 @@ Now, we should define the parameters that give us the best results. Let's go thr
 4. Finally, BIC/AIC scores were used for choosing cluster for Gaussian Mixture clustering algorithm.  
 
 The results of cluster choosing algorithms:  
-
 Cluster choice when **textual columns are considered**:  
 ![cluster choice, with text graphs](https://github.com/user-attachments/assets/9c0947e6-16c2-4b11-bd45-e325513c0a89)  
 ![cluster choice, with text](https://github.com/user-attachments/assets/05464f94-5c57-438f-adb9-441189be172a)  
