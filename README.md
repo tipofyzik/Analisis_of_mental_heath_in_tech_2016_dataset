@@ -62,6 +62,7 @@ Each class is located in its own file, which is documented so that the reader ca
 **· _DimensionalityReducerParameters_:**  
 &emsp;&emsp; — _save_info_ratio_: Contains the ratio for the Linear PCA method. You can specify either a fractional number representing the percentage of information retained or an integer indicating the number of features to keep.  
 &emsp;&emsp; — _pca_random_state_: Contains the random state parameter for PCA algorithm. Serves to ensure reproducibility of results.  
+&emsp;&emsp; — _kpca_kernel_: Contains the name of kernel function for Kernel PCA algorithm.  
 &emsp;&emsp; — _kernel_pca_random_state_: Contains the random state parameter for Kernel PCA algorithm. Serves to ensure reproducibility of results.  
 &emsp;&emsp; — _tsne_random_state_: Contains the random state parameter for t-SNE algorithm. Serves to ensure reproducibility of results.  
 &emsp;&emsp; — _mds_random_state_: Contains the random state parameter for MDS algorithm. Serves to ensure reproducibility of results.  
@@ -118,6 +119,7 @@ These processing decisions were derived imperically by launching the program and
 3. **Encoding process** was performed using two encoding technique: label encoding and one-hot encoding. Empirically, columns with textual data, information about US states and territories, and binary columns (those containing only two possible responses) are better suited for label encoding than for one-hot encoding. Using one-hot encoding for these columns can degrade the quality of subsequent steps that can be seen clearly seen on dimensionality reduction step, when the distribution become more messy and less interpretable.   
 It is important to note that this effect primarily arises from columns containing textual and territorial information. Binary columns can be encoded using either method, but it is advisable to use label encoding for other types of columns. If both binary and textual or territorial columns are encoded with one-hot encoding, the results can change dramatically.  
 
+
 ## 5. Results of the work
 ### 5.1 Nature of data
 Let's start the discussion with the **nature of data** obtained via dimeansionality reduction. We have data visualizations in both 2D and 3D space. Furthermore, we have "slices" of dataset in 3D space to look at them from different angles. We have 4 reduction methods: Linear PCA, Kernel PCA, t-SNE, and Multidimensional Scaling (MDS):  
@@ -154,6 +156,7 @@ Let's start the discussion with the **nature of data** obtained via dimeansional
   </tr>
 </table> 
 
+PCA is desighned for linearly structured data, while other algorithms are better suited for non-linearly distributed types of data. From all these two- and three-dimensional representations we can conclude that the data has non-linear structure. Furthermore, 
 
 ### 5.2 Number of clusters
 Now, we should define the parameters that give us the best results. Firstly, look at the result of choosing cluster number algorithms:  
