@@ -159,9 +159,11 @@ Let's start the discussion with the **nature of data** obtained via dimeansional
 
 PCA is desighned for linearly structured data, while other algorithms are better suited for non-linearly distributed types of data. Furthermore, PCA and Kernel PCA algorithms preserve global structure, whereas t-SNE and MDS strive to save local structure of data. The results depend on the parameters we choose, e.g., t-SNE can better save global or local structure depending on the perplexity parameter[1]. The main reason in using various algorithms, which were desighned for different purposes, is to better understand the nature of the given data.  
 
-From obtained two- and three-dimensional representations, we can conclude that the data has non-linear structure. Moreover, data structure keeps the same for both cases: when columns with textual features are included and when they're not. Duscussing t-SNE, MDS, and PCA results, we can see that all visualizations in two-dimensional space don't have any distinguishable clusters of data points, indicating that the data is dustributed approximately evenly. This statement is supported by "slices" of data obtained in three-dimensional space. We see small deviations in the results of PCA and MDS algorithms, but there are no serious differences comparing to t-SNE and Kernel PCA. Therefore, we can conclude the following things.  
+From obtained two- and three-dimensional representations, we can conclude that the data has non-linear structure. Moreover, data structure keeps the same for both cases: when columns with textual features are included and when they're not. Duscussing t-SNE, MDS, and PCA results, we can see that all visualizations in two-dimensional space don't have any distinguishable clusters of data points, indicating that the data is dustributed approximately evenly. This statement is supported by "slices" of data obtained in three-dimensional space. We see small deviations in the results of PCA and MDS algorithms, but there are no serious differences comparing to t-SNE and Kernel PCA. We can note the following things:  
 1. In 2D space, Linear PCA produces results similar to those obtained by t-SNE and MDS algorithms: the output distribution resembles an ellipse, with fuzzy boundaries for PCA and more clearly defined contours for t-SNE and MDS. Furthermore, there are no distinguishable groups of points or one cluster highly consentrated in some area (the result distribution looks even). Thus, the data don't have distinct clusters, but probably contain some features (columns) that cause the data to be spread.  
-2. Kernel PCA has different result that highly depend on the kernel function we choose. 
+2. Kernel PCA result highly depend on the kernel function we choose. On the presented gifs you see Kernel PCA representations obtained using Gaussian radius basis function (RBF) kernel. However, if we choose, for example, polynomial or sigmoid kernel we obtain noisy but at the same time more familiar results to those obtained by t-SNE and MDS:  
+
+It seems that t-SNE and MDS demostrates the nature of the given data better than linear and non-linear PCA algorithms.
 
 ### 5.2 Number of clusters
 Now, we should define the parameters that give us the best results. Firstly, look at the result of choosing cluster number algorithms:  
@@ -174,7 +176,8 @@ Cluster choice when **textual columns aren't considered**:
 ![cluster choice, without text graphs](https://github.com/user-attachments/assets/31730e36-8a35-44e3-8f9a-b95956057fe5)  
 ![cluster choice, without text](https://github.com/user-attachments/assets/a75a5f74-028a-49d1-972c-e0a57285fa1a)  
 
-
+Let's go through each algorithm for choosing the number of clusters:  
+1. K-Elbow method is one of the most prominent and simplest methods for evaluating cluster. However, 
 
 
 1. We take into account columns with textual responses and split the data into 2 clasters:  
