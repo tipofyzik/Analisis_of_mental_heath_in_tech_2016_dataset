@@ -126,8 +126,8 @@ Let's start the discussion with the **nature of data** obtained via dimeansional
 
 <table>
   <tr>
-    <td><img src="https://github.com/user-attachments/assets/ee43bcc5-b720-4d38-8ecd-570c306beeb4" width="200" /></td>
-    <td><img src="https://github.com/user-attachments/assets/c219f493-8a7e-4c16-be8a-4dc132e22da1" width="200" /></td>
+    <td><img src="https://github.com/user-attachments/assets/ee43bcc5-b720-4d38-8ecd-570c306beeb4" style="max-width:100%; height:auto;" /></td>
+    <td><img src="https://github.com/user-attachments/assets/c219f493-8a7e-4c16-be8a-4dc132e22da1" style="max-width:100%; height:auto;" /></td>
   </tr>
 </table>
 
