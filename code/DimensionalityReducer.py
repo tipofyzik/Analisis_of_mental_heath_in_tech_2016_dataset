@@ -27,7 +27,7 @@ class DimensionalityReducer:
     """
     
     def __init__(self, pca_random_state: int, kpca_kernel: str, kernel_pca_random_state: int, 
-                 tsne_random_state: int, mds_random_state: int) -> None:
+                 tsne_perplexity: int, tsne_random_state: int, mds_random_state: int) -> None:
         """
         Initializes the DimensionalityReducer with specified random states for various algorithms.
 
@@ -35,6 +35,7 @@ class DimensionalityReducer:
             pca_random_state (int): Seed for the random number generator used in PCA.
             kpca_kernel (str): Kernel function name used in Kernel PCA.
             kernel_pca_random_state (int): Seed for the random number generator used in Kernel PCA.
+            tsne_perplexity (int): Perplexity parameter used in t-SNE. 
             tsne_random_state (int): Seed for the random number generator used in t-SNE.
             mds_random_state (int): Seed for the random number generator used in MDS.
 
@@ -45,8 +46,8 @@ class DimensionalityReducer:
         self.__pca_3d = PCA(n_components = 3, random_state = pca_random_state)
         self.__kpca_2d = KernelPCA(n_components=2, random_state = kernel_pca_random_state, kernel=kpca_kernel)
         self.__kpca_3d = KernelPCA(n_components=3, random_state = kernel_pca_random_state, kernel=kpca_kernel)
-        self.__tsne_2d = TSNE(n_components=2, random_state=tsne_random_state)
-        self.__tsne_3d = TSNE(n_components=3, random_state=tsne_random_state)
+        self.__tsne_2d = TSNE(n_components=2, random_state=tsne_random_state, perplexity = tsne_perplexity)
+        self.__tsne_3d = TSNE(n_components=3, random_state=tsne_random_state, perplexity = tsne_perplexity)
         self.__mds_2d = MDS(n_components=2, random_state=mds_random_state, dissimilarity='precomputed')
         self.__mds_3d = MDS(n_components=3, random_state=mds_random_state, dissimilarity='precomputed')
 

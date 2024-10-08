@@ -29,6 +29,7 @@
         "pca_random_state": 0,
         "kpca_kernel": "rbf",
         "kernel_pca_random_state": 0,
+        "tsne_perplexity": 30,
         "tsne_random_state": 0,
         "mds_random_state": 0,
         "tsne_slice_range": [

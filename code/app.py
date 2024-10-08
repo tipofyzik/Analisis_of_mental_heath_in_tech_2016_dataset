@@ -47,6 +47,7 @@ save_info_ratio = config["DimensionalityReducerParameters"]["save_info_ratio"]
 pca_random_state = config["DimensionalityReducerParameters"]["pca_random_state"]
 kpca_kernel = config["DimensionalityReducerParameters"]["kpca_kernel"]
 kernel_pca_random_state = config["DimensionalityReducerParameters"]["kernel_pca_random_state"]
+tsne_perplexity = config["DimensionalityReducerParameters"]["tsne_perplexity"]
 tsne_random_state = config["DimensionalityReducerParameters"]["tsne_random_state"]
 mds_random_state = config["DimensionalityReducerParameters"]["mds_random_state"]
 
@@ -97,6 +98,7 @@ if __name__ == "__main__":
     dimension_reducer = DimensionalityReducer(pca_random_state = pca_random_state,
                                               kpca_kernel = kpca_kernel,
                                               kernel_pca_random_state = kernel_pca_random_state,
+                                              tsne_perplexity = tsne_perplexity,
                                               tsne_random_state = tsne_random_state, 
                                               mds_random_state = mds_random_state)
 
