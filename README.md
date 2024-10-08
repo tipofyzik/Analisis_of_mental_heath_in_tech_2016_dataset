@@ -121,11 +121,16 @@ It is important to note that this effect primarily arises from columns containin
 ## 5. Results of the work
 The results of the work are located here:   
 
-Let's start the discussion with the **nature of data** obtained via dimeansionality reduction. We got data visualization in both 2D and 3D space. Furthermore, we have "slices" of dataset in 3D space to look at them from different angles. We have 3 reduction methods: Linear PCA, Kernel PCA, t-SNE, and Multidimensional Scaling (MDS):  
-![linear_pca_slice](https://github.com/user-attachments/assets/e07a1fe7-dba5-46e8-b892-76f62d975e96)  
-![kernel_pca_slice](https://github.com/user-attachments/assets/980dcf07-d282-435b-90a7-c99d5a20b8cd)  
-![tsne_slice](https://github.com/user-attachments/assets/4c9a359e-f0a1-4b81-a580-c343a7025801)  
-![mds_slice](https://github.com/user-attachments/assets/a623d7ad-1911-4cbc-845b-9834a93d60f1)  
+Let's start the discussion with the **nature of data** obtained via dimeansionality reduction. We got data visualization in both 2D and 3D space. Furthermore, we have "slices" of dataset in 3D space to look at them from different angles. We have 4 reduction methods: Linear PCA, Kernel PCA, t-SNE, and Multidimensional Scaling (MDS):  
+**PCA:**  
+![Linear PCA](https://github.com/user-attachments/assets/c219f493-8a7e-4c16-be8a-4dc132e22da1)  
+**Kernel PCA:**  
+![Kernel PCA](https://github.com/user-attachments/assets/0e90cb7b-c814-4002-b3e0-9f759d580208)  
+**t-SNE:**  
+![t-SNE](https://github.com/user-attachments/assets/59ca08cd-5cf5-44d6-a1f1-47148db19c05)  
+**MDS:**  
+![MDS](https://github.com/user-attachments/assets/8c08a163-2384-4c1a-951b-c0913c9b551d)  
+
 
 
 
