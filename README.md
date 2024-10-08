@@ -125,10 +125,10 @@ Let's start the discussion with the **nature of data** obtained via dimeansional
 
 
 <div style="display: inline-block; margin-right: 10px;">
-    <img src="![Linear PCA 2D](https://github.com/user-attachments/assets/ee43bcc5-b720-4d38-8ecd-570c306beeb4)" width="200" />
+    <img src="https://github.com/user-attachments/assets/ee43bcc5-b720-4d38-8ecd-570c306beeb4" width="200" />
 </div>
 <div style="display: inline-block;">
-    <img src="![Linear PCA](https://github.com/user-attachments/assets/c219f493-8a7e-4c16-be8a-4dc132e22da1)" width="200" />
+    <img src="https://github.com/user-attachments/assets/c219f493-8a7e-4c16-be8a-4dc132e22da1" width="200" />
 </div>
 
 
