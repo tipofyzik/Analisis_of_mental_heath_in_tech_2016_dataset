@@ -174,8 +174,8 @@ So, t-SNE, MDS, and Kernel PCA with sigmoid kernel give us roughly similar resul
 ### 5.2 Number of clusters
 Now, we should define the parameters that give us the best results. Let's go through each algorithm for choosing the number of clusters (see the corresponding graphs below):  
 1. K-Elbow method is one of the most prominent and simplest methods for evaluating cluster for K-Means clustering. However, the output graphs don't have a clear elbow point [3]. Therefore, this algorithm isn't suitable in our case.  
-2. Silhouette score is also used to evaluate the number of clusters k for K-Means algorithm. There are clear results, from which we can derive that for K-Means clustering it's better to choose 2 or 3 clusters depending on whether textual columns are considered. When choosing the optimal number of clusters, we should consider not only the algorithm's average score but also the distribution of clister sizes [3]. When textial features are taken into account, one cluster often becomes significantly larger than the others for many suggested cluster numbers. Therefore, the best choice is k=2, as larger k values result in significantly imbalanced cluster sizes. For case textual columns are omitted, the best choice is k=3 since this configuration gives us the most size-balanced result.  
-3. Dendrograms were built to evaluate the number of clusters for agglomerative clustering.    
+2. Silhouette score is also used to evaluate the number of clusters k for K-Means algorithm. There are clear results, from which we can derive that for K-Means clustering it's better to choose 2 or 3 clusters depending on whether textual columns are considered. When choosing the optimal number of clusters, we should consider not only the algorithm's average score but also the distribution of clister sizes [3]. When textial features are taken into account, one cluster often becomes significantly larger than the others for many suggested cluster numbers. Therefore, the best choice is k=2, as larger k values result in significantly imbalanced cluster sizes. When textual columns are omitted, the best choice is k=3 since this configuration gives us the most size-balanced result.  
+3. Dendrograms were built to evaluate the number of clusters for agglomerative clustering. In both cases, there are 3 clearly distinguishable clusters. In the graphs below, you can see   
 4. Finally, BIC/AIC scores were used for choosing cluster for Gaussian Mixture clustering algorithm.  
 
 The results of cluster choosing algorithms:  
@@ -217,4 +217,5 @@ Cluster choice when **textual columns aren't considered**:
 
 [1] https://opentsne.readthedocs.io/en/latest/examples/03_preserving_global_structure/03_preserving_global_structure.html  
 [2] https://scikit-learn.org/stable/auto_examples/manifold/plot_t_sne_perplexity.html  
-[3] https://builtin.com/data-science/elbow-method
+[3] https://builtin.com/data-science/elbow-method  
+[4] https://www.displayr.com/what-is-dendrogram/  
