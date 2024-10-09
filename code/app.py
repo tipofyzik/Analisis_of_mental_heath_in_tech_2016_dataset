@@ -12,6 +12,8 @@ import pandas as pd
 import numpy as np
 import json
 
+
+
 # Deleting folder with results if it exists
 import shutil
 import os
@@ -342,8 +344,8 @@ if __name__ == "__main__":
                                   type_of_clustering = "Gaussian", reducing_method="MDS", 
                                   reduced_data = norm_mds_2d_result, cluster_labels = mds_gaussian_labels)
     # K-Means
-    plotter.save_clustering_plots(path_to_save = path_to_cluster_results, file_name = "kmeans_on_pca_tsne_2d.png", 
-                                  type_of_clustering = "KMeans", reducing_method="t-SNE", 
+    plotter.save_clustering_plots(path_to_save = path_to_cluster_results, file_name = "kmeans_on_norm_pca_2d.png", 
+                                  type_of_clustering = "KMeans", reducing_method="PCA", 
                                   reduced_data = norm_pca_2d_result, cluster_labels = pca_kmeans_cluster_labels)
     plotter.save_clustering_plots(path_to_save = path_to_cluster_results, file_name = "kmeans_on_norm_kernel_pca_2d.png", 
                                   type_of_clustering = "KMeans", reducing_method="Kernel PCA", 
@@ -355,8 +357,8 @@ if __name__ == "__main__":
                                   type_of_clustering = "KMeans", reducing_method="MDS", 
                                   reduced_data = norm_mds_2d_result, cluster_labels = mds_kmeans_labels)
     # Agglomerative clustering
-    plotter.save_clustering_plots(path_to_save = path_to_cluster_results, file_name = "agglomerative_on_pca_tsne_2d.png", 
-                                  type_of_clustering = "Agglomerative", reducing_method="t-SNE", 
+    plotter.save_clustering_plots(path_to_save = path_to_cluster_results, file_name = "agglomerative_on_norm_pca_2d.png", 
+                                  type_of_clustering = "Agglomerative", reducing_method="PCA", 
                                   reduced_data = norm_pca_2d_result, cluster_labels = pca_agglomerative_cluster_labels)
     plotter.save_clustering_plots(path_to_save = path_to_cluster_results, file_name = "agglomerative_on_norm_kernel_pca_2d.png", 
                                   type_of_clustering = "Agglomerative", reducing_method="Kernel PCA", 
