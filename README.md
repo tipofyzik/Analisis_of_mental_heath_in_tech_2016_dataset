@@ -194,27 +194,37 @@ Cluster choice when **textual columns aren't considered**:
 The resulting parameter choices are shown below:  
 1. We take into account columns with textual responses and split the data into 2 clasters:  
 ```json
-"AdditionalParamters": {
-   "with_text_columns": 1
-},
-"ClusteringParameters": {
-   "cluster_number": 2,
-    # Other parameters
-},
+  "AdditionalParamters": {
+     "with_text_columns": 1
+  },
+  "ClusteringParameters": {
+     "cluster_number": 2,
+      # Other parameters
+  },
 ```
 2. We omit textual columns and choose either 3 (or 2) clusters:  
 ```json
-"AdditionalParamters": {
-    "with_text_columns": 0
-},
-"ClusteringParameters": {
-    "cluster_number": 3,
-    # Other parameters
-},
+  "AdditionalParamters": {
+      "with_text_columns": 0
+  },
+  "ClusteringParameters": {
+      "cluster_number": 3,
+      # Other parameters
+  },
 ```
 
 ### 5.3 Final clusters and their interpretation
-**"config.json"** file contains 
+**"config.json"** file contains 4 parameter in "AdditionalParamters" section:  
+```json
+  "AdditionalParamters": {
+      # Other parameters
+      "interpret_tsne_reduced_data": 1,
+      "interpret_pca_reduced_data": 0,
+      "interpret_kernel_pca_reduced_data": 0,
+      "interpret_mds_reduced_data": 0
+  }
+```
+
 The implementation has 4 dimensionality reduction algorithms and 3 clustering algorithms. Clustering is performed on 2D data representations. Since all reduction algorithms give us approximately similar results, clustering only on 2D representation produced by t-SNE is demostrated on this page. However, if you want to take a glance at all clustering results, 
 
 
