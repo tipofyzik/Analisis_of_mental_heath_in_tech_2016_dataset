@@ -224,7 +224,8 @@ The resulting parameter choices are shown below:
       "interpret_mds_reduced_data": 0
   }
 ```  
-These parameters are responsible for interpretation of clustering results for data which dimensionality was reduced by a specific algorithm (see "4.2. Config file" section). Since the result for all algorithm look similar to each other, we will only consider clusters interpretation for data reduced by t-SNE algorithm. If you want to perform and save interpretations for data reduced by other algorithms, you can replace zeroes in the parameters above with other 1 or other number.  
+These parameters are responsible for interpretation of clustering results for data which dimensionality was reduced by a specific algorithm (see "4.2. Config file" section). Since the results of all algorithms are similar, we will focus on clustering and cluster interpretations for data reduced by t-SNE algorithm. If you want to perform and save interpretations for data reduced by other algorithms, you can simply replace zeroes in the parameters above with other 1 or other number.  
+
 
 
 ## 6. Possible improvements
