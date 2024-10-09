@@ -161,7 +161,7 @@ PCA is desighned for linearly structured data, while other algorithms are better
 
 From obtained two- and three-dimensional representations, we can conclude that the data has non-linear structure. Moreover, data structure keeps the same for both cases: when columns with textual features are included and when they're not. Duscussing t-SNE, MDS, and PCA results, we can see that all visualizations in two-dimensional space don't have any distinguishable clusters of data points, indicating that the data is dustributed approximately evenly. This statement is supported by "slices" of data obtained in three-dimensional space. We see small deviations in the results of PCA and MDS algorithms, but there are no serious differences comparing to t-SNE and Kernel PCA. We can note the following things:  
 1. In 2D space, Linear PCA produces results similar to those obtained by t-SNE and MDS algorithms: the output distribution resembles an ellipse, with fuzzy boundaries for PCA and more clearly defined contours for t-SNE and MDS. Furthermore, there are no distinguishable groups of points or one cluster highly consentrated in some area (the result distribution looks even). Thus, the data don't have distinct clusters, but probably contain some features (columns) that cause the data to be spread.  
-2. Kernel PCA result highly depend on the kernel function we choose. On the presented gifs you see Kernel PCA representations obtained using Gaussian radius basis function (RBF) kernel. However, if we choose sigmoid kernel we obtain noisy but at the same time more familiar result to those obtained by t-SNE and MDS:  
+2. Kernel PCA result highly depend on the kernel function we choose. In the presented gifs, you can see Kernel PCA representations obtained using the Gaussian radius basis function (RBF) kernel. However, if we select the sigmoid kernel, the result becomes more similar to those obtained by t-SNE and MDS, but noisier at the same time:  
 <table>
   <tr>
     <td><img src="https://github.com/user-attachments/assets/498feced-78ab-4f00-bcf8-d5534cae5e5f" style="max-width:100%; height:auto;" /></td>
@@ -169,13 +169,13 @@ From obtained two- and three-dimensional representations, we can conclude that t
   </tr>
 </table>  
 
-So, t-SNE, MDS, and Kernel PCA with sigmoid kernel give us roughly similar results: an approximately evenly distributed data in the form of ellipse in 2D space. In 3D space, PCA and Kernel PCA show mirrored distributions (reflected along the vertical axis), with a subset of the points deviating from the main cluster. Representations don't have distinguishable clusters and high-density spots. Therefore, density-based clustering algorithms, such as DBSCAN clustering, aren't suitable here. Furthermore, due to the uniformity of the data, we will only obtain a few clusters at best.  
+So, t-SNE, MDS, and Kernel PCA with sigmoid kernel give us roughly similar results: an approximately evenly distributed data in the form of ellipse in 2D space. In 3D space, PCA and Kernel PCA show mirrored distributions (reflected along the vertical axis), with a subset of the points deviating from the main cluster. Furthermore, PCA and Kernel PCA give us nosier representations than other reductioon algorithms. Each representation doesn't have distinguishable clusters and high-density spots. Therefore, density-based clustering algorithms, such as DBSCAN clustering, aren't suitable for this dataset. Furthermore, due to the uniformity of the data, we expect to obtain only a few clusters at best.  
 
 ### 5.2 Number of clusters
 Now, we should define the parameters that give us the best results. Let's go through each algorithm for choosing the number of clusters:  
-1. K-Elbow method is one of the most prominent and simplest methods for evaluating cluster for K-Means clustering. However,   
-2. Silhouette score is also used to evaluate the number of clusters for K-Means algorithm. 
-3. Dendrograms were built to evaluate the number of clusters for agglomerative clustering.
+1. K-Elbow method is one of the most prominent and simplest methods for evaluating cluster for K-Means clustering. However, the output graphs don't have a clear elbow point [3]. Therefore, this algorithm isn't suitable in our case.  
+2. Silhouette score is also used to evaluate the number of clusters k for K-Means algorithm. There are clear results, from which we can derive that for K-Means clustering it's better to choose 2 or 3 clusters depending on whether textual columns are considered. When choosing the optimal number of clusters, we should consider not only the algorithm's average score but also the distribution of clister sizes [3]. When textial features are taken into account, one cluster often becomes significantly larger than the others for many suggested cluster numbers. Therefore, the best choice is k=2, as larger k values result in significantly imbalanced cluster sizes. For case textual columns are omitted, the best choice is k=3 since this configuration gives us the most size-balanced result.  
+3. Dendrograms were built to evaluate the number of clusters for agglomerative clustering.    
 4. Finally, BIC/AIC scores were used for choosing cluster for Gaussian Mixture clustering algorithm.  
 
 The results of cluster choosing algorithms:  
@@ -214,5 +214,7 @@ Cluster choice when **textual columns aren't considered**:
 ## 6. Possible improvements
 
 ## 7. Literature  
+
 [1] https://opentsne.readthedocs.io/en/latest/examples/03_preserving_global_structure/03_preserving_global_structure.html  
 [2] https://scikit-learn.org/stable/auto_examples/manifold/plot_t_sne_perplexity.html  
+[3] https://builtin.com/data-science/elbow-method
