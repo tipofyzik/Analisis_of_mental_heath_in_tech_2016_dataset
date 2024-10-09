@@ -220,19 +220,18 @@ class DimensionalityReducer:
         self.__tsne_3d_reducer(normalized_or_pca_dataset)
         return self.__tsne_2d_result, self.__tsne_3d_result
     
-    def get_mds_result(self, encoded_dataset: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
+    def get_mds_result(self, normalized_dataset: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
         """
         Applies MDS to the provided dataset and computes the reduced datasets 
         in both 2D and 3D dimensions, returning them.
 
         Args:
-            encoded_dataset (pd.DataFrame): The dataset for MDS, typically consisting of categorical data 
-            that has been one-hot encoded or transformed into a suitable format for analysis.
+            normalized_dataset (pd.DataFrame): The normalized dataset for MDS.
 
         Returns:
             tuple[pd.DataFrame, pd.DataFrame]: A tuple containing the MDS-transformed datasets 
             for 2D and 3D dimensionality reduction, respectively.
         """
-        self.__mds_2d_reducer(encoded_dataset)
-        self.__mds_3d_reducer(encoded_dataset)
+        self.__mds_2d_reducer(normalized_dataset)
+        self.__mds_3d_reducer(normalized_dataset)
         return self.__mds_2d_result, self.__mds_3d_result 

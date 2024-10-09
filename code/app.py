@@ -42,6 +42,13 @@ path_to_cluster_results = config['GraphPlotterSavePaths']['path_to_cluster_resul
 # Setting determines whether text columns are considered during encoding and clustering 
 with_text_columns = bool(config['AdditionalParamters']['with_text_columns'])
 
+# Settings determine whether the interpretations of clustering results for data 
+# reduced using a dimensionality reduction algorithm should be saved.
+interpret_tsne_reduced_data = bool(config["AdditionalParamters"]["interpret_tsne_reduced_data"])
+interpret_pca_reduced_data = bool(config["AdditionalParamters"]["interpret_pca_reduced_data"])
+interpret_kernel_pca_reduced_data = bool(config["AdditionalParamters"]["interpret_kernel_pca_reduced_data"])
+interpret_mds_reduced_data = bool(config["AdditionalParamters"]["interpret_mds_reduced_data"])
+
 # Settings for dimensionality reduction
 save_info_ratio = config["DimensionalityReducerParameters"]["save_info_ratio"]
 pca_random_state = config["DimensionalityReducerParameters"]["pca_random_state"]
@@ -68,9 +75,6 @@ random_forest_permutation_repeats = config["ResultInterpreterParameters"]["rando
 permutation_random_state = config["ResultInterpreterParameters"]["permutation_random_state"]
 mutual_information_random_state = config["ResultInterpreterParameters"]["mutual_information_random_state"]
 most_important_features_max_number = config["ResultInterpreterParameters"]["most_important_features_max_number"]
-interpret_tsne_reduced_data = bool(config["ResultInterpreterParameters"]["interpret_tsne_reduced_data"])
-interpret_pca_reduced_data = bool(config["ResultInterpreterParameters"]["interpret_pca_reduced_data"])
-interpret_kernel_pca_reduced_data = bool(config["ResultInterpreterParameters"]["interpret_kernel_pca_reduced_data"])
 
 # Paths to save cluster interpreting results
 path_to_interpretations = config['GraphPlotterSavePaths']['path_to_interpretations']
@@ -87,6 +91,9 @@ path_to_pca_2d_agglomerative_result = config["ResultInterpreterSavePaths"]["path
 path_to_kernel_pca_2d_agglomerative_result = config["ResultInterpreterSavePaths"]["path_to_kernel_pca_2d_agglomerative_result"]
 path_to_tsne_2d_agglomerative_result = config["ResultInterpreterSavePaths"]["path_to_tsne_2d_agglomerative_result"]
 
+path_to_mds_2d_gauss_result = config["ResultInterpreterSavePaths"]["path_to_mds_2d_gauss_result"]
+path_to_mds_2d_kmeans_result = config["ResultInterpreterSavePaths"]["path_to_mds_2d_kmeans_result"]
+path_to_mds_2d_agglomerative_result = config["ResultInterpreterSavePaths"]["path_to_mds_2d_agglomerative_result"]
 
 
 if __name__ == "__main__":
@@ -189,14 +196,13 @@ if __name__ == "__main__":
     # Linear PCA
     norm_pca_2d_result, norm_pca_3d_result = dimension_reducer.\
         get_linear_pca_result(normalized_dataset = normalized_dataset)
-    # Kernel PCA and t-SNE for normalized data
+    # Kernel PCA, t-SNE, and MDS for normalized data
     norm_tsne_2d_result, norm_tsne_3d_result = dimension_reducer.\
         get_tsne_result(normalized_or_pca_dataset = normalized_dataset)
     norm_kernel_pca_2d_result, norm_kernel_pca_3d_result = dimension_reducer.\
         get_kernel_pca_result(normalized_or_pca_dataset = normalized_dataset)
-    # MDS for encoded data
-    mds_2d_result, mds_3d_result = dimension_reducer.\
-        get_mds_result(encoded_dataset = encoded_dataset)
+    norm_mds_2d_result, norm_mds_3d_result = dimension_reducer.\
+        get_mds_result(normalized_dataset = normalized_dataset)
     # Kernel PCA and t-SNE for data reduced by linear PCA with 95% information saved
     pca_tsne_2d_result, pca_tsne_3d_result = dimension_reducer.\
         get_tsne_result(normalized_or_pca_dataset = pca_n_result)
@@ -229,9 +235,9 @@ if __name__ == "__main__":
                                         reducing_method="tSNE_3D", reduced_data = pca_tsne_3d_result)
     # MDS in 2d nad 3d on encoded data
     plotter.save_2d_reduced_data_plotes(path_to_save = path_to_reduced_components_visualization, file_name = "mds_2d.png",
-                                        reducing_method="Multidimensional Scaling", reduced_data = mds_2d_result)
+                                        reducing_method="Multidimensional Scaling", reduced_data = norm_mds_2d_result)
     plotter.save_3d_reduced_data_plotes(path_to_save = path_to_reduced_components_visualization, file_name = "mds_3d.png",
-                                        reducing_method="Multidimensional Scaling", reduced_data = mds_3d_result)
+                                        reducing_method="Multidimensional Scaling", reduced_data = norm_mds_3d_result)
 
     # "Slices" of data reduced by various methods
     plotter.save_3d_reduced_data_slice(path_to_save = path_to_reduced_components_visualization, 
@@ -249,7 +255,7 @@ if __name__ == "__main__":
     plotter.save_3d_reduced_data_slice(path_to_save = path_to_reduced_components_visualization, 
                                        file_name = "norm_mds_3d_slice.png", 
                                        component_range = mds_slice_range, reducing_method = "mds_3d", 
-                                       reduced_data = mds_3d_result)
+                                       reduced_data = norm_mds_3d_result)
     print("Dimensionality reduction complete!\n")
 
 
@@ -289,23 +295,29 @@ if __name__ == "__main__":
     # Gaussian Mixture Model
     pca_gaussian_dataset, pca_gaussian_labels = classify_dataset(reduced_dataset = norm_pca_2d_result,
                                                                 method_of_clustering = clusterer.gaussian_mixture_clusterization)
-    tsne_gaussian_dataset, tsne_gaussian_labels = classify_dataset(reduced_dataset = norm_tsne_2d_result,
-                                                                method_of_clustering = clusterer.gaussian_mixture_clusterization)
     kernel_pca_gaussian_dataset, kernel_pca_gaussian_labels = classify_dataset(reduced_dataset = norm_kernel_pca_2d_result,
                                                                 method_of_clustering = clusterer.gaussian_mixture_clusterization)
+    tsne_gaussian_dataset, tsne_gaussian_labels = classify_dataset(reduced_dataset = norm_tsne_2d_result,
+                                                                method_of_clustering = clusterer.gaussian_mixture_clusterization)
+    mds_gaussian_dataset, mds_gaussian_labels = classify_dataset(reduced_dataset = norm_mds_2d_result,
+                                                                method_of_clustering = clusterer.gaussian_mixture_clusterization)    
     # K-Means
     pca_kmeans_dataset, pca_kmeans_cluster_labels = classify_dataset(reduced_dataset = pca_tsne_2d_result,
                                                                 method_of_clustering = clusterer.kmeans_clusterization)
+    kernel_pca_kmeans_dataset, kernel_pca_kmeans_labels = classify_dataset(reduced_dataset = norm_kernel_pca_2d_result,
+                                                                method_of_clustering = clusterer.kmeans_clusterization)
     tsne_kmeans_dataset, tsne_kmeans_cluster_labels = classify_dataset(reduced_dataset = norm_tsne_2d_result,
                                                                 method_of_clustering = clusterer.kmeans_clusterization)
-    kernel_pca_kmeans_dataset, kernel_pca_kmeans_labels = classify_dataset(reduced_dataset = norm_kernel_pca_2d_result,
+    mds_kmeans_dataset, mds_kmeans_labels = classify_dataset(reduced_dataset = norm_mds_2d_result,
                                                                 method_of_clustering = clusterer.kmeans_clusterization)
     # Agglomerative clustering
     pca_agglomerative_dataset, pca_agglomerative_cluster_labels = classify_dataset(reduced_dataset = pca_tsne_2d_result,
                                                                 method_of_clustering = clusterer.agglomerative_clusterization)
+    kernel_pca_agglomerative_dataset, kernel_pca_agglomerative_labels = classify_dataset(reduced_dataset = norm_kernel_pca_2d_result,
+                                                                method_of_clustering = clusterer.agglomerative_clusterization)
     tsne_agglomerative_dataset, tsne_agglomerative_cluster_labels = classify_dataset(reduced_dataset = norm_tsne_2d_result,
                                                                 method_of_clustering = clusterer.agglomerative_clusterization)
-    kernel_pca_agglomerative_dataset, kernel_pca_agglomerative_labels = classify_dataset(reduced_dataset = norm_kernel_pca_2d_result,
+    mds_agglomerative_dataset, mds_agglomerative_labels = classify_dataset(reduced_dataset = norm_mds_2d_result,
                                                                 method_of_clustering = clusterer.agglomerative_clusterization)
 
     # Save clustering results
@@ -319,6 +331,9 @@ if __name__ == "__main__":
     plotter.save_clustering_plots(path_to_save = path_to_cluster_results, file_name = "gaussian_on_norm_tsne_2d.png", 
                                   type_of_clustering = "Gaussian", reducing_method="t-SNE", 
                                   reduced_data = norm_tsne_2d_result, cluster_labels = tsne_gaussian_labels)
+    plotter.save_clustering_plots(path_to_save = path_to_cluster_results, file_name = "gaussian_on_norm_mds_2d.png", 
+                                  type_of_clustering = "Gaussian", reducing_method="MDS", 
+                                  reduced_data = norm_mds_2d_result, cluster_labels = mds_gaussian_labels)
     # K-Means
     plotter.save_clustering_plots(path_to_save = path_to_cluster_results, file_name = "kmeans_on_pca_tsne_2d.png", 
                                   type_of_clustering = "KMeans", reducing_method="t-SNE", 
@@ -329,16 +344,22 @@ if __name__ == "__main__":
     plotter.save_clustering_plots(path_to_save = path_to_cluster_results, file_name = "kmeans_on_norm_tsne_2d.png", 
                                   type_of_clustering = "KMeans", reducing_method="t-SNE", 
                                   reduced_data = norm_tsne_2d_result, cluster_labels = tsne_kmeans_cluster_labels)
+    plotter.save_clustering_plots(path_to_save = path_to_cluster_results, file_name = "kmeans_on_norm_mds_2d.png", 
+                                  type_of_clustering = "KMeans", reducing_method="MDS", 
+                                  reduced_data = norm_mds_2d_result, cluster_labels = mds_kmeans_labels)
     # Agglomerative clustering
     plotter.save_clustering_plots(path_to_save = path_to_cluster_results, file_name = "agglomerative_on_pca_tsne_2d.png", 
                                   type_of_clustering = "Agglomerative", reducing_method="t-SNE", 
                                   reduced_data = pca_tsne_2d_result, cluster_labels = pca_agglomerative_cluster_labels)
     plotter.save_clustering_plots(path_to_save = path_to_cluster_results, file_name = "agglomerative_on_norm_kernel_pca_2d.png", 
-                                  type_of_clustering = "Gaussian", reducing_method="Kernel PCA", 
+                                  type_of_clustering = "Agglomerative", reducing_method="Kernel PCA", 
                                   reduced_data = norm_kernel_pca_2d_result, cluster_labels = kernel_pca_agglomerative_labels)
     plotter.save_clustering_plots(path_to_save = path_to_cluster_results, file_name = "agglomerative_on_norm_tsne_2d.png", 
                                   type_of_clustering = "Agglomerative", reducing_method="t-SNE", 
                                   reduced_data = norm_tsne_2d_result, cluster_labels = tsne_agglomerative_cluster_labels)    
+    plotter.save_clustering_plots(path_to_save = path_to_cluster_results, file_name = "agglomerative_on_norm_mds_2d.png", 
+                                  type_of_clustering = "Agglomerative", reducing_method="MDS", 
+                                  reduced_data = norm_mds_2d_result, cluster_labels = mds_agglomerative_labels)
     print("Clusterization complete!\n")
 
 
@@ -421,7 +442,7 @@ if __name__ == "__main__":
         interpret_clusterisation(dataset_to_interpret = tsne_agglomerative_dataset, result_dataset_name = "tsne_agglomerative_dataset.csv",
                                 dataset_folder = path_to_tsne_2d_agglomerative_result)    
 
-    # Interpretation for dataset reduced by linear pca algorithm
+    # Interpretation for dataset reduced by Linear PCA algorithm
     if interpret_pca_reduced_data:
         # Gaussian clustering
         interpret_clusterisation(dataset_to_interpret = pca_gaussian_dataset, result_dataset_name = "pca_gaussian_dataset.csv",
@@ -433,7 +454,7 @@ if __name__ == "__main__":
         interpret_clusterisation(dataset_to_interpret = pca_agglomerative_dataset, result_dataset_name = "pca_agglomerative_dataset.csv",
                                 dataset_folder = path_to_pca_2d_agglomerative_result)
 
-    # Interpretation for dataset reduced by kernel pca algorithm
+    # Interpretation for dataset reduced by Kernel PCA algorithm
     if interpret_kernel_pca_reduced_data:
         # Gaussian clustering
         interpret_clusterisation(dataset_to_interpret = kernel_pca_gaussian_dataset, result_dataset_name = "kernel_pca_gaussian_dataset.csv",
@@ -444,4 +465,16 @@ if __name__ == "__main__":
         # Agglomerative clustering
         interpret_clusterisation(dataset_to_interpret = kernel_pca_agglomerative_dataset, result_dataset_name = "kernel_pca_agglomerative_dataset.csv",
                                 dataset_folder = path_to_kernel_pca_2d_agglomerative_result)
-    print("Interpretation complete!") 
+
+    # Interpretation for dataset reduced by MDS algorithm
+    if interpret_mds_reduced_data:
+        # Gaussian clustering
+        interpret_clusterisation(dataset_to_interpret = mds_gaussian_dataset, result_dataset_name = "mds_gaussian_dataset.csv",
+                                dataset_folder = path_to_mds_2d_gauss_result)
+        # K-Means clustering
+        interpret_clusterisation(dataset_to_interpret = mds_kmeans_dataset, result_dataset_name = "mds_kmeans_dataset.csv",
+                                dataset_folder = path_to_mds_2d_kmeans_result)
+        # Agglomerative clustering
+        interpret_clusterisation(dataset_to_interpret = mds_agglomerative_dataset, result_dataset_name = "mds_agglomerative_dataset.csv",
+                                dataset_folder = path_to_mds_2d_agglomerative_result)
+    print("Interpretation complete!")

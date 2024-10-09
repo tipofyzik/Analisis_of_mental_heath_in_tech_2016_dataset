@@ -22,7 +22,11 @@
         "path_to_interpretations": "./results/interpretation_graphs"
     },
     "AdditionalParamters": {
-        "with_text_columns": 1
+        "with_text_columns": 1,
+        "interpret_tsne_reduced_data": 1,
+        "interpret_pca_reduced_data": 0,
+        "interpret_kernel_pca_reduced_data": 0,
+        "interpret_mds_reduced_data": 0
     },
     "DimensionalityReducerParameters": {
         "save_info_ratio": 0.95,
@@ -60,20 +64,20 @@
         "random_forest_permutation_repeats": 10,
         "permutation_random_state": 0,
         "mutual_information_random_state": 0,
-        "most_important_features_max_number": 15,
-        "interpret_tsne_reduced_data": 1,
-        "interpret_pca_reduced_data": 0,
-        "interpret_kernel_pca_reduced_data": 0
+        "most_important_features_max_number": 15
     },
     "ResultInterpreterSavePaths": {
         "path_to_pca_2d_gauss_result": "pca_2d_gauss_interpretation",
         "path_to_kernel_pca_2d_gauss_result": "kernel_pca_2d_gauss_interpretation",
         "path_to_tsne_2d_gauss_result": "tsne_2d_gauss_interpretation",
+        "path_to_mds_2d_gauss_result": "mds_2d_gauss_interpretation",
         "path_to_pca_2d_kmeans_result": "pca_2d_kmeans_interpretation",
         "path_to_kernel_pca_2d_kmeans_result": "kernel_pca_2d_kmeans_interpretation",
         "path_to_tsne_2d_kmeans_result": "tsne_2d_kmeans_interpretation",
+        "path_to_mds_2d_kmeans_result": "mds_2d_kmeans_interpretation",
         "path_to_pca_2d_agglomerative_result": "pca_2d_agglomerative_interpretation",
         "path_to_kernel_pca_2d_agglomerative_result": "kernel_pca_2d_agglomerative_interpretation",
-        "path_to_tsne_2d_agglomerative_result": "tsne_2d_agglomerative_interpretation"
+        "path_to_tsne_2d_agglomerative_result": "tsne_2d_agglomerative_interpretation",
+        "path_to_mds_2d_agglomerative_result": "mds_2d_agglomerative_interpretation"
     }
 }
