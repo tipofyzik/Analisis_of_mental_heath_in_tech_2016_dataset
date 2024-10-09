@@ -12,6 +12,13 @@ import pandas as pd
 import numpy as np
 import json
 
+# Deleting folder with results if it exists
+import shutil
+import os
+folder_path = "./results"
+if os.path.exists(folder_path):
+    shutil.rmtree(folder_path)
+
 
 
 with open('config.json', 'r') as f:
@@ -302,7 +309,7 @@ if __name__ == "__main__":
     mds_gaussian_dataset, mds_gaussian_labels = classify_dataset(reduced_dataset = norm_mds_2d_result,
                                                                 method_of_clustering = clusterer.gaussian_mixture_clusterization)    
     # K-Means
-    pca_kmeans_dataset, pca_kmeans_cluster_labels = classify_dataset(reduced_dataset = pca_tsne_2d_result,
+    pca_kmeans_dataset, pca_kmeans_cluster_labels = classify_dataset(reduced_dataset = norm_pca_2d_result,
                                                                 method_of_clustering = clusterer.kmeans_clusterization)
     kernel_pca_kmeans_dataset, kernel_pca_kmeans_labels = classify_dataset(reduced_dataset = norm_kernel_pca_2d_result,
                                                                 method_of_clustering = clusterer.kmeans_clusterization)
@@ -311,7 +318,7 @@ if __name__ == "__main__":
     mds_kmeans_dataset, mds_kmeans_labels = classify_dataset(reduced_dataset = norm_mds_2d_result,
                                                                 method_of_clustering = clusterer.kmeans_clusterization)
     # Agglomerative clustering
-    pca_agglomerative_dataset, pca_agglomerative_cluster_labels = classify_dataset(reduced_dataset = pca_tsne_2d_result,
+    pca_agglomerative_dataset, pca_agglomerative_cluster_labels = classify_dataset(reduced_dataset = norm_pca_2d_result,
                                                                 method_of_clustering = clusterer.agglomerative_clusterization)
     kernel_pca_agglomerative_dataset, kernel_pca_agglomerative_labels = classify_dataset(reduced_dataset = norm_kernel_pca_2d_result,
                                                                 method_of_clustering = clusterer.agglomerative_clusterization)
@@ -337,7 +344,7 @@ if __name__ == "__main__":
     # K-Means
     plotter.save_clustering_plots(path_to_save = path_to_cluster_results, file_name = "kmeans_on_pca_tsne_2d.png", 
                                   type_of_clustering = "KMeans", reducing_method="t-SNE", 
-                                  reduced_data = pca_tsne_2d_result, cluster_labels = pca_kmeans_cluster_labels)
+                                  reduced_data = norm_pca_2d_result, cluster_labels = pca_kmeans_cluster_labels)
     plotter.save_clustering_plots(path_to_save = path_to_cluster_results, file_name = "kmeans_on_norm_kernel_pca_2d.png", 
                                   type_of_clustering = "KMeans", reducing_method="Kernel PCA", 
                                   reduced_data = norm_kernel_pca_2d_result, cluster_labels = kernel_pca_kmeans_labels)
@@ -350,7 +357,7 @@ if __name__ == "__main__":
     # Agglomerative clustering
     plotter.save_clustering_plots(path_to_save = path_to_cluster_results, file_name = "agglomerative_on_pca_tsne_2d.png", 
                                   type_of_clustering = "Agglomerative", reducing_method="t-SNE", 
-                                  reduced_data = pca_tsne_2d_result, cluster_labels = pca_agglomerative_cluster_labels)
+                                  reduced_data = norm_pca_2d_result, cluster_labels = pca_agglomerative_cluster_labels)
     plotter.save_clustering_plots(path_to_save = path_to_cluster_results, file_name = "agglomerative_on_norm_kernel_pca_2d.png", 
                                   type_of_clustering = "Agglomerative", reducing_method="Kernel PCA", 
                                   reduced_data = norm_kernel_pca_2d_result, cluster_labels = kernel_pca_agglomerative_labels)
