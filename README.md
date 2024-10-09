@@ -228,6 +228,8 @@ These parameters are responsible for interpretation of clustering results for da
 
 Let's look at output cluster distributions and what features were selected for these distributions:  
 1. With textual columns (features), 2 clusters:
+![2 cluster distributions, with text](https://github.com/user-attachments/assets/ea1f56c0-5d67-4d79-bdb9-e6e4286c8f8f)  
+![table_image_agglomerative](https://github.com/user-attachments/assets/9b016655-5d00-4d71-9b29-b17b3b7dae1d)  
 
 2. Without textual columns (features), 3 clusters:  
 
