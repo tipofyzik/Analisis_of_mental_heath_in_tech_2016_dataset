@@ -227,9 +227,9 @@ The resulting parameter choices are shown below:
 These parameters are responsible for interpretation of clustering results for data which dimensionality was reduced by a specific algorithm (see "4.2. Config file" section). Since the results of all algorithms are similar, we will focus on clustering and cluster interpretations for data reduced by t-SNE algorithm. If you want to perform and save interpretations for data reduced by other algorithms, you can simply replace zeroes in the parameters above with other 1 or other number.  
 
 Let's look at output cluster distributions and what features were selected for these distributions:  
-1. With textual columns, 2 clusters:
+1. With textual columns (features), 2 clusters:
 
-2. Without textual columns, 3 clusters:  
+2. Without textual columns (features), 3 clusters:  
 
 
 
