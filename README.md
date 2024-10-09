@@ -169,7 +169,7 @@ From obtained two- and three-dimensional representations, we can conclude that t
   </tr>
 </table>  
 
-So, t-SNE, MDS, and Kernel PCA with sigmoid kernel give us almost the same result: an approximately evenly distributed data in the form of ellipse in 2D space. In 3D space, PCA and Kernel PCA show mirrored distributions (reflected along the vertical axis), with a subset of the points deviating from the main cluster. Representations don't have distinguishable clusters and high-density spots. Therefore, density-based clustering algorithms aren't suitable here. Furthermore, due to the uniformity of the data, we will only obtain a few clusters at best.  
+So, t-SNE, MDS, and Kernel PCA with sigmoid kernel give us roughly similar results: an approximately evenly distributed data in the form of ellipse in 2D space. In 3D space, PCA and Kernel PCA show mirrored distributions (reflected along the vertical axis), with a subset of the points deviating from the main cluster. Representations don't have distinguishable clusters and high-density spots. Therefore, density-based clustering algorithms, such as DBSCAN clustering, aren't suitable here. Furthermore, due to the uniformity of the data, we will only obtain a few clusters at best.  
 
 ### 5.2 Number of clusters
 Now, we should define the parameters that give us the best results. Let's go through each algorithm for choosing the number of clusters:  
