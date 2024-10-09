@@ -58,7 +58,11 @@ Each class is located in its own file, which is documented so that the reader ca
 &emsp;&emsp; — _path_to_cluster_results_: Here, the results of diverse clustering methods are saved.  
 &emsp;&emsp; — _path_to_interpretations_: Here, the results of the interpretation of the obtained clusters are saved. There are graphs showing the participants' responses for each top feature across the different clusters.  
 **· _AdditionalParamters_:**  
-&emsp;&emsp; — _with_text_columns_: This parameter is responsible for including columns with textual information in encoding and clustering process. If this parameter is set to 0 these columns won't be included. Otherwise, they will be encoded as others and will affect clustering results.   
+&emsp;&emsp; — _with_text_columns_: This parameter is responsible for including columns with textual information in encoding and clustering process. If this parameter is set to 0 these columns won't be included. Otherwise, they will be encoded as others and will affect clustering results.  
+&emsp;&emsp; — _interpret_tsne_reduced_data_: This parameter determines whether the interpretation of clustering results for data reduced using the t-SNE algorithm is performed. If set to 0, no interpretation will be performed. If set to a non-zero value, the interpretation will be saved.  
+&emsp;&emsp; — _interpret_pca_reduced_data_: This parameter determines whether the interpretation of clustering results for data reduced using the PCA algorithm is performed. If set to 0, no interpretation will be performed. If set to a non-zero value, the interpretation will be saved.  
+&emsp;&emsp; — _interpret_kernel_pca_reduced_data_: This parameter determines whether the interpretation of clustering results for data reduced using the Kernel PCA algorithm is performed. If set to 0, no interpretation will be performed. If set to a non-zero value, the interpretation will be saved.  
+&emsp;&emsp; — _interpret_mds_reduced_data_: This parameter determines whether the interpretation of clustering results for data reduced using the MDS algorithm is performed. If set to 0, no interpretation will be performed. If set to a non-zero value, the interpretation will be saved.  
 **· _DimensionalityReducerParameters_:**  
 &emsp;&emsp; — _save_info_ratio_: Contains the ratio for the Linear PCA method. You can specify either a fractional number representing the percentage of information retained or an integer indicating the number of features to keep.  
 &emsp;&emsp; — _pca_random_state_: Contains the random state parameter for PCA algorithm. Serves to ensure reproducibility of results.  
@@ -82,9 +86,6 @@ Each class is located in its own file, which is documented so that the reader ca
 &emsp;&emsp; — _permutation_random_state_: Contains the random state parameter for permutation feature importance algorithm. Serves to ensure reproducibility of results.  
 &emsp;&emsp; — _mutual_information_random_state_: Contains the random state parameter for mutual information algorithm. Serves to ensure reproducibility of results.  
 &emsp;&emsp; — _most_important_features_max_number_: Specifies the maximum number of most important features to display.  
-&emsp;&emsp; — _interpret_tsne_reduced_data_: This parameter determines whether the interpretation of clustering results for data reduced using the t-SNE algorithm is performed. If set to 0, no interpretation will be performed. If set to a non-zero value, the interpretation will be saved.  
-&emsp;&emsp; — _interpret_pca_reduced_data_: This parameter determines whether the interpretation of clustering results for data reduced using the PCA algorithm is performed. If set to 0, no interpretation will be performed. If set to a non-zero value, the interpretation will be saved.  
-&emsp;&emsp; — _interpret_kernel_pca_reduced_data_: This parameter determines whether the interpretation of clustering results for data reduced using the Kernel PCA algorithm is performed. If set to 0, no interpretation will be performed. If set to a non-zero value, the interpretation will be saved.  
 **· _ResultInterpreterSavePaths_:**  
 &emsp;&emsp; — _path_to_pca_2d_gauss_result_: Here, the output of the Gaussian Mixture clustering, performed on data after 2D reduction using Linear PCA, is saved.  
 &emsp;&emsp; — _path_to_kernel_pca_2d_gauss_result_: Here, the output of the Gaussian Mixture clustering, performed on data after 2D reduction using Kernel PCA, is saved.  
@@ -210,6 +211,8 @@ The resulting parameter choices are shown below:
 ```
 
 ### 5.3 Final clusters and their interpretation
+**"config.json"** file contains 
+The implementation has 4 dimensionality reduction algorithms and 3 clustering algorithms. Clustering is performed on 2D data representations. Since all reduction algorithms give us approximately similar results, clustering only on 2D representation produced by t-SNE is demostrated on this page. However, if you want to take a glance at all clustering results, 
 
 
 ## 6. Possible improvements
