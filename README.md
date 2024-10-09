@@ -179,17 +179,17 @@ So, t-SNE, MDS, and Kernel PCA with sigmoid kernel give us roughly similar resul
 Now, we should determine the appropriate for this dataset number of clusters. We'll consider 2 cases: when columns with textual information is considered and when the are not taken into account. Let's go through each cluster evaluation algorithm (see the corresponding graphs below):  
 1. K-Elbow method is one of the most prominent and simplest methods for evaluating cluster for K-Means clustering. However, the output graphs don't have a clear elbow point [3]. Therefore, this algorithm isn't suitable in our case.  
 2. Silhouette score is also used to evaluate the number of clusters k for K-Means algorithm. There are clear results, from which we can derive that for K-Means clustering it's better to choose 2 or 3 clusters depending on whether textual columns are considered. When choosing the optimal number of clusters, we should consider not only the algorithm's average score but also the distribution of clister sizes [3]. When textial features are taken into account, one cluster often becomes significantly larger than the others for many suggested cluster numbers. Therefore, the best choice is k=2, as larger k values result in significantly imbalanced cluster sizes. When textual columns are omitted, the best choice is k=3 since this configuration gives us the most size-balanced result.  
-3. Dendrograms were built to evaluate the number of clusters for agglomerative clustering. In both cases, there are 3 clearly distinguishable clusters. In the graphs below, you can see the horizontal line that helps to highlight 7 small clusters. However, due to the nature of the data, my major choice is k=3 for agglomeartive clustering and the second choice is k=2.  
+3. Dendrograms were built to evaluate the number of clusters for agglomerative clustering. In both cases, there are 3 clearly distinguishable clusters.  
 4. Finally, BIC/AIC scores were used to find optimal number of clusters for Gaussian Mixture clustering algorithm. The appropriate number corresponds to the global minimum on BIC or AIC graph. The Bayesian Information Criterion penalizes models more severely than The Akaike Information Criterion. This is why, if one criterion isn't well-suited for the model, we can choose the other one. In this case, AIC demostrates poor results, since there is no clear minimum. In contrast, BIC have (almost) clear minima for both scenarios: when textual columns are included, the optimal cluster number is k=2 (with a score a bit lower than for k=3), and when textual features are omitted, k=3 is preferred.  
 
 The results of cluster choosing algorithms:  
 Cluster choice when **textual columns are considered**:  
-![cluster choice, with text graphs](https://github.com/user-attachments/assets/9c0947e6-16c2-4b11-bd45-e325513c0a89)  
+![cluster choice, with text graphs](https://github.com/user-attachments/assets/5dcea2da-da47-420d-80af-2c6dacc59570)  
 ![cluster choice, with text](https://github.com/user-attachments/assets/05464f94-5c57-438f-adb9-441189be172a)  
 
 Cluster choice when **textual columns aren't considered**:  
-![cluster choice, without text graphs](https://github.com/user-attachments/assets/31730e36-8a35-44e3-8f9a-b95956057fe5)  
-![cluster choice, without text](https://github.com/user-attachments/assets/a75a5f74-028a-49d1-972c-e0a57285fa1a) 
+![cluster choice, without text graphs](https://github.com/user-attachments/assets/ca0f230c-14b1-4ee6-abd1-519fba6c357d)  
+![cluster choice, without text](https://github.com/user-attachments/assets/a75a5f74-028a-49d1-972c-e0a57285fa1a)  
 
 The resulting parameter choices are shown below:  
 1. We take into account columns with textual responses and split the data into 2 clusters:  
