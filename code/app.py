@@ -196,9 +196,9 @@ if __name__ == "__main__":
                                                               pca_random_state = pca_random_state, 
                                                               normalized_dataset = normalized_dataset)
 
-    find_optimal_k(dataset = encoded_dataset.values, type_of_dataset = "encoded", dendrogram_threshold = 60)
-    find_optimal_k(dataset = normalized_dataset, type_of_dataset = "normalized", dendrogram_threshold = 62)
-    find_optimal_k(dataset = pca_n_result, type_of_dataset = "pca", dendrogram_threshold = 65)
+    find_optimal_k(dataset = encoded_dataset.values, type_of_dataset = "encoded", dendrogram_threshold = 400)
+    find_optimal_k(dataset = normalized_dataset, type_of_dataset = "normalized", dendrogram_threshold = 85)
+    find_optimal_k(dataset = pca_n_result, type_of_dataset = "pca", dendrogram_threshold = 85)
     print("Cluster number evaluation complete!\n")
 
     # Reducing dimensionality to 2D and 3D for clusterization
