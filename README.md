@@ -162,7 +162,12 @@ PCA is desighned for linearly structured data, while other algorithms are better
 From obtained two- and three-dimensional representations, we can conclude that the data has non-linear structure. Moreover, data structure keeps the same for both cases: when columns with textual features are included and when they're not. Duscussing t-SNE, MDS, and PCA results, we can see that all visualizations in two-dimensional space don't have any distinguishable clusters of data points, indicating that the data is dustributed approximately evenly. This statement is supported by "slices" of data obtained in three-dimensional space. We see small deviations in the results of PCA and MDS algorithms, but there are no serious differences comparing to t-SNE and Kernel PCA. We can note the following things:  
 1. In 2D space, Linear PCA produces results similar to those obtained by t-SNE and MDS algorithms: the output distribution resembles an ellipse, with fuzzy boundaries for PCA and more clearly defined contours for t-SNE and MDS. Furthermore, there are no distinguishable groups of points or one cluster highly consentrated in some area (the result distribution looks even). Thus, the data don't have distinct clusters, but probably contain some features (columns) that cause the data to be spread.  
 2. Kernel PCA result highly depend on the kernel function we choose. On the presented gifs you see Kernel PCA representations obtained using Gaussian radius basis function (RBF) kernel. However, if we choose sigmoid kernel we obtain noisy but at the same time more familiar result to those obtained by t-SNE and MDS:  
-![norm_kernel_pca_2d_sigmoid](https://github.com/user-attachments/assets/780d2230-a335-4b64-a797-cc404b322fa8)  
+<table>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/498feced-78ab-4f00-bcf8-d5534cae5e5f" style="max-width:100%; height:auto;" /></td>
+    <td><img src="https://github.com/user-attachments/assets/85fa8cd3-f024-4392-ab80-3b0e82d33d57" style="max-width:100%; height:auto;" /></td>
+  </tr>
+</table>  
 
 So, t-SNE, MDS, and Kernel PCA with sigmoid kernel give us almost the same result: an approximately evenly distributed data in the form of ellipse in 2D space. In 3D space, PCA and Kernel PCA show mirrored distributions (reflected along the vertical axis), with a subset of the points deviating from the main cluster. Representations don't have distinguishable clusters and high-density spots. Therefore, density-based clustering algorithms aren't suitable here. Furthermore, due to the uniformity of the data, we will only obtain a few clusters at best.  
 
