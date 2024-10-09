@@ -240,7 +240,7 @@ if __name__ == "__main__":
                                         reducing_method="tSNE_2D", reduced_data = pca_tsne_2d_result)
     plotter.save_3d_reduced_data_plotes(path_to_save = path_to_reduced_components_visualization, file_name = "pca_tsne_3d.png",
                                         reducing_method="tSNE_3D", reduced_data = pca_tsne_3d_result)
-    # MDS in 2d nad 3d on encoded data
+    # MDS in 2d and 3d on normalized data
     plotter.save_2d_reduced_data_plotes(path_to_save = path_to_reduced_components_visualization, file_name = "mds_2d.png",
                                         reducing_method="Multidimensional Scaling", reduced_data = norm_mds_2d_result)
     plotter.save_3d_reduced_data_plotes(path_to_save = path_to_reduced_components_visualization, file_name = "mds_3d.png",
