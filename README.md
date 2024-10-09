@@ -198,7 +198,7 @@ The resulting parameter choices are shown below:
     # Other parameters
 },
 ```
-2. We omit textual columns and choose either 2 or 3 clusters (3 clusters below):  
+2. We omit textual columns and choose either 3 (or 2) clusters:  
 ```json
 "AdditionalParamters": {
     "with_text_columns": 0
