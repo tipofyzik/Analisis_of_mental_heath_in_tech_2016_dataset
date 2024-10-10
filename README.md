@@ -5,6 +5,9 @@ To be brief, there is a high-dimensional, complex survey, which was conducted am
 
 Dataset can be accessed via this link: https://www.kaggle.com/datasets/osmi/mental-health-in-tech-2016  
 In case this dataset would be changed, I uploaded it on this github page (**folder "code" -> folder "dataset"**).  
+
+The results of the entire work can be accessed via this link: https://drive.google.com/drive/folders/1iFWibCaSU_GtRCDSgglztju0zFtNrz-4?usp=sharing  
+
 ## 2. Programm installation
 ### Requirements 
 You need to intall Python with the version 3.11.3 and higher. All required modules to install you can find in the **"requirements.txt"** file.
@@ -238,7 +241,7 @@ Additionally, the clustering algorithm used also should be considered during the
 
 **!Note:** We will consoder only the features which mean ranks are less than 10. Features with mean rank greater than 10 (even greater than 8-9, in some cases) mostly have participants' response distributions with no clear distinctions (see interpretations below).
 
-Let's look at output cluster distributions, what features have been selected for these distributions, and what response distributions have determined clusters. For simplicity and clarity, the result response distributions for each top feature will be shown in plots, so everyone can click on them and see the difference between clusters:  
+Let's look at output cluster distributions, what features have been selected for these distributions, and what response distributions have determined clusters. For simplicity and clarity, the result response distributions for each top feature will be shown in plots, so everyone can click on them and see the difference between clusters. :  
 **1. With textual columns (features), 2 clusters:**  
 **1.1 K-Means clustering results:**  
 <table>
@@ -267,6 +270,8 @@ There are 8 features with average rank lower than 10. The result response distri
     <td><img src="https://github.com/user-attachments/assets/c64296b6-105b-4333-a10e-7a0cb7de085d" style="max-width:100%; height:auto;" /></td>
   </tr>
 </table> 
+
+
 
 **1.2 Gaussian Mixture clustering results:**  
 <table>
