@@ -327,7 +327,21 @@ There are 4 features with average rank lower than 10. The result response distri
   </tr>
 </table>  
 
-
+There are 6 features with average rank lower than 10. The result response distributions among these features (columns):  
+<table>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/d506c32f-f35a-4037-8c7c-0a641a67bc42" style="max-width:100%; height:auto;" /></td>
+    <td><img src="https://github.com/user-attachments/assets/fd691f58-127f-4519-87ec-bace659f7437" style="max-width:100%; height:auto;" /></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/64f5c7a0-2818-4b26-a95d-7536953b6f6e" style="max-width:100%; height:auto;" /></td>
+    <td><img src="https://github.com/user-attachments/assets/bffb24f4-2535-4afc-b8b8-c0ec7c31d24a" style="max-width:100%; height:auto;" /></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/66f00219-bfb7-4463-82f2-191a3a7a7f4e" style="max-width:100%; height:auto;" /></td>
+    <td><img src="https://github.com/user-attachments/assets/078a2a88-f537-4173-b056-36e88094f00e" style="max-width:100%; height:auto;" /></td>
+  </tr>
+</table> 
 
 **2.2 Gaussian Mixture clustering results:**  
 <table>
@@ -337,7 +351,25 @@ There are 4 features with average rank lower than 10. The result response distri
   </tr>
 </table>  
 
-
+There are 8 features with average rank lower than 10. The result response distributions among these features (columns):  
+<table>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/a28d2264-7ef2-4b8d-a293-e75c61ffc694" style="max-width:100%; height:auto;" /></td>
+    <td><img src="https://github.com/user-attachments/assets/ea2d5814-847b-4912-967d-db3239896ee9" style="max-width:100%; height:auto;" /></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/98a13662-306a-449d-8036-9c4a1d32834f" style="max-width:100%; height:auto;" /></td>
+    <td><img src="https://github.com/user-attachments/assets/3ffd2075-e60a-46f9-abe5-39014bff90f3" style="max-width:100%; height:auto;" /></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/b1f45feb-24a3-4352-ad45-43600786b4b2" style="max-width:100%; height:auto;" /></td>
+    <td><img src="https://github.com/user-attachments/assets/2dfe8f26-adde-43e7-a31c-95033eaff124" style="max-width:100%; height:auto;" /></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/3870a300-7d72-49c3-8b81-d1ef112e041b" style="max-width:100%; height:auto;" /></td>
+    <td><img src="https://github.com/user-attachments/assets/f9f92ee5-0241-42b1-9086-7dfa215c9d3a" style="max-width:100%; height:auto;" /></td>
+  </tr>
+</table> 
 
 **2.3 Agglomerative clustering results:**  
 <table>
@@ -347,7 +379,28 @@ There are 4 features with average rank lower than 10. The result response distri
   </tr>
 </table>  
 
-
+There are 9 features with average rank lower than 10. The result response distributions among these features (columns):  
+<table>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/d6179ce9-cb29-48f4-bc7d-ebfd6da3dc64" style="max-width:100%; height:auto;" /></td>
+    <td><img src="https://github.com/user-attachments/assets/e5f152ab-5a11-4151-a187-1ab24944e672" style="max-width:100%; height:auto;" /></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/05f6a283-bcf5-4461-bcf8-33ca099d6b1e" style="max-width:100%; height:auto;" /></td>
+    <td><img src="https://github.com/user-attachments/assets/878f68e5-2d6e-49c0-b00a-176d8d302436" style="max-width:100%; height:auto;" /></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/664707b5-ad43-428f-a16c-3159dbe2e3da" style="max-width:100%; height:auto;" /></td>
+    <td><img src="https://github.com/user-attachments/assets/ebbff9a4-5d78-40b6-82d9-06bb670bb68d" style="max-width:100%; height:auto;" /></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/555510b4-e938-4896-8c9a-c2f60c1382b7" style="max-width:100%; height:auto;" /></td>
+    <td><img src="https://github.com/user-attachments/assets/57d0cf3b-6390-41be-a403-de48259037a9" style="max-width:100%; height:auto;" /></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/abd0e719-c2ba-42b0-823e-df5596b98a79" style="max-width:100%; height:auto;" /></td>
+  </tr>
+</table> 
 
 
 ## 6. Possible improvements
