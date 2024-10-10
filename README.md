@@ -238,7 +238,7 @@ Additionally, the clustering algorithm used also should be considered during the
 
 **!Note:** We will consoder only the features which mean ranks are less than 10. Features with mean rank greater than 10 (even greater than 8-9, in some cases) mostly have participants' response distributions with no clear distinctions (see interpretations below).
 
-Let's look at output cluster distributions, what features have been selected for these distributions, and what response distributions have determined clusters:  
+Let's look at output cluster distributions, what features have been selected for these distributions, and what response distributions have determined clusters. For simplicity and clarity, the result response distributions for each top feature will be shown in plots:  
 **1. With textual columns (features), 2 clusters:**  
 **1.1 K-Means clustering results:**  
 <table>
@@ -247,8 +247,25 @@ Let's look at output cluster distributions, what features have been selected for
     <td><img src="https://github.com/user-attachments/assets/2fe384f4-f118-4d3e-8a0f-cf9c210837dd" style="max-width:100%; height:auto;" /></td>
   </tr>
 </table>  
-
-
+There are 8 features with average rank lower than 10. The result response distributions among these features (columns):  
+<table>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/9b0773b9-1406-4caa-9825-789669ef3e60" style="max-width:100%; height:auto;" /></td>
+    <td><img src="https://github.com/user-attachments/assets/350c1d5f-9229-4124-b23b-004571739333" style="max-width:100%; height:auto;" /></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/f1eb8a4d-83e9-4893-b0bb-7d904e06721d" style="max-width:100%; height:auto;" /></td>
+    <td><img src="https://github.com/user-attachments/assets/9f69351f-4e3f-42fb-8c42-35405ddf4732" style="max-width:100%; height:auto;" /></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/579b4431-ac34-4142-990a-8a46c01fcc9c" style="max-width:100%; height:auto;" /></td>
+    <td><img src="https://github.com/user-attachments/assets/98c4bee3-1927-45c2-9c61-d277ccd8ec5c" style="max-width:100%; height:auto;" /></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/534363f6-fd8c-4430-951a-121ab5fdbb35" style="max-width:100%; height:auto;" /></td>
+    <td><img src="https://github.com/user-attachments/assets/c64296b6-105b-4333-a10e-7a0cb7de085d" style="max-width:100%; height:auto;" /></td>
+  </tr>
+</table> 
 
 **1.2 Gaussian Mixture clustering results:**  
 <table>
