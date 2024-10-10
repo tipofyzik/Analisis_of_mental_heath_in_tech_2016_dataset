@@ -229,35 +229,14 @@ Additionally, the clustering algorithm used also should be considered during the
 
 Let's look at output cluster distributions, what features have been selected for these distributions, and what response distributions have determined clusters:  
 **1. With textual columns (features), 2 clusters:**  
-<table>
-  <tr>
-    <td><img src="https://github.com/user-attachments/assets/1d39d77d-f86d-4695-a54b-1e008e2574bb" style="max-width:100%; height:auto;" /></td>
-    <td><img src="https://github.com/user-attachments/assets/ad0257da-dcdd-47f4-8145-360a017e9c2b" style="max-width:100%; height:auto;" /></td>
-  </tr>
-</table>  
-<table>
-  <tr>
-    <td><img src="" style="max-width:100%; height:auto;" /></td>
-    <td><img src="" style="max-width:100%; height:auto;" /></td>
-  </tr>
-</table>  
-<table>
-  <tr>
-    <td><img src="" style="max-width:100%; height:auto;" /></td>
-    <td><img src="" style="max-width:100%; height:auto;" /></td>
-  </tr>
-</table>  
+![2 clusters, with text interpretation](https://github.com/user-attachments/assets/33f4a766-a456-4d5a-9256-d6de04f54237)  
 
-![2 cluster distribution, with text](https://github.com/user-attachments/assets/16e51adf-2fe7-4201-998d-c20c16fa7bdb)  
-![2 cluster feature selection, with text](https://github.com/user-attachments/assets/893f63dc-0c03-4f6f-a9cb-fadfa2e6eab0)  
 
 As the result, we have 2 clusters with the following detected most important features (columns):  
 
 
 
 **2. Without textual columns (features), 3 clusters:**  
-![3 cluster distribution, without text](https://github.com/user-attachments/assets/32609026-ed01-433b-8051-ddb31d3a752e)  
-![3 cluster feature selection, without text](https://github.com/user-attachments/assets/270d1ee7-8aa5-4a66-979a-519b53f6232b)  
 
 As the result, we have 3 clusters with the following response distributions:
 
