@@ -141,7 +141,6 @@ class TextFeatureExtractor:
                     "If so, what condition(s) were you diagnosed with?",
                     "Which of the following best describes your work position?"]
         if column in diagnose_and_work_columns:
-            dataset[column] = dataset[column].apply(self.__preprocess_text)
             count_vectorizer = CountVectorizer(stop_words='english', ngram_range=(2, 3), 
                                                binary=False, token_pattern = r'\b\w[\w\'-]*\b')
 
