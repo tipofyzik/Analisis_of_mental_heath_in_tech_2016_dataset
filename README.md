@@ -232,7 +232,7 @@ Let's look at output cluster distributions, what features have been selected for
 ![2 cluster feature selection, with text](https://github.com/user-attachments/assets/893f63dc-0c03-4f6f-a9cb-fadfa2e6eab0)  
 
 As the result, we have 2 clusters with the following detected most important features (columns):  
-1. 
+
 
 
 **2. Without textual columns (features), 3 clusters:**  
