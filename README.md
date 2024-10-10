@@ -228,16 +228,16 @@ These parameters are responsible for interpretation of clustering results for da
 
 Let's look at output cluster distributions, what features have been selected for these distributions, and what response distributions have determined clusters:  
 **1. With textual columns (features), 2 clusters:**  
-![2 cluster distributions, with text](https://github.com/user-attachments/assets/75a1b4ac-7837-4861-a847-a151ddcf867d)  
-![2 clusters feature selection, with text](https://github.com/user-attachments/assets/7d42ce61-fba1-420a-94c4-0a0a83c5a4e6)  
+![2 cluster distribution, with text](https://github.com/user-attachments/assets/16e51adf-2fe7-4201-998d-c20c16fa7bdb)  
+![2 cluster feature selection, with text](https://github.com/user-attachments/assets/893f63dc-0c03-4f6f-a9cb-fadfa2e6eab0)  
 
 As the result, we have 2 clusters with the following detected most important features (columns):  
 1. 
 
 
 **2. Without textual columns (features), 3 clusters:**  
-![3 cluster distributions, without text](https://github.com/user-attachments/assets/f3078789-4c28-4539-b1b8-31dd7afe0551)  
-![3 clusters feature selection, without text](https://github.com/user-attachments/assets/c2883373-2772-4606-bcbe-b298e577294b)  
+![3 cluster distribution, without text](https://github.com/user-attachments/assets/32609026-ed01-433b-8051-ddb31d3a752e)  
+![3 cluster feature selection, without text](https://github.com/user-attachments/assets/270d1ee7-8aa5-4a66-979a-519b53f6232b)  
 
 As the result, we have 3 clusters with the following response distributions:
 
@@ -246,7 +246,6 @@ As the result, we have 3 clusters with the following response distributions:
 ## 6. Possible improvements
 
 ## 7. Literature  
-
 [1] https://opentsne.readthedocs.io/en/latest/examples/03_preserving_global_structure/03_preserving_global_structure.html  
 [2] https://scikit-learn.org/stable/auto_examples/manifold/plot_t_sne_perplexity.html  
 [3] https://builtin.com/data-science/elbow-method  
