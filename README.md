@@ -231,8 +231,8 @@ Let's look at output cluster distributions, what features have been selected for
 **1. With textual columns (features), 2 clusters:**  
 <table>
   <tr>
-    <td><img src="![kmeans_on_norm_tsne_2d](https://github.com/user-attachments/assets/1d39d77d-f86d-4695-a54b-1e008e2574bb)" style="max-width:100%; height:auto;" /></td>
-    <td><img src="![table_image_kmeans](https://github.com/user-attachments/assets/ad0257da-dcdd-47f4-8145-360a017e9c2b)" style="max-width:100%; height:auto;" /></td>
+    <td><img src="https://github.com/user-attachments/assets/1d39d77d-f86d-4695-a54b-1e008e2574bb" style="max-width:100%; height:auto;" /></td>
+    <td><img src="https://github.com/user-attachments/assets/ad0257da-dcdd-47f4-8145-360a017e9c2b" style="max-width:100%; height:auto;" /></td>
   </tr>
 </table>  
 <table>
