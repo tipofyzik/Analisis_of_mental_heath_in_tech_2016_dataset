@@ -257,14 +257,17 @@ There are 8 features with average rank lower than 10. The result response distri
     <td><img src="https://github.com/user-attachments/assets/9b0773b9-1406-4caa-9825-789669ef3e60" style="max-width:100%; height:auto;" /></td>
     <td><img src="https://github.com/user-attachments/assets/350c1d5f-9229-4124-b23b-004571739333" style="max-width:100%; height:auto;" /></td>
   </tr>
+
   <tr>
     <td><img src="https://github.com/user-attachments/assets/f1eb8a4d-83e9-4893-b0bb-7d904e06721d" style="max-width:100%; height:auto;" /></td>
     <td><img src="https://github.com/user-attachments/assets/9f69351f-4e3f-42fb-8c42-35405ddf4732" style="max-width:100%; height:auto;" /></td>
   </tr>
+  
   <tr>
     <td><img src="https://github.com/user-attachments/assets/579b4431-ac34-4142-990a-8a46c01fcc9c" style="max-width:100%; height:auto;" /></td>
     <td><img src="https://github.com/user-attachments/assets/98c4bee3-1927-45c2-9c61-d277ccd8ec5c" style="max-width:100%; height:auto;" /></td>
   </tr>
+  
   <tr>
     <td><img src="https://github.com/user-attachments/assets/534363f6-fd8c-4430-951a-121ab5fdbb35" style="max-width:100%; height:auto;" /></td>
     <td><img src="https://github.com/user-attachments/assets/c64296b6-105b-4333-a10e-7a0cb7de085d" style="max-width:100%; height:auto;" /></td>
