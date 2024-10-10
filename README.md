@@ -238,7 +238,7 @@ Additionally, the clustering algorithm used also should be considered during the
 
 **!Note:** We will consoder only the features which mean ranks are less than 10. Features with mean rank greater than 10 (even greater than 8-9, in some cases) mostly have participants' response distributions with no clear distinctions (see interpretations below).
 
-Let's look at output cluster distributions, what features have been selected for these distributions, and what response distributions have determined clusters. For simplicity and clarity, the result response distributions for each top feature will be shown in plots:  
+Let's look at output cluster distributions, what features have been selected for these distributions, and what response distributions have determined clusters. For simplicity and clarity, the result response distributions for each top feature will be shown in plots, so everyone can click on them and see the difference between clusters:  
 **1. With textual columns (features), 2 clusters:**  
 **1.1 K-Means clustering results:**  
 <table>
@@ -247,6 +247,7 @@ Let's look at output cluster distributions, what features have been selected for
     <td><img src="https://github.com/user-attachments/assets/2fe384f4-f118-4d3e-8a0f-cf9c210837dd" style="max-width:100%; height:auto;" /></td>
   </tr>
 </table>  
+
 There are 8 features with average rank lower than 10. The result response distributions among these features (columns):  
 <table>
   <tr>
@@ -275,7 +276,25 @@ There are 8 features with average rank lower than 10. The result response distri
   </tr>
 </table>  
 
-
+There are 8 features with average rank lower than 10. The result response distributions among these features (columns):  
+<table>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/05fe0b21-7780-48d2-81bb-fd769c4d92a0" style="max-width:100%; height:auto;" /></td>
+    <td><img src="https://github.com/user-attachments/assets/6d14b210-3526-4af5-a3d9-2e74dd99222c" style="max-width:100%; height:auto;" /></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/5c32e217-12ff-4e57-9ca9-d67334be6589" style="max-width:100%; height:auto;" /></td>
+    <td><img src="https://github.com/user-attachments/assets/52acc979-276f-40ab-9fe9-909a5a2e6677" style="max-width:100%; height:auto;" /></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/567eb97a-4548-4867-b7d9-41e7f730ee25" style="max-width:100%; height:auto;" /></td>
+    <td><img src="https://github.com/user-attachments/assets/0b7c7217-cf85-4e1b-82d7-50d41abd4885" style="max-width:100%; height:auto;" /></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/c3712919-650c-4205-bf30-b14eb5b56ffa" style="max-width:100%; height:auto;" /></td>
+    <td><img src="https://github.com/user-attachments/assets/6912821f-e147-4324-b8e4-a760fb7b161d" style="max-width:100%; height:auto;" /></td>
+  </tr>
+</table> 
 
 **1.3 Agglomerative clustering results:**  
 <table>
@@ -285,7 +304,17 @@ There are 8 features with average rank lower than 10. The result response distri
   </tr>
 </table>  
 
-
+There are 4 features with average rank lower than 10. The result response distributions among these features (columns):  
+<table>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/cb438f10-3f99-4d68-8bb1-860734341aca" style="max-width:100%; height:auto;" /></td>
+    <td><img src="https://github.com/user-attachments/assets/107bb0e3-b199-4d6d-8874-aae7fadfa6f6" style="max-width:100%; height:auto;" /></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/d4daecb8-b1fb-43e3-8827-94e7204b9eb0" style="max-width:100%; height:auto;" /></td>
+    <td><img src="https://github.com/user-attachments/assets/598497df-722c-4b79-8412-991d9b442e92" style="max-width:100%; height:auto;" /></td>
+  </tr>
+</table> 
 
 
 
