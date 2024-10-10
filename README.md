@@ -237,6 +237,8 @@ Let's look at output cluster distributions, what features have been selected for
   </tr>
 </table>  
 
+
+
 **1.2 Gaussian Mixture clustering results:**  
 <table>
   <tr>
@@ -244,6 +246,8 @@ Let's look at output cluster distributions, what features have been selected for
     <td><img src="https://github.com/user-attachments/assets/f8e829d3-b5f6-49f8-b4b5-36cc1c908b99" style="max-width:100%; height:auto;" /></td>
   </tr>
 </table>  
+
+
 
 **1.3 Agglomerative clustering results:**  
 <table>
@@ -266,6 +270,8 @@ Let's look at output cluster distributions, what features have been selected for
   </tr>
 </table>  
 
+
+
 **2.2 Gaussian Mixture clustering results:**  
 <table>
   <tr>
@@ -273,6 +279,8 @@ Let's look at output cluster distributions, what features have been selected for
     <td><img src="https://github.com/user-attachments/assets/19e5e3c1-69ab-4183-8b23-39542b7f4c86" style="max-width:100%; height:auto;" /></td>
   </tr>
 </table>  
+
+
 
 **2.3 Agglomerative clustering results:**  
 <table>
