@@ -229,16 +229,59 @@ Additionally, the clustering algorithm used also should be considered during the
 
 Let's look at output cluster distributions, what features have been selected for these distributions, and what response distributions have determined clusters:  
 **1. With textual columns (features), 2 clusters:**  
-![2 clusters, with text interpretation](https://github.com/user-attachments/assets/33f4a766-a456-4d5a-9256-d6de04f54237)  
+**1.1 K-Means clustering results:**  
+<table>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/d6aab37a-f0d3-482d-baa2-0e1fd7846a84" style="max-width:100%; height:auto;" /></td>
+    <td><img src="https://github.com/user-attachments/assets/2fe384f4-f118-4d3e-8a0f-cf9c210837dd" style="max-width:100%; height:auto;" /></td>
+  </tr>
+</table>  
+
+**1.2 Gaussian Mixture clustering results:**  
+<table>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/02167c00-07a7-4b74-ba3d-b247493315a2" style="max-width:100%; height:auto;" /></td>
+    <td><img src="https://github.com/user-attachments/assets/f8e829d3-b5f6-49f8-b4b5-36cc1c908b99" style="max-width:100%; height:auto;" /></td>
+  </tr>
+</table>  
+
+**1.3 Agglomerative clustering results:**  
+<table>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/1fba01d4-b899-4ff3-8960-d4d256ee2930" style="max-width:100%; height:auto;" /></td>
+    <td><img src="https://github.com/user-attachments/assets/d78092d0-dc98-4303-82f1-e06b911e7b2d" style="max-width:100%; height:auto;" /></td>
+  </tr>
+</table>  
 
 
-As the result, we have 2 clusters with the following detected most important features (columns):  
 
 
 
 **2. Without textual columns (features), 3 clusters:**  
+**2.1 K-Means clustering results:**  
+<table>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/9eb2f371-0690-4834-85b9-af9c1db15194" style="max-width:100%; height:auto;" /></td>
+    <td><img src="https://github.com/user-attachments/assets/7499d06d-0dd4-4332-913a-c9203c820cf8" style="max-width:100%; height:auto;" /></td>
+  </tr>
+</table>  
 
-As the result, we have 3 clusters with the following response distributions:
+**2.2 Gaussian Mixture clustering results:**  
+<table>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/c4f912e2-08fd-4a26-8b4f-1ff64e8b26b7" style="max-width:100%; height:auto;" /></td>
+    <td><img src="https://github.com/user-attachments/assets/19e5e3c1-69ab-4183-8b23-39542b7f4c86" style="max-width:100%; height:auto;" /></td>
+  </tr>
+</table>  
+
+**2.3 Agglomerative clustering results:**  
+<table>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/58deb2fe-e408-4da8-a44c-8d9294b70921" style="max-width:100%; height:auto;" /></td>
+    <td><img src="https://github.com/user-attachments/assets/9be15424-9c62-477d-8bde-602d8d0e7d2e" style="max-width:100%; height:auto;" /></td>
+  </tr>
+</table>  
+
 
 
 
