@@ -6,7 +6,7 @@ To be brief, there is a high-dimensional, complex survey, which was conducted am
 Dataset can be accessed via this link: https://www.kaggle.com/datasets/osmi/mental-health-in-tech-2016  
 In case this dataset would be changed, I uploaded it on this github page (**folder "code" -> folder "dataset"**).  
 
-The results of the entire work can be accessed via this link: https://drive.google.com/drive/folders/1iFWibCaSU_GtRCDSgglztju0zFtNrz-4?usp=sharing  
+The results of the entire work are packed into .zip file and can be accessed via this link: https://drive.google.com/drive/folders/1iFWibCaSU_GtRCDSgglztju0zFtNrz-4?usp=sharing  
 
 ## 2. Programm installation
 ### Requirements 
