@@ -14,13 +14,13 @@ import json
 
 
 
-# Deleting folder with results if it exists
+# Deleting folder with previous results if it exists and create the empty one
 import shutil
 import os
 folder_path = "./results"
 if os.path.exists(folder_path):
     shutil.rmtree(folder_path)
-
+os.makedirs(folder_path, exist_ok=True)
 
 
 with open('config.json', 'r') as f:
@@ -140,7 +140,7 @@ if __name__ == "__main__":
     print("Data preparation complete!")
 
     preprocessed_dataset = pd.concat([categorical_dataset, text_dataset], axis = 1)
-    preprocessed_dataset.to_csv(".\\preprocessed_dataset.csv", index=False)
+    preprocessed_dataset.to_csv("./results/preprocessed_dataset.csv", index=False)
     plotter.save_plots(path_to_processed_graphs, preprocessed_dataset)
     print("Graphs with prepared data saved!")
 

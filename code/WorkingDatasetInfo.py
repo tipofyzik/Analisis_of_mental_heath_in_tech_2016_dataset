@@ -74,7 +74,7 @@ class WorkingDatasetInfo:
         result_data.insert(0, header_row)
         result_df = pd.DataFrame(result_data)
 
-        file_name = ".\\analysis_result.csv"
+        file_name = "./results/analysis_result.csv"
         result_df.to_csv(file_name, index=False, header=False)
 
     def get_dataset_columns(self) -> pd.Index:
