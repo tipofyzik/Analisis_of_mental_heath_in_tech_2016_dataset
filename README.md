@@ -225,9 +225,29 @@ The resulting parameter choices are shown below:
   }
 ```  
 These parameters are responsible for interpretation of clustering results for data which dimensionality was reduced by a specific algorithm (see "4.2. Config file" section). Since the results of all algorithms are similar, we will focus on clustering and cluster interpretations for data reduced by t-SNE algorithm. If you want to perform and save interpretations for data reduced by other algorithms, you can simply replace zeroes in the parameters above with other 1 or other number.  
+Additionally, the clustering algorithm used also should be considered during the interpretation process. Different clustering algorithms divide dataset into clusters in distinct ways, meaning that for each clustering algorithm there are unique features which trigger this algorithm. As a result, the interpretations of the clustering outcomes vary depending on the algorithm used.  
 
 Let's look at output cluster distributions, what features have been selected for these distributions, and what response distributions have determined clusters:  
 **1. With textual columns (features), 2 clusters:**  
+<table>
+  <tr>
+    <td><img src="![kmeans_on_norm_tsne_2d](https://github.com/user-attachments/assets/1d39d77d-f86d-4695-a54b-1e008e2574bb)" style="max-width:100%; height:auto;" /></td>
+    <td><img src="![table_image_kmeans](https://github.com/user-attachments/assets/ad0257da-dcdd-47f4-8145-360a017e9c2b)" style="max-width:100%; height:auto;" /></td>
+  </tr>
+</table>  
+<table>
+  <tr>
+    <td><img src="" style="max-width:100%; height:auto;" /></td>
+    <td><img src="" style="max-width:100%; height:auto;" /></td>
+  </tr>
+</table>  
+<table>
+  <tr>
+    <td><img src="" style="max-width:100%; height:auto;" /></td>
+    <td><img src="" style="max-width:100%; height:auto;" /></td>
+  </tr>
+</table>  
+
 ![2 cluster distribution, with text](https://github.com/user-attachments/assets/16e51adf-2fe7-4201-998d-c20c16fa7bdb)  
 ![2 cluster feature selection, with text](https://github.com/user-attachments/assets/893f63dc-0c03-4f6f-a9cb-fadfa2e6eab0)  
 
