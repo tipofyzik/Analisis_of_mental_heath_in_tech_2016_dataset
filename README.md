@@ -125,7 +125,14 @@ These processing decisions were derived imperically by launching the program and
 
 3. **Encoding process** was performed using two encoding technique: label encoding and one-hot encoding. Empirically, columns with textual data, information about US states and territories, and binary columns (those containing only two possible responses) are better suited for label encoding than for one-hot encoding. Using one-hot encoding for these columns can degrade the quality of subsequent steps that can be seen clearly seen on dimensionality reduction step, when the distribution become more messy and less interpretable.   
 It is important to note that this effect primarily arises from columns containing textual and territorial information. Binary columns can be encoded using either method, but it is advisable to use label encoding for other types of columns. If both binary and textual or territorial columns are encoded with one-hot encoding, the results can change dramatically.  
+Label encoding is applied only to binary columns:  
+![norm_tsne_2d_binary](https://github.com/user-attachments/assets/f57fd45d-3f51-4d42-9ba5-e9e8d3ef31de)  
+Label encoding is applied only to territorial columns:  
+![norm_tsne_2d_specific](https://github.com/user-attachments/assets/6af41c55-546a-4409-8baa-501d06c333ec)  
+Label encoding is applied only to textual columns:  
+![norm_tsne_2d_text](https://github.com/user-attachments/assets/07fefa5e-0f2c-4640-a6c0-f5aa7a3de585)  
 
+**Further, all type of mentioned columns here are encoded using label encoding!**
 
 ## 5. Results of the work
 ### 5.1 Nature of data
