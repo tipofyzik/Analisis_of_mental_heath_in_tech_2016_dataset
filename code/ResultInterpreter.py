@@ -59,14 +59,20 @@ class ResultInterpreter:
     
     def __save_dataset_to_file(self, dataset: pd.DataFrame, result_dataset_name: str) -> None:
         """
-        Saves the dataset to a specified folder as a CSV file.
+        Saves the dataset to a specified folder as a CSV file. Also saves information about cluster distribution.
 
         Args:
             dataset (pd.DataFrame): The dataset to save.
             result_dataset_name (str): The name of the CSV file.
         """
+        cluster_info = dataset["Cluster"].value_counts()
+        cluster_info =  pd.DataFrame({'Cluster': cluster_info.index, 'Count': cluster_info.values})
+        dataset = pd.concat([dataset, cluster_info], axis=1)
+
         os.makedirs(self.__path_to_folder, exist_ok=True)
-        dataset.to_csv(os.path.join(self.__path_to_folder, result_dataset_name))
+        csv_file_path = os.path.join(self.__path_to_folder, result_dataset_name)
+        dataset.to_csv(csv_file_path, index=False)
+
 
     def get_correlation_matrix(self) -> pd.DataFrame:
         """
