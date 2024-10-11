@@ -275,7 +275,7 @@ There are 2 clusters: **1st cluster with 669 participants** and **2nd cluster wi
 — "If you have a mental health issue, do you feel that it interferes with your work when NOT being treated effectively?":  
 &emsp;&emsp; 1 cluster: most participants think that this is not applicable to them.  
 &emsp;&emsp; 2 cluster: participants feel like not treating mental health problems "often" or "sometimes" affect their work.  
-— "Have you had a mental health disorder in the past?": 
+— "Have you had a mental health disorder in the past?":  
 &emsp;&emsp; 1 cluster: more than half of participants had not mental health disorder in the past and the other subgroups had it.  
 &emsp;&emsp; 2 cluster: almost everyone had mental health disorder in the past.  
 — "If you have a mental health issue, do you feel that it interferes with your work when being treated effectively?":  
@@ -293,7 +293,7 @@ There are 2 clusters: **1st cluster with 669 participants** and **2nd cluster wi
 — "Do you have a family history of mental illness?":  
 &emsp;&emsp; 1 cluster:  
 &emsp;&emsp; 2 cluster:  
-— "If so, what condition(s) were you diagnosed with?"
+— "If so, what condition(s) were you diagnosed with?":  
 &emsp;&emsp; 1 cluster:  
 &emsp;&emsp; 2 cluster:  
 
@@ -347,7 +347,7 @@ There are 2 clusters: **1st cluster with 641 participants** and **2nd cluster wi
 — "Do you have a family history of mental illness?":  
 &emsp;&emsp; 1 cluster:  
 &emsp;&emsp; 2 cluster:  
-— "If so, what condition(s) were you diagnosed with?"
+— "If so, what condition(s) were you diagnosed with?":  
 &emsp;&emsp; 1 cluster:  
 &emsp;&emsp; 2 cluster:  
 
