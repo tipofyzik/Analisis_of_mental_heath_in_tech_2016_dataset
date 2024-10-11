@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/be1b3783-167a-4329-a084-5138509e81c6)# Analisis of "Mental heath in tech 2016" dataset from kaggle
+# Analisis of "Mental heath in tech 2016" dataset from kaggle
 
 ## 1. Task formulation
 To be brief, there is a high-dimensional, complex survey, which was conducted amongst technology-oriented employees. Dataset has missing values and non-standardized textual inputs. The goal is to categorize participants based on their survey responses and create visualizations that would simplify the data complexity. Key characteristics should be preserved and main traits of each result cluster should be described.
