@@ -327,13 +327,29 @@ There are 8 features with average rank lower than 10. The result response distri
 
 There are 2 clusters: **1st cluster with 641 participants** and **2nd cluster with 792 participants**. The major distinctions between them can be seen in the first top-8 features:  
 — "If you have a mental health issue, do you feel that it interferes with your work when NOT being treated effectively?": 
+&emsp;&emsp; 1 cluster:  
+&emsp;&emsp; 2 cluster:  
 — "If you have a mental health issue, do you feel that it interferes with your work when being treated effectively?":  
+&emsp;&emsp; 1 cluster:  
+&emsp;&emsp; 2 cluster:  
 — "Have you had a mental health disorder in the past?":  
+&emsp;&emsp; 1 cluster:  
+&emsp;&emsp; 2 cluster:  
 — "Have you ever sought treatment for a mental health issue from a mental health professional?":  
+&emsp;&emsp; 1 cluster:  
+&emsp;&emsp; 2 cluster:  
 — "Do you currently have a mental health disorder?":  
+&emsp;&emsp; 1 cluster:  
+&emsp;&emsp; 2 cluster:  
 — "Have you been diagnosed with a mental health condition by a medical professional?":  
+&emsp;&emsp; 1 cluster:  
+&emsp;&emsp; 2 cluster:  
 — "Do you have a family history of mental illness?":  
+&emsp;&emsp; 1 cluster:  
+&emsp;&emsp; 2 cluster:  
 — "If so, what condition(s) were you diagnosed with?"
+&emsp;&emsp; 1 cluster:  
+&emsp;&emsp; 2 cluster:  
 
 
 **1.3 Agglomerative clustering results:**  
@@ -358,9 +374,17 @@ There are 4 features with average rank lower than 10. The result response distri
 
 There are 2 clusters: **1st cluster with 653 participants** and **2nd cluster with 780 participants**. The major distinctions between them can be seen in the first top-4 features:  
 — "If you have a mental health issue, do you feel that it interferes with your work when NOT being treated effectively?":  
+&emsp;&emsp; 1 cluster:  
+&emsp;&emsp; 2 cluster:  
 — "Have you had a mental health disorder in the past?":  
+&emsp;&emsp; 1 cluster:  
+&emsp;&emsp; 2 cluster:  
 — "If you have a mental health issue, do you feel that it interferes with your work when being treated effectively?":  
+&emsp;&emsp; 1 cluster:  
+&emsp;&emsp; 2 cluster:  
 — "Do you currently have a mental health disorder?":  
+&emsp;&emsp; 1 cluster:  
+&emsp;&emsp; 2 cluster:  
 
 **2. Without textual columns (features), 3 clusters:**  
 **2.1 K-Means clustering results:**  
@@ -389,11 +413,29 @@ There are 6 features with average rank lower than 10. The result response distri
 
 There are 3 clusters: **1st cluster with 613 participants**, **2nd cluster with 348 participants**, and **3nd cluster with 472 participants**. The major distinctions between them can be seen in the first top-6 features:  
 — "Have you had a mental health disorder in the past?":  
+&emsp;&emsp; 1 cluster:  
+&emsp;&emsp; 2 cluster:  
+&emsp;&emsp; 3 cluster:  
 — "If you have a mental health issue, do you feel that it interferes with your work when NOT being treated effectively?":  
+&emsp;&emsp; 1 cluster:  
+&emsp;&emsp; 2 cluster:  
+&emsp;&emsp; 3 cluster:  
 — "Have you ever sought treatment for a mental health issue from a mental health professional?":  
+&emsp;&emsp; 1 cluster:  
+&emsp;&emsp; 2 cluster:  
+&emsp;&emsp; 3 cluster:  
 — "Do you currently have a mental health disorder?":  
+&emsp;&emsp; 1 cluster:  
+&emsp;&emsp; 2 cluster:  
+&emsp;&emsp; 3 cluster:  
 — "Did your previous employers provide resources to learn more about mental health issues and how to seek help?":  
+&emsp;&emsp; 1 cluster:  
+&emsp;&emsp; 2 cluster:  
+&emsp;&emsp; 3 cluster:  
 — "Do you feel that being identified as a person with a mental health issue would hurt your career?":  
+&emsp;&emsp; 1 cluster:  
+&emsp;&emsp; 2 cluster:  
+&emsp;&emsp; 3 cluster:  
 
 **2.2 Gaussian Mixture clustering results:**  
 <table>
@@ -425,13 +467,37 @@ There are 8 features with average rank lower than 10. The result response distri
 
 There are 3 clusters: **1st cluster with 622 participants**, **2nd cluster with 324 participants**, and **3nd cluster with 487 participants**. The major distinctions between them can be seen in the first top-8 features:  
 — "Have you had a mental health disorder in the past?":  
+&emsp;&emsp; 1 cluster:  
+&emsp;&emsp; 2 cluster:  
+&emsp;&emsp; 3 cluster:  
 — "If you have a mental health issue, do you feel that it interferes with your work when NOT being treated effectively?":  
+&emsp;&emsp; 1 cluster:  
+&emsp;&emsp; 2 cluster:  
+&emsp;&emsp; 3 cluster:  
 — "Have you ever sought treatment for a mental health issue from a mental health professional?":  
+&emsp;&emsp; 1 cluster:  
+&emsp;&emsp; 2 cluster:  
+&emsp;&emsp; 3 cluster:  
 — "Do you currently have a mental health disorder?":  
+&emsp;&emsp; 1 cluster:  
+&emsp;&emsp; 2 cluster:  
+&emsp;&emsp; 3 cluster:  
 — "Do you feel that being identified as a person with a mental health issue would hurt your career?":  
+&emsp;&emsp; 1 cluster:  
+&emsp;&emsp; 2 cluster:  
+&emsp;&emsp; 3 cluster:  
 — "Did your previous employers provide resources to learn more about mental health issues and how to seek help?":  
+&emsp;&emsp; 1 cluster:  
+&emsp;&emsp; 2 cluster:  
+&emsp;&emsp; 3 cluster:  
 — "Have you been diagnosed with a mental health condition by a medical professional?":  
+&emsp;&emsp; 1 cluster:  
+&emsp;&emsp; 2 cluster:  
+&emsp;&emsp; 3 cluster:  
 — "Do you think that discussing a mental health disorder with your employer would have negative consequences?":  
+&emsp;&emsp; 1 cluster:  
+&emsp;&emsp; 2 cluster:  
+&emsp;&emsp; 3 cluster:  
 
 
 **2.3 Agglomerative clustering results:**  
@@ -467,14 +533,42 @@ There are 9 features with average rank lower than 10. The result response distri
 
 There are 3 clusters: **1st cluster with 624 participants**, **2nd cluster with 552 participants**, and **3nd cluster with 257 participants**. The major distinctions between them can be seen in the first top-9 features:  
 — "If you have a mental health issue, do you feel that it interferes with your work when NOT being treated effectively?":  
+&emsp;&emsp; 1 cluster:  
+&emsp;&emsp; 2 cluster:  
+&emsp;&emsp; 3 cluster:  
 — "Have you been diagnosed with a mental health condition by a medical professional?":  
+&emsp;&emsp; 1 cluster:  
+&emsp;&emsp; 2 cluster:  
+&emsp;&emsp; 3 cluster:  
 — "Do you feel that being identified as a person with a mental health issue would hurt your career?":  
+&emsp;&emsp; 1 cluster:  
+&emsp;&emsp; 2 cluster:  
+&emsp;&emsp; 3 cluster:  
 — "Do you currently have a mental health disorder?":  
+&emsp;&emsp; 1 cluster:  
+&emsp;&emsp; 2 cluster:  
+&emsp;&emsp; 3 cluster:  
 — "Did your previous employers provide resources to learn more about mental health issues and how to seek help?":  
+&emsp;&emsp; 1 cluster:  
+&emsp;&emsp; 2 cluster:  
+&emsp;&emsp; 3 cluster:  
 — "Have you had a mental health disorder in the past?":  
+&emsp;&emsp; 1 cluster:  
+&emsp;&emsp; 2 cluster:  
+&emsp;&emsp; 3 cluster:  
 — "Do you think that discussing a mental health disorder with your employer would have negative consequences?":  
+&emsp;&emsp; 1 cluster:  
+&emsp;&emsp; 2 cluster:  
+&emsp;&emsp; 3 cluster:  
 — "If you have a mental health issue, do you feel that it interferes with your work when being treated effectively?":  
+&emsp;&emsp; 1 cluster:  
+&emsp;&emsp; 2 cluster:  
+&emsp;&emsp; 3 cluster:  
 — "Have you ever sought treatment for a mental health issue from a mental health professional?":  
+&emsp;&emsp; 1 cluster:  
+&emsp;&emsp; 2 cluster:  
+&emsp;&emsp; 3 cluster:  
+
 
 
 ## 6. Possible improvements
