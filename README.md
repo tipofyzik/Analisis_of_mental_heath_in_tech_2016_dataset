@@ -276,26 +276,28 @@ There are 2 clusters: **1st cluster with 669 participants** and **2nd cluster wi
 &emsp;&emsp; 1 cluster: most participants think that this is not applicable to them.  
 &emsp;&emsp; 2 cluster: participants feel like not treating mental health problems "often" or "sometimes" affect their work.  
 — "Have you had a mental health disorder in the past?":  
-&emsp;&emsp; 1 cluster: more than half of participants had not mental health disorder in the past and the other subgroups had it.  
+&emsp;&emsp; 1 cluster: more than half of participants had not mental health disorder in the past and the other subgroups had or almost had it.  
 &emsp;&emsp; 2 cluster: almost everyone had mental health disorder in the past.  
 — "If you have a mental health issue, do you feel that it interferes with your work when being treated effectively?":  
-&emsp;&emsp; 1 cluster:  
-&emsp;&emsp; 2 cluster:  
+&emsp;&emsp; 1 cluster: most participants think that this is not applicable to them.  
+&emsp;&emsp; 2 cluster: participants feel like not treating mental health problems "sometimes" or "rarely" affect their work.  
 — "Do you currently have a mental health disorder?":  
-&emsp;&emsp; 1 cluster:  
-&emsp;&emsp; 2 cluster:  
+&emsp;&emsp; 1 cluster: more than half of participants don't have a mental health disorder, while the majority of the remaining are not sure whether they have it.  
+&emsp;&emsp; 2 cluster: most participants have a mental health disorder.   
 — "Have you been diagnosed with a mental health condition by a medical professional?":  
-&emsp;&emsp; 1 cluster:  
-&emsp;&emsp; 2 cluster:  
+&emsp;&emsp; 1 cluster: most participants weren't diognised with a mental health condition by a medical professional.  
+&emsp;&emsp; 2 cluster: most participants were diognised with a mental health condition by a medical professional.  
 — "Have you ever sought treatment for a mental health issue from a mental health professional?":  
-&emsp;&emsp; 1 cluster:  
-&emsp;&emsp; 2 cluster:  
+&emsp;&emsp; 1 cluster: most participants have never sought for a mental health  issue from a mental health professional.  
+&emsp;&emsp; 2 cluster: most participants tried to seek for a mental health  issue from a mental health professional.  
 — "Do you have a family history of mental illness?":  
-&emsp;&emsp; 1 cluster:  
-&emsp;&emsp; 2 cluster:  
+&emsp;&emsp; 1 cluster: most participants either don't have a family history of mental illness or don't know about it, while the others have it.  
+&emsp;&emsp; 2 cluster: most participants have a family history of mental illness, while the others either don't have or don't know about it.  
 — "If so, what condition(s) were you diagnosed with?":  
-&emsp;&emsp; 1 cluster:  
-&emsp;&emsp; 2 cluster:  
+&emsp;&emsp; 1 cluster: this group is predominantly diognised with only mood disorder.  
+&emsp;&emsp; 2 cluster: this group is predominantly diognised with both mood and anxiety disorder.  
+
+Summing up, the 1st group of participants are poorly awared about their mental health issues and most of people didn't have and haven't ever worked with them before. Furthermore, the majority claim that they don't have any mental health issue, while they were diognised with mood disoreders. In contrast, most in the second participants group know a lot about their mental health conditions, they had issues in the past and tried to treat them. Additionally, in the first and the third questions, the majority of the 1st group claims that these question are not related to them (question start with "If you have a mental health issue" and participants answered "not applicapable to me"), while for other group of people we can see that effective treatement would help reduce the impact on their work (response "often" distributed among answers "rarely" and "sometimes").  
 
 **1.2 Gaussian Mixture clustering results:**  
 <table>
@@ -326,30 +328,16 @@ There are 8 features with average rank lower than 10. The result response distri
 </table> 
 
 There are 2 clusters: **1st cluster with 641 participants** and **2nd cluster with 792 participants**. The major distinctions between them can be seen in the first top-8 features:  
-— "If you have a mental health issue, do you feel that it interferes with your work when NOT being treated effectively?": 
-&emsp;&emsp; 1 cluster:  
-&emsp;&emsp; 2 cluster:  
-— "If you have a mental health issue, do you feel that it interferes with your work when being treated effectively?":  
-&emsp;&emsp; 1 cluster:  
-&emsp;&emsp; 2 cluster:  
-— "Have you had a mental health disorder in the past?":  
-&emsp;&emsp; 1 cluster:  
-&emsp;&emsp; 2 cluster:  
-— "Have you ever sought treatment for a mental health issue from a mental health professional?":  
-&emsp;&emsp; 1 cluster:  
-&emsp;&emsp; 2 cluster:  
-— "Do you currently have a mental health disorder?":  
-&emsp;&emsp; 1 cluster:  
-&emsp;&emsp; 2 cluster:  
-— "Have you been diagnosed with a mental health condition by a medical professional?":  
-&emsp;&emsp; 1 cluster:  
-&emsp;&emsp; 2 cluster:  
-— "Do you have a family history of mental illness?":  
-&emsp;&emsp; 1 cluster:  
-&emsp;&emsp; 2 cluster:  
-— "If so, what condition(s) were you diagnosed with?":  
-&emsp;&emsp; 1 cluster:  
-&emsp;&emsp; 2 cluster:  
+— "If you have a mental health issue, do you feel that it interferes with your work when NOT being treated effectively?" 
+— "If you have a mental health issue, do you feel that it interferes with your work when being treated effectively?"  
+— "Have you had a mental health disorder in the past?"  
+— "Have you ever sought treatment for a mental health issue from a mental health professional?"  
+— "Do you currently have a mental health disorder?"  
+— "Have you been diagnosed with a mental health condition by a medical professional?"  
+— "Do you have a family history of mental illness?"  
+— "If so, what condition(s) were you diagnosed with?"  
+
+This clustering method produce **almost the same results** like the previous one; only the order of the selected features and distributions for the last question have changed. In the previous clustering, most of the 1st participants group were diognised with mood disorders and the 2nd group had either a mood or an anxiety disorder. Now, the 1st group mostly have anxiety disorder, while the majority of the 2nd group have mood disorder and some people have anxiety disorder.     
 
 
 **1.3 Agglomerative clustering results:**  
@@ -374,17 +362,17 @@ There are 4 features with average rank lower than 10. The result response distri
 
 There are 2 clusters: **1st cluster with 653 participants** and **2nd cluster with 780 participants**. The major distinctions between them can be seen in the first top-4 features:  
 — "If you have a mental health issue, do you feel that it interferes with your work when NOT being treated effectively?":  
-&emsp;&emsp; 1 cluster:  
-&emsp;&emsp; 2 cluster:  
+&emsp;&emsp; 1 cluster: participants feel like not treating mental health problems "often" or "sometimes" affect their work.  
+&emsp;&emsp; 2 cluster: most participants think that this is not applicable to them.  
 — "Have you had a mental health disorder in the past?":  
-&emsp;&emsp; 1 cluster:  
-&emsp;&emsp; 2 cluster:  
+&emsp;&emsp; 1 cluster: almost everyone had mental health disorder in the past.  
+&emsp;&emsp; 2 cluster: more than half of participants had not mental health disorder in the past and the other subgroups had or maybe had it.  
 — "If you have a mental health issue, do you feel that it interferes with your work when being treated effectively?":  
-&emsp;&emsp; 1 cluster:  
-&emsp;&emsp; 2 cluster:  
+&emsp;&emsp; 1 cluster: participants feel like not treating mental health problems "sometimes" or "rarely" affect their work.  
+&emsp;&emsp; 2 cluster: most participants think that this is not applicable to them.  
 — "Do you currently have a mental health disorder?":  
-&emsp;&emsp; 1 cluster:  
-&emsp;&emsp; 2 cluster:  
+&emsp;&emsp; 1 cluster: most participants have a mental health disorder.   
+&emsp;&emsp; 2 cluster: more than half of participants don't have a mental health disorder, while the majority of the remaining are not sure whether they have it.  
 
 **2. Without textual columns (features), 3 clusters:**  
 **2.1 K-Means clustering results:**  
