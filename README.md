@@ -372,12 +372,12 @@ There are 6 features with average rank lower than 10. The result response distri
 </table> 
 
 There are 3 clusters: **1st cluster with 613 participants**, **2nd cluster with 348 participants**, and **3nd cluster with 472 participants**. The major distinctions between them can be seen in the first top-6 features:  
-— "":  
-— "":  
-— "":  
-— "":  
-— "":  
-— "":  
+— "Have you had a mental health disorder in the past?":  
+— "If you have a mental health issue, do you feel that it interferes with your work when NOT being treated effectively?":  
+— "Have you ever sought treatment for a mental health issue from a mental health professional?":  
+— "Do you currently have a mental health disorder?":  
+— "Did your previous employers provide resources to learn more about mental health issues and how to seek help?":  
+— "Do you feel that being identified as a person with a mental health issue would hurt your career?":  
 
 **2.2 Gaussian Mixture clustering results:**  
 <table>
@@ -408,14 +408,14 @@ There are 8 features with average rank lower than 10. The result response distri
 </table> 
 
 There are 3 clusters: **1st cluster with 622 participants**, **2nd cluster with 324 participants**, and **3nd cluster with 487 participants**. The major distinctions between them can be seen in the first top-8 features:  
-— "":  
-— "":  
-— "":  
-— "":  
-— "":  
-— "":  
-— "":  
-— "":  
+— "Have you had a mental health disorder in the past?":  
+— "If you have a mental health issue, do you feel that it interferes with your work when NOT being treated effectively?":  
+— "Have you ever sought treatment for a mental health issue from a mental health professional?":  
+— "Do you currently have a mental health disorder?":  
+— "Do you feel that being identified as a person with a mental health issue would hurt your career?":  
+— "Did your previous employers provide resources to learn more about mental health issues and how to seek help?":  
+— "Have you been diagnosed with a mental health condition by a medical professional?":  
+— "Do you think that discussing a mental health disorder with your employer would have negative consequences?":  
 
 
 **2.3 Agglomerative clustering results:**  
@@ -450,15 +450,15 @@ There are 9 features with average rank lower than 10. The result response distri
 </table> 
 
 There are 3 clusters: **1st cluster with 624 participants**, **2nd cluster with 552 participants**, and **3nd cluster with 257 participants**. The major distinctions between them can be seen in the first top-9 features:  
-— "":  
-— "":  
-— "":  
-— "":  
-— "":  
-— "":  
-— "":  
-— "":  
-— "":  
+— "If you have a mental health issue, do you feel that it interferes with your work when NOT being treated effectively?":  
+— "Have you been diagnosed with a mental health condition by a medical professional?":  
+— "Do you feel that being identified as a person with a mental health issue would hurt your career?":  
+— "Do you currently have a mental health disorder?":  
+— "Did your previous employers provide resources to learn more about mental health issues and how to seek help?":  
+— "Have you had a mental health disorder in the past?":  
+— "Do you think that discussing a mental health disorder with your employer would have negative consequences?":  
+— "If you have a mental health issue, do you feel that it interferes with your work when being treated effectively?":  
+— "Have you ever sought treatment for a mental health issue from a mental health professional?":  
 
 
 ## 6. Possible improvements
