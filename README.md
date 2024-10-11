@@ -402,8 +402,8 @@ There are 6 features with average rank lower than 10. The result response distri
 There are 3 clusters: **1st cluster with 613 participants**, **2nd cluster with 348 participants**, and **3nd cluster with 472 participants**. The major distinctions between them can be seen in the first top-6 features:  
 — "Have you had a mental health disorder in the past?":  
 &emsp;&emsp; 1 cluster: more than half of participants had not mental health disorder in the past and the other subgroups had or maybe had it.  
-&emsp;&emsp; 2 cluster: almost everyone had mental health disorder in the past.  
-&emsp;&emsp; 3 cluster: almost everyone had mental health disorder in the past.  
+&emsp;&emsp; 2 cluster: almost everyone had or maybe had mental health disorder in the past.  
+&emsp;&emsp; 3 cluster: almost everyone had or maybe had mental health disorder in the past.  
 — "If you have a mental health issue, do you feel that it interferes with your work when NOT being treated effectively?":  
 &emsp;&emsp; 1 cluster: most participants think that this is not applicable to them.  
 &emsp;&emsp; 2 cluster: participants feel like not treating mental health problems "often" or "sometimes" affect their work.  
@@ -418,7 +418,7 @@ There are 3 clusters: **1st cluster with 613 participants**, **2nd cluster with 
 &emsp;&emsp; 3 cluster: most participants have or maybe have a mental health disorder.  
 — "Did your previous employers provide resources to learn more about mental health issues and how to seek help?":  
 &emsp;&emsp; 1 cluster: most participants haven't been provided with resourses about mental health issues on previous workplaces.  
-&emsp;&emsp; 2 cluster: for most participants, recieved resourses about mental health issues from their previous employers or haven't recieved them at all.  
+&emsp;&emsp; 2 cluster: for most participants, there were some previous employers who provided them with resourses about mental health. However, there are participants who have never been provided with them.  
 &emsp;&emsp; 3 cluster: most participants haven't been provided with resourses about mental health issues on previous workplaces.  
 — "Do you feel that being identified as a person with a mental health issue would hurt your career?":  
 &emsp;&emsp; 1 cluster: most participants think that this can hurt their career (corresponding responses are "maybe" and "yes, i think it would").  
@@ -506,41 +506,41 @@ There are 9 features with average rank lower than 10. The result response distri
 
 There are 3 clusters: **1st cluster with 624 participants**, **2nd cluster with 552 participants**, and **3nd cluster with 257 participants**. The major distinctions between them can be seen in the first top-9 features:  
 — "If you have a mental health issue, do you feel that it interferes with your work when NOT being treated effectively?":  
-&emsp;&emsp; 1 cluster:  
-&emsp;&emsp; 2 cluster:  
-&emsp;&emsp; 3 cluster:  
+&emsp;&emsp; 1 cluster: most participants think that this is not applicable to them.  
+&emsp;&emsp; 2 cluster: participants feel like not treating mental health problems "often" or "sometimes" affect their work.  
+&emsp;&emsp; 3 cluster: participants feel like not treating mental health problems "often" or "sometimes" affect their work.  
 — "Have you been diagnosed with a mental health condition by a medical professional?":  
-&emsp;&emsp; 1 cluster:  
-&emsp;&emsp; 2 cluster:  
-&emsp;&emsp; 3 cluster:  
+&emsp;&emsp; 1 cluster: most participants haven't ever been diognised with a mental health condition by a medical professional.  
+&emsp;&emsp; 2 cluster: most participants have been diognised with a mental health condition by a medical professional.  
+&emsp;&emsp; 3 cluster: most participants have been diognised with a mental health condition by a medical professional.  
 — "Do you feel that being identified as a person with a mental health issue would hurt your career?":  
-&emsp;&emsp; 1 cluster:  
-&emsp;&emsp; 2 cluster:  
-&emsp;&emsp; 3 cluster:  
+&emsp;&emsp; 1 cluster: most participants think that this can hurt their career (corresponding responses are "maybe" and "yes, i think it would"). But some people in this group don't think so.  
+&emsp;&emsp; 2 cluster: most participants think that this can hurt their career (corresponding responses are "maybe" and "yes, i think it would"). Additionally, some people think that it will definitely hurt their career.  
+&emsp;&emsp; 3 cluster: most participants think that this can hurt their career (corresponding responses are "maybe" and "yes, i think it would"). But more people in this group don't think that it would have any effect.  
 — "Do you currently have a mental health disorder?":  
-&emsp;&emsp; 1 cluster:  
-&emsp;&emsp; 2 cluster:  
-&emsp;&emsp; 3 cluster:  
+&emsp;&emsp; 1 cluster: more than half of participants don't have a mental health disorder, while the majority of the remaining are not sure whether they have it.  
+&emsp;&emsp; 2 cluster: most participants have or maybe have a mental health disorder.  
+&emsp;&emsp; 3 cluster: most participants have or maybe have a mental health disorder.  
 — "Did your previous employers provide resources to learn more about mental health issues and how to seek help?":  
-&emsp;&emsp; 1 cluster:  
-&emsp;&emsp; 2 cluster:  
-&emsp;&emsp; 3 cluster:  
+&emsp;&emsp; 1 cluster: most participants haven't been provided with resourses about mental health issues on previous workplaces.  
+&emsp;&emsp; 2 cluster: most participants haven't been provided with resourses about mental health issues on previous workplaces.  
+&emsp;&emsp; 3 cluster: for most participants, there were some previous employers who provided them with resourses about mental health. However, there are participants who have never been provided with them.  
 — "Have you had a mental health disorder in the past?":  
-&emsp;&emsp; 1 cluster:  
-&emsp;&emsp; 2 cluster:  
-&emsp;&emsp; 3 cluster:  
+&emsp;&emsp; 1 cluster: more than half of participants had not mental health disorder in the past and the other subgroups had or maybe had it.  
+&emsp;&emsp; 2 cluster: almost everyone had or maybe had mental health disorder in the past.  
+&emsp;&emsp; 3 cluster: almost everyone had or maybe had mental health disorder in the past.  
 — "Do you think that discussing a mental health disorder with your employer would have negative consequences?":  
-&emsp;&emsp; 1 cluster:  
-&emsp;&emsp; 2 cluster:  
-&emsp;&emsp; 3 cluster:  
+&emsp;&emsp; 1 cluster: most participants think that it would or won't have negative consequences (corresponding responses are "maybe" and "no").  
+&emsp;&emsp; 2 cluster: most participants think that it would or will definitely have negative consequences (corresponding responses are "maybe" and "yes").  
+&emsp;&emsp; 3 cluster: most participants think that it would or won't have negative consequences (corresponding responses are "maybe" and "no").  
 — "If you have a mental health issue, do you feel that it interferes with your work when being treated effectively?":  
-&emsp;&emsp; 1 cluster:  
-&emsp;&emsp; 2 cluster:  
-&emsp;&emsp; 3 cluster:  
+&emsp;&emsp; 1 cluster: most participants think that this is not applicable to them.  
+&emsp;&emsp; 2 cluster: participants feel like not treating mental health problems "sometimes" or "rarely" affect their work.  
+&emsp;&emsp; 3 cluster: participants feel like not treating mental health problems "sometimes" or "rarely" affect their work.  
 — "Have you ever sought treatment for a mental health issue from a mental health professional?":  
-&emsp;&emsp; 1 cluster:  
-&emsp;&emsp; 2 cluster:  
-&emsp;&emsp; 3 cluster:  
+&emsp;&emsp; 1 cluster: most participants have never sought for a mental health  issue from a mental health professional.  
+&emsp;&emsp; 2 cluster: most participants tried to seek for a mental health issue from a mental health professional.  
+&emsp;&emsp; 3 cluster: most participants tried to seek for a mental health issue from a mental health professional.  
 
 
 
