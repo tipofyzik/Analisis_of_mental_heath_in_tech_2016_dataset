@@ -328,7 +328,7 @@ There are 8 features with average rank lower than 10. The result response distri
 </table> 
 
 There are 2 clusters: **1st cluster with 641 participants** and **2nd cluster with 792 participants**. The major distinctions between them can be seen in the first top-8 features:  
-— "If you have a mental health issue, do you feel that it interferes with your work when NOT being treated effectively?" 
+— "If you have a mental health issue, do you feel that it interferes with your work when NOT being treated effectively?"  
 — "If you have a mental health issue, do you feel that it interferes with your work when being treated effectively?"  
 — "Have you had a mental health disorder in the past?"  
 — "Have you ever sought treatment for a mental health issue from a mental health professional?"  
