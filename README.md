@@ -272,14 +272,30 @@ There are 8 features with average rank lower than 10. The result response distri
 </table> 
 
 There are 2 clusters: **1st cluster with 669 participants** and **2nd cluster with 764 participants**. The major distinctions between them can be seen in the first top-8 features:  
-— "If you have a mental health issue, do you feel that it interferes with your work when NOT being treated effectively?": 1st group mostly thinks that it's not applicable to them, while the 2nd group feel like not treated mental health problems "often" or "sometimes" affect their work.  
-— "Have you had a mental health disorder in the past?":  
+— "If you have a mental health issue, do you feel that it interferes with your work when NOT being treated effectively?":  
+&emsp;&emsp; 1 cluster: most participants think that this is not applicable to them.  
+&emsp;&emsp; 2 cluster: participants feel like not treating mental health problems "often" or "sometimes" affect their work.  
+— "Have you had a mental health disorder in the past?": 
+&emsp;&emsp; 1 cluster: more than half of participants had not mental health disorder in the past and the other subgroups had it.  
+&emsp;&emsp; 2 cluster: almost everyone had mental health disorder in the past.  
 — "If you have a mental health issue, do you feel that it interferes with your work when being treated effectively?":  
+&emsp;&emsp; 1 cluster:  
+&emsp;&emsp; 2 cluster:  
 — "Do you currently have a mental health disorder?":  
+&emsp;&emsp; 1 cluster:  
+&emsp;&emsp; 2 cluster:  
 — "Have you been diagnosed with a mental health condition by a medical professional?":  
+&emsp;&emsp; 1 cluster:  
+&emsp;&emsp; 2 cluster:  
 — "Have you ever sought treatment for a mental health issue from a mental health professional?":  
+&emsp;&emsp; 1 cluster:  
+&emsp;&emsp; 2 cluster:  
 — "Do you have a family history of mental illness?":  
+&emsp;&emsp; 1 cluster:  
+&emsp;&emsp; 2 cluster:  
 — "If so, what condition(s) were you diagnosed with?"
+&emsp;&emsp; 1 cluster:  
+&emsp;&emsp; 2 cluster:  
 
 **1.2 Gaussian Mixture clustering results:**  
 <table>
