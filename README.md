@@ -1,4 +1,4 @@
-# Analisis of "Mental heath in tech 2016" dataset from kaggle
+![image](https://github.com/user-attachments/assets/be1b3783-167a-4329-a084-5138509e81c6)# Analisis of "Mental heath in tech 2016" dataset from kaggle
 
 ## 1. Task formulation
 To be brief, there is a high-dimensional, complex survey, which was conducted amongst technology-oriented employees. Dataset has missing values and non-standardized textual inputs. The goal is to categorize participants based on their survey responses and create visualizations that would simplify the data complexity. Key characteristics should be preserved and main traits of each result cluster should be described.
@@ -239,9 +239,9 @@ The resulting parameter choices are shown below:
 These parameters are responsible for interpretation of clustering results for data which dimensionality was reduced by a specific algorithm (see "4.2. Config file" section). Since the results of all algorithms are similar, we will focus on clustering and cluster interpretations for data reduced by t-SNE algorithm. If you want to perform and save interpretations for data reduced by other algorithms, you can simply replace zeroes in the parameters above with other 1 or other number.  
 Additionally, the clustering algorithm used also should be considered during the interpretation process. Different clustering algorithms divide dataset into clusters in distinct ways, meaning that for each clustering algorithm there are unique features which trigger this algorithm. As a result, the interpretations of the clustering outcomes vary depending on the algorithm used. 
 
-**!Note:** We will consoder only the features which mean ranks are less than 10. Features with mean rank greater than 10 (even greater than 8-9, in some cases) mostly have participants' response distributions with no clear distinctions (see interpretations below).
+**!Note:** We will consoder only the features which mean ranks are less than 10. Features with mean rank greater than 10 (even greater than 8-9, in some cases) mostly have participants' response distributions with no clear distinctions (see interpretations below). The information about how many participants were assighned to each cluster you can find in the end (far right columns) of corresponding dataset tables that are located in interpretation folders. The number of cluster in graphs correspond to the number of cluster in the table plus 1, i.e., cluster 0 in table corresponds to cluster 1 in graphs.  
 
-Let's look at output cluster distributions, what features have been selected for these distributions, and what response distributions have determined clusters. For simplicity and clarity, the result response distributions for each top feature will be shown in plots, so everyone can click on them and see the difference between clusters. :  
+Let's look at output cluster distributions, what features have been selected for these distributions, and what response distributions have determined clusters. For simplicity and clarity, the result response distributions for each top feature will be shown in plots, so everyone can click on them and see the difference between clusters:  
 **1. With textual columns (features), 2 clusters:**  
 **1.1 K-Means clustering results:**  
 <table>
@@ -271,7 +271,15 @@ There are 8 features with average rank lower than 10. The result response distri
   </tr>
 </table> 
 
-
+There are 2 clusters: **1st cluster with 669 participants** and **2nd cluster with 764 participants**. The major distinctions between them can be seen in the first top-8 features:  
+— "If you have a mental health issue, do you feel that it interferes with your work when NOT being treated effectively?": 1st group mostly thinks that it's not applicable to them, while the 2nd group feel like not treated mental health problems "often" or "sometimes" affect their work.  
+— "Have you had a mental health disorder in the past?":  
+— "If you have a mental health issue, do you feel that it interferes with your work when being treated effectively?":  
+— "Do you currently have a mental health disorder?":  
+— "Have you been diagnosed with a mental health condition by a medical professional?":  
+— "Have you ever sought treatment for a mental health issue from a mental health professional?":  
+— "Do you have a family history of mental illness?":  
+— "If so, what condition(s) were you diagnosed with?"
 
 **1.2 Gaussian Mixture clustering results:**  
 <table>
@@ -301,6 +309,17 @@ There are 8 features with average rank lower than 10. The result response distri
   </tr>
 </table> 
 
+There are 2 clusters: **1st cluster with 641 participants** and **2nd cluster with 792 participants**. The major distinctions between them can be seen in the first top-8 features:  
+— "If you have a mental health issue, do you feel that it interferes with your work when NOT being treated effectively?": 
+— "If you have a mental health issue, do you feel that it interferes with your work when being treated effectively?":  
+— "Have you had a mental health disorder in the past?":  
+— "Have you ever sought treatment for a mental health issue from a mental health professional?":  
+— "Do you currently have a mental health disorder?":  
+— "Have you been diagnosed with a mental health condition by a medical professional?":  
+— "Do you have a family history of mental illness?":  
+— "If so, what condition(s) were you diagnosed with?"
+
+
 **1.3 Agglomerative clustering results:**  
 <table>
   <tr>
@@ -321,7 +340,11 @@ There are 4 features with average rank lower than 10. The result response distri
   </tr>
 </table> 
 
-
+There are 2 clusters: **1st cluster with 653 participants** and **2nd cluster with 780 participants**. The major distinctions between them can be seen in the first top-4 features:  
+— "If you have a mental health issue, do you feel that it interferes with your work when NOT being treated effectively?":  
+— "Have you had a mental health disorder in the past?":  
+— "If you have a mental health issue, do you feel that it interferes with your work when being treated effectively?":  
+— "Do you currently have a mental health disorder?":  
 
 **2. Without textual columns (features), 3 clusters:**  
 **2.1 K-Means clustering results:**  
@@ -347,6 +370,14 @@ There are 6 features with average rank lower than 10. The result response distri
     <td><img src="https://github.com/user-attachments/assets/078a2a88-f537-4173-b056-36e88094f00e" style="max-width:100%; height:auto;" /></td>
   </tr>
 </table> 
+
+There are 3 clusters: **1st cluster with a participants**, **2nd cluster with b participants**, and **3nd cluster with c participants**. The major distinctions between them can be seen in the first top-6 features:  
+— "":  
+— "":  
+— "":  
+— "":  
+— "":  
+— "":  
 
 **2.2 Gaussian Mixture clustering results:**  
 <table>
@@ -375,6 +406,17 @@ There are 8 features with average rank lower than 10. The result response distri
     <td><img src="https://github.com/user-attachments/assets/f9f92ee5-0241-42b1-9086-7dfa215c9d3a" style="max-width:100%; height:auto;" /></td>
   </tr>
 </table> 
+
+There are 3 clusters: **1st cluster with a participants**, **2nd cluster with b participants**, and **3nd cluster with c participants**. The major distinctions between them can be seen in the first top-8 features:  
+— "":  
+— "":  
+— "":  
+— "":  
+— "":  
+— "":  
+— "":  
+— "":  
+
 
 **2.3 Agglomerative clustering results:**  
 <table>
@@ -406,6 +448,17 @@ There are 9 features with average rank lower than 10. The result response distri
     <td><img src="https://github.com/user-attachments/assets/abd0e719-c2ba-42b0-823e-df5596b98a79" style="max-width:100%; height:auto;" /></td>
   </tr>
 </table> 
+
+There are 3 clusters: **1st cluster with a participants**, **2nd cluster with b participants**, and **3nd cluster with c participants**. The major distinctions between them can be seen in the first top-9 features:  
+— "":  
+— "":  
+— "":  
+— "":  
+— "":  
+— "":  
+— "":  
+— "":  
+— "":  
 
 
 ## 6. Possible improvements
