@@ -242,8 +242,8 @@ Additionally, the clustering algorithm used also should be considered during the
 **!Note:** We will consoder only the features which mean ranks are less than 10. Features with mean rank greater than 10 (even greater than 8-9, in some cases) mostly have participants' response distributions with no clear distinctions (see interpretations below). The information about how many participants were assighned to each cluster you can find in the end (far right columns) of corresponding dataset tables that are located in interpretation folders. The number of cluster in graphs correspond to the number of cluster in the table plus 1, i.e., cluster 0 in table corresponds to cluster 1 in graphs.  
 
 Let's look at output cluster distributions, what features have been selected for these distributions, and what response distributions have determined clusters. For simplicity and clarity, the result response distributions for each top feature will be shown in plots, so everyone can click on them and see the difference between clusters:  
-**1. With textual columns (features), 2 clusters:**  
-**1.1 K-Means clustering results:**  
+**5.3.1 With textual columns (features), 2 clusters:**  
+**K-Means clustering results:**  
 <table>
   <tr>
     <td><img src="https://github.com/user-attachments/assets/d6aab37a-f0d3-482d-baa2-0e1fd7846a84" style="max-width:100%; height:auto;" /></td>
@@ -297,9 +297,9 @@ There are 2 clusters: **1st cluster with 669 participants** and **2nd cluster wi
 &emsp;&emsp; 1 cluster: this group is predominantly diognised with only mood disorder.  
 &emsp;&emsp; 2 cluster: this group is predominantly diognised with both mood and anxiety disorder.  
 
-Summing up, the 1st group of participants are poorly awared about their mental health issues and most of people didn't have and haven't ever worked with them before. Furthermore, the majority claim that they don't have any mental health issue, while they were diognised with mood disoreders. In contrast, most in the second participants group know a lot about their mental health conditions, they had issues in the past and tried to treat them. Additionally, in the first and the third questions, the majority of the 1st group claims that these question are not related to them (question start with "If you have a mental health issue" and participants answered "not applicapable to me"), while for other group of people we can see that effective treatement would help reduce the impact on their work (response "often" distributed among answers "rarely" and "sometimes").  
+Summing up, the 1st group of participants are poorly awared about their mental health issues and most of people didn't have and haven't ever worked with them before. Furthermore, the majority claim that they don't have any mental health issue, while they were diognised with mood disoreders. In contrast, most in the second participants group know a lot about their mental health conditions, they had issues in the past and tried to treat them. Additionally, fot the first and the third questions, the majority of the 1st group claims that these question are not related to them (question start with "If you have a mental health issue" and participants answered "not applicapable to me"). This suggests that they do not believe they have mental health issues. In contrast, for the other group, there is a clear indication that effective treatment could help reduce the impact on their work, as the response "often" dramatically dicreased and the response "rarely", conversely, increased in their answers.  
 
-**1.2 Gaussian Mixture clustering results:**  
+**Gaussian Mixture clustering results:**  
 <table>
   <tr>
     <td><img src="https://github.com/user-attachments/assets/02167c00-07a7-4b74-ba3d-b247493315a2" style="max-width:100%; height:auto;" /></td>
@@ -340,7 +340,7 @@ There are 2 clusters: **1st cluster with 641 participants** and **2nd cluster wi
 This clustering method produce **almost the same results** like the previous one; only the order of the selected features and distributions for the last question have changed. In the previous clustering, most of the 1st participants group were diognised with mood disorders and the 2nd group had either a mood or an anxiety disorder. Now, the 1st group mostly have anxiety disorder, while the majority of the 2nd group have mood disorder and some people have anxiety disorder.     
 
 
-**1.3 Agglomerative clustering results:**  
+**Agglomerative clustering results:**  
 <table>
   <tr>
     <td><img src="https://github.com/user-attachments/assets/1fba01d4-b899-4ff3-8960-d4d256ee2930" style="max-width:100%; height:auto;" /></td>
@@ -373,9 +373,13 @@ There are 2 clusters: **1st cluster with 653 participants** and **2nd cluster wi
 — "Do you currently have a mental health disorder?":  
 &emsp;&emsp; 1 cluster: most participants have a mental health disorder.   
 &emsp;&emsp; 2 cluster: more than half of participants don't have a mental health disorder, while the majority of the remaining are not sure whether they have it.  
+The features selected for this clustering method correspond to the first 4 features of the K-Means clistering. There is only one distinction between feature results: the class traits are swapped. Traits that belonged to the first class in K-Means clustering now pertain to the second cluster in Agglomerative clustering. The same applies to the second and the first clusters in K-Means and Agglomerative clustering, respectively. In other words, the clusters are the same, but their traits have been swapped.  
 
-**2. Without textual columns (features), 3 clusters:**  
-**2.1 K-Means clustering results:**  
+**Conclusions:**  
+For the data that includes textual columns, we obtained 2 distinctive clusters (groups of people). Moreover, these clusters are the same for all clustering algorithms. The 1st group predominantly demonstrates ignorance about their mental health issues. They haven't ever been diognised with a mental health condition by a medical proffesional and haven't ever sought the treatment. Additionally, the majority of this group don't think that they don't have any mental health issues even though they were diognised with mood disorders. The other group have the opposite situaltion: participants monitor their mental health. They aware about their mental health issues, the family history of mental illness, and at least tried to treat their issies. However, not only the mood disorders, but also the anxiety disorders are common among this group.  
+
+**5.3.2 Without textual columns (features), 3 clusters:**  
+**K-Means clustering results:**  
 <table>
   <tr>
     <td><img src="https://github.com/user-attachments/assets/9eb2f371-0690-4834-85b9-af9c1db15194" style="max-width:100%; height:auto;" /></td>
@@ -401,7 +405,7 @@ There are 6 features with average rank lower than 10. The result response distri
 
 There are 3 clusters: **1st cluster with 613 participants**, **2nd cluster with 348 participants**, and **3nd cluster with 472 participants**. The major distinctions between them can be seen in the first top-6 features:  
 — "Have you had a mental health disorder in the past?":  
-&emsp;&emsp; 1 cluster: more than half of participants had not mental health disorder in the past and the other subgroups had or maybe had it.  
+&emsp;&emsp; 1 cluster: more than half of participants had not mental health disorder in the past and the others mostly didn't have it.  
 &emsp;&emsp; 2 cluster: almost everyone had or maybe had mental health disorder in the past.  
 &emsp;&emsp; 3 cluster: almost everyone had or maybe had mental health disorder in the past.  
 — "If you have a mental health issue, do you feel that it interferes with your work when NOT being treated effectively?":  
@@ -413,7 +417,7 @@ There are 3 clusters: **1st cluster with 613 participants**, **2nd cluster with 
 &emsp;&emsp; 2 cluster: most participants tried to seek for a mental health issue from a mental health professional.  
 &emsp;&emsp; 3 cluster: most participants tried to seek for a mental health issue from a mental health professional.  
 — "Do you currently have a mental health disorder?":  
-&emsp;&emsp; 1 cluster: more than half of participants don't have a mental health disorder, while the majority of the remaining are not sure whether they have it.  
+&emsp;&emsp; 1 cluster: more than half of participants don't have a mental health disorder, while the majority of the remaining are not sure (due to the resonse "maybe") whether they have it.  
 &emsp;&emsp; 2 cluster: most participants have or maybe have a mental health disorder.  
 &emsp;&emsp; 3 cluster: most participants have or maybe have a mental health disorder.  
 — "Did your previous employers provide resources to learn more about mental health issues and how to seek help?":  
@@ -425,7 +429,9 @@ There are 3 clusters: **1st cluster with 613 participants**, **2nd cluster with 
 &emsp;&emsp; 2 cluster: most participants think that this can hurt their career (corresponding responses are "maybe" and "yes, i think it would"). But some people in this group don't think so.  
 &emsp;&emsp; 3 cluster: most participants think that this can hurt their career (corresponding responses are "maybe" and "yes, i think it would"). Additionally, some people think that it will definitely hurt their career.  
 
-**2.2 Gaussian Mixture clustering results:**  
+Again, the 1st group knows a little about their mental health issues. Most participants either didn't have mental health disorders in the past or aren't about that. Additionally, they don't think that they have any mental health issue for now. In contrast, the 2nd and the 3rd groups are more awared about their health issues. However, resourses to learn about mental health were provided only for the 2nd group by some of their previous employeers, while the other groups haven't been provided with anything. The only thing that unites these groups of people is that they all believe that "being identified as a person with a mental health issue" might hurt their career. And only the small subgroups think that it can't or would definitely affect them.   
+
+**Gaussian Mixture clustering results:**  
 <table>
   <tr>
     <td><img src="https://github.com/user-attachments/assets/c4f912e2-08fd-4a26-8b4f-1ff64e8b26b7" style="max-width:100%; height:auto;" /></td>
@@ -467,13 +473,13 @@ There are 3 clusters: **1st cluster with 622 participants**, **2nd cluster with 
 &emsp;&emsp; 2 cluster: most participants have been diognised with a mental health condition by a medical professional.  
 &emsp;&emsp; 3 cluster: most participants have been diognised with a mental health condition by a medical professional.  
 — "Do you think that discussing a mental health disorder with your employer would have negative consequences?":  
-&emsp;&emsp; 1 cluster: most participants think that it would or won't have negative consequences (corresponding responses are "maybe" and "no").  
-&emsp;&emsp; 2 cluster: most participants think that it would or won't have negative consequences (corresponding responses are "maybe" and "no").  
+&emsp;&emsp; 1 cluster: most participants think that it might or won't have negative consequences (corresponding responses are "maybe" and "no").  
+&emsp;&emsp; 2 cluster: most participants think that it might or won't have negative consequences (corresponding responses are "maybe" and "no").  
 &emsp;&emsp; 3 cluster: most participants think that it would or will definitely have negative consequences (corresponding responses are "maybe" and "yes").  
 
-This clustering method produce **almost the same results** like the previous one; only the order of first 6 selected features has changed. However, there are 2 additional features that have mean rank lower than 10 (last two questions).
+This clustering method produce **almost the same results** like the previous one; only the order of first 6 selected features has changed. However, there are 2 additional features that have mean rank lower than 10 (last two questions). Groups remained the same, so let's add some information about them via new features. People in the 1st group have never been diognised with a mental health issue by a medical professional and most of them don't think or aren't sure that discussion of the mental health disorder with their employers would have any negative consequences. On the other hand, people in the 2nd and the 3rd groupd were diognised by a medical prefessional. The second group shares the same opinion as the first group regarding the discussion of mental health disorders. However, the majority of the 3rd group either aren't sure or think that such a discussion can lead to some negative consequences.  
 
-**2.3 Agglomerative clustering results:**  
+**Agglomerative clustering results:**  
 <table>
   <tr>
     <td><img src="https://github.com/user-attachments/assets/58deb2fe-e408-4da8-a44c-8d9294b70921" style="max-width:100%; height:auto;" /></td>
@@ -514,11 +520,11 @@ There are 3 clusters: **1st cluster with 624 participants**, **2nd cluster with 
 &emsp;&emsp; 2 cluster: most participants have been diognised with a mental health condition by a medical professional.  
 &emsp;&emsp; 3 cluster: most participants have been diognised with a mental health condition by a medical professional.  
 — "Do you feel that being identified as a person with a mental health issue would hurt your career?":  
-&emsp;&emsp; 1 cluster: most participants think that this can hurt their career (corresponding responses are "maybe" and "yes, i think it would"). But some people in this group don't think so.  
+&emsp;&emsp; 1 cluster: most participants think that this can hurt their career (corresponding responses are "maybe" and "yes, i think it would").  
 &emsp;&emsp; 2 cluster: most participants think that this can hurt their career (corresponding responses are "maybe" and "yes, i think it would"). Additionally, some people think that it will definitely hurt their career.  
-&emsp;&emsp; 3 cluster: most participants think that this can hurt their career (corresponding responses are "maybe" and "yes, i think it would"). But more people in this group don't think that it would have any effect.  
+&emsp;&emsp; 3 cluster: most participants think that this can hurt their career (corresponding responses are "maybe" and "yes, i think it would"). But some people in this group don't think so.  
 — "Do you currently have a mental health disorder?":  
-&emsp;&emsp; 1 cluster: more than half of participants don't have a mental health disorder, while the majority of the remaining are not sure whether they have it.  
+&emsp;&emsp; 1 cluster: more than half of participants don't have a mental health disorder, while the majority of the remaining are not sure (due to the resonse "maybe") whether they have it.  
 &emsp;&emsp; 2 cluster: most participants have or maybe have a mental health disorder.  
 &emsp;&emsp; 3 cluster: most participants have or maybe have a mental health disorder.  
 — "Did your previous employers provide resources to learn more about mental health issues and how to seek help?":  
@@ -526,13 +532,13 @@ There are 3 clusters: **1st cluster with 624 participants**, **2nd cluster with 
 &emsp;&emsp; 2 cluster: most participants haven't been provided with resourses about mental health issues on previous workplaces.  
 &emsp;&emsp; 3 cluster: for most participants, there were some previous employers who provided them with resourses about mental health. However, there are participants who have never been provided with them.  
 — "Have you had a mental health disorder in the past?":  
-&emsp;&emsp; 1 cluster: more than half of participants had not mental health disorder in the past and the other subgroups had or maybe had it.  
+&emsp;&emsp; 1 cluster: more than half of participants had not mental health disorder in the past and the others mostly didn't have it.  
 &emsp;&emsp; 2 cluster: almost everyone had or maybe had mental health disorder in the past.  
 &emsp;&emsp; 3 cluster: almost everyone had or maybe had mental health disorder in the past.  
 — "Do you think that discussing a mental health disorder with your employer would have negative consequences?":  
-&emsp;&emsp; 1 cluster: most participants think that it would or won't have negative consequences (corresponding responses are "maybe" and "no").  
-&emsp;&emsp; 2 cluster: most participants think that it would or will definitely have negative consequences (corresponding responses are "maybe" and "yes").  
-&emsp;&emsp; 3 cluster: most participants think that it would or won't have negative consequences (corresponding responses are "maybe" and "no").  
+&emsp;&emsp; 1 cluster: most participants think that it might or won't have negative consequences (corresponding responses are "maybe" and "no").  
+&emsp;&emsp; 2 cluster: most participants think that it might or will definitely have negative consequences (corresponding responses are "maybe" and "yes").  
+&emsp;&emsp; 3 cluster: most participants think that it might or won't have negative consequences (corresponding responses are "maybe" and "no").  
 — "If you have a mental health issue, do you feel that it interferes with your work when being treated effectively?":  
 &emsp;&emsp; 1 cluster: most participants think that this is not applicable to them.  
 &emsp;&emsp; 2 cluster: participants feel like not treating mental health problems "sometimes" or "rarely" affect their work.  
@@ -542,9 +548,13 @@ There are 3 clusters: **1st cluster with 624 participants**, **2nd cluster with 
 &emsp;&emsp; 2 cluster: most participants tried to seek for a mental health issue from a mental health professional.  
 &emsp;&emsp; 3 cluster: most participants tried to seek for a mental health issue from a mental health professional.  
 
+There is the only one unique feature for this clustering method: "If you have a mental health issue, do you feel that it interferes with your work when being treated effectively?" Other features just changed their order. Furthermore, in this clustering method, the traits of the 2nd and the 3rd clusters swapped as it was in the previous section. But let's go through the last feature. The first group don't thint that this question relates to them, while the other groups believe that a proper treatement may affect their work less often comparing to the situation if mental health disorder is NOT treated effectively.  
 
+**Conclusions:**  
+For the data that excludes textual columns, we obtained 3 distinctive clusters (groups of people). Moreover, these clusters are the same for all clustering algorithms. The 1st group predominantly demonstrates ignorance about their mental health issues as it was in the previous section. They haven't ever been diognised with a mental health condition by a medical proffesional and haven't ever sought the treatment. Additionally, the majority of this group don't think that they don't have any mental health issues. The other groups have the opposite situaltion: participants of each group monitor their mental health. It's important to note that the 2nd and the 3rd group are very similar and their differences are not very clear. While in one group some minority of people think that "being identified as a person with a mental health issue" can hurt their career, the minority of the other group believe that it cannot. The same applies to other dissimilarities: groups are distinguished by the responses of minorities within them.  
 
 ## 6. Possible improvements
+
 
 ## 7. Literature  
 [1] https://opentsne.readthedocs.io/en/latest/examples/03_preserving_global_structure/03_preserving_global_structure.html  
