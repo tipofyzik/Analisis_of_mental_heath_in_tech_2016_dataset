@@ -578,6 +578,7 @@ All ideas came into my mind after I finished and interpreted the project, so the
     </td>
   </tr>
 </table>  
+
 If you'd like to check it yourself, open the "TextFeatureExtractor.py" file, find the "__define_frequent_words_in_column" function and change "ngram range" in else section from (2,3) to (1,3):  
 ![image](https://github.com/user-attachments/assets/6d907b39-1591-4a20-8dc1-0cc477df8881)  
 
