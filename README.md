@@ -556,11 +556,30 @@ For the data that excludes textual columns, we obtained 3 distinctive clusters (
 ## 6. Possible improvements
 All ideas came into my mind after I finished and interpreted the project, so they aren't implemented. There are few things that can be improved and considered in the future works:  
 1. During the textual feature extraction process, some information have been lost. We can see it on graphs in the section "4.4. Implementation specifics". Furthermore, extracted n-grams contain from 2 to 3 words which leads to the additional information loss. For example, if we perform feature extraction with n-grams' length from 1 to 3, we can find that the "stigma" is the main purpose in the "Why or why not" questions. **However, tests demonstrated that this effect barely affects the clustering output and interpretation results, so we can be no worried about this issue.**
-
+<table>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/d2f48afb-603f-4694-b0c6-dfc7fc95c9a3" style="max-width:100%; height:auto;" /></td>
+    <p>Response distribution for n-grams with len from 1 to 3 ("Why or why not?" questions)</p>
+    <td><img src="https://github.com/user-attachments/assets/7909e0bd-c05a-4805-b45f-c66d96396c44" style="max-width:100%; height:auto;" /></td>
+    <p>Reslut top feature for K-Means clustering</p>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/1368f71d-4238-4f7a-b6dd-a4242671a90a" style="max-width:100%; height:auto;" /></td>
+    <p>Reslut top feature for Gaussian Mixture clustering</p>
+    <td><img src="https://github.com/user-attachments/assets/29ab2079-98d7-4b3b-9e95-7b82ae6e832e" style="max-width:100%; height:auto;" /></td>
+    <p>Reslut top feature for Agglomerative clustering</p>
+  </tr>
+</table>  
 2. There are a lot of categorical columns that have from 4 to 5 possible answers. Due to this, feature selection algorithm can mistakenly highlight a feature as important, while there are kinda similar responses that just swapped their places. For instance, look again at the response distribution of the qustion "Do you feel that being identified as a person with a mental health issue would hurt your career?" The first 2 answers, "maybe" and "yes, i think it would" just swapping their places for each cluster. However, the meaning of these responses can be interpreted as "i'm not sure" and "i'm not sure, but i'm inclined to say yes", respectively. These are answers with varying degrees of confidence. For this reason, I assume that it would be good to try ordinal encoding for such questions instead of label encoding that was used in this work.
 3. To make graphs with response distributions easier to read and interpret, pie charts can be plotted instead of bars. It would help to see the percentage of participants that had chosen the certain answer.  
 
-## 7. Literature  
+## 7. Worth to mention
+In the archive with the results you can find the folder "2 clusters, without text". It contains the results for 2 clusters when textual columns aren't considered. These results weren't discussed here. The reason is why I didn't discuss them is that the output selected feature are the same to those we discussed in 5.3.1 and 5.3.2 section. There sis only one feature that become important due to different clustering results: "Were you aware of the options for mental health care provided by your previous employers?" The response distribution is predictible: the majority of the one group isn't awared about the options, while the other group was aware about some or all of them   
+![image](https://github.com/user-attachments/assets/05afef33-0506-4380-9670-2f358b20a3d0)
+
+Everything else is nearly idetical to results that we discussed in "5.3.1 With textual columns (features), 2 clusters" section.  
+
+## 8. Literature  
 [1] https://opentsne.readthedocs.io/en/latest/examples/03_preserving_global_structure/03_preserving_global_structure.html  
 [2] https://scikit-learn.org/stable/auto_examples/manifold/plot_t_sne_perplexity.html  
 [3] https://builtin.com/data-science/elbow-method  
