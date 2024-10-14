@@ -578,6 +578,9 @@ All ideas came into my mind after I finished and interpreted the project, so the
     </td>
   </tr>
 </table>  
+If you'd like to check it yourself, open the "TextFeatureExtractor.py" file, find the "__define_frequent_words_in_column" function and change "ngram range" in else section from (2,3) to (1,3):  
+![image](https://github.com/user-attachments/assets/6d907b39-1591-4a20-8dc1-0cc477df8881)  
+
 2. There are a lot of categorical columns that have from 4 to 5 possible answers. Due to this, feature selection algorithm can mistakenly highlight a feature as important, while there are kinda similar responses that just swapped their places. For instance, look again at the response distribution of the qustion "Do you feel that being identified as a person with a mental health issue would hurt your career?" The first 2 answers, "maybe" and "yes, i think it would" just swapping their places for each cluster. However, the meaning of these responses can be interpreted as "i'm not sure" and "i'm not sure, but i'm inclined to say yes", respectively. These are answers with varying degrees of confidence. For this reason, I assume that it would be good to try ordinal encoding for such questions instead of label encoding that was used in this work.
 3. To make graphs with response distributions easier to read and interpret, pie charts can be plotted instead of bars. It would help to see the percentage of participants that had chosen the certain answer.  
 
