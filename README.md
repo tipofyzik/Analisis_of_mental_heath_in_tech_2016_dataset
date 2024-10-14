@@ -583,7 +583,8 @@ If you'd like to check it yourself, open the "TextFeatureExtractor.py" file, fin
 ![image](https://github.com/user-attachments/assets/6d907b39-1591-4a20-8dc1-0cc477df8881)  
 
 2. There are a lot of categorical columns that have from 4 to 5 possible answers. Due to this, feature selection algorithm can mistakenly highlight a feature as important, while there are kinda similar responses that just swapped their places. For instance, look again at the response distribution of the qustion "Do you feel that being identified as a person with a mental health issue would hurt your career?" The first 2 answers, "maybe" and "yes, i think it would" just swapping their places for each cluster. However, the meaning of these responses can be interpreted as "i'm not sure" and "i'm not sure, but i'm inclined to say yes", respectively. These are answers with varying degrees of confidence. For this reason, I assume that it would be good to try ordinal encoding for such questions instead of label encoding that was used in this work.
-3. To make graphs with response distributions easier to read and interpret, pie charts can be plotted instead of bars. It would help to see the percentage of participants that had chosen the certain answer.  
+3. There are 3 cluster algorithm than were used in this task. To make the interpretation process less complex, a certain model can be chosen for clustering and further interpretation. For example BIC/AIC criterions can be used for model selection[5]  
+4. To make graphs with response distributions easier to read and interpret, pie charts can be plotted instead of bars. It would help to see the percentage of participants that had chosen the certain answer.  
 
 ## 7. Worth to mention
 1. In the archive with the results you can find the folder "2 clusters, without text". It contains the results for 2 clusters when textual columns aren't considered. These results weren't discussed here. The reason is why I didn't discuss them is that the output selected feature are the same to those we discussed in 5.3.1 and 5.3.2 section. There sis only one feature that become important due to different clustering results: "Were you aware of the options for mental health care provided by your previous employers?" The response distribution is predictible: the majority of the one group isn't awared about the options, while the other group was aware about some or all of them. Everything else is nearly idetical to results that we discussed in "5.3.1 With textual columns (features), 2 clusters" section.  
@@ -592,8 +593,12 @@ If you'd like to check it yourself, open the "TextFeatureExtractor.py" file, fin
 2.1 Firstly, you can open the archive I left (or the results folder if you run the program on your pc) and open the **"preprocessed_data_graphs"** folder. It's assumed that features with low importance score and, therefore, with a big mean rank have similar response distribution among all the output clusters.  
 2.2 The second thing you can do is to set **"most_important_features_max_number"** parameter in **config.json** file to 53 (since there are maximim 53 features) and run the program. Once everithing is done open the **"interpretation_graphs"** folder, open the folder with results for clustering method you'd like and check the graphs in the corresponding **"ranked_top_53_features"** folder. You will find that there are all features sorted in the mean rank descending order. Check them and you'll find that difference is small, e.g., a couple of answers has a small difference and are swapped for different clusters.    
 
+
+
+
 ## 8. Literature  
 [1] https://opentsne.readthedocs.io/en/latest/examples/03_preserving_global_structure/03_preserving_global_structure.html  
 [2] https://scikit-learn.org/stable/auto_examples/manifold/plot_t_sne_perplexity.html  
 [3] https://builtin.com/data-science/elbow-method  
 [4] https://www.displayr.com/what-is-dendrogram/  
+[5] https://censius.ai/blogs/machine-learning-model-selection-techniques  
