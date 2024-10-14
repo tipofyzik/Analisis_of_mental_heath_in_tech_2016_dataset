@@ -558,16 +558,24 @@ All ideas came into my mind after I finished and interpreted the project, so the
 1. During the textual feature extraction process, some information have been lost. We can see it on graphs in the section "4.4. Implementation specifics". Furthermore, extracted n-grams contain from 2 to 3 words which leads to the additional information loss. For example, if we perform feature extraction with n-grams' length from 1 to 3, we can find that the "stigma" is the main purpose in the "Why or why not" questions. **However, tests demonstrated that this effect barely affects the clustering output and interpretation results, so we can be no worried about this issue.**
 <table>
   <tr>
-    <td><img src="https://github.com/user-attachments/assets/d2f48afb-603f-4694-b0c6-dfc7fc95c9a3" style="max-width:100%; height:auto;" /></td>
-    <p>Response distribution for n-grams with len from 1 to 3 ("Why or why not?" questions)</p>
-    <td><img src="https://github.com/user-attachments/assets/7909e0bd-c05a-4805-b45f-c66d96396c44" style="max-width:100%; height:auto;" /></td>
-    <p>Reslut top feature for K-Means clustering</p>
+    <td>
+      <img src="https://github.com/user-attachments/assets/d2f48afb-603f-4694-b0c6-dfc7fc95c9a3" style="max-width:100%; height:auto;" />
+      <p>Response distribution for n-grams with len from 1 to 3 ("Why or why not?" questions)</p>
+    </td>
+    <td>
+      <img src="https://github.com/user-attachments/assets/7909e0bd-c05a-4805-b45f-c66d96396c44" style="max-width:100%; height:auto;" />
+      <p>Reslut top feature for K-Means clustering</p>
+    </td>
   </tr>
   <tr>
-    <td><img src="https://github.com/user-attachments/assets/1368f71d-4238-4f7a-b6dd-a4242671a90a" style="max-width:100%; height:auto;" /></td>
-    <p>Reslut top feature for Gaussian Mixture clustering</p>
-    <td><img src="https://github.com/user-attachments/assets/29ab2079-98d7-4b3b-9e95-7b82ae6e832e" style="max-width:100%; height:auto;" /></td>
-    <p>Reslut top feature for Agglomerative clustering</p>
+    <td>
+      <img src="https://github.com/user-attachments/assets/1368f71d-4238-4f7a-b6dd-a4242671a90a" style="max-width:100%; height:auto;" />
+      <p>Reslut top feature for Gaussian Mixture clustering</p>
+    </td>
+    <td>
+      <img src="https://github.com/user-attachments/assets/29ab2079-98d7-4b3b-9e95-7b82ae6e832e" style="max-width:100%; height:auto;" />
+      <p>Reslut top feature for Agglomerative clustering</p>
+    </td>
   </tr>
 </table>  
 2. There are a lot of categorical columns that have from 4 to 5 possible answers. Due to this, feature selection algorithm can mistakenly highlight a feature as important, while there are kinda similar responses that just swapped their places. For instance, look again at the response distribution of the qustion "Do you feel that being identified as a person with a mental health issue would hurt your career?" The first 2 answers, "maybe" and "yes, i think it would" just swapping their places for each cluster. However, the meaning of these responses can be interpreted as "i'm not sure" and "i'm not sure, but i'm inclined to say yes", respectively. These are answers with varying degrees of confidence. For this reason, I assume that it would be good to try ordinal encoding for such questions instead of label encoding that was used in this work.
