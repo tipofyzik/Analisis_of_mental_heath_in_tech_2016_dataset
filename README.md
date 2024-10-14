@@ -586,7 +586,7 @@ If you'd like to check it yourself, open the "TextFeatureExtractor.py" file, fin
 
 ## 7. Worth to mention
 In the archive with the results you can find the folder "2 clusters, without text". It contains the results for 2 clusters when textual columns aren't considered. These results weren't discussed here. The reason is why I didn't discuss them is that the output selected feature are the same to those we discussed in 5.3.1 and 5.3.2 section. There sis only one feature that become important due to different clustering results: "Were you aware of the options for mental health care provided by your previous employers?" The response distribution is predictible: the majority of the one group isn't awared about the options, while the other group was aware about some or all of them   
-![image](https://github.com/user-attachments/assets/05afef33-0506-4380-9670-2f358b20a3d0)
+![7_FEAT~1](https://github.com/user-attachments/assets/2a55d67b-3cf0-4242-bc50-3158674ea386)
 
 Everything else is nearly idetical to results that we discussed in "5.3.1 With textual columns (features), 2 clusters" section.  
 
