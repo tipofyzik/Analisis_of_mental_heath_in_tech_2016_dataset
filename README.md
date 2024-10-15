@@ -7,7 +7,7 @@ Dataset can be accessed via this link: https://www.kaggle.com/datasets/osmi/ment
 In case this dataset would be changed, I uploaded it on this github page (**folder "code" -> folder "dataset"**).  
 
 The results of the entire work are compressed into .zip file and can be accessed via this link: https://drive.google.com/drive/folders/1iFWibCaSU_GtRCDSgglztju0zFtNrz-4?usp=sharing  
-
+You can also run the code on Kaggle: https://www.kaggle.com/code/tipofyzik/analisis-of-mental-heath-in-tech-2016  
 ## 2. Programm installation
 ### Requirements 
 You need to intall Python with the version 3.11.3 and higher. All required modules to install you can find in the **"requirements.txt"** file.
