@@ -46,7 +46,7 @@ class WorkingDatasetInfo:
         for ith_column in self.__dataset:
             print(f"Type of the column \'{ith_column}\':\n{self.__dataset[ith_column].dtypes}")
 
-    def save_unique_values_with_counts_to_dataset(self) -> None:
+    def save_unique_values_with_counts_to_csv_table(self) -> None:
         """
         Creates and saves a table with unique values and their counts for each column in the dataset.
         

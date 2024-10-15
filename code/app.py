@@ -105,6 +105,7 @@ path_to_mds_2d_kmeans_result = config["ResultInterpreterSavePaths"]["path_to_mds
 path_to_mds_2d_agglomerative_result = config["ResultInterpreterSavePaths"]["path_to_mds_2d_agglomerative_result"]
 
 
+
 if __name__ == "__main__":
     original_dataset = pd.read_csv(path_to_dataset)
     dataset_info = WorkingDatasetInfo(original_dataset)
@@ -123,7 +124,7 @@ if __name__ == "__main__":
     # Getting dataset basic info
     dataset_info.print_dataset_info()
     dataset_info.print_each_column_types()
-    dataset_info.save_unique_values_with_counts_to_dataset()
+    dataset_info.save_unique_values_with_counts_to_csv_table()
 
     analyzer.check_missing_values(percent_threshold=missing_information_max_percent)
     plotter.save_plots(path_to_original_graphs, original_dataset)
