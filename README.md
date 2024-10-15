@@ -138,7 +138,11 @@ Label encoding is applied only to textual columns:
 **Further, all type of mentioned columns here are encoded using label encoding!**
 
 ## 5. Results of the work
-### 5.1 Nature of data
+### 5.1 Data preparation
+Before working with machine learning algorithms, we should first prepare the original data. This involves obtaining basic information about the data, cleaning it, filling in missing values, and then encoding it. 
+
+
+### 5.2 Nature of data
 Let's start the discussion with the **nature of data** obtained via dimeansionality reduction. We have data visualizations in both 2D and 3D space. Furthermore, we have "slices" of dataset in 3D space to look at them from different angles. We have 4 reduction methods: Linear PCA, Kernel PCA, t-SNE, and Multidimensional Scaling (MDS):  
 
 **PCA 2D and 3D visualizations and 3D slice:**
@@ -187,7 +191,7 @@ From obtained two- and three-dimensional representations, we can conclude that t
 
 So, t-SNE, MDS, and Kernel PCA with sigmoid kernel give us roughly similar results: an approximately evenly distributed data in the form of ellipse in 2D space. In 3D space, PCA and Kernel PCA show mirrored distributions (reflected along the vertical axis), with a subset of the points deviating from the main cluster. Furthermore, PCA and Kernel PCA give us nosier representations than other reductioon algorithms. Each representation doesn't have distinguishable clusters and high-density spots. Therefore, density-based clustering algorithms, such as DBSCAN clustering, aren't suitable for this dataset. Furthermore, due to the uniformity of the data, we expect to obtain only a few clusters at best.  
 
-### 5.2 Number of clusters
+### 5.3 Number of clusters
 Now, we should determine the appropriate for this dataset number of clusters. We'll consider 2 cases: when columns with textual information is considered and when the are not taken into account. Let's go through each cluster evaluation algorithm (see the corresponding graphs below):  
 1. K-Elbow method is one of the most prominent and simplest methods for evaluating cluster for K-Means clustering. However, the output graphs don't have a clear elbow point [3]. Therefore, this algorithm isn't suitable in our case.  
 2. Silhouette score is also used to evaluate the number of clusters k for K-Means algorithm. There are clear results, from which we can derive that for K-Means clustering it's better to choose 2 or 3 clusters depending on whether textual columns are considered. When choosing the optimal number of clusters, we should consider not only the algorithm's average score but also the distribution of clister sizes [3]. When textial features are taken into account, one cluster often becomes significantly larger than the others for many suggested cluster numbers. Therefore, the best choice is k=2, as larger k values result in significantly imbalanced cluster sizes. When textual columns are omitted, the best choice is k=3 since this configuration gives us the most size-balanced result.  
@@ -225,7 +229,7 @@ The resulting parameter choices are shown below:
   },
 ```
 
-### 5.3 Final clusters and their interpretation
+### 5.4 Final clusters and their interpretation
 **"config.json"** file contains 4 parameter in "AdditionalParamters" section:  
 ```json
   "AdditionalParamters": {
@@ -243,7 +247,7 @@ Additionally, the clustering algorithm used also should be considered during the
 **!Note 1:** We will consoder only the features which mean ranks are less than 10. Features with mean rank greater than 10 (even greater than 8-9, in some cases) mostly have response distributions with no clear distinctions (see interpretations below). The information about how many participants were assighned to each cluster you can find in the end (far right columns) of corresponding dataset tables that are located in interpretation folders. The number of cluster in graphs correspond to the number of cluster in the table plus 1, i.e., cluster 0 in table corresponds to cluster 1 in graphs.  
 **!Note 2:** Don't pay attention to clusters position for different dimensionality reduction methods. They uses different algorithms and, therefore, reduce dimensionality in different ways. Thus, for different algorithms, points (participants) will have coordinates in 2D and 3D spaces. There is only one thing worth pay attention to: the selected top features for different algorithms.  
 
-**5.3.1 With textual columns (features), 2 clusters:**  
+**5.4.1 With textual columns (features), 2 clusters:**  
 **K-Means clustering results:**  
 <table>
   <tr>
@@ -379,7 +383,7 @@ The features selected for this clustering method correspond to the first 4 featu
 **Conclusions:**  
 For the data that includes textual columns, we obtained 2 distinctive clusters (groups of people). Moreover, these clusters are the same for all clustering algorithms. The 1st group predominantly demonstrates ignorance about their mental health issues. They haven't ever been diognised with a mental health condition by a medical proffesional and haven't ever sought the treatment. Additionally, the majority of this group don't think that they don't have any mental health issues even though they were diognised with mood disorders. The other group have the opposite situaltion: participants monitor their mental health. They aware about their mental health issues, the family history of mental illness, and at least tried to treat their issies. However, not only the mood disorders, but also the anxiety disorders are common among this group.  
 
-**5.3.2 Without textual columns (features), 3 clusters:**  
+**5.4.2 Without textual columns (features), 3 clusters:**  
 **K-Means clustering results:**  
 <table>
   <tr>
