@@ -235,13 +235,14 @@ The resulting parameter choices are shown below:
       "interpret_kernel_pca_reduced_data": 0,
       "interpret_mds_reduced_data": 0
   }
-```  
-These parameters are responsible for interpretation of clustering results for data which dimensionality was reduced by a specific algorithm (see "4.2. Config file" section). We will focus on clustering and cluster interpretations for data reduced by t-SNE algorithm. This is explained by the fact that PCA and Kernel PCA algorithms output much noisier data respresentations than t-SNE and MDS reduction methods. //// If you want to perform and save interpretations for data reduced by other algorithms, you can simply replace zeroes in the parameters above with other 1 or other number.  
+```
+
+These parameters are responsible for interpretation of clustering results for data which dimensionality was reduced by a specific algorithm (see "4.2. Config file" section). **We will focus on clustering and cluster interpretations for data reduced by t-SNE algorithm.** PCA and Kernel PCA algorithms aren't considered вгу ещ еру the fact that they output much noisier data respresentations than t-SNE and MDS reduction methods. //// If you want to perform and save interpretations for data reduced by other algorithms, you can simply replace zeroes in the parameters above with other 1 or other number.  
 Additionally, the clustering algorithm used also should be considered during the interpretation process. Different clustering algorithms divide dataset into clusters in distinct ways, meaning that for each clustering algorithm there are unique features which trigger this algorithm. As a result, the interpretations of the clustering outcomes vary depending on the algorithm used. 
 
-**!Note:** We will consoder only the features which mean ranks are less than 10. Features with mean rank greater than 10 (even greater than 8-9, in some cases) mostly have response distributions with no clear distinctions (see interpretations below). The information about how many participants were assighned to each cluster you can find in the end (far right columns) of corresponding dataset tables that are located in interpretation folders. The number of cluster in graphs correspond to the number of cluster in the table plus 1, i.e., cluster 0 in table corresponds to cluster 1 in graphs.  
+**!Note 1:** We will consoder only the features which mean ranks are less than 10. Features with mean rank greater than 10 (even greater than 8-9, in some cases) mostly have response distributions with no clear distinctions (see interpretations below). The information about how many participants were assighned to each cluster you can find in the end (far right columns) of corresponding dataset tables that are located in interpretation folders. The number of cluster in graphs correspond to the number of cluster in the table plus 1, i.e., cluster 0 in table corresponds to cluster 1 in graphs.  
+**!Note 2:** Don't pay attention to clusters position for different dimensionality reduction methods. They uses different algorithms and, therefore, reduce dimensionality in different ways. Thus, for different algorithms, points (participants) will have coordinates in 2D and 3D spaces. There is only one thing worth pay attention to: the selected top features for different algorithms.  
 
-Let's look at output cluster distributions, what features have been selected for these distributions, and what response distributions have determined clusters. For simplicity and clarity, the result response distributions for each top feature will be shown in plots, so everyone can click on them and see the difference between clusters:  
 **5.3.1 With textual columns (features), 2 clusters:**  
 **K-Means clustering results:**  
 <table>
