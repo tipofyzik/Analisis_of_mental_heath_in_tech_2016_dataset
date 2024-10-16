@@ -140,7 +140,10 @@ Label encoding is applied only to textual columns:
 ## 5. Results of the work
 ### 5.1 Data preparation
 Before working with machine learning algorithms, we should first prepare the original data. This involves obtaining basic information about the data, cleaning it, filling in missing values, and then encoding it. 
-The results with unique values are saved to the “analysis_result.csv” table. 
+The results with unique values are saved to the “analysis_result.csv” table. Let;s go through this process step-by-step:
+1. **Basic information:** the original dataset has form (1443, 63), meaning that there are 1443 survey participants and 63 asked quesitons. 56 of these columns have type “object”, meaning that they contain strings, 4 columns have the integer type, and 3 remaining columns have the float type. However, there is only one column with numerical data: “What is your age?” Other numerical columns contain responses with binary representation. Instead of answering “yes” or “no” there are answers “1”, “0”, “1.0”, “0.0”.  
+2. 
+3. It's turned out that the original dataset contains 
 
 ### 5.2 Nature of data
 Let's start the discussion with the **nature of data** obtained via dimeansionality reduction. We have data visualizations in both 2D and 3D space. Furthermore, we have "slices" of dataset in 3D space to look at them from different angles. We have 4 reduction methods: Linear PCA, Kernel PCA, t-SNE, and Multidimensional Scaling (MDS):  
