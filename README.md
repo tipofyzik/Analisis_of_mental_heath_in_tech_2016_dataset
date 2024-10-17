@@ -33,9 +33,9 @@ Each class is located in its own file, which is documented so that the reader ca
 **· _DatasetAnalyzer class_** is responsible for analyzing and preprocessing dataset. It counts missing values for categorical columns and removes those that exceed the threshold for missing values. It also prepares columns that originally have a lot of answer but can be transformed so that they become more appropriate for the task.  
 **· _TextFeatureExtractor class_** processes columns with textual responses. It extracts all the most important phrases in a column and replaces the text in each cell with the most important phrase found in it.  
 **· _DataEncoder class_** encodes prepared dataset making it prepared for machine learning algorithms.  
-**· _OptimalClusterFinder class_** applies different algorithms to dataset to find the appropriate number of clusters for the clustering process. It creates and saves graphs with k-elbow method, silhouette scores for k-means clustering, dendrograms for agglomerative clustering, and BIC and AIC scores for Gaussian mixture.  
+**· _OptimalClusterFinder class_** applies different algorithms to dataset to find the appropriate number of clusters for the clustering process. It creates and saves graphs with k-elbow method, silhouette scores for k-means clustering, dendrograms for agglomerative hierarchical clustering, and BIC and AIC scores for Gaussian mixture.  
 **· _DimensionalityReducer class_** is designed to reduce dimensionality of the dataset so it can be displayed in 2 or 3 dimensional space. There are 3 dimensionality reduciton algorithms: (Linear) PCA, Kernel PCA, and t-SNE.  
-**· _DataClusterer class_** clusters reduced in dimensionality data. There are 3 clustering algorithms: K-Means, Gaussian Mixture, and Agglomerative clustering.  
+**· _DataClusterer class_** clusters reduced in dimensionality data. There are 3 clustering algorithms: K-Means, Gaussian Mixture, and Agglomerative hierarchical clustering.  
 **· _ResultInterpreter class_** takes the results of clustering and interprets them by selecting the most important features it can detect. The following algorithms are used for feature selection: chi squared test, mutual information score, and random forest algorithm mixed with permutation feature importance algorithm.  
 
 ### 4.2. Config file
@@ -98,10 +98,10 @@ Each class is located in its own file, which is documented so that the reader ca
 &emsp;&emsp; — _path_to_kernel_pca_2d_kmeans_result_: Here, the output of the K-Means clustering, performed on data after 2D reduction using Kernel PCA, is saved.  
 &emsp;&emsp; — _path_to_tsne_2d_kmeans_result_: Here, the output of the K-Means clustering, performed on data after 2D reduction using t-SNE, is saved.  
 &emsp;&emsp; — _path_to_mds_2d_kmeans_result_: Here, the output of the K-Means clustering, performed on data after 2D reduction using MDS, is saved.  
-&emsp;&emsp; — _path_to_pca_2d_agglomerative_result_: Here, the output of the Agglomerative clustering, performed on data after 2D reduction using Linear PCA, is saved.  
-&emsp;&emsp; — _path_to_kernel_pca_2d_agglomerative_result_: Here, the output of the Agglomerative clustering, performed on data after 2D reduction using Kernel PCA, is saved.  
-&emsp;&emsp; — _path_to_tsne_2d_agglomerative_result_: Here, the output of the Agglomerative clustering, performed on data after 2D reduction using t-SNE, is saved.  
-&emsp;&emsp; — _path_to_mds_2d_agglomerative_result_: Here, the output of the Agglomerative clustering, performed on data after 2D reduction using MDS, is saved.  
+&emsp;&emsp; — _path_to_pca_2d_agglomerative_result_: Here, the output of the Agglomerative hierarchical clustering, performed on data after 2D reduction using Linear PCA, is saved.  
+&emsp;&emsp; — _path_to_kernel_pca_2d_agglomerative_result_: Here, the output of the Agglomerative hierarchical clustering, performed on data after 2D reduction using Kernel PCA, is saved.  
+&emsp;&emsp; — _path_to_tsne_2d_agglomerative_result_: Here, the output of the Agglomerative hierarchical clustering, performed on data after 2D reduction using t-SNE, is saved.  
+&emsp;&emsp; — _path_to_mds_2d_agglomerative_result_: Here, the output of the Agglomerative hierarchical clustering, performed on data after 2D reduction using MDS, is saved.  
 
 ### 4.3. Launch file
 All processes, from reading the dataset to clustering it, take place in the **"app.py"** file. Let's go through a step-by-step explanation of what happens there. The program:  
@@ -200,7 +200,7 @@ So, t-SNE, MDS, and Kernel PCA with sigmoid kernel give us roughly similar resul
 Now, we should determine the appropriate for this dataset number of clusters. We'll consider 2 cases: when columns with textual information is considered and when the are not taken into account. Let's go through each cluster evaluation algorithm (see the corresponding graphs below):  
 1. K-Elbow method is one of the most prominent and simplest methods for evaluating cluster for K-Means clustering. However, the output graphs don't have a clear elbow point [3]. Therefore, this algorithm isn't suitable in our case.  
 2. Silhouette score is also used to evaluate the number of clusters k for K-Means algorithm. There are clear results, from which we can derive that for K-Means clustering it's better to choose 2 or 3 clusters depending on whether textual columns are considered. When choosing the optimal number of clusters, we should consider not only the algorithm's average score but also the distribution of clister sizes [3]. When textial features are taken into account, one cluster often becomes significantly larger than the others for many suggested cluster numbers. Therefore, the best choice is k=2, as larger k values result in significantly imbalanced cluster sizes. When textual columns are omitted, the best choice is k=3 since this configuration gives us the most size-balanced result.  
-3. Dendrograms were built to evaluate the number of clusters for agglomerative clustering. In both cases, there are 3 clearly distinguishable clusters. However, when textual columns are considered, we can also say that there are 4 clusters.  
+3. Dendrograms were built to evaluate the number of clusters for agglomerative hierarchical clustering. In both cases, there are 3 clearly distinguishable clusters. However, when textual columns are considered, we can also say that there are 4 clusters.  
 4. Finally, BIC/AIC scores were used to find optimal number of clusters for Gaussian Mixture clustering algorithm. The appropriate number corresponds to the global minimum on BIC or AIC graph. The Bayesian Information Criterion penalizes models more severely than The Akaike Information Criterion. This is why, if one criterion isn't well-suited for the model, we can choose the other one. In this case, AIC demostrates poor results, since there is no clear minimum. In contrast, BIC have (almost) clear minima for both scenarios: when textual columns are included, the optimal cluster number is k=2 (with a score a bit lower than for k=3), and when textual features are omitted, k=3 is preferred.  
 
 The results of cluster choosing algorithms:  
@@ -350,7 +350,7 @@ There are 2 clusters: **1st cluster with 641 participants** and **2nd cluster wi
 This clustering method produce **almost the same results** like the previous one; only the order of the selected features and distributions for the last question have changed. In the previous clustering, most of the 1st participants group were diognised with mood disorders and the 2nd group had either a mood or an anxiety disorder. Now, the 1st group mostly have anxiety disorder, while the majority of the 2nd group have mood disorder and some people have anxiety disorder.     
 
 
-**Agglomerative clustering results:**  
+**Agglomerative hierarchical clustering results:**  
 <table>
   <tr>
     <td><img src="https://github.com/user-attachments/assets/1fba01d4-b899-4ff3-8960-d4d256ee2930" style="max-width:100%; height:auto;" /></td>
@@ -383,7 +383,7 @@ There are 2 clusters: **1st cluster with 653 participants** and **2nd cluster wi
 — "Do you currently have a mental health disorder?":  
 &emsp;&emsp; 1 cluster: most participants have a mental health disorder.   
 &emsp;&emsp; 2 cluster: more than half of participants don't have a mental health disorder, while the majority of the remaining are not sure whether they have it.  
-The features selected for this clustering method correspond to the first 4 features of the K-Means clistering. There is only one distinction between feature results: the class traits are swapped. Traits that belonged to the first class in K-Means clustering now pertain to the second cluster in Agglomerative clustering. The same applies to the second and the first clusters in K-Means and Agglomerative clustering, respectively. In other words, the clusters are the same, but their traits have been swapped.  
+The features selected for this clustering method correspond to the first 4 features of the K-Means clistering. There is only one distinction between feature results: the class traits are swapped. Traits that belonged to the first class in K-Means clustering now pertain to the second cluster in Agglomerative hierarchical clustering. The same applies to the second and the first clusters in K-Means and Agglomerative hierarchical clustering, respectively. In other words, the clusters are the same, but their traits have been swapped.  
 
 **Conclusions:**  
 For the data that includes textual columns, we obtained 2 distinctive clusters (groups of people). Moreover, these clusters are the same for all clustering algorithms. The 1st group predominantly demonstrates ignorance about their mental health issues. They haven't ever been diognised with a mental health condition by a medical proffesional and haven't ever sought the treatment. Additionally, the majority of this group don't think that they don't have any mental health issues even though they were diognised with mood disorders. The other group have the opposite situaltion: participants monitor their mental health. They aware about their mental health issues, the family history of mental illness, and at least tried to treat their issies. However, not only the mood disorders, but also the anxiety disorders are common among this group.  
@@ -489,7 +489,7 @@ There are 3 clusters: **1st cluster with 622 participants**, **2nd cluster with 
 
 This clustering method produce **almost the same results** like the previous one; only the order of first 6 selected features has changed. However, there are 2 additional features that have mean rank lower than 10 (last two questions). Groups remained the same, so let's add some information about them via new features. People in the 1st group have never been diognised with a mental health issue by a medical professional and most of them don't think or aren't sure that discussion of the mental health disorder with their employers would have any negative consequences. On the other hand, people in the 2nd and the 3rd groupd were diognised by a medical prefessional. The second group shares the same opinion as the first group regarding the discussion of mental health disorders. However, the majority of the 3rd group either aren't sure or think that such a discussion can lead to some negative consequences.  
 
-**Agglomerative clustering results:**  
+**Agglomerative hierarchical clustering results:**  
 <table>
   <tr>
     <td><img src="https://github.com/user-attachments/assets/58deb2fe-e408-4da8-a44c-8d9294b70921" style="max-width:100%; height:auto;" /></td>
@@ -584,7 +584,7 @@ All ideas came into my mind after I finished and interpreted the project, so the
     </td>
     <td>
       <img src="https://github.com/user-attachments/assets/29ab2079-98d7-4b3b-9e95-7b82ae6e832e" style="max-width:100%; height:auto;" />
-      <p>Reslut top feature for Agglomerative clustering</p>
+      <p>Reslut top feature for Agglomerative hierarchical clustering</p>
     </td>
   </tr>
 </table>  
