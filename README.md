@@ -133,9 +133,12 @@ Label encoding is applied only to territorial columns:
 ![norm_tsne_2d_specific](https://github.com/user-attachments/assets/6af41c55-546a-4409-8baa-501d06c333ec)  
 Label encoding is applied only to textual columns:  
 ![norm_tsne_2d_text](https://github.com/user-attachments/assets/07fefa5e-0f2c-4640-a6c0-f5aa7a3de585)  
-4. **Interpretation process**  involves three feature selection algorithms. Each algorithm selects features and outputs a list of features sorted by their importance score in descending order. The results are then ranked based on their position in the sorted list: the feature with the highest importance score is assigned rank 1, the next feature rank is 2, and so on, with the least important feature receiving the highest rank number. In other words, the more important the feature, the lower its rank number. After all ranks are assigned, the mean rank across the applied algorithms is calculated, and the features are sorted by this average rank in descending order. After this procedure, participants response distributions for each result cluster are saved in plots which makes it easy to interpret the result clusters.   
 
-**Further, all type of mentioned columns here are encoded using label encoding!**
+**Further, all types of mentioned columns are encoded using label encoding!**  
+
+4. **Interpretation process**  involves three feature selection algorithms. Each algorithm selects features and outputs a list of features sorted by their importance score in descending order. The results are then ranked based on their position in the sorted list: the feature with the highest importance score is assigned rank 1, the next feature rank is 2, and so on, with the least important feature receiving the highest rank number. In other words, the more important the feature, the lower its rank number. After all ranks are assigned, the mean rank across the applied algorithms is calculated, and the features are sorted by this average rank in descending order. After this procedure, bar plots with participants' response distributions for each top feature are saved in plots, which make it easy to interpret the result clusters.  
+
+
 
 ## 5. Results of the work
 ### 5.1 Data preparation
