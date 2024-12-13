@@ -610,19 +610,19 @@ If you'd like to check it yourself, open the "TextFeatureExtractor.py" file, fin
 
 
 ## 8. Literature  
-&emsp;&emsp;**·** Arora, K. (2024, May 10). _Everything You Must Know About Data Normalization in Machine Learning._ MarkovML. https://www.markovml.com/blog/normalization-in-machine-learning
-&emsp;&emsp;**·** Bock, T. (n.d.) _What is a Dendrogram?_ Displayr. https://www.displayr.com/what-is-dendrogram/  
-&emsp;&emsp;**·** _Difference between PCA VS t-SNE._ (2023, April 16). GeeksforGeeks. https://www.geeksforgeeks.org/difference-between-pca-vs-t-sne/  
-&emsp;&emsp;**·** Fränti, P., Hautamaki, & V., Zhao, Q., (2008). _Knee point detection in BIC for detecting the number of clusters._ In: Blanc-Talon, J., Bourennane, S., Philips, W., Popescu, D., Scheunders, P. (eds) Advanced Concepts for Intelligent Vision Systems. ACIVS 2008. Lecture Notes in Computer Science, vol 5259. Springer, Berlin, Heidelberg. https://doi.org/10.1007/978-3-540-88458-3_60  
-&emsp;&emsp;**·** Gajawada, S. K. (2019, October 4). _Chi-Square Test for Feature Selection in Machine learning._ Towards Data Science. https://towardsdatascience.com/chi-square-test-for-feature-selection-in-machine-learning-206b1f0b8223  
-&emsp;&emsp;**·** Jain, A. (2024, February 5). _N-grams in NLP._ Medium. https://medium.com/@abhishekjainindore24/n-grams-in-nlp-a7c05c1aff12  
-&emsp;&emsp;**·** Jokanola, V. (2022, August 5). _How to interpret silhouette plot for k-means clustering._ Medium. https://medium.com/@favourphilic/how-to-interpret-silhouette-plot-for-k-means-clustering-414e144a17fe  
-&emsp;&emsp;**·** Mahmood, H. (2024, July 23). _What is Categorical Data Encoding? 7 Effective Methods._ Data Science Dojo. https://datasciencedojo.com/blog/categorical-data-encoding/  
-&emsp;&emsp;**·** Nair, M. (2023, October 12). _Feature Selection — Mutual Information._ Medium. https://medium.com/@miramnair/feature-selection-mutual-information-a0def943e1ed  
-&emsp;&emsp;**·** Patel, H. (n.d.). _How To Select A Suitable Machine Learning Model._ Censius. https://censius.ai/blogs/machine-learning-model-selection-techniques  
-&emsp;&emsp;**·** _Permutation Importance vs Random Forest Feature Importance (MDI)._ (n.d.). scikit-learn. https://scikit-learn.org/1.5/auto_examples/inspection/plot_permutation_importance.html  
-&emsp;&emsp;**·** Sankalana, N. (2023, September 19)._ K-means Clustering: Choosing Optimal K, Process, and Evaluation Methods._ Medium. https://medium.com/@nirmalsankalana/k-means-clustering-choosing-optimal-k-process-and-evaluation-methods-2c69377a7ee4  
-&emsp;&emsp;**·** Singh, P. (2019, September 4). _Fundamentals of Bag Of Words and TF-IDF._ Medium. https://medium.com/analytics-vidhya/fundamentals-of-bag-of-words-and-tf-idf-9846d301ff22  
-&emsp;&emsp;**·** Tomar, A. (2023, August 2). _Stop Using Elbow Method in K-Means Clustering._ Built In. https://builtin.com/data-science/elbow-method  
-&emsp;&emsp;**·** _t-SNE: The effect of various perplexity values on the shape._ (n.d.). scikit-learn. https://scikit-learn.org/stable/auto_examples/manifold/plot_t_sne_perplexity.html  
+**·** Arora, K. (2024, May 10). _Everything You Must Know About Data Normalization in Machine Learning._ MarkovML. https://www.markovml.com/blog/normalization-in-machine-learning
+**·** Bock, T. (n.d.) _What is a Dendrogram?_ Displayr. https://www.displayr.com/what-is-dendrogram/  
+**·** _Difference between PCA VS t-SNE._ (2023, April 16). GeeksforGeeks. https://www.geeksforgeeks.org/difference-between-pca-vs-t-sne/  
+**·** Fränti, P., Hautamaki, & V., Zhao, Q., (2008). _Knee point detection in BIC for detecting the number of clusters._ In: Blanc-Talon, J., Bourennane, S., Philips, W., Popescu, D., Scheunders, P. (eds) Advanced Concepts for Intelligent Vision Systems. ACIVS 2008. Lecture Notes in Computer Science, vol 5259. Springer, Berlin, Heidelberg. https://doi.org/10.1007/978-3-540-88458-3_60  
+**·** Gajawada, S. K. (2019, October 4). _Chi-Square Test for Feature Selection in Machine learning._ Towards Data Science. https://towardsdatascience.com/chi-square-test-for-feature-selection-in-machine-learning-206b1f0b8223  
+**·** Jain, A. (2024, February 5). _N-grams in NLP._ Medium. https://medium.com/@abhishekjainindore24/n-grams-in-nlp-a7c05c1aff12  
+**·** Jokanola, V. (2022, August 5). _How to interpret silhouette plot for k-means clustering._ Medium. https://medium.com/@favourphilic/how-to-interpret-silhouette-plot-for-k-means-clustering-414e144a17fe  
+**·** Mahmood, H. (2024, July 23). _What is Categorical Data Encoding? 7 Effective Methods._ Data Science Dojo. https://datasciencedojo.com/blog/categorical-data-encoding/  
+**·** Nair, M. (2023, October 12). _Feature Selection — Mutual Information._ Medium. https://medium.com/@miramnair/feature-selection-mutual-information-a0def943e1ed  
+**·** Patel, H. (n.d.). _How To Select A Suitable Machine Learning Model._ Censius. https://censius.ai/blogs/machine-learning-model-selection-techniques  
+**·** _Permutation Importance vs Random Forest Feature Importance (MDI)._ (n.d.). scikit-learn. https://scikit-learn.org/1.5/auto_examples/inspection/plot_permutation_importance.html  
+**·** Sankalana, N. (2023, September 19)._ K-means Clustering: Choosing Optimal K, Process, and Evaluation Methods._ Medium. https://medium.com/@nirmalsankalana/k-means-clustering-choosing-optimal-k-process-and-evaluation-methods-2c69377a7ee4  
+**·** Singh, P. (2019, September 4). _Fundamentals of Bag Of Words and TF-IDF._ Medium. https://medium.com/analytics-vidhya/fundamentals-of-bag-of-words-and-tf-idf-9846d301ff22  
+**·** Tomar, A. (2023, August 2). _Stop Using Elbow Method in K-Means Clustering._ Built In. https://builtin.com/data-science/elbow-method  
+**·** _t-SNE: The effect of various perplexity values on the shape._ (n.d.). scikit-learn. https://scikit-learn.org/stable/auto_examples/manifold/plot_t_sne_perplexity.html  
 
